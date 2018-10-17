@@ -1,0 +1,7 @@
+install.packages("snow", repos="http://cran.us.r-project.org")
+install.packages("snowfall", repos="http://cran.us.r-project.org")
+install.packages("bitops", repos="http://cran.us.r-project.org")
+install.packages("caTools", repos="http://cran.us.r-project.org")
+source("http://bioconductor.org/biocLite.R")
+biocLite("Rsamtools",suppressUpdates=TRUE)
+install.packages("./spp_1.14.tar.gz")
