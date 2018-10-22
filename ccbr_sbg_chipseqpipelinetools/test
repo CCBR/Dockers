@@ -1,0 +1,30 @@
+FROM ubuntu:16.04
+
+RUN mkdir -p /data
+RUN mkdir -p /opt
+RUN mkdir -p /scripts
+
+RUN apt-get update && \
+    apt-get upgrade -y
+
+RUN apt-get install -y python && \
+    apt-get install -y python-pip
+
+RUN pip install --upgrade pip
+
+RUN apt-get install -y python3 
+RUN apt-get install -y python3-pip python3-venv
+
+RUN python3.5 -m venv py3
+
+ENV PATH=$PATH:/py3/bin
+
+SHELL ["/bin/bash", "-c"]
+
+RUN source py3/bin/activate && \
+    pip3 install --upgrade pip && \
+    pip3 install cutadapt==1.18
+
+RUN pip install --upgrade pip && \
+    pip install numpy && \
+    pip install MACS2 

@@ -1,0 +1,7 @@
+bedtools	2.25.0
+bwa	0.7.17-r1188
+cutadapt	1.18
+deeptools
+macs2	2.1.2
+samtools	1.9
+spp	1.14
