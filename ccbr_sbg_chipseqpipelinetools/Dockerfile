@@ -82,6 +82,15 @@ RUN chmod a+rx /opt/run_spp.R
 
 ENV PATH="/opt":$PATH
 
+#scripts
+COPY ccbr_bwaAlignSE.sh /scripts
+COPY ccbr_macsFilterdup.sh /scripts
+COPY ccbr_macsSEPeakCalling.sh /scripts
+COPY ccbr_fingerprintPlot.sh /scripts
+COPY ccbr_bam2bw.sh /scripts
+
+RUN chmod a+rx /scripts/*.sh
+ENV PATH=$PATH:"/scripts"
 
 
 #cleanup
