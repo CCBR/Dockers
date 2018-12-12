@@ -1,0 +1,32 @@
+FROM ubuntu:16.04
+
+RUN mkdir -p /data
+RUN mkdir -p /opt
+
+RUN apt-get update && \
+    apt-get upgrade -y
+
+RUN apt-get install -y cpanminus
+
+RUN apt-get install -y zlibc zlib1g zlib1g-dev make gcc g++ wget
+RUN apt-get install -y bowtie2
+RUN apt-get install -y libgd-perl 
+RUN apt-get install -y pkg-config
+RUN apt-get install -y libgd-dev
+
+RUN cpanm GD::Graph::bars
+
+COPY fastq_screen_v0.13.0.tar.gz /opt
+WORKDIR /opt
+RUN tar xzvf fastq_screen_v0.13.0.tar.gz
+WORKDIR /opt/fastq_screen_v0.13.0
+RUN chmod 755 fastq_screen
+ENV PATH="/opt/fastq_screen_v0.13.0":$PATH
+
+COPY Dockerfile /opt
+
+WORKDIR /data
+
+RUN apt-get clean
+
+MAINTAINER vishal.koparde@nih.gov
