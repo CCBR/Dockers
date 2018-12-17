@@ -14,7 +14,11 @@ RUN apt-get install -y python3 && \
 
 RUN apt-get install -y zlibc zlib1g zlib1g-dev
 
+RUN apt-get install -y r-base-core libboost-dev
+
 RUN pip3 install --upgrade pip
+
+RUN pip3 install numpy
 
 RUN pip3 install RSeQC
 
