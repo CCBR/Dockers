@@ -1,34 +1,28 @@
-FROM kopardev/ccbr_samtools_1.9
+FROM	bitnami/minideb:jessie
 
-RUN mkdir -p /data
-RUN mkdir -p /opt
+RUN	apt-get update \
+&&	apt-get install -y r-base-core wget samtools
 
-RUN apt-get update && \
-    apt-get upgrade -y 
-
-RUN apt-get install -y r-base-core
+RUN 	mkdir -p /data/homer \
+&&	mkdir -p /opt
 
 COPY install_R_packages.R /data
-
-RUN cd /data && Rscript install_R_packages.R
-
-RUN mkdir -p /data/homer
+WORKDIR /data
+RUN Rscript install_R_packages.R
 
 COPY configureHomer.pl /data/homer
-
-RUN apt-get install -y wget
-
-RUN cd /data/homer && perl configureHomer.pl -install
-
-ENV PATH="/data/homer/bin":$PATH
-
+WORKDIR /data/homer
+RUN perl configureHomer.pl -install
 RUN perl configureHomer.pl -install mouse 
 RUN perl configureHomer.pl -install human 
 RUN perl configureHomer.pl -install mm9 
 RUN perl configureHomer.pl -install mm10 
 RUN perl configureHomer.pl -install hg19
 RUN perl configureHomer.pl -install hg38
- 
+
+ENV PATH="/data/homer/bin":$PATH
 WORKDIR /data
+
+COPY Dockerfile /opt
 
 MAINTAINER vishal.koparde@nih.gov

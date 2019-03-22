@@ -1,0 +1,5 @@
+source("http://bioconductor.org/biocLite.R")
+biocLite(c("RBGL","graph"),suppressUpdates=TRUE)
+install.packages(c("ggplot2","devtools","gplots","gridExtra","jsonlite", "VennDiagram","snow","getopt","tidyr","UpSetR"))
+library("devtools")
+install_github("jenzopr/Vennerable")
