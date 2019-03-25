@@ -14,7 +14,7 @@ The docker images were pushed to dockerhub and are available [here](https://hub.
    * ```/opt```
  * Original Dockerfile is copied into the docker image as ```/opt/Dockerfile```. One can view this directly by running
 
-  ```docker run nciccbr/ccbr_xxx_yyy cat /opt/Docker```
+  ```docker run nciccbr/ccbr_xxx_yyy cat /opt/Dockerfile```
  
  * All docker images are built using one of the following base images:
    * ```ubuntu:16.04```
