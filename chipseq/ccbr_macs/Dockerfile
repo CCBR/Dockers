@@ -15,9 +15,15 @@ RUN pip install --upgrade pip
 
 RUN pip install MACS2
 
+RUN apt-get install -y \
+	samtools \
+	bedtools \
+	pigz
+
 COPY Dockerfile /opt
 COPY ccbr_macs_callpeak_se.bash /opt
 COPY ccbr_macs_callpeak_pe.bash /opt
+COPY ccbr_macs_filterdup_se.bash /opt
 COPY argparse.bash /opt
 
 RUN chmod a+x /opt/*.bash
