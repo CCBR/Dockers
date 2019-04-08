@@ -1,0 +1,28 @@
+{
+    "bed": "BEDFILEGOESHERE",
+    "gtf": "genes_only.gtf",
+    "priority": "True",
+    "queries": [
+        {
+            "distance": [
+                3000,
+                500
+            ],
+            "feature": "gene",
+            "feature.anchor": "start",
+            "show.attributes": "gene_name"
+        },
+        {
+            "distance": 3000,
+            "feature": "gene",
+            "feature.anchor": "end",
+            "show.attributes": "gene_name"
+        },
+        {
+            "distance": 100000,
+            "feature": "gene",
+            "feature.anchor": "center",
+            "show.attributes": "gene_name"
+        }
+    ]
+}
