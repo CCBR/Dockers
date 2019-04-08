@@ -26,7 +26,9 @@ if [ $BROAD ]
 then
 	echo "Broad"
 	macs2 callpeak -t $TREATMENT -c $CONTROL -g $GENOMESIZE -n $OUTPREFIX --broad --broad-cutoff 0.01 --keep-dup='all' --nomodel --extsize $treatmentextsize
+	awk -F"\t" -v OFS="\t" '{print $1,$2,$3,$1":"$2"-"$3,$5,$6}' ${OUTPREFIX}_peaks.broadPeak > ${OUTPREFIX}_peaks.broadPeak.bed
 else
 	echo "Narrow"
 	macs2 callpeak -t $TREATMENT -c $CONTROL -g $GENOMESIZE -n $OUTPREFIX -q 0.01 --keep-dup='all' --nomodel --extsize $treatmentextsize
+	awk -F"\t" -v OFS="\t" '{print $1,$2,$3,$1":"$2"-"$3,$5,$6}' ${OUTPREFIX}_peaks.narrowPeak > ${OUTPREFIX}_peaks.narrowPeak.bed
 fi
