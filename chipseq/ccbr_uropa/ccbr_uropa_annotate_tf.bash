@@ -9,6 +9,6 @@ parser.add_argument('--bed',required=True, help='called peaks in bed format')
 parser.add_argument('--gtf',required=True, help='annotation file')
 EOF
 
-cat tf.json |sed "s/BEDFILEGOESHERE/${BED}/g" |sed "s/GTFFILEGOESHERE/${GTF}/g" > run_uropa.json
+cat /opt/tf.json |sed "s/BEDFILEGOESHERE/${BED}/g" |sed "s/GTFFILEGOESHERE/${GTF}/g" > run_uropa.json
 uropa -i run_uropa.json -s --threads `nproc`
 

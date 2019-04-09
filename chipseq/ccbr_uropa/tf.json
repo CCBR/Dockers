@@ -1,6 +1,6 @@
 {
     "bed": "BEDFILEGOESHERE",
-    "gtf": "genes_only.gtf",
+    "gtf": "GTFFILEGOESHERE",
     "priority": "True",
     "queries": [
         {
