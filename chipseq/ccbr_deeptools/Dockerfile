@@ -1,27 +1,11 @@
-FROM ubuntu:18.04
+FROM nciccbr/ccbr_deeptools:v0.0.1
+# base image has samtools bedtools deeptools==3.2.0
 MAINTAINER vishal.koparde@nih.gov
 
-
-RUN 	mkdir -p /data \
-&&		mkdir -p /opt \
-&&		apt-get update \
-&&		apt-get upgrade -y 
-
-RUN 	apt-get install -y \
-		samtools \
-		bedtools \
-		zlibc \
-		zlib1g \
-		zlib1g-dev
-
-RUN 	apt-get install -y python \
-		python-pip
-
-RUN pip install --upgrade pip
-
-RUN pip install deeptools==3.2.0
-
+COPY argparse.bash /opt
+COPY ccbr_bam2bw.bash /opt
 COPY Dockerfile /opt
 
+RUN chmod a+x /opt/*.bash
+ENV PATH=/opt:$PATH
 WORKDIR /data
-
