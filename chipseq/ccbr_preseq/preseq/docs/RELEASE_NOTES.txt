@@ -1,0 +1,66 @@
+preseq beta release 2.0.0 (October 29, 2014)
+
+------------------------------------------------------------------
+
+Notable changes in preseq software:
+
+  * Include the module bound_pop.  This module constructs a 
+    nonparametric moment-based estimator of species richness,
+    the total number of species or classes in the population.
+
+
+preseq beta release 1.0.3 (December 15, 2014)
+
+------------------------------------------------------------------
+
+Notable changes in preseq software:
+
+  * Include defect mode to extrapolate without testing for
+    defects.
+
+
+preseq beta release 1.0.2 (Aug 25, 2014)
+
+------------------------------------------------------------------
+
+Notable changes in preseq software:
+
+  * Included gc_extrap option to predict genomic coverage for
+    single cell sequencing experiments.
+
+  * Changed the method of finding optimal continued fraction
+    to improve performance for high variable (e.g. RNAseq)
+    libraries.
+
+
+preseq beta release 0.0.3 (Aug 5, 2013)
+
+------------------------------------------------------------------
+
+Notable changes in preseq software:
+
+  * Prediction of the complexity curve is done using the observed data
+    when possible.  Previous versions bootstrapped the histogram and
+    used the median estimate.  Bootstrapping is only done to compute
+    confidence intervals.
+
+  * Addition of quick mode option with flag -Q.  The complexity is 
+    predicted with the observed data and bootstrapping is not done,
+    speeding up the computation time tremendously.
+
+  * Fixed a bug associated with the unistd.h header for GCC versions
+    4.7+.  
+
+  * Extensively updated the manual with examples and FAQ
+
+
+preseq beta release 1.0.2 (Aug 25, 2014)
+
+------------------------------------------------------------------
+
+  * Functions for input in header file load_data_for_complexity
+
+  * Fix samtools linking problem
+
+If you have any questions, comments or bugs, please contact us at 
+tdaley@usc.edu.  Thank you for using preseq.
