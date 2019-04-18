@@ -14,12 +14,14 @@ RUN	rm -rf /var/lib/apt/lists/* \
 && 	apt-get clean \
 &&	apt autoremove --yes
 
+RUN ln -s /usr/bin/python3 /usr/bin/python
+
 COPY TruSeq_and_nextera_adapters.consolidated.fa /opt
-COPY ccbr_cutadapt_se.sh /opt
-COPY ccbr_cutadapt_pe.sh /opt
+COPY ccbr_cutadapt_se.bash /opt
+COPY argparse.bash /opt
 COPY Dockerfile /opt
 
-RUN chmod a+x /opt/*.sh
+RUN chmod a+x /opt/*.bash
 ENV PATH="/opt:${PATH}"
 
 WORKDIR /data
