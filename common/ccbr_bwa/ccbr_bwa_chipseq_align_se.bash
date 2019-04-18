@@ -7,6 +7,7 @@ source /opt/argparse.bash || exit 1
 argparse "$@" <<EOF || exit 1
 parser.add_argument('--genome',required=True, help='mm9/10 or hg19/38')
 parser.add_argument('--infastq',required=True, help='Input fastq file')
+
 EOF
 
 basefilename=`echo $INFASTQ|sed "s/.fastq.gz//g"`
@@ -22,6 +23,8 @@ bwa mem -t $cpus ${GENOME}_blacklist $INFASTQ | samtools view -@ $cpus -f4 -b -o
 
 bedtools bamtofastq -i notAlignedToBlacklist.bam -fq notAlignedToBlacklist.fastq
 
+cat notAlignedToBlacklist.fastq|wc -l |awk '{printf("%d\tAfter removing reads aligning to blacklisted regions\n",$1/4)}' > nreads.txt
+
 bwa mem -t $cpus $GENOME notAlignedToBlacklist.fastq > $bamfile
 
 samtools sort -@ $cpus -o $sortedbamfile $bamfile
@@ -35,3 +38,7 @@ samtools index $sortedq5bamfile
 samtools flagstat $sortedbamfile > $sortedbamflagstatfile
 
 samtools flagstat $sortedq5bamfile > $sortedq5bamflagstatfile
+
+grep -m1 mapped $sortedbamflagstatfile |awk '{printf("%d\tMapped Reads\n",$1)}' >> nreads.txt
+
+grep -m1 mapped $sortedq5bamflagstatfile |awk '{printf("%d\tMAPQ>5 Reads\n",$1)}' >> nreads.txt
