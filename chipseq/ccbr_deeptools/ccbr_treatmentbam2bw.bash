@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e -x -o pipefail
 scripts_folder="/opt"
-scripts_folder="/home/kopardev/Desktop/Dockers/chipseq/ccbr_macs_peakcalling"
+# scripts_folder="/home/kopardev/Desktop/Dockers/chipseq/ccbr_macs_peakcalling"
 ARGPARSE_DESCRIPTION="convert treatment bam to bigwigs ... input bigwig already created and passed as input"      
 source ${scripts_folder}/argparse.bash || exit 1
 argparse "$@" <<EOF || exit 1
