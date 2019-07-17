@@ -14,8 +14,8 @@ RUN apt-get install -y \
 	zlibc zlib1g zlib1g-dev libgsl-dev
 
 WORKDIR		/opt
-COPY		preseq_v2.0.1.tar.bz2 /opt
-RUN			tar xjvf preseq_v2.0.1.tar.bz2
+COPY		preseq_v2.0.3.tar.bz2 /opt
+RUN			tar xjvf preseq_v2.0.3.tar.bz2
 WORKDIR		/opt/preseq
 RUN			make all
 ENV 		PATH=/opt/preseq:$PATH
