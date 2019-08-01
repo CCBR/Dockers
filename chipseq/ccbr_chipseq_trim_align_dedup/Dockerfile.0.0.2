@@ -1,0 +1,8 @@
+FROM nciccbr/ccbr_chipseq_trim_align_dedup:v0.0.1
+MAINTAINER vishal.koparde@nih.gov
+
+COPY Dockerfile.0.0.2 /opt
+COPY ccbr_picard_filterdup_pe.bash /opt
+RUN chmod a+x /opt/*.bash
+
+WORKDIR /data
