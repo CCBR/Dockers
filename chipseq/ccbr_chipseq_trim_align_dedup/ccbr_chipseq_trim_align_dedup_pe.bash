@@ -1,11 +1,12 @@
 #!/bin/bash
 set -e -x -o pipefail
 ncpus=`nproc`
-ARGPARSE_DESCRIPTION="""Trim PE reads using cutadapt and align for ChIPSeq peakcalling.
+ARGPARSE_DESCRIPTION="""Trim PE reads using cutadapt, align and dedup for ChIPSeq peakcalling.
 This script runs 3 scripts in series:
 1. ccbr_cutadapt_pe
 2. ccbr_remove_blacklisted_reads_pe
 3. ccbr_bwa_align_pe
+4. ccbr_picard_filterdup_pe
 It expects:
 1. access to input fastq files (make sure the correct binding of folders;symlinks will not work
 2. bwa index files need to be bound/mounted at /index eg. for mm10 on biowulf /data/CCBR_Pipeliner/db/PipeDB/Indices/mm10_basic/indexes/ needs to be bound to /index"""     

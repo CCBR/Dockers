@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e -x -o pipefail
 ncpus=`nproc`
-ARGPARSE_DESCRIPTION="Trim PE reads using cutadapt"      # this is optional
+ARGPARSE_DESCRIPTION="Align PE reads using BWA and Q5 filter the bam file"      # this is optional
 source /opt/argparse.bash || exit 1
 argparse "$@" <<EOF || exit 1
 parser.add_argument('--samplename',required=True, help='Sample name')
@@ -26,7 +26,10 @@ samtools sort -@ $ncpus -T ${samplename}.tmp -o ${samplename}.bwa.sorted.bam ${s
 mv ${samplename}.bwa.sorted.bam ${samplename}.bwa.bam
 samtools index ${samplename}.bwa.bam
 
-samtools view -@ $ncpus -b -q 6 ${samplename}.bwa.bam > $OUTQ5BAM
+samtools view -b ${samplename}.bwa.bam $CHROMOSOMES > ${samplename}.bwa.chrs.bam
+samtools index ${samplename}.bwa.chrs.bam
+
+python /opt/bam_filter_by_mapq.py -i ${samplename}.bwa.chrs.bam -o $OUTQ5BAM -q 6
 samtools index $OUTQ5BAM
 
 samtools flagstat ${samplename}.bwa.bam > ${samplename}.bwa.bam.flagstat
@@ -38,7 +41,4 @@ echo "$nreads_mapped"|awk '{printf("%d\tMapped reads\n",$1)}' >> ${samplename}.n
 nreads_mapped_q5=`grep -m1 mapped ${OUTQ5BAM}.flagstat|awk '{print $1}'`
 echo "$nreads_mapped_q5"|awk '{printf("%d\tMapped Q5 reads\n",$1)}' >> ${samplename}.nreads.txt
 
-nreads_mapped_q5_pp=`grep -m1 properly ${OUTQ5BAM}.flagstat|awk '{print $1}'`
-echo "$nreads_mapped_q5_pp"|awk '{printf("%d\tMapped properly paired Q5 reads\n",$1)}' >> ${samplename}.nreads.txt
-
-rm -f ${samplename}.bwa.sam
+rm -f ${samplename}.bwa.sam ${samplename}.bwa.chrs.bam*
