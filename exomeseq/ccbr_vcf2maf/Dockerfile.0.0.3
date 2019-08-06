@@ -1,0 +1,16 @@
+FROM 		nciccbr/ccbr_vep_97.3:v0.0.2
+MAINTAINER	vishal.koparde@nih.gov
+
+USER		root
+RUN		apt update && apt install -y samtools 
+
+COPY		v1.6.17.tar.gz /opt
+
+WORKDIR		/opt
+RUN		tar xzvf v1.6.17.tar.gz
+ENV		PATH=$PATH:/opt/vcf2maf-1.6.17
+RUN		chmod a+x /opt/vcf2maf-1.6.17/*.pl
+
+WORKDIR		/data
+
+COPY 		Dockerfile.0.0.3 /opt
