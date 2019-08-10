@@ -1,0 +1,37 @@
+FROM ubuntu:18.04
+MAINTAINER vishal.koparde@nih.gov
+
+RUN	mkdir -p /data \
+&&	mkdir -p /opt \
+&&	apt-get update \
+&&	apt-get upgrade -y
+
+RUN apt-get install -y --fix-missing \
+	python \
+	python-pip \
+	python-numpy
+
+RUN pip install --upgrade pip
+
+RUN pip install MACS2
+
+RUN apt-get install -y \
+	samtools \
+	bedtools \
+	bwa \
+	pigz
+
+RUN pip install cutadapt==1.18
+
+COPY Dockerfile /opt
+COPY ccbr_macs_callpeak_se.bash /opt
+COPY ccbr_macs_filterdup_se.bash /opt
+COPY ccbr_macs_callpeak_pe.bash /opt
+COPY ccbr_trim_align_filterdup.bash /opt
+COPY argparse.bash /opt
+COPY TruSeq_and_nextera_adapters.consolidated.fa /opt
+
+RUN chmod a+x /opt/*.bash
+ENV PATH=/opt:$PATH
+
+WORKDIR /data

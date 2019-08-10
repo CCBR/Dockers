@@ -1,0 +1,11 @@
+FROM nciccbr/ccbr_macs:v0.0.3
+MAINTAINER vishal.koparde@nih.gov
+
+COPY Dockerfile.0.0.3 /opt
+COPY Dockerfile.0.0.4 /opt
+COPY ccbr_macs_callpeak_pe.bash /opt
+
+RUN chmod a+x /opt/*.bash
+ENV PATH=/opt:$PATH
+
+WORKDIR /data
