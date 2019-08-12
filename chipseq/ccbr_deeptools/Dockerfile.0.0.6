@@ -1,0 +1,16 @@
+FROM nciccbr/ccbr_deeptools:v0.0.5
+# base image has samtools bedtools deeptools==3.2.0
+MAINTAINER vishal.koparde@nih.gov
+
+COPY ccbr_bam2bw_pe.bash /opt
+COPY ccbr_fingerprintplot.bash /opt
+COPY Dockerfile.0.0.1 /opt
+COPY Dockerfile.0.0.2 /opt
+COPY Dockerfile.0.0.3 /opt
+COPY Dockerfile.0.0.4 /opt
+COPY Dockerfile.0.0.5 /opt
+COPY Dockerfile.0.0.6 /opt
+
+RUN chmod a+x /opt/*.bash
+ENV PATH=/opt:$PATH
+WORKDIR /data
