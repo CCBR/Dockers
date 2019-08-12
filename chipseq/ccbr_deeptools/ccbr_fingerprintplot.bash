@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e -x -o pipefail
-ARGPARSE_DESCRIPTION="Produce fingerprintplot and other metagene plots for 2 replicate ChiPSeq data"      # this is optional
+ARGPARSE_DESCRIPTION="Produce fingerprintplot and other metagene plots for ChiPSeq data"      # this is optional
 source /opt/argparse.bash || exit 1
 # source /home/kopardev/Desktop/Dockers/chipseq/ccbr_macs_peakcalling/argparse.bash || exit 1
 argparse "$@" <<EOF || exit 1
