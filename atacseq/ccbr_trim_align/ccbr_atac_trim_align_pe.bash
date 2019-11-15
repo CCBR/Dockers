@@ -30,7 +30,7 @@ bash /opt/ccbr_cutadapt_pe.bash \
 --infastq1 $infastq1 \
 --infastq2 $infastq2 \
 --samplename $samplename \
---threads $npcus \
+--threads $ncpus \
 --outfastq1 $trimmedfastq1 \
 --outfastq2 $trimmedfastq2
 
