@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e -x -o pipefail
-ncpus=`nproc`
 ARGPARSE_DESCRIPTION="Remove reads aligning to blacklisted regions"      # this is optional
 source /opt/argparse.bash || exit 1
 argparse "$@" <<EOF || exit 1
@@ -17,6 +16,7 @@ infastq2=$INFASTQ2
 samplename=$SAMPLENAME
 outfastq1=$OUTFASTQ1
 outfastq2=$OUTFASTQ2
+ncpus=$THREADS
 
 outfastq1_nogz=`echo $outfastq1|sed "s/.gz//g"`
 outfastq2_nogz=`echo $outfastq2|sed "s/.gz//g"`
