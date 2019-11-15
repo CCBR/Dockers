@@ -1,12 +1,13 @@
 #!/bin/bash
 set -e -x -o pipefail
 ncpus=`nproc`
-ARGPARSE_DESCRIPTION="Trim PE reads using cutadapt"      # this is optional
+ARGPARSE_DESCRIPTION="Remove reads aligning to blacklisted regions"      # this is optional
 source /opt/argparse.bash || exit 1
 argparse "$@" <<EOF || exit 1
 parser.add_argument('--infastq1',required=True, help='input R1 fastq.gz file')
 parser.add_argument('--infastq2',required=True, help='input R2 fastq.gz file')
 parser.add_argument('--samplename',required=True, help='samplename')
+parser.add_argument('--threads',required=True, help='number of threads')
 parser.add_argument('--outfastq1',required=True, help='output R1 fastq.gz file')
 parser.add_argument('--outfastq2',required=True, help='output R2 fastq.gz file')
 EOF
@@ -41,4 +42,3 @@ pigz -f -p $ncpus ${outfastq2_nogz}
 rm -f ${samplename}.notAlignedToBlacklist.sam \
 ${samplename}.notAlignedToBlacklist.bam \
 ${samplename}.notAlignedToBlacklist.qsorted.bam
-

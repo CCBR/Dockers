@@ -1,4 +1,8 @@
 #!/bin/bash
+
+. /opt/conda/etc/profile.d/conda.sh
+conda activate python3
+
 set -e -x -o pipefail
 ncpus=`nproc`
 ARGPARSE_DESCRIPTION="Trim SE reads using cutadapt"      # this is optional
@@ -25,3 +29,5 @@ $infastq
 nreads=`zcat $infastq|wc -l`
 nreadstrim=`zcat $outfastq|wc -l`
 echo "$nreads $nreadstrim"|awk '{printf("%d\tInput Nreads\n%d\tAfter trimming\n",$1/4,$2/4)}' > ${samplename}.nreads.txt
+
+conda deactivate

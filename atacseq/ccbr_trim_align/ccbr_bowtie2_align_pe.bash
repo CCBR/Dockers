@@ -1,12 +1,15 @@
 #!/bin/bash
+. /opt/conda/etc/profile.d/conda.sh
+conda activate python3
+
 set -e -x -o pipefail
-ncpus=`nproc`
-ARGPARSE_DESCRIPTION="Trim PE reads using cutadapt"      # this is optional
+ARGPARSE_DESCRIPTION="Adapter trimmed (and blacklist filtered) fastqs are aligned to genome using bowtie2, multimappers are properly assigned, deduplicated using picard, filtered based on mapq, bams converted to tagAlign files."      # this is optional
 source /opt/argparse.bash || exit 1
 argparse "$@" <<EOF || exit 1
 parser.add_argument('--infastq1',required=True, help='input R1 fastq.gz file')
 parser.add_argument('--infastq2',required=True, help='input R2 fastq.gz file')
 parser.add_argument('--samplename',required=True, help='samplename')
+parser.add_argument('--threads',required=True, help='number of threads')
 parser.add_argument('--genomename',required=True, help='hg19/hg38/mm9/mm10')
 parser.add_argument('--multimapping',required=False, default=4, help='hg19/hg38/mm9/mm10')
 EOF
@@ -18,7 +21,7 @@ genome=$GENOMENAME
 multimapping=$MULTIMAPPING
 log="${samplename}.bowtie2.log"
 CHROMOSOMES="chr1 chr2 chr3 chr4 chr5 chr6 chr7 chr8 chr9 chr10 chr11 chr12 chr13 chr14 chr15 chr16 chr17 chr18 chr19 chr20 chr21 chr22 chrX chrY"
-
+ncpus=$THREADS
 
 bowtie2 -X2000 -k $multimapping --local --mm --threads $ncpus -x /index/$genome \
  -1 $infastq1 -2 $infastq2 > ${samplename}.bowtie2.sam \
@@ -39,9 +42,9 @@ cat ${samplename}.tmp1.sorted.sam | \
 atac_assign_multimappers.py -k 4 > ${samplename}.tmp2.sorted.sam
 samtools view -@ $ncpus -bS -o ${samplename}.tmp3.bam ${samplename}.tmp2.sorted.sam
 
-samtools view -@ $ncpus -F 256 -u ${samplename}.tmp3.bam > ${samplename}.tmp4.bam 
+samtools view -@ $ncpus -F 256 -u ${samplename}.tmp3.bam > ${samplename}.tmp4.bam
 samtools sort -@ $ncpus ${samplename}.tmp4.bam ${samplename}.dup
-samtools view -@ $ncpus -F 1796 -u ${samplename}.tmp3.bam > ${samplename}.tmp5.bam 
+samtools view -@ $ncpus -F 1796 -u ${samplename}.tmp3.bam > ${samplename}.tmp5.bam
 samtools sort -@ $ncpus ${samplename}.tmp5.bam ${samplename}.filt
 samtools index ${samplename}.filt.bam
 samtools flagstat ${samplename}.filt.bam > ${samplename}.filt.bam.flagstat
@@ -54,10 +57,14 @@ VALIDATION_STRINGENCY=LENIENT \
 ASSUME_SORTED=true \
 REMOVE_DUPLICATES=false
 
-samtools view -F 1796 -b -@ $ncpus -o ${samplename}.dedup.bam ${samplename}.dupmark.bam
+samtools view -F 1796 -b -@ $ncpus -o ${samplename}.dedup.tmp.bam ${samplename}.dupmark.bam
+
+samtools index ${samplename}.dedup.tmp.bam
+python /opt/ccbr_bam_filter_by_mapq.py -i ${samplename}.dedup.tmp.bam -o ${samplename}.dedup.bam -q 6
+
 samtools index ${samplename}.dedup.bam
 samtools flagstat ${samplename}.dedup.bam > ${samplename}.dedup.bam.flagstat
-samtools sort -@ $ncpus -n ${samplename}.dedup.bam ${samplename}.dedup.qsorted
+# samtools sort -@ $ncpus -n ${samplename}.dedup.bam ${samplename}.dedup.qsorted
 
 bedtools bamtobed -i ${samplename}.dedup.bam | \
 awk 'BEGIN{OFS="\t"}{$4="N";$5="1000";print $0}'| \
@@ -77,9 +84,12 @@ ${samplename}.tmp3.bam \
 ${samplename}.tmp4.bam \
 ${samplename}.tmp5.bam \
 ${samplename}.dup.bam \
+${samplename}.dedup.tmp.bam* \
 ${samplename}.dupmark.bam \
-${samplename}.dedup.qsorted.bam \
 ${samplename}.bowtie2.bam \
 ${samplename}.bowtie2.sam \
-${samplename}.bowtie2.sorted.bam* 
+${samplename}.bowtie2.sorted.bam*
 
+# rm -f ${samplename}.dedup.qsorted.bam
+
+conda deactivate
