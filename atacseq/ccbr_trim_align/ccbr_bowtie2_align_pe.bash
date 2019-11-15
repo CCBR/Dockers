@@ -39,7 +39,7 @@ samtools view -@ $ncpus -F 516 -u ${samplename}.bowtie2.sorted.bam $CHROMOSOMES 
 samtools sort -@ $ncpus -n ${samplename}.tmp1.bam ${samplename}.tmp1.sorted
 samtools view -@ $ncpus -h ${samplename}.tmp1.sorted.bam > ${samplename}.tmp1.sorted.sam
 cat ${samplename}.tmp1.sorted.sam | \
-atac_assign_multimappers.py -k $multimapping > ${samplename}.tmp2.sorted.sam
+atac_assign_multimappers.py -k $multimapping --paired-end > ${samplename}.tmp2.sorted.sam
 samtools view -@ $ncpus -bS -o ${samplename}.tmp3.bam ${samplename}.tmp2.sorted.sam
 
 samtools view -@ $ncpus -F 256 -u ${samplename}.tmp3.bam > ${samplename}.tmp4.bam
