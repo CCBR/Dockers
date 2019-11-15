@@ -23,7 +23,7 @@ log="${samplename}.bowtie2.log"
 CHROMOSOMES="chr1 chr2 chr3 chr4 chr5 chr6 chr7 chr8 chr9 chr10 chr11 chr12 chr13 chr14 chr15 chr16 chr17 chr18 chr19 chr20 chr21 chr22 chrX chrY"
 ncpus=$THREADS
 
-bowtie2 -X2000 -k $multimapping --very-senstive --threads $ncpus -x /index/$genome \
+bowtie2 -X2000 -k $multimapping --very-sensitive --threads $ncpus -x /index/$genome \
  -1 $infastq1 -2 $infastq2 > ${samplename}.bowtie2.sam \
  2> $log
 
