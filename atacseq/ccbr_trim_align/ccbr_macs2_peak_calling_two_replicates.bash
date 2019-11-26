@@ -13,9 +13,10 @@ parser.add_argument('--shiftsize',required=False, default=37, help='shiftsize')
 parser.add_argument('--rep1name',required=True, help='samplename for replicate 1')
 parser.add_argument('--rep2name',required=True, help='samplename for replicate 2')
 parser.add_argument('--samplename',required=True, help='samplename')
-parser.add_argument('--dedupbamrep1',required=True, help='dedupbam for replicate 1')
-parser.add_argument('--dedupbamrep2',required=True, help='dedupbam for replicate 2')
+parser.add_argument('--genomefilerep1',required=True, help='dedupbam based genome file for replicate 1 required by bedGraphToBigWig')
+parser.add_argument('--genomefilerep2',required=True, help='dedupbam based genome file for replicate 2 required by bedGraphToBigWig')
 parser.add_argument('--genomename',required=True, help='hg19/hg38/mm9/mm10')
+parser.add_argument('--scriptsfolder',required=False, default='/opt', help='folder where the scripts are... used for debuging without rebuilding the docker')
 EOF
 
 extsize=$EXTSIZE
@@ -26,12 +27,12 @@ samplename=$SAMPLENAME
 rep1tagAlign=$TAGALIGN1
 rep1name=$REP1NAME
 prefix1=${rep1name}.macs2
-dedupbamrep1=$DEDUPBAMREP1
+genomefilerep1=$GENOMEFILEREP1
 
 rep2tagAlign=$TAGALIGN2
 rep2name=$REP2NAME
 prefix2=${rep2name}.macs2
-dedupbamrep2=$DEDUPBAMREP2
+genomefilerep2=$GENOMEFILEREP2
 
 rep1pr=$(echo $rep1tagAlign|awk -F"/" '{print $NF}'|awk -F".tagAlign" '{print $1".pr.tagAlign.gz"}')
 rep2pr=$(echo $rep2tagAlign|awk -F"/" '{print $NF}'|awk -F".tagAlign" '{print $1".pr.tagAlign.gz"}')
@@ -46,12 +47,12 @@ gzip ${pooled}_tmp.tagAlign
 mv ${pooled}_tmp.tagAlign.gz $pooled
 zcat $pooled |awk -v v=50 'BEGIN {srand()} !/^$/ { if (rand() <= v/100) print $0}'|gzip -c - > $pooledpr
 
-bash /opt/ccbr_macs2_peak_calling.bash --tagalign $rep1tagAlign --samplename $rep1name --genomename $genome --filterpeaks True --savebigwig True --dedupbam $dedupbamrep1
-bash /opt/ccbr_macs2_peak_calling.bash --tagalign $rep2tagAlign --samplename $rep2name --genomename $genome --filterpeaks True --savebigwig True --dedupbam $dedupbamrep2
-bash /opt/ccbr_macs2_peak_calling.bash --tagalign $rep1pr --samplename ${rep1name}.pr --genomename $genome --filterpeaks False --savebigwig False
-bash /opt/ccbr_macs2_peak_calling.bash --tagalign $rep2pr --samplename ${rep2name}.pr --genomename $genome --filterpeaks False --savebigwig False
-bash /opt/ccbr_macs2_peak_calling.bash --tagalign $pooled --samplename ${samplename}.pooled --genomename $genome --filterpeaks False --savebigwig False
-bash /opt/ccbr_macs2_peak_calling.bash --tagalign $pooledpr --samplename ${samplename}.pooled.pr --genomename $genome --filterpeaks False --savebigwig False
+bash ${SCRIPTSFOLDER}/ccbr_macs2_peak_calling.bash --tagalign $rep1tagAlign --samplename $rep1name --genomename $genome --filterpeaks True --savebigwig True --genomefile $genomefilerep1
+bash ${SCRIPTSFOLDER}/ccbr_macs2_peak_calling.bash --tagalign $rep2tagAlign --samplename $rep2name --genomename $genome --filterpeaks True --savebigwig True --genomefile $genomefilerep2
+bash ${SCRIPTSFOLDER}/ccbr_macs2_peak_calling.bash --tagalign $rep1pr --samplename ${rep1name}.pr --genomename $genome --filterpeaks False --savebigwig False
+bash ${SCRIPTSFOLDER}/ccbr_macs2_peak_calling.bash --tagalign $rep2pr --samplename ${rep2name}.pr --genomename $genome --filterpeaks False --savebigwig False
+bash ${SCRIPTSFOLDER}/ccbr_macs2_peak_calling.bash --tagalign $pooled --samplename ${samplename}.pooled --genomename $genome --filterpeaks False --savebigwig False
+bash ${SCRIPTSFOLDER}/ccbr_macs2_peak_calling.bash --tagalign $pooledpr --samplename ${samplename}.pooled.pr --genomename $genome --filterpeaks False --savebigwig False
 
 rep1_peaks="${rep1name}.macs2_peaks.narrowPeak"
 rep2_peaks="${rep2name}.macs2_peaks.narrowPeak"

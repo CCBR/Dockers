@@ -15,7 +15,7 @@ parser.add_argument('--genomename',required=True, help='hg19/hg38/mm9/mm10')
 parser.add_argument('--filterpeaks',required=False, default="False", help='filterpeaks by qvalue: True or False')
 parser.add_argument('--qfilter',required=False, default=2, help='default qfiltering value is 2 for q=0.01')
 # only required if saving bigwigs
-parser.add_argument('--dedupbam',required=False, help='dedupbam')
+parser.add_argument('--genomefile',required=False, help='dedupbam based genome file ... required by bedGraphToBigWig')
 parser.add_argument('--savebigwig',required=False, default="False", help='save bigwig file: True or False')
 
 EOF
@@ -26,7 +26,7 @@ tagAlign=$TAGALIGN
 samplename=$SAMPLENAME
 prefix=${samplename}.macs2
 genome=$GENOMENAME
-dedupbam=$DEDUPBAM
+genomefile=$GENOMEFILE
 
 if [ $genome == "hg19" ]; then g="hs";fi
 if [ $genome == "hg38" ]; then g="hs";fi
@@ -55,10 +55,8 @@ if [ $SAVEBIGWIG == "True" ];then
   if [ ! -f $dedupbam ];then
     exit "Dedupbam file:\"$dedupbam\" not accessible"
   fi
-  samtools view -H $dedupbam|grep "^@SQ"|cut -f2,3|sed "s/SN://g"|sed "s/LN://g" > ${samplename}.genome
   bedSort ${prefix}_treat_pileup.bdg ${prefix}_treat_pileup.bdg
-  bedGraphToBigWig ${prefix}_treat_pileup.bdg ${samplename}.genome ${prefix}.bw
-  rm -f ${samplename}.genome
+  bedGraphToBigWig ${prefix}_treat_pileup.bdg $genomefile ${prefix}.bw
 fi
 
 rm -f ${prefix}_treat_pileup.bdg

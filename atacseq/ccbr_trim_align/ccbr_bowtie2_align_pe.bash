@@ -12,6 +12,8 @@ parser.add_argument('--samplename',required=True, help='samplename')
 parser.add_argument('--threads',required=True, help='number of threads')
 parser.add_argument('--genomename',required=True, help='hg19/hg38/mm9/mm10')
 parser.add_argument('--multimapping',required=False, default=4, help='hg19/hg38/mm9/mm10')
+parser.add_argument('--scriptsfolder',required=False, default='/opt', help='folder where the scripts are... used for debuging without rebuilding the docker')
+parser.add_argument('--keepfiles',required=False,default='False',help='to keep intermediate files, set this to True')
 EOF
 
 infastq1=$INFASTQ1
@@ -39,7 +41,7 @@ samtools view -@ $ncpus -F 516 -u ${samplename}.bowtie2.sorted.bam $CHROMOSOMES 
 samtools sort -@ $ncpus -n ${samplename}.tmp1.bam ${samplename}.tmp1.sorted
 samtools view -@ $ncpus -h ${samplename}.tmp1.sorted.bam > ${samplename}.tmp1.sorted.sam
 cat ${samplename}.tmp1.sorted.sam | \
-atac_assign_multimappers.py -k $multimapping --paired-end > ${samplename}.tmp2.sorted.sam
+${SCRIPTSFOLDER}/atac_assign_multimappers.py -k $multimapping --paired-end > ${samplename}.tmp2.sorted.sam
 samtools view -@ $ncpus -bS -o ${samplename}.tmp3.bam ${samplename}.tmp2.sorted.sam
 
 samtools view -@ $ncpus -F 256 -u ${samplename}.tmp3.bam > ${samplename}.tmp4.bam
@@ -60,10 +62,11 @@ REMOVE_DUPLICATES=false
 samtools view -F 1796 -b -@ $ncpus -o ${samplename}.dedup.tmp.bam ${samplename}.dupmark.bam
 
 samtools index ${samplename}.dedup.tmp.bam
-python /opt/ccbr_bam_filter_by_mapq.py -i ${samplename}.dedup.tmp.bam -o ${samplename}.dedup.bam -q 6
+python ${SCRIPTSFOLDER}/ccbr_bam_filter_by_mapq.py -i ${samplename}.dedup.tmp.bam -o ${samplename}.dedup.bam -q 6
 
 samtools index ${samplename}.dedup.bam
 samtools flagstat ${samplename}.dedup.bam > ${samplename}.dedup.bam.flagstat
+samtools view -H ${samplename}.dedup.bam|grep "^@SQ"|cut -f2,3|sed "s/SN://g"|sed "s/LN://g" > ${samplename}.genome
 # samtools sort -@ $ncpus -n ${samplename}.dedup.bam ${samplename}.dedup.qsorted
 
 bedtools bamtobed -i ${samplename}.dedup.bam | \
@@ -78,6 +81,7 @@ echo "$nreads"|awk '{printf("%d\tAfter deduplication\n",$1)}' >> ${samplename}.n
 
 mv ${samplename}.tmp1.sorted.bam ${samplename}.qsorted.bam
 
+if [ $KEEPFILES == "False" ];then
 rm -f ${samplename}.tmp1.bam \
 ${samplename}.tmp1.sorted.sam \
 ${samplename}.tmp2.sorted.sam \
@@ -91,6 +95,7 @@ ${samplename}.bowtie2.bam \
 ${samplename}.bowtie2.sam \
 ${samplename}.filt.bam \
 ${samplename}.bowtie2.sorted.bam*
+fi
 
 # rm -f ${samplename}.dedup.qsorted.bam
 

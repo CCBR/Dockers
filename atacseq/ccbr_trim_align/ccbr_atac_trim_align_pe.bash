@@ -14,7 +14,8 @@ parser.add_argument('--infastq1',required=True, help='input R1 fastq.gz file')
 parser.add_argument('--infastq2',required=True, help='input R2 fastq.gz file')
 parser.add_argument('--threads',required=True, help='number of threads')
 parser.add_argument('--genome',required=True, help='hg19/hg38/mm9/mm10')
-
+parser.add_argument('--scriptsfolder',required=False, default='/opt', help='folder where the scripts are... used for debuging without rebuilding the docker')
+parser.add_argument('--keepfiles',required=False,default='False',help='to keep intermediate files, set this to True')
 EOF
 
 infastq1=$INFASTQ1
@@ -26,7 +27,7 @@ noBLfastq1="${samplename}.R1.noBL.fastq.gz"
 noBLfastq2="${samplename}.R2.noBL.fastq.gz"
 ncpus=$THREADS
 
-bash /opt/ccbr_cutadapt_pe.bash \
+bash ${SCRIPTSFOLDER}/ccbr_cutadapt_pe.bash \
 --infastq1 $infastq1 \
 --infastq2 $infastq2 \
 --samplename $samplename \
@@ -34,7 +35,7 @@ bash /opt/ccbr_cutadapt_pe.bash \
 --outfastq1 $trimmedfastq1 \
 --outfastq2 $trimmedfastq2
 
-bash /opt/ccbr_remove_blacklisted_reads_pe.bash \
+bash ${SCRIPTSFOLDER}/ccbr_remove_blacklisted_reads_pe.bash \
 --infastq1 $trimmedfastq1 \
 --infastq2 $trimmedfastq2 \
 --samplename $samplename \
@@ -42,16 +43,20 @@ bash /opt/ccbr_remove_blacklisted_reads_pe.bash \
 --outfastq1 $noBLfastq1 \
 --outfastq2 $noBLfastq2
 
-bash /opt/ccbr_bowtie2_align_pe.bash \
+bash ${SCRIPTSFOLDER}/ccbr_bowtie2_align_pe.bash \
 --samplename $samplename \
 --threads $ncpus \
 --infastq1 $noBLfastq1 \
 --infastq2 $noBLfastq2 \
---genome $GENOME
+--genome $GENOME \
+--scriptsfolder $SCRIPTSFOLDER \
+--keepfiles $KEEPFILES
 
 fastqc --threads $ncpus --format fastq $infastq1 $infastq2 $noBLfastq1 $noBLfastq2
 
+if [ $KEEPFILES == "False" ];then
 rm -f $trimmedfastq1 \
 $trimmedfastq2 \
 $noBLfastq1 \
 $noBLfastq2
+fi

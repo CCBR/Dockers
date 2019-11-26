@@ -1,0 +1,280 @@
+from os.path import join
+import os
+
+
+
+# SAMPLES=["test_input"]
+GENOME="hg38"
+WORKDIR="/data/CBLCCBR/kopardevn_tmp/atacseq_pipeline/test1"
+SINGULARITY_IMAGES_DIR="/data/CBLCCBR/kopardevn_tmp/singularity_images"
+SINGULARITY_VERSION="3.4.2"
+SINGULARITY_IMAGE_VERSION="0.1.5"
+# SCRIPTS_DIR="/opt"
+SCRIPTS_DIR="/data/scripts"
+
+# define functions
+def check_existence(filename):
+  if not os.path.exists(filename):
+    exit("File: %s does not exists!"%(filename))
+
+def check_readaccess(filename):
+  check_existence(filename)
+  if not os.access(filename,os.R_OK):
+    exit("File: %s exists, but cannot be read!"%(filename))
+
+def check_writeaccess(filename):
+  check_existence(filename)
+  if not os.access(filename,os.W_OK):
+    exit("File: %s exists, but cannot be read!"%(filename))
+
+# read groups and samples
+check_readaccess(join(WORKDIR,"groups.tab"))
+group2samples=dict()
+sample2label=dict()
+with open("groups.tab") as g:
+	for line in g:
+		line=line.strip().split("\t")
+		if len(line)!=3:
+			exit("File: groups.tab should have 3 tab-delimited columns!")
+		if not line[1] in group2samples:
+			group2samples[line[1]]=list()
+		group2samples[line[1]].append(line[0])
+		sample2label[line[0]]=line[2]
+GROUPS=list(group2samples.keys())
+SAMPLES=list(sample2label.keys())
+
+# OTHER FUNCTIONS
+
+def get_sample_tagAlignFiles_for_group(wildcards):
+	# files=[]
+	# for i in group2samples[wildcards.grp]:
+	# 	files.append(join(WORKDIR,"tagAlign",i+".tagAlign.gz"))
+	# for i in group2samples[]
+	d=dict()
+	for i,f in enumerate(group2samples[wildcards.grp]):
+		d["tagAlign"+str(i+1)]=join(WORKDIR,"tagAlign",f+".tagAlign.gz")
+		d["genomefile"+str(i+1)]=join(WORKDIR,"bam",f+".genome")
+	return d
+
+
+# RULES
+
+rule all:
+	input:
+		expand(join(WORKDIR,"tagAlign","{sample}.tagAlign.gz"),sample=SAMPLES),
+		expand(join(WORKDIR,"bam","{sample}.dedup.bam"),sample=SAMPLES),
+		expand(join(WORKDIR,"bam","{sample}.genome"),sample=SAMPLES),
+		expand(join(WORKDIR,"bam","{sample}.qsorted.bam"),sample=SAMPLES),
+		expand(join(WORKDIR,"qc","fastqc","{sample}.R1_fastqc.zip"),sample=SAMPLES),
+		expand(join(WORKDIR,"qc","fastqc","{sample}.R2_fastqc.zip"),sample=SAMPLES),
+		expand(join(WORKDIR,"qc","{sample}.nreads.txt"),sample=SAMPLES),
+		expand(join(WORKDIR,"qc","fastqc","{sample}.R1.noBL_fastqc.zip"),sample=SAMPLES),
+		expand(join(WORKDIR,"qc","fastqc","{sample}.R2.noBL_fastqc.zip"),sample=SAMPLES),
+		expand(join(WORKDIR,"qc","{sample}.dupmetric"),sample=SAMPLES),
+		expand(join(WORKDIR,"peaks","macs2","{grp}.group.macs2.peakfiles"),grp=GROUPS),
+		expand(join(WORKDIR,"peaks","macs2","{grp}.sample.macs2.peakfiles"),grp=GROUPS),
+		expand(join("qc","fld","{sample}.fld.txt"),sample=SAMPLES)
+
+rule atac_trim_align_dedup:
+	input:
+		infq1="{sample}.R1.fastq.gz",
+		infq2="{sample}.R2.fastq.gz"
+	params:
+		genome=GENOME,
+		singularity_images_dir=SINGULARITY_IMAGES_DIR,
+		workdir=WORKDIR,
+		scriptsdir=SCRIPTS_DIR,
+		sample="{sample}",
+		singularity_version=SINGULARITY_VERSION,
+		singularity_image_version=SINGULARITY_IMAGE_VERSION
+	threads: 16
+	output:
+		ta=join(WORKDIR,"tagAlign","{sample}.tagAlign.gz"),
+		fastqcraw1=join(WORKDIR,"qc","fastqc","{sample}.R1_fastqc.zip"),
+		fastqcraw2=join(WORKDIR,"qc","fastqc","{sample}.R2_fastqc.zip"),
+		fastqc1=join(WORKDIR,"qc","fastqc","{sample}.R1.noBL_fastqc.zip"),
+		fastqc2=join(WORKDIR,"qc","fastqc","{sample}.R2.noBL_fastqc.zip"),
+		nreads=join(WORKDIR,"qc","{sample}.nreads.txt"),
+		dedupbam=join(WORKDIR,"bam","{sample}.dedup.bam"),
+		qsortedbam=join(WORKDIR,"bam","{sample}.qsorted.bam"),
+		picardout=join(WORKDIR,"qc","{sample}.dupmetric"),
+		genomefile=join(WORKDIR,"bam","{sample}.genome"),
+		trimfq1=join(WORKDIR,"trim","{sample}.R1.trim.fastq.gz"),
+		trimfq2=join(WORKDIR,"trim","{sample}.R2.trim.fastq.gz")
+	shell:"""
+set -e -x -o pipefail
+
+rsync -Laz --progress {input.infq1} /lscratch/$SLURM_JOBID
+rsync -Laz --progress {input.infq2} /lscratch/$SLURM_JOBID
+cd /lscratch/$SLURM_JOBID
+
+module load singularity/{params.singularity_version}
+singularity exec \
+-B {params.workdir}/:/data/,/data/CCBR_Pipeliner/db/PipeDB/Indices/{params.genome}_basic/indexes/:/index \
+{params.singularity_images_dir}/ccbr_atacseq_v{params.singularity_image_version}.sif \
+bash {params.scriptsdir}/ccbr_atac_trim_align_pe.bash \
+--infastq1 {input.infq1} \
+--infastq2 {input.infq2} \
+--threads {threads} \
+--genome {params.genome} \
+--scriptsfolder {params.scriptsdir} \
+--keepfiles True
+
+ls -larth
+
+rsync -az --progress {params.sample}.dedup.bam {params.workdir}/bam/
+rsync -az --progress {params.sample}.genome {params.workdir}/bam/
+rsync -az --progress {params.sample}.dedup.bam.bai {params.workdir}/bam/
+rsync -az --progress {params.sample}.qsorted.bam {params.workdir}/bam/
+
+rsync -az --progress {params.sample}.tagAlign.gz {params.workdir}/tagAlign/
+
+rsync -az --progress {params.sample}.bowtie2.bam.flagstat {params.workdir}/qc/
+rsync -az --progress {params.sample}.bowtie2.log {params.workdir}/qc/
+rsync -az --progress {params.sample}.dedup.bam.flagstat {params.workdir}/qc/
+rsync -az --progress {params.sample}.dupmetric {params.workdir}/qc/
+rsync -az --progress {params.sample}.filt.bam.flagstat {params.workdir}/qc/
+rsync -az --progress {params.sample}.nreads.txt {params.workdir}/qc/
+
+rsync -az --progress {params.sample}.R1.noBL_fastqc.html {params.workdir}/qc/fastqc/
+rsync -az --progress {params.sample}.R2.noBL_fastqc.html {params.workdir}/qc/fastqc/
+rsync -az --progress {params.sample}.R1.noBL_fastqc.zip {params.workdir}/qc/fastqc/
+rsync -az --progress {params.sample}.R2.noBL_fastqc.zip {params.workdir}/qc/fastqc/
+rsync -az --progress {params.sample}.R1_fastqc.html {params.workdir}/qc/fastqc/
+rsync -az --progress {params.sample}.R2_fastqc.html {params.workdir}/qc/fastqc/
+rsync -az --progress {params.sample}.R1_fastqc.zip {params.workdir}/qc/fastqc/
+rsync -az --progress {params.sample}.R2_fastqc.zip {params.workdir}/qc/fastqc/
+
+rsync -az --progress {params.sample}.R1.trim.fastq.gz {params.workdir}/trim/
+rsync -az --progress {params.sample}.R2.trim.fastq.gz {params.workdir}/trim/
+
+"""
+
+
+rule atac_macs_peakcalling:
+	input:
+		unpack(get_sample_tagAlignFiles_for_group)
+	params:
+		genome=GENOME,
+		singularity_images_dir=SINGULARITY_IMAGES_DIR,
+		workdir=WORKDIR,
+		scriptsdir=SCRIPTS_DIR,
+		singularity_version=SINGULARITY_VERSION,
+		singularity_image_version=SINGULARITY_IMAGE_VERSION,
+		grp="{grp}"
+	output:
+		groupPeakFileList=join(WORKDIR,"peaks","macs2","{grp}.group.macs2.peakfiles"),
+		samplePeakFileList=join(WORKDIR,"peaks","macs2","{grp}.sample.macs2.peakfiles")
+	shell:"""
+set -e -x -o pipefail
+module load singularity/{params.singularity_version}
+for f in {input};do
+rsync -Laz --progress $f /lscratch/$SLURM_JOBID
+done
+if [ ! -d {params.workdir}/peaks/macs2/bigwig ];then mkdir -p {params.workdir}/peaks/macs2/bigwig;fi
+cd /lscratch/$SLURM_JOBID
+
+nsamples=0
+for i in {input};do
+	nsamples=$(echo "$nsamples+1"|bc)
+done
+nsamples=$(echo "$nsamples/2"|bc)
+rep1name=$(echo {input.tagAlign1}|awk -F"/" "{{print \$NF}}"|awk -F".tagAlign" "{{print \$1}}")
+tagAlign1=$(echo {input.tagAlign1}|awk -F"/" "{{print \$NF}}")
+genomefile1=$(echo {input.genomefile1}|awk -F"/" "{{print \$NF}}")
+
+# the groups has only one samples ..  no replicates
+if [ "$nsamples" -eq "1" ];then
+echo "NO REPLICATES...THIS CODE IS NOT WRITTEN YET!!!"
+exit 1
+fi
+
+# the groups has 2 replicates
+if [ "$nsamples" -eq "2" ];then
+rep2name=$(echo {input.tagAlign2}|awk -F"/" "{{print \$NF}}"|awk -F".tagAlign" "{{print \$1}}")
+tagAlign2=$(echo {input.tagAlign2}|awk -F"/" "{{print \$NF}}")
+genomefile2=$(echo {input.genomefile2}|awk -F"/" "{{print \$NF}}")
+
+singularity exec \
+-B {params.workdir}/:/data/,/data/CCBR_Pipeliner/db/PipeDB/Indices/{params.genome}_basic/indexes/:/index \
+{params.singularity_images_dir}/ccbr_atacseq_v{params.singularity_image_version}.sif \
+bash {params.scriptsdir}/ccbr_macs2_peak_calling_two_replicates.bash \
+--tagalign1 $tagAlign1 \
+--tagalign2 $tagAlign2 \
+--rep1name $rep1name \
+--rep2name $rep2name \
+--samplename {params.grp} \
+--genomefilerep1 $genomefile1 \
+--genomefilerep2 $genomefile2 \
+--genomename {params.genome} \
+--scriptsfolder {params.scriptsdir}
+
+ls -larth
+
+
+rsync -az --progress ${{rep1name}}.macs2_summits.bed {params.workdir}/peaks/macs2/
+rsync -az --progress ${{rep1name}}.macs2_peaks.narrowPeak {params.workdir}/peaks/macs2/
+echo "{params.workdir}/peaks/macs2/${{rep1name}}.macs2_peaks.narrowPeak" >> {output.samplePeakFileList}
+rsync -az --progress ${{rep1name}}.macs2.qfilter.narrowPeak {params.workdir}/peaks/macs2/
+rsync -az --progress ${{rep1name}}.macs2.bw {params.workdir}/peaks/macs2/bigwig/
+
+rsync -az --progress ${{rep2name}}.macs2_summits.bed {params.workdir}/peaks/macs2/
+rsync -az --progress ${{rep2name}}.macs2_peaks.narrowPeak {params.workdir}/peaks/macs2/
+echo "{params.workdir}/peaks/macs2/${{rep2name}}.macs2_peaks.narrowPeak" >> {output.samplePeakFileList}
+rsync -az --progress ${{rep2name}}.macs2.qfilter.narrowPeak {params.workdir}/peaks/macs2/
+rsync -az --progress ${{rep2name}}.macs2.bw {params.workdir}/peaks/macs2/bigwig/
+
+rsync -az --progress {params.grp}.idr.narrowPeak.png {params.workdir}/peaks/macs2/
+rsync -az --progress {params.grp}.idr.log {params.workdir}/peaks/macs2/
+rsync -az --progress {params.grp}.idr.narrowPeak {params.workdir}/peaks/macs2/
+echo "{params.workdir}/peaks/macs2/{params.grp}.idr.narrowPeak" >> {output.groupPeakFileList}
+rsync -az --progress {params.grp}.idr.filt.narrowPeak {params.workdir}/peaks/macs2/
+rsync -az --progress {params.grp}.conservative.narrowPeak {params.workdir}/peaks/macs2/
+rsync -az --progress {params.grp}.optimal.narrowPeak {params.workdir}/peaks/macs2/
+rsync -az --progress {params.grp}.peakstats.txt {params.workdir}/peaks/macs2/
+
+fi
+
+# the groups as more than 2 replicates ... rare
+if [ "$nsamples" -gt "2" ];then
+echo "THIS CODE IS NOT WRITTEN YET!!!"
+exit 1
+fi
+
+# touch peaks/macs2/{wildcards.grp}.group.macs2.peakfiles
+"""
+
+
+rule atac_fld:
+	input:
+		dedupbam=join("bam","{sample}.dedup.bam")
+	output:
+		fld=join("qc","fld","{sample}.fld.txt")
+	params:
+		singularity_images_dir=SINGULARITY_IMAGES_DIR,
+		workdir=WORKDIR,
+		scriptsdir=SCRIPTS_DIR,
+		singularity_version=SINGULARITY_VERSION,
+		singularity_image_version=SINGULARITY_IMAGE_VERSION,
+		sample="{sample}"
+	shell:"""
+set -e -x -o pipefail
+module load singularity/{params.singularity_version}
+for f in {input};do
+rsync -Laz --progress $f /lscratch/$SLURM_JOBID
+done
+bamfile=$(echo "{input.dedupbam}"|awk -F"/" "{{print \$NF}}")
+fldfile=$(echo "{output.fld}"|awk -F"/" "{{print \$NF}}")
+cd /lscratch/$SLURM_JOBID
+
+singularity exec \
+-B {params.workdir}/:/data/ \
+{params.singularity_images_dir}/ccbr_atacseq_v{params.singularity_image_version}.sif \
+bash {params.scriptsdir}/ccbr_bam2FLD.bash \
+--dedupbam $bamfile \
+--fldout $fldfile \
+--scriptsfolder {params.scriptsdir}
+
+rsync -az --progress $fldfile {params.workdir}/{output.fld}
+
+"""

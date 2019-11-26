@@ -16,4 +16,8 @@
   - *bc* installed ... required for macs2 two replicate wrapper script
   - *ccbr_macs2_peak_calling_two_replicates.bash* added
   - some peaks called by macs have the exact same start and end coordinates but are label a, b, etc. with different p-/q-values.... we now sort them by q-value and only pick the first peak call. These filtered peakcalls are fed into idr. The idr output is also filtered to find peaks with unique **chr:start-end** string
-  - 
+- v0.1.4
+  - add scripts folder argument to all scripts... to prevent docker building and singularity conversion for each and every step
+- v0.1.5
+  - replaced *dedupbam* with *genomefile* ... more efficient
+  - added *bam2FLD* ... requires python2 and its version of pysam/numpy/scipy... created new conda environment for that
