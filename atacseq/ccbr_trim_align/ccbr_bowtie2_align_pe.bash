@@ -1,10 +1,10 @@
 #!/bin/bash
-. /opt/conda/etc/profile.d/conda.sh
+. /opt2/conda/etc/profile.d/conda.sh
 conda activate python3
 
 set -e -x -o pipefail
 ARGPARSE_DESCRIPTION="Adapter trimmed (and blacklist filtered) fastqs are aligned to genome using bowtie2, multimappers are properly assigned, deduplicated using picard, filtered based on mapq, bams converted to tagAlign files."      # this is optional
-source /opt/argparse.bash || exit 1
+source /opt2/argparse.bash || exit 1
 argparse "$@" <<EOF || exit 1
 parser.add_argument('--infastq1',required=True, help='input R1 fastq.gz file')
 parser.add_argument('--infastq2',required=True, help='input R2 fastq.gz file')
@@ -12,7 +12,7 @@ parser.add_argument('--samplename',required=True, help='samplename')
 parser.add_argument('--threads',required=True, help='number of threads')
 parser.add_argument('--genomename',required=True, help='hg19/hg38/mm9/mm10')
 parser.add_argument('--multimapping',required=False, default=4, help='hg19/hg38/mm9/mm10')
-parser.add_argument('--scriptsfolder',required=False, default='/opt', help='folder where the scripts are... used for debuging without rebuilding the docker')
+parser.add_argument('--scriptsfolder',required=False, default='/opt2', help='folder where the scripts are... used for debuging without rebuilding the docker')
 parser.add_argument('--keepfiles',required=False,default='False',help='to keep intermediate files, set this to True')
 EOF
 
@@ -51,7 +51,7 @@ samtools sort -@ $ncpus ${samplename}.tmp5.bam ${samplename}.filt
 samtools index ${samplename}.filt.bam
 samtools flagstat ${samplename}.filt.bam > ${samplename}.filt.bam.flagstat
 
-java -Xmx4G -jar /opt/picardcloud.jar MarkDuplicates \
+java -Xmx4G -jar ${SCRIPTSFOLDER}/picardcloud.jar MarkDuplicates \
 INPUT=${samplename}.filt.bam \
 OUTPUT=${samplename}.dupmark.bam \
 METRICS_FILE=${samplename}.dupmetric \

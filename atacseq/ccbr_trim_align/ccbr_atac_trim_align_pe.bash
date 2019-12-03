@@ -8,13 +8,13 @@ This script runs 3 scripts in series:
 It expects:
 1. access to input fastq files (make sure the correct binding of folders;symlinks will not work
 2. bowtie2 index files need to be bound/mounted at /index eg. for mm10 on biowulf /data/CCBR_Pipeliner/db/PipeDB/Indices/mm10_basic/indexes/ needs to be bound to /index"""
-source /opt/argparse.bash || exit 1
+source /opt2/argparse.bash || exit 1
 argparse "$@" <<EOF || exit 1
 parser.add_argument('--infastq1',required=True, help='input R1 fastq.gz file')
 parser.add_argument('--infastq2',required=True, help='input R2 fastq.gz file')
 parser.add_argument('--threads',required=True, help='number of threads')
 parser.add_argument('--genome',required=True, help='hg19/hg38/mm9/mm10')
-parser.add_argument('--scriptsfolder',required=False, default='/opt', help='folder where the scripts are... used for debuging without rebuilding the docker')
+parser.add_argument('--scriptsfolder',required=False, default='/opt2', help='folder where the scripts are... used for debuging without rebuilding the docker')
 parser.add_argument('--keepfiles',required=False,default='False',help='to keep intermediate files, set this to True')
 EOF
 

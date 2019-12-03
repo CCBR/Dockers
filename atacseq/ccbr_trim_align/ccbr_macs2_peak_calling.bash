@@ -1,10 +1,10 @@
 #!/bin/bash
-. /opt/conda/etc/profile.d/conda.sh
+. /opt2/conda/etc/profile.d/conda.sh
 conda activate python3
 
 set -e -x -o pipefail
 ARGPARSE_DESCRIPTION="call atac-seq peaks using macs2"      # this is optional
-source /opt/argparse.bash || exit 1
+source /opt2/argparse.bash || exit 1
 argparse "$@" <<EOF || exit 1
 parser.add_argument('--tagalign',required=True, help='input tagAlign.gz file')
 parser.add_argument('--extsize',required=False, default=73, help='extsize')

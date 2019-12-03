@@ -1,12 +1,12 @@
 #!/bin/bash
 
-. /opt/conda/etc/profile.d/conda.sh
+. /opt2/conda/etc/profile.d/conda.sh
 conda activate python3
 
 set -e -x -o pipefail
 ncpus=`nproc`
 ARGPARSE_DESCRIPTION="Trim SE reads using cutadapt"      # this is optional
-source /opt/argparse.bash || exit 1
+source /opt2/argparse.bash || exit 1
 argparse "$@" <<EOF || exit 1
 parser.add_argument('--infastq',required=True, help='input fastq.gz file')
 EOF
@@ -21,7 +21,7 @@ cutadapt \
 -n 5 -O 5 \
 -q 10,10 \
 -m 35 \
--b file:/opt/TruSeq_and_nextera_adapters.consolidated.fa \
+-b file:/opt2/TruSeq_and_nextera_adapters.consolidated.fa \
 -j $ncpus \
 -o $outfastq \
 $infastq

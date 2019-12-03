@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e -x -o pipefail
 ARGPARSE_DESCRIPTION="Remove reads aligning to blacklisted regions"      # this is optional
-source /opt/argparse.bash || exit 1
+source /opt2/argparse.bash || exit 1
 argparse "$@" <<EOF || exit 1
 parser.add_argument('--infastq1',required=True, help='input R1 fastq.gz file')
 parser.add_argument('--infastq2',required=True, help='input R2 fastq.gz file')
@@ -23,7 +23,7 @@ outfastq2_nogz=`echo $outfastq2|sed "s/.gz//g"`
 
 
 
-bwa mem -t $ncpus /opt/the_blacklists.fa $infastq1 $infastq2 > ${samplename}.notAlignedToBlacklist.sam
+bwa mem -t $ncpus /opt2/the_blacklists.fa $infastq1 $infastq2 > ${samplename}.notAlignedToBlacklist.sam
 
 samtools view -@ $ncpus -f12 -bS -o ${samplename}.notAlignedToBlacklist.bam ${samplename}.notAlignedToBlacklist.sam
 

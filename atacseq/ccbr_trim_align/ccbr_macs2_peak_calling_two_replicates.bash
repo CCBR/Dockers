@@ -1,10 +1,10 @@
 #!/bin/bash
-. /opt/conda/etc/profile.d/conda.sh
+. /opt2/conda/etc/profile.d/conda.sh
 conda activate python3
 
 set -e -x -o pipefail
 ARGPARSE_DESCRIPTION="call atac-seq peaks using macs2 ... two replicate wrapper script"      # this is optional
-source /opt/argparse.bash || exit 1
+source /opt2/argparse.bash || exit 1
 argparse "$@" <<EOF || exit 1
 parser.add_argument('--tagalign1',required=True, help='input tagAlign.gz file for replicate 1')
 parser.add_argument('--tagalign2',required=True, help='input tagAlign.gz file for replicate 2')
@@ -16,7 +16,7 @@ parser.add_argument('--samplename',required=True, help='samplename')
 parser.add_argument('--genomefilerep1',required=True, help='dedupbam based genome file for replicate 1 required by bedGraphToBigWig')
 parser.add_argument('--genomefilerep2',required=True, help='dedupbam based genome file for replicate 2 required by bedGraphToBigWig')
 parser.add_argument('--genomename',required=True, help='hg19/hg38/mm9/mm10')
-parser.add_argument('--scriptsfolder',required=False, default='/opt', help='folder where the scripts are... used for debuging without rebuilding the docker')
+parser.add_argument('--scriptsfolder',required=False, default='/opt2', help='folder where the scripts are... used for debuging without rebuilding the docker')
 EOF
 
 extsize=$EXTSIZE

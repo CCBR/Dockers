@@ -1,0 +1,81 @@
+---
+title: "Pairwise Principal Component Analysis"
+output: html_document
+params:
+  pairwise: "pairwise.txt"
+  inputfilelist: "inputfilelist.txt"
+editor_options:
+  chunk_output_type: console
+---
+
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(plotly))
+suppressMessages(library(RColorBrewer))
+suppressMessages(library(reshape2))
+# list.files(path = ".")
+e=read.csv(params$inputfilelist,header=FALSE,sep="\t",stringsAsFactors = FALSE)
+colnames(e)=c("sample","group","file")
+rownames(e)=e$sample
+```
+
+
+```{r pca, echo=FALSE, message=FALSE, warning=FALSE}
+d=read.csv(params$pairwise,header=FALSE,sep="\t")
+m=dcast(d,V1~V2,value.var="V3")
+colnames_m=colnames(m)
+colnames_m[1]=""
+colnames(m)=colnames_m
+m1 = m
+rownames(m1)=m1[,1]
+m1[,1] = NULL
+m.pca=prcomp(m1,scale. = T)
+m.pc1 = round(m.pca$sdev[1]^2/sum(m.pca$sdev^2)*100,2)
+m.pc2 = round(m.pca$sdev[2]^2/sum(m.pca$sdev^2)*100,2)
+m.pc3 = round(m.pca$sdev[3]^2/sum(m.pca$sdev^2)*100,2)
+#color by group
+h=c()
+for (i in rownames(m.pca$rotation)) {h=c(h,e$group[e$sample==i])}
+```
+\newline
+
+# 3D PCA
+
+\newline
+
+```{r plot3d, echo=FALSE, message=FALSE, warning=FALSE}
+if (ncol(m.pca$rotation)==2){
+  paste0("Only 2 Components. 3-d not possible")
+} else {
+toplot=as.data.frame(m.pca$x[,1:3])
+p <- plot_ly(as.data.frame(m.pca$x[,1:3]), x = ~PC1, y = ~PC2, z = ~PC3,  hoverinfo="text", color=h,
+             hovertext = rownames(toplot)) %>%
+  add_markers() %>%
+  layout(title = "Jaccard score 3-d PCA plot", 
+         scene = list(xaxis = list(title = paste0("PC1 (",m.pc1,"%)")),
+                      yaxis = list(title = paste0("PC2 (",m.pc2,"%)")),
+                      zaxis = list(title = paste0("PC3 (",m.pc3,"%)"))))
+p
+}
+```
+\newline
+
+# 2D PCA
+
+\newline
+
+```{r plot, echo=FALSE, message=FALSE, warning=FALSE}
+toplot=as.data.frame(m.pca$x[,1:2])
+x <- list (
+  title = paste0("PC1 (",m.pc1,"%)")
+)
+y <- list (
+  title = paste0("PC2 (",m.pc2,"%)")
+)
+p <- plot_ly(as.data.frame(m.pca$x[,1:2]), x = ~PC1, y = ~PC2,  hoverinfo="text", color=h,
+             hovertext = rownames(toplot)) %>%
+  add_markers() %>%
+  layout(title = "Jaccard score 2-d PCA plot", xaxis = x, yaxis = y)
+p
+```

@@ -21,3 +21,9 @@
 - v0.1.5
   - replaced *dedupbam* with *genomefile* ... more efficient
   - added *bam2FLD* ... requires python2 and its version of pysam/numpy/scipy... created new conda environment for that
+- v0.1.6
+  - */data* is now */data2*; /opt* is now */opt2*; these changes have been made to not conflict with systems */opt* and */data*
+  - **Genrich** installed, *ccbr_genrich_peak_calling_two_replicates.bash* added
+  - bedtools **jaccard** with PCA is now in *ccbr_jaccard_pca.bash*
+  - **pandoc** installed for rendering Rmd files
+

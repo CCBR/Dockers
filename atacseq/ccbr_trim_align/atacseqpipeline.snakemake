@@ -8,9 +8,9 @@ GENOME="hg38"
 WORKDIR="/data/CBLCCBR/kopardevn_tmp/atacseq_pipeline/test1"
 SINGULARITY_IMAGES_DIR="/data/CBLCCBR/kopardevn_tmp/singularity_images"
 SINGULARITY_VERSION="3.4.2"
-SINGULARITY_IMAGE_VERSION="0.1.5"
+SINGULARITY_IMAGE_VERSION="0.1.6"
 # SCRIPTS_DIR="/opt"
-SCRIPTS_DIR="/data/scripts"
+SCRIPTS_DIR="/data2/scripts"
 
 # define functions
 def check_existence(filename):
@@ -56,6 +56,12 @@ def get_sample_tagAlignFiles_for_group(wildcards):
 		d["genomefile"+str(i+1)]=join(WORKDIR,"bam",f+".genome")
 	return d
 
+def get_sample_qsortedbamfiles_for_group(wildcards):
+	d=dict()
+	for i,f in enumerate(group2samples[wildcards.grp]):
+		d["qsortedbam"+str(i+1)]=join(WORKDIR,"bam",f+".qsorted.bam")
+	return d
+
 
 # RULES
 
@@ -73,7 +79,17 @@ rule all:
 		expand(join(WORKDIR,"qc","{sample}.dupmetric"),sample=SAMPLES),
 		expand(join(WORKDIR,"peaks","macs2","{grp}.group.macs2.peakfiles"),grp=GROUPS),
 		expand(join(WORKDIR,"peaks","macs2","{grp}.sample.macs2.peakfiles"),grp=GROUPS),
-		expand(join("qc","fld","{sample}.fld.txt"),sample=SAMPLES)
+		expand(join(WORKDIR,"peaks","genrich","{grp}.group.genrich.peakfiles"),grp=GROUPS),
+		expand(join(WORKDIR,"peaks","genrich","{grp}.sample.genrich.peakfiles"),grp=GROUPS),
+		expand(join("qc","fld","{sample}.fld.txt"),sample=SAMPLES),
+		join(WORKDIR,"qc","jaccard","macs2.sample.jaccard.pca.html"),
+		join(WORKDIR,"qc","jaccard","macs2.group.jaccard.pca.html"),
+		join(WORKDIR,"qc","jaccard","macs2.sample_group.jaccard.pca.html"),
+		join(WORKDIR,"qc","jaccard","genrich.sample.jaccard.pca.html"),
+		join(WORKDIR,"qc","jaccard","genrich.group.jaccard.pca.html"),
+		join(WORKDIR,"qc","jaccard","genrich.sample_group.jaccard.pca.html"),
+		join(WORKDIR,"qc","jaccard","allmethods.sample_group.pairwise.txt"),
+		join(WORKDIR,"qc","jaccard","allmethods.sample_group.jaccard.pca.html")
 
 rule atac_trim_align_dedup:
 	input:
@@ -110,7 +126,7 @@ cd /lscratch/$SLURM_JOBID
 
 module load singularity/{params.singularity_version}
 singularity exec \
--B {params.workdir}/:/data/,/data/CCBR_Pipeliner/db/PipeDB/Indices/{params.genome}_basic/indexes/:/index \
+-B {params.workdir}/:/data2/,/data/CCBR_Pipeliner/db/PipeDB/Indices/{params.genome}_basic/indexes/:/index \
 {params.singularity_images_dir}/ccbr_atacseq_v{params.singularity_image_version}.sif \
 bash {params.scriptsdir}/ccbr_atac_trim_align_pe.bash \
 --infastq1 {input.infq1} \
@@ -196,7 +212,7 @@ tagAlign2=$(echo {input.tagAlign2}|awk -F"/" "{{print \$NF}}")
 genomefile2=$(echo {input.genomefile2}|awk -F"/" "{{print \$NF}}")
 
 singularity exec \
--B {params.workdir}/:/data/,/data/CCBR_Pipeliner/db/PipeDB/Indices/{params.genome}_basic/indexes/:/index \
+-B {params.workdir}/:/data2/,/data/CCBR_Pipeliner/db/PipeDB/Indices/{params.genome}_basic/indexes/:/index \
 {params.singularity_images_dir}/ccbr_atacseq_v{params.singularity_image_version}.sif \
 bash {params.scriptsdir}/ccbr_macs2_peak_calling_two_replicates.bash \
 --tagalign1 $tagAlign1 \
@@ -214,20 +230,20 @@ ls -larth
 
 rsync -az --progress ${{rep1name}}.macs2_summits.bed {params.workdir}/peaks/macs2/
 rsync -az --progress ${{rep1name}}.macs2_peaks.narrowPeak {params.workdir}/peaks/macs2/
-echo "{params.workdir}/peaks/macs2/${{rep1name}}.macs2_peaks.narrowPeak" >> {output.samplePeakFileList}
+echo -ne "$rep1name\t{params.grp}\t{params.workdir}/peaks/macs2/${{rep1name}}.macs2_peaks.narrowPeak\n" >> {output.samplePeakFileList}
 rsync -az --progress ${{rep1name}}.macs2.qfilter.narrowPeak {params.workdir}/peaks/macs2/
 rsync -az --progress ${{rep1name}}.macs2.bw {params.workdir}/peaks/macs2/bigwig/
 
 rsync -az --progress ${{rep2name}}.macs2_summits.bed {params.workdir}/peaks/macs2/
 rsync -az --progress ${{rep2name}}.macs2_peaks.narrowPeak {params.workdir}/peaks/macs2/
-echo "{params.workdir}/peaks/macs2/${{rep2name}}.macs2_peaks.narrowPeak" >> {output.samplePeakFileList}
+echo -ne "$rep2name\t{params.grp}\t{params.workdir}/peaks/macs2/${{rep2name}}.macs2_peaks.narrowPeak\n" >> {output.samplePeakFileList}
 rsync -az --progress ${{rep2name}}.macs2.qfilter.narrowPeak {params.workdir}/peaks/macs2/
 rsync -az --progress ${{rep2name}}.macs2.bw {params.workdir}/peaks/macs2/bigwig/
 
 rsync -az --progress {params.grp}.idr.narrowPeak.png {params.workdir}/peaks/macs2/
 rsync -az --progress {params.grp}.idr.log {params.workdir}/peaks/macs2/
 rsync -az --progress {params.grp}.idr.narrowPeak {params.workdir}/peaks/macs2/
-echo "{params.workdir}/peaks/macs2/{params.grp}.idr.narrowPeak" >> {output.groupPeakFileList}
+echo -ne "{params.grp}\t{params.grp}\t{params.workdir}/peaks/macs2/{params.grp}.idr.narrowPeak\n" >> {output.groupPeakFileList}
 rsync -az --progress {params.grp}.idr.filt.narrowPeak {params.workdir}/peaks/macs2/
 rsync -az --progress {params.grp}.conservative.narrowPeak {params.workdir}/peaks/macs2/
 rsync -az --progress {params.grp}.optimal.narrowPeak {params.workdir}/peaks/macs2/
@@ -268,7 +284,7 @@ fldfile=$(echo "{output.fld}"|awk -F"/" "{{print \$NF}}")
 cd /lscratch/$SLURM_JOBID
 
 singularity exec \
--B {params.workdir}/:/data/ \
+-B {params.workdir}/:/data2/ \
 {params.singularity_images_dir}/ccbr_atacseq_v{params.singularity_image_version}.sif \
 bash {params.scriptsdir}/ccbr_bam2FLD.bash \
 --dedupbam $bamfile \
@@ -278,3 +294,171 @@ bash {params.scriptsdir}/ccbr_bam2FLD.bash \
 rsync -az --progress $fldfile {params.workdir}/{output.fld}
 
 """
+
+
+rule atac_genrich_peakcalling:
+	input:
+		unpack(get_sample_qsortedbamfiles_for_group)
+	params:
+		genome=GENOME,
+		singularity_images_dir=SINGULARITY_IMAGES_DIR,
+		workdir=WORKDIR,
+		scriptsdir=SCRIPTS_DIR,
+		singularity_version=SINGULARITY_VERSION,
+		singularity_image_version=SINGULARITY_IMAGE_VERSION,
+		grp="{grp}"
+	output:
+		groupPeakFileList=join(WORKDIR,"peaks","genrich","{grp}.group.genrich.peakfiles"),
+		samplePeakFileList=join(WORKDIR,"peaks","genrich","{grp}.sample.genrich.peakfiles")
+	shell:"""
+set -e -x -o pipefail
+module load singularity/{params.singularity_version}
+for f in {input};do
+rsync -Laz --progress $f /lscratch/$SLURM_JOBID
+done
+cd /lscratch/$SLURM_JOBID
+
+nsamples=0
+for i in {input};do
+	nsamples=$(echo "$nsamples+1"|bc)
+done
+
+rep1name=$(echo {input.qsortedbam1}|awk -F"/" "{{print \$NF}}"|awk -F".qsorted" "{{print \$1}}")
+qsortedbam1=$(echo {input.qsortedbam1}|awk -F"/" "{{print \$NF}}")
+peakfile1="${{rep1name}}.genrich.narrowPeak"
+
+# the groups has only one samples ..  no replicates
+if [ "$nsamples" -eq "1" ];then
+echo "NO REPLICATES...THIS CODE IS NOT WRITTEN YET!!!"
+exit 1
+fi
+
+# the groups as more than 2 replicates ... rare
+if [ "$nsamples" -gt "2" ];then
+echo "THIS CODE IS NOT WRITTEN YET!!!"
+exit 1
+fi
+
+# the groups has 2 replicates
+if [ "$nsamples" -eq "2" ];then
+rep2name=$(echo {input.qsortedbam2}|awk -F"/" "{{print \$NF}}"|awk -F".qsorted" "{{print \$1}}")
+qsortedbam2=$(echo {input.qsortedbam2}|awk -F"/" "{{print \$NF}}")
+peakfile2="${{rep2name}}.genrich.narrowPeak"
+
+singularity exec \
+-B {params.workdir}/:/data2/,/data/CCBR_Pipeliner/db/PipeDB/Indices/{params.genome}_basic/indexes/:/index \
+{params.singularity_images_dir}/ccbr_atacseq_v{params.singularity_image_version}.sif \
+bash {params.scriptsdir}/ccbr_genrich_peak_calling_two_replicates.bash \
+--bamrep1 $qsortedbam1 \
+--bamrep2 $qsortedbam2 \
+--peakfile1 $peakfile1 \
+--peakfile2 $peakfile2 \
+--mergedpeakfile {params.grp}.genrich.narrowPeak \
+--filterpeaks True
+
+ls -alrth
+
+rsync -az --progress $peakfile1 {params.workdir}/peaks/genrich/
+rsync -az --progress ${{rep1name}}.genrich.qfilter.narrowPeak {params.workdir}/peaks/genrich/
+rsync -az --progress $peakfile2 {params.workdir}/peaks/genrich/
+rsync -az --progress ${{rep2name}}.genrich.qfilter.narrowPeak {params.workdir}/peaks/genrich/
+rsync -az --progress {params.grp}.genrich.narrowPeak {params.workdir}/peaks/genrich/
+echo -ne "$rep1name\t{params.grp}\t{params.workdir}/peaks/genrich/$peakfile1\n" >> {output.samplePeakFileList}
+echo -ne "$rep2name\t{params.grp}\t{params.workdir}/peaks/genrich/$peakfile2\n" >> {output.samplePeakFileList}
+echo -ne "{params.grp}\t{params.grp}\t{params.workdir}/peaks/genrich/{params.grp}.genrich.narrowPeak\n" >> {output.groupPeakFileList}
+fi
+"""
+
+
+rule jaccard:
+	input:
+		expand(join(WORKDIR,"peaks","macs2","{grp}.group.macs2.peakfiles"),grp=GROUPS),
+		expand(join(WORKDIR,"peaks","macs2","{grp}.sample.macs2.peakfiles"),grp=GROUPS),
+		expand(join(WORKDIR,"peaks","genrich","{grp}.group.genrich.peakfiles"),grp=GROUPS),
+		expand(join(WORKDIR,"peaks","genrich","{grp}.sample.genrich.peakfiles"),grp=GROUPS)
+	output:
+		macs2persamplejaccardpca=join(WORKDIR,"qc","jaccard","macs2.sample.jaccard.pca.html"),
+		macs2pergroupjaccardpca=join(WORKDIR,"qc","jaccard","macs2.group.jaccard.pca.html"),
+		macs2persamplegroupjaccardpca=join(WORKDIR,"qc","jaccard","macs2.sample_group.jaccard.pca.html"),
+		genrichpersamplejaccardpca=join(WORKDIR,"qc","jaccard","genrich.sample.jaccard.pca.html"),
+		genrichpergroupjaccardpca=join(WORKDIR,"qc","jaccard","genrich.group.jaccard.pca.html"),
+		genrichpersamplegroupjaccardpca=join(WORKDIR,"qc","jaccard","genrich.sample_group.jaccard.pca.html"),
+		allmethodspairwise=join(WORKDIR,"qc","jaccard","allmethods.sample_group.pairwise.txt"),
+		allmethodsjaccardpca=join(WORKDIR,"qc","jaccard","allmethods.sample_group.jaccard.pca.html")
+	params:
+		genome=GENOME,
+		singularity_images_dir=SINGULARITY_IMAGES_DIR,
+		workdir=WORKDIR,
+		scriptsdir=SCRIPTS_DIR,
+		singularity_version=SINGULARITY_VERSION,
+		singularity_image_version=SINGULARITY_IMAGE_VERSION
+	shell:"""
+set -e -x -o pipefail
+module load singularity/{params.singularity_version}
+for f in {input};do
+	rsync -Laz --progress $f /lscratch/$SLURM_JOBID/
+	while read label glabel file;do
+		rsync -Laz --progress $file /lscratch/$SLURM_JOBID/
+	done < $f
+done
+cd /lscratch/$SLURM_JOBID
+# SLURM_JOBID1="/scratch/kopardevn/tmp1"
+# for f in {input};do
+# 	rsync -Laz --progress $f $SLURM_JOBID1
+# 	while read label glabel file;do
+# 		rsync -Laz --progress $file $SLURM_JOBID1
+# 	done < $f
+# done
+# cd $SLURM_JOBID1
+
+for f in $(ls *narrowPeak);do
+		singularity exec \
+		-B {params.workdir}/:/data2/,/data/CCBR_Pipeliner/db/PipeDB/Indices/{params.genome}_basic/indexes/:/index \
+		{params.singularity_images_dir}/ccbr_atacseq_v{params.singularity_image_version}.sif bedSort $f $f
+done
+
+
+awk -F"/" -v OFS="" "{{print \$1,\$NF}}" *group.macs2.peakfiles > macs2.group.peakfiles
+awk -F"/" -v OFS="" "{{print \$1,\$NF}}" *sample.macs2.peakfiles > macs2.sample.peakfiles
+cat macs2.group.peakfiles macs2.sample.peakfiles > macs2.sample_group.peakfiles
+awk -F"/" -v OFS="" "{{print \$1,\$NF}}" *group.genrich.peakfiles > genrich.group.peakfiles
+awk -F"/" -v OFS="" "{{print \$1,\$NF}}" *sample.genrich.peakfiles > genrich.sample.peakfiles
+cat genrich.group.peakfiles genrich.sample.peakfiles > genrich.sample_group.peakfiles
+
+for m in "macs2" "genrich";do
+	while read sample group file;do
+		echo -ne "${{sample}}_${{m}}\t${{group}}_${{m}}\t${{file}}\n"
+	done < ${{m}}.sample_group.peakfiles
+done > allmethods.sample_group.peakfiles
+
+for m in "macs2" "genrich";do
+	for f in "group" "sample" "sample_group";do
+		singularity exec \
+		-B {params.workdir}/:/data2/,/data/CCBR_Pipeliner/db/PipeDB/Indices/{params.genome}_basic/indexes/:/index \
+		{params.singularity_images_dir}/ccbr_atacseq_v{params.singularity_image_version}.sif \
+		bash {params.scriptsdir}/ccbr_jaccard_pca.bash \
+		--inputfilelist ${{m}}.${{f}}.peakfiles \
+		--pairwise ${{m}}.${{f}}.jaccard.pairwise.txt \
+		--pcahtml ${{m}}.${{f}}.jaccard.pca.html \
+		--scriptsfolder {params.scriptsdir}
+		rsync -az --progress ${{m}}.${{f}}.jaccard.pairwise.txt {params.workdir}/qc/jaccard/
+		rsync -az --progress ${{m}}.${{f}}.jaccard.pca.html {params.workdir}/qc/jaccard/
+	done
+done
+
+# -B {params.workdir}/:/data2/,/data/CCBR_Pipeliner/db/PipeDB/Indices/{params.genome}_basic/indexes/:/index,/scratch/kopardevn/tmp1/:/scratch/kopardevn/tmp1/ \
+
+singularity exec \
+-B {params.workdir}/:/data2/,/data/CCBR_Pipeliner/db/PipeDB/Indices/{params.genome}_basic/indexes/:/index \
+{params.singularity_images_dir}/ccbr_atacseq_v{params.singularity_image_version}.sif \
+bash {params.scriptsdir}/ccbr_jaccard_pca.bash \
+--inputfilelist allmethods.sample_group.peakfiles \
+--pairwise allmethods.sample_group.pairwise.txt \
+--pcahtml allmethods.sample_group.jaccard.pca.html \
+--scriptsfolder {params.scriptsdir}
+rsync -az --progress allmethods.sample_group.pairwise.txt {params.workdir}/qc/jaccard/
+rsync -az --progress allmethods.sample_group.jaccard.pca.html {params.workdir}/qc/jaccard/
+
+
+"""
+
