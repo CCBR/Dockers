@@ -13,6 +13,7 @@ FROM ubuntu:16.04
 # jre          1.8.0_222
 # macs2        2.2.5      conda:python3
 # miniconda3   4.7.12.1
+# multiqc      1.8        conda:python3
 # picardcloud
 # samtools     0.1.19
 
@@ -132,6 +133,12 @@ RUN unzip Genrich-master.zip && \
     make
 ENV PATH="/opt2/Genrich-master:${PATH}"
 
+# INSTALL multiqc
+
+RUN . /opt2/conda/etc/profile.d/conda.sh && \
+  conda activate python3 && \
+  pip install multiqc
+
 COPY TruSeq_and_nextera_adapters.consolidated.fa /opt2
 COPY Dockerfile /opt2
 COPY picardcloud.jar /opt2
@@ -148,7 +155,8 @@ COPY the_blacklists.fa.sa /opt2
 COPY atac_assign_multimappers.py /opt2
 COPY ccbr_bam2FLD.py /opt2
 COPY ccbr_bam_filter_by_mapq.py /opt2
-
+COPY ccbr_narrowPeak_distributions.py /opt2
+  
 COPY ccbr_atac_trim_align_pe.bash /opt2
 COPY ccbr_bam2FLD.bash /opt2
 COPY ccbr_bowtie2_align_pe.bash /opt2
@@ -158,9 +166,12 @@ COPY ccbr_genrich_peak_calling_two_replicates.bash /opt2
 COPY ccbr_jaccard_pca.bash /opt2
 COPY ccbr_macs2_peak_calling.bash /opt2
 COPY ccbr_macs2_peak_calling_two_replicates.bash /opt2
+COPY ccbr_narrowPeak_distribution.bash /opt2
 COPY ccbr_remove_blacklisted_reads_pe.bash /opt2
 
 COPY pairwise.Rmd /opt2
+
+COPY db /opt2/db
 
 RUN chmod a+x /opt2/bedSort
 RUN chmod a+x /opt2/bedGraphToBigWig
