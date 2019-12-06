@@ -36,3 +36,5 @@ for read in samfile.fetch():
 		pairedreads.write(read)
 samfile.close()
 pairedreads.close()
+
+
