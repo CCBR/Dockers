@@ -139,6 +139,12 @@ RUN . /opt2/conda/etc/profile.d/conda.sh && \
   conda activate python3 && \
   pip install multiqc
 
+# INSTALL meme and homer2
+
+RUN . /opt2/conda/etc/profile.d/conda.sh && \
+  conda activate python3 && \
+  conda install meme homer parallel blat
+
 COPY TruSeq_and_nextera_adapters.consolidated.fa /opt2
 COPY Dockerfile /opt2
 COPY picardcloud.jar /opt2
@@ -171,13 +177,14 @@ COPY ccbr_remove_blacklisted_reads_pe.bash /opt2
 
 COPY pairwise.Rmd /opt2
 
-COPY db /opt2/db
+COPY db /opt2/db 
 
 RUN chmod a+x /opt2/bedSort
 RUN chmod a+x /opt2/bedGraphToBigWig
 RUN chmod a+x /opt2/*.bash
 RUN chmod a+x /opt2/*.py
 RUN chmod a+r /opt2/*.*
+RUN chmod -R a+rX /opt2/db
 
 ENV PATH="/opt2:${PATH}"
 
