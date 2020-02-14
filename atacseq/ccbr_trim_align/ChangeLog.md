@@ -26,5 +26,9 @@
   - **Genrich** installed, *ccbr_genrich_peak_calling_two_replicates.bash* added
   - bedtools **jaccard** with PCA is now in *ccbr_jaccard_pca.bash*
   - **pandoc** installed for rendering Rmd files
+- v0.1.7
+  - **meme** and **homer** installed
+  - motif enrichment script included
+  - */opt2/db* has meme and homer version of the HOCOMOCO v11 motifs for human and mouse
 
 # 
