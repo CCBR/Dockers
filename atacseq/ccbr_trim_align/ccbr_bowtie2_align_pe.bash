@@ -1,6 +1,5 @@
 #!/bin/bash
-. /opt2/conda/etc/profile.d/conda.sh
-conda activate python3
+
 
 set -e -x -o pipefail
 ARGPARSE_DESCRIPTION="Adapter trimmed (and blacklist filtered) fastqs are aligned to genome using bowtie2, multimappers are properly assigned, deduplicated using picard, filtered based on mapq, bams converted to tagAlign files."      # this is optional
@@ -32,7 +31,7 @@ bowtie2 -X2000 -k $multimapping --very-sensitive --threads $ncpus -x /index/$gen
 
 samtools view -@ $ncpus -bS -o ${samplename}.bowtie2.bam ${samplename}.bowtie2.sam
 
-samtools sort -@ $ncpus ${samplename}.bowtie2.bam ${samplename}.bowtie2.sorted
+samtools sort -@ $ncpus ${samplename}.bowtie2.bam ${samplename}.bowtie2.sorted 
 
 samtools flagstat ${samplename}.bowtie2.bam > ${samplename}.bowtie2.bam.flagstat
 
@@ -46,7 +45,7 @@ samtools view -@ $ncpus -bS -o ${samplename}.tmp3.bam ${samplename}.tmp2.sorted.
 
 samtools view -@ $ncpus -F 256 -u ${samplename}.tmp3.bam > ${samplename}.tmp4.bam
 samtools sort -@ $ncpus ${samplename}.tmp4.bam ${samplename}.dup
-samtools view -@ $ncpus -F 1796 -u ${samplename}.tmp3.bam > ${samplename}.tmp5.bam
+samtools view -@ $ncpus -F 1796 -u ${samplename}.dup.bam > ${samplename}.tmp5.bam
 samtools sort -@ $ncpus ${samplename}.tmp5.bam ${samplename}.filt
 samtools index ${samplename}.filt.bam
 samtools flagstat ${samplename}.filt.bam > ${samplename}.filt.bam.flagstat
@@ -62,7 +61,12 @@ REMOVE_DUPLICATES=false
 samtools view -F 1796 -b -@ $ncpus -o ${samplename}.dedup.tmp.bam ${samplename}.dupmark.bam
 
 samtools index ${samplename}.dedup.tmp.bam
+
+. /opt2/conda/etc/profile.d/conda.sh
+conda activate python3
 python ${SCRIPTSFOLDER}/ccbr_bam_filter_by_mapq.py -i ${samplename}.dedup.tmp.bam -o ${samplename}.dedup.bam -q 6
+conda deactivate
+
 
 samtools index ${samplename}.dedup.bam
 samtools flagstat ${samplename}.dedup.bam > ${samplename}.dedup.bam.flagstat
@@ -98,5 +102,3 @@ ${samplename}.bowtie2.sorted.bam*
 fi
 
 # rm -f ${samplename}.dedup.qsorted.bam
-
-conda deactivate

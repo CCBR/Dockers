@@ -23,8 +23,16 @@ FROM ubuntu:16.04
 RUN mkdir -p /data2
 RUN mkdir -p /opt2
 
+# Need to add cloud repo to install R v3.6 on ubuntu v16.04
+# else default is R v3.2.3 which does not have required libraries like RCurl
 RUN apt-get update && \
     apt-get upgrade -y
+
+RUN apt-get install -y libxml2-dev software-properties-common apt-transport-https
+RUN echo "deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/" >> /etc/apt/sources.list
+# RUN add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -s -c) main"
+RUN apt-get update && \
+    apt-get upgrade -y --allow-unauthenticated
 
 RUN apt-get install -y cpanminus unzip
 
@@ -52,12 +60,18 @@ RUN apt-get install -y \
     wget \
     zlib1g-dev
 
-# INSTALL R
+# INSTALL R packages
 
-RUN apt-get install -y r-base-core
+RUN apt-get install -y --allow-unauthenticated r-base-core
 COPY install_R_packages.R /opt2
 WORKDIR /opt2
 RUN Rscript install_R_packages.R
+
+# INSTALL ChIPseeker
+COPY install_R_packages_chipseeker.R /opt2
+WORKDIR /opt2
+RUN Rscript install_R_packages_chipseeker.R
+
 
 # INSTALL miniconda
 
@@ -173,33 +187,14 @@ RUN . /opt2/conda/etc/profile.d/conda.sh && \
   conda activate python3 && \
   conda install bedops
 
-# INSTALL ChIPseeker
+# INSTALL deeptools
 
-RUN apt-get install -y libxml2-dev software-properties-common apt-transport-https
-RUN echo "deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/" >> /etc/apt/sources.list
-# RUN add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -s -c) main"
-RUN apt-get update && \
-    apt-get upgrade -y --allow-unauthenticated
-COPY install_R_packages_chipseeker.R /opt2
-WORKDIR /opt2
-RUN Rscript install_R_packages_chipseeker.R
-# RUN . /opt2/conda/etc/profile.d/conda.sh && \
-#   conda update -n base -c defaults conda
-# RUN . /opt2/conda/etc/profile.d/conda.sh && \
-#   conda create -n r_env r-base 
-# RUN . /opt2/conda/etc/profile.d/conda.sh && \
-#   conda activate python3 && \
-#   conda install -yc bioconda bioconductor-chipseeker 
-#   && \
-#   conda install -c bioconda bioconductor-txdb.hsapiens.ucsc.hg19.knowngene && \
-#   conda install -c bioconda bioconductor-txdb.hsapiens.ucsc.hg38.knowngene && \
-#   conda install -c bioconda bioconductor-txdb.mmusculus.ucsc.mm9.knowngene && \
-#   conda install -c bioconda bioconductor-txdb.mmusculus.ucsc.mm10.knowngene && \
-#   conda install -c bioconda bioconductor-org.hs.eg.db && \
-#   conda install -c bioconda bioconductor-org.mm.eg.db
+RUN . /opt2/conda/etc/profile.d/conda.sh && \
+  conda activate python3 && \
+  conda install -c bioconda deeptools
 
 
-
+# SCRIPTS AND DB files
 
 COPY TruSeq_and_nextera_adapters.consolidated.fa /opt2
 COPY Dockerfile /opt2
@@ -214,12 +209,16 @@ COPY the_blacklists.fa.bwt /opt2
 COPY the_blacklists.fa.pac /opt2
 COPY the_blacklists.fa.sa /opt2
 
+# python scripts
+
 COPY atac_assign_multimappers.py /opt2
 COPY ccbr_bam2FLD.py /opt2
 COPY ccbr_bam_filter_by_mapq.py /opt2
 COPY ccbr_counts2density.py /opt2
 COPY ccbr_narrowPeak_distributions.py /opt2
 COPY get_tss_with_bins_per_gene.py /opt2
+
+# bash scripts
 
 COPY ccbr_atac_motif_enrichment.bash /opt2  
 COPY ccbr_atac_trim_align_pe.bash /opt2
@@ -236,8 +235,10 @@ COPY ccbr_narrowPeak_distribution.bash /opt2
 COPY ccbr_remove_blacklisted_reads_pe.bash /opt2
 COPY ccbr_tagAlign2TSS.bash /opt2
 
-COPY pairwise.Rmd /opt2
+# R scripts
 
+COPY pairwise.Rmd /opt2
+COPY ccbr_annotate_peaks.R /opt2
 COPY db /opt2/db 
 
 RUN chmod a+x /opt2/bedSort

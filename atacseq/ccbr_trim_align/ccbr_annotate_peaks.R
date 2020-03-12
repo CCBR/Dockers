@@ -157,15 +157,6 @@ write(l,args$genelist,append=TRUE)
 
 # annotation type frequence table
 
-# create table of everything except exon or intron
-# b=dplyr::filter(dplyr::filter(merged,!grepl("Exon",annotation)),!grepl("Intron",annotation))
-# c=as.data.frame(table(b$annotation))
-# c=c[c$Freq!=0,]
-# deal with exon and introns
-# e=dplyr::filter(merged,grepl("Exon",annotation))
-# i=dplyr::filter(merged,grepl("Intron",annotation))
-# c2=data.frame(Var1=c("Exon","Intron"),Freq=c(nrow(e),nrow(i)))
-# c3=rbind(c,c2)
 l=paste("#annotationType","frequency","medianWidth","medianpValue","medianqValue",sep="\t")
 write(l,args$atypefreq)
 atypes=c("3' UTR",

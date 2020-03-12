@@ -7,16 +7,19 @@ ARGPARSE_DESCRIPTION="call atac-seq peaks using macs2"      # this is optional
 source /opt2/argparse.bash || exit 1
 argparse "$@" <<EOF || exit 1
 parser.add_argument('--tagalign',required=True, help='input tagAlign.gz file')
-parser.add_argument('--extsize',required=False, default=73, help='extsize')
-parser.add_argument('--shiftsize',required=False, default=37, help='shiftsize')
+parser.add_argument('--extsize',required=False, default=200, help='extsize')
+parser.add_argument('--shiftsize',required=False, default=100, help='shiftsize')
 parser.add_argument('--samplename',required=True, help='samplename')
 parser.add_argument('--genomename',required=True, help='hg19/hg38/mm9/mm10')
 # only required if filtering
 parser.add_argument('--filterpeaks',required=False, default="False", help='filterpeaks by qvalue: True or False')
-parser.add_argument('--qfilter',required=False, default=2, help='default qfiltering value is 2 for q=0.01')
-# only required if saving bigwigs
+parser.add_argument('--qfilter',required=False, default=0.693147, help='default qfiltering value is 0.693147 (-log10 of 0.5) for q=0.5')
+# only required if saving bigwigs/tn5knicks.bed/bam etc.
 parser.add_argument('--genomefile',required=False, help='dedupbam based genome file ... required by bedGraphToBigWig')
 parser.add_argument('--savebigwig',required=False, default="False", help='save bigwig file: True or False')
+parser.add_argument('--savetn5knicksbed',required=False, default="False", help='save tn5knicks bed and bam file: True or False')
+
+
 
 EOF
 
@@ -42,6 +45,7 @@ fi
 # remove duplicate peak calls
 mv ${prefix}_peaks.narrowPeak ${prefix}_peaks.narrowPeak.tmp
 sort -k9,9gr ${prefix}_peaks.narrowPeak.tmp|awk -F"\t" '!NF || !seen[$1":"$2"-"$3]++'|sort -k1,1 -k2,2n > ${prefix}_peaks.narrowPeak
+rm -f ${prefix}_peaks.narrowPeak.tmp
 
 # qvalue filter of 0.05
 # awk -F"\t" '{if ($9>1.302){print}}' ${prefix}_peaks.narrowPeak > ${prefix}.qfilter.narrowPeak
@@ -52,13 +56,26 @@ if [ $FILTERPEAKS == "True" ];then
 fi
 
 if [ $SAVEBIGWIG == "True" ];then
-  if [ ! -f $dedupbam ];then
-    exit "Dedupbam file:\"$dedupbam\" not accessible"
-  fi
-  bedSort ${prefix}_treat_pileup.bdg ${prefix}_treat_pileup.bdg
+#   bedSort ${prefix}_treat_pileup.bdg ${prefix}_treat_pileup.bdg
+  sort-bed --max-mem 2G ${prefix}_treat_pileup.bdg > ${prefix}_treat_pileup.bdg.tmp
+  mv ${prefix}_treat_pileup.bdg.tmp ${prefix}_treat_pileup.bdg
   bedGraphToBigWig ${prefix}_treat_pileup.bdg $genomefile ${prefix}.bw
 fi
-
+if [ $SAVETN5KNICKSBED == "True" ]; then
+  KNICKSBED=${samplename}.tn5knicks.bed
+  KNICKSBAM=${samplename}.tn5knicks.bam
+  zcat $tagAlign|awk -F"\t" -v OFS="\t" '{if ($6=="+") {print $1,$2,$2+1} else {print $1,$3,$3+1}}'> $KNICKSBED
+#   bedSort $KNICKSBED $KNICKSBED
+  sort-bed --max-mem 2G $KNICKBED > ${KNICKBED}.tmp
+  mv ${KNICKBED}.tmp $KNICKBED
+  awk -F"\t" -v OFS="\t" '{print $1,$2,$3,$1":"$2"-"$3}' $KNICKSBED > ${KNICKSBED%.*}.tmp.bed
+  bedToBam -i ${KNICKSBED%.*}.tmp.bed -g $genomefile > $KNICKSBAM
+  samtools sort -@4 -o ${KNICKSBAM%.*}.sorted.bam $KNICKSBAM
+  mv ${KNICKSBAM%.*}.sorted.bam $KNICKSBAM
+  rm -f ${KNICKSBED%.*}.tmp.bed 
+  pigz -p4 $KNICKSBED
+  samtools index $KNICKSBAM
+fi
 rm -f ${prefix}_treat_pileup.bdg
 rm -f ${prefix}_control_lambda.bdg
 

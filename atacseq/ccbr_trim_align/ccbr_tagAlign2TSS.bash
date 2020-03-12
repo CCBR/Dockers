@@ -34,8 +34,12 @@ for f in $(ls E*bed.counts);do
 		echo $f
 	fi
 done > countfiles
-while read a; do cat $a;done < countfiles | awk -F"\t" -v OFS="\t" '{if (NF==2){s[$1]+=$2}}END{for (var in s){print var,s[var]}}'|sort -k1,1n|awk -F"\t" -v OFS="\t" '{if ($2!=0){print $1,$2}}'|python ${SCRIPTSFOLDER}/ccbr_counts2density.py - > $TSSTXT
 ntss=$(wc -l countfiles|awk '{print $1}')
+if [ "$ntss" -gt "0" ]; then
+while read a; do cat $a;done < countfiles | awk -F"\t" -v OFS="\t" '{if (NF==2){s[$1]+=$2}}END{for (var in s){print var,s[var]}}'|sort -k1,1n|awk -F"\t" -v OFS="\t" '{if ($2!=0){print $1,$2}}'|python ${SCRIPTSFOLDER}/ccbr_counts2density.py - > $TSSTXT
+else
+	echo -ne "# TSS enrichment: 0.0000\n" > $TSSTXT
+fi
 echo "# TSS with 20 or more Tn5 nicking sites: $ntss" >> $TSSTXT
 
 

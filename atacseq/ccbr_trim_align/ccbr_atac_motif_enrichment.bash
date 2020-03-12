@@ -11,6 +11,7 @@ source /opt2/argparse.bash || exit 1
 argparse "$@" <<EOF || exit 1
 parser.add_argument('--narrowpeak',required=True, help='narrowPeak input file')
 parser.add_argument('--genome',required=True, help='hg19/hg38/mm9/mm10')
+parser.add_argument('--ntop',required=False, default=50000, type=int, help='use the top x peaks ... default 50k')
 parser.add_argument('--threads',required=False, default=2, type=int, help='number of threads')
 EOF
 
@@ -32,12 +33,14 @@ cp $homermotif $workdir
 cp $mememotiftar $workdir
 tar xzvf HOCOMOCOv11_full_${species}_mono_meme_format.tar.gz
 
-cut -f1-3 $NARROWPEAK > input.bed
-findMotifsGenome.pl input.bed $genomefa motif_enrichment \
+sort -k9,9gr $NARROWPEAK|cut -f1-3 |awk -v n=$NTOP '{if (NR<=n) {print}}' > ${samplename}.input.bed
+bedSort ${samplename}.input.bed ${samplename}.input.bed
+
+findMotifsGenome.pl ${samplename}.input.bed $genomefa motif_enrichment \
 -nomotif \
 -size given \
 -mknown HOCOMOCOv11_full_${species}_mono_homer_format_0.001.motif \
--N $(wc -l input.bed|awk '{print $1*4}') \
+-N $(wc -l ${samplename}.input.bed|awk '{print $1*4}') \
 -h \
 -p $ncpus \
 -dumpFasta \
@@ -56,7 +59,7 @@ targetfa="motif_enrichment/target.fa"
 backgroundfa="motif_enrichment/background.fa"
 
 ls *.meme |sort > memes
-while read a;do echo "ame --o ${a}_ame_out --noseq --control $backgroundfa --seed 12345 --verbose 3 $targetfa $a";done < memes > do_memes
+while read a;do echo "ame --o ${a}_ame_out --noseq --control $backgroundfa --seed 12345 --verbose 1 $targetfa $a";done < memes > do_memes
 parallel -j $ncpus < do_memes
 while read a;do cat ${a}_ame_out/ame.tsv;done < memes |grep "^rank"|sort|uniq > ame_results.txt
 while read a;do cat ${a}_ame_out/ame.tsv;done < memes |grep -v "^#"|grep -v "^$"|grep -v "^rank" |sort -k6,6g|awk -F"\t" '{printf("%d\t%s\n",NR,$_)}'|cut -f1,3- >> ame_results.txt
@@ -65,7 +68,7 @@ if [ "$(grep CTCF_ ame_results.txt|wc -l)" -ne "0" ]; then
 else
 	ctcf_enrich="NA"
 fi
-echo "# CTCF_enrichment = $ctcf_enrich\n" >> ame_results.txt
+echo -ne "# CTCF_enrichment = $ctcf_enrich\n" >> ame_results.txt
 
 mv ame_results.txt motif_enrichment
 rm -f $targetfa $backgroundfa
