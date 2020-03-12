@@ -1,7 +1,7 @@
 ##################################################
 # Stage 1 - docker container to build ensembl-vep #
 ###################################################
-FROM ubuntu:16.04 as builder
+FROM ubuntu:18.04 as builder
 
 # Update aptitude and install some required packages
 # a lot of them are required for Bio::DB::BigFile
@@ -12,9 +12,7 @@ RUN apt-get update && apt-get -y install \
     perl \
     perl-base \
     unzip \
-    wget \
-    libbz2-dev \
-    liblzma-dev && \
+    wget && \
     rm -rf /var/lib/apt/lists/*
 
 # Setup VEP environment
@@ -22,7 +20,7 @@ ENV OPT /opt/vep
 ENV OPT_SRC $OPT/src
 ENV HTSLIB_DIR $OPT_SRC/htslib
 # Branch to clone, e.g. "-b release/96"
-ENV BRANCH "-b release/99"
+ENV BRANCH ""
 
 # Working directory
 WORKDIR $OPT_SRC
@@ -78,9 +76,7 @@ RUN make && rm -f Makefile *.c
 ###################################################
 # Stage 2 - docker container to build ensembl-vep #
 ###################################################
-FROM ubuntu:16.04
-RUN mkdir -p /opt2
-COPY Dockerfile /opt2/Dockerfile.vep
+FROM ubuntu:18.04
 
 # Update aptitude and install some required packages
 # a lot of them are required for Bio::DB::BigFile
@@ -162,4 +158,5 @@ RUN echo >> $OPT/.profile && \
     # Run INSTALL.pl and remove the ensemb-vep tests and travis
     ./INSTALL.pl -a a -l && rm -rf t travisci .travis.yml
 
-
+RUN mkdir -p /opt
+COPY Dockerfile /opt

@@ -1,8 +1,12 @@
-FROM 		nciccbr/ccbr_vep_97.3:v0.0.2
+FROM 		nciccbr/ccbr_vep_99:v0.0.1
 MAINTAINER	vishal.koparde@nih.gov
 
 USER		root
-RUN		apt update && apt install -y libbz2-dev zlib1g-dev libncurses5-dev libncursesw5-dev liblzma-dev wget
+RUN mkdir -p /data2
+
+RUN		apt update && apt install -y zlib1g-dev libncurses5-dev libncursesw5-dev wget liblzma-dev libbz2-dev 
+
+# INSTALL htslib samtools bcftools
 
 RUN	cd /usr/bin && \
 wget https://github.com/samtools/htslib/releases/download/1.9/htslib-1.9.tar.bz2 && \
@@ -24,13 +28,35 @@ make
 
 ENV	PATH=$PATH:/usr/bin/bcftools-1.9:/usr/bin/samtools-1.9:/usr/bin/htslib-1.9
 
-COPY		v1.6.17.tar.gz /opt
+# INSTALL vcf2maf
 
-WORKDIR		/opt
+COPY		v1.6.17.tar.gz /opt2
+
+WORKDIR		/opt2
 RUN		tar xzvf v1.6.17.tar.gz
-ENV		PATH=$PATH:/opt/vcf2maf-1.6.17
-RUN		chmod a+x /opt/vcf2maf-1.6.17/*.pl
+ENV		PATH=$PATH:/opt2/vcf2maf-1.6.17
+RUN		chmod a+x /opt2/vcf2maf-1.6.17/*.pl
 
-WORKDIR		/data
+# INSTALL MINICONDA
 
-COPY 		Dockerfile.0.0.3 /opt
+# ADD https://repo.anaconda.com/miniconda/Miniconda3-4.7.12.1-Linux-x86_64.sh /opt2/miniconda.sh
+COPY Miniconda3-4.7.12.1-Linux-x86_64.sh /opt2/miniconda.sh
+RUN /bin/bash /opt2/miniconda.sh -b -p /opt2/conda && \
+    rm /opt2/miniconda.sh && \
+    ln -s /opt2/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
+    echo ". /opt2/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
+    echo "conda activate base" >> ~/.bashrc
+
+# CREATE MINICONDA PYTHON2 ENVIRONMENT
+
+RUN . /opt2/conda/etc/profile.d/conda.sh && \
+  conda create -n python2 python=2.7
+
+WORKDIR		/data2
+
+COPY 		Dockerfile /opt2
+COPY        argparse.bash /opt2
+COPY        vcf2maf_wrapper.bash /opt2
+RUN 		chmod a+r /opt2/Dockerfile && chmod a+r /opt2/argparse.bash && chmod a+r /opt2/vcf2maf_wrapper.bash
+
+RUN         apt-get clean
