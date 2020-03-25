@@ -59,10 +59,12 @@ parser.add_argument('--bamrep1',required=True, help='input name sorted bam file 
 parser.add_argument('--bamrep2',required=False, help='input name sorted bam file for replicate 2')
 parser.add_argument('--bamrep3',required=False, help='input name sorted bam file for replicate 3')
 parser.add_argument('--bamrep4',required=False, help='input name sorted bam file for replicate 4')
+
 parser.add_argument('--peakfile1',required=True, help='output narrowPeak file for replicate 1')
 parser.add_argument('--peakfile2',required=False, help='output narrowPeak file for replicate 2')
 parser.add_argument('--peakfile3',required=False, help='output narrowPeak file for replicate 3')
 parser.add_argument('--peakfile4',required=False, help='output narrowPeak file for replicate 4')
+
 parser.add_argument('--genome',required=True,help="hg19/38 or mm9/10")
 parser.add_argument('--pooledpeakfile',required=False, help='output narrowPeak file for both replicates combined')
 parser.add_argument('--concensusbedfile',required=False, help='consensus overlapping MAX majority peaks in bed format')
@@ -70,6 +72,7 @@ parser.add_argument('--concensusbedfile',required=False, help='consensus overlap
 # only required if filtering
 parser.add_argument('--filterpeaks',required=False, default="True", help='filterpeaks by qvalue: True or False')
 parser.add_argument('--qfilter',required=False, default=0.693147, help='default qfiltering value is 0.693147 (-log10 of 0.5) for q=0.5')
+
 parser.add_argument('--scriptsfolder',required=False, default='/opt2', help='folder where the scripts are... used for debuging without rebuilding the docker')
 EOF
 
