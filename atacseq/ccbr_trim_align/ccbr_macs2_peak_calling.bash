@@ -156,10 +156,6 @@ if [ "$nreplicates" -eq "4" ];then
 fi
 
 if [ "$nreplicates" -ge "2" ];then
-	if [ ! $POOLEDPEAKFILE ]; then
-		echo "Pooled peak file is required if replicates are present!"
-		exit
-	fi
 	if [ ! $CONCENSUSBEDFILE ]; then
 		echo "Concensus bed file is required if replicates are present!"
 		exit
