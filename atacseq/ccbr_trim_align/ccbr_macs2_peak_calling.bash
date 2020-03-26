@@ -41,6 +41,11 @@ callPeaks(){
 
 # save bigwig
 # MAY NEED TO BE NORMALIZED FOR GENOME SIZE ... DONT KNOW FOR SURE
+# MACS says
+#
+# MACS will save fragment pileup signal per million reads
+#
+# Genrich normalization is as per 1x genome coverage... and macs2 normalization is per million reads 
 	bedSort ${PREFIX}_treat_pileup.bdg ${PREFIX}_treat_pileup.bdg
 	bedGraphToBigWig ${PREFIX}_treat_pileup.bdg $GENOMEFILE ${PREFIX}.bw
 	rm -f ${PREFIX}_treat_pileup.bdg
@@ -198,7 +203,7 @@ fi
 
 # pooled peak calling
 bedSort ${pooled} ${pooled}
-gzip ${pooled}
+pigz -f -p4 ${pooled}
 callPeaks $pooled ${SAMPLENAME}.macs2 $GENOME $SHIFTSIZE $EXTSIZE $FILTERPEAKS $QFILTER $GENOMEFILE $SCRIPTSFOLDER
 
 # concensus peak calling
