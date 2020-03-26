@@ -157,7 +157,7 @@ if [ "$nreplicates" -ge 2 ]; then
 callGenrichPeaks $BAMREP2 $PEAKFILE2 "$excludelist"
 fi
 # 
-# replicate 2 peak calling
+# replicate 3 peak calling
 if [ "$nreplicates" -ge 3 ]; then
 callGenrichPeaks $BAMREP3 $PEAKFILE3 "$excludelist"
 fi
