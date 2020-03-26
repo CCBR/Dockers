@@ -204,7 +204,7 @@ fi
 # pooled peak calling
 bedSort ${pooled} ${pooled}
 pigz -f -p4 ${pooled}
-callPeaks $pooled ${SAMPLENAME}.macs2 $GENOME $SHIFTSIZE $EXTSIZE $FILTERPEAKS $QFILTER $GENOMEFILE $SCRIPTSFOLDER
+callPeaks ${pooled}.gz ${SAMPLENAME}.macs2 $GENOME $SHIFTSIZE $EXTSIZE $FILTERPEAKS $QFILTER $GENOMEFILE $SCRIPTSFOLDER
 
 # concensus peak calling
 if [ "$nreplicates" -eq 2 ];then
