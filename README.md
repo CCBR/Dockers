@@ -12,9 +12,9 @@ The docker images were pushed to dockerhub and are available [here](https://hub.
  * All docker images have the following folders:
    * ```/data2```
    * ```/opt2```
- * Original Dockerfile is copied into the docker image as ```/opt/Dockerfile```. One can view this directly by running
+ * Original Dockerfile is copied into the docker image as ```/opt2/Dockerfile```. One can view this directly by running
 
-  ```docker run nciccbr/ccbr_xxx_yyy cat /opt/Dockerfile```
+  ```docker run nciccbr/ccbr_xxx_yyy cat /opt2/Dockerfile```
  
  * All docker images are built using one of the following base images:
    * ```ubuntu:16.04```
