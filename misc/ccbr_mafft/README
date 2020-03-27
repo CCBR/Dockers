@@ -1,0 +1,32 @@
+# Building the Docker Container for MAFFT
+
+# See listing of images on computer
+docker image ls
+
+# Build Dockerfile
+docker build --tag=ccbr_mafft:v0.0.1 .
+
+# Peak around the container: verify things run correctly
+docker run -ti ccbr_mafft:v0.0.1 /bin/bash
+
+# Updating Tag  before pushing to DockerHub
+docker tag ccbr_mafft:v0.0.1 skchronicles/ccbr_mafft:v0.0.1
+docker tag ccbr_mafft:v0.0.1 skchronicles/ccbr_mafft         # latest
+docker tag ccbr_mafft:v0.0.1 nciccbr/ccbr_mafft:v0.0.1
+docker tag ccbr_mafft:v0.0.1 nciccbr/ccbr_mafft              # latest
+
+# Check out new tag(s)
+docker image ls
+
+# Push new tagged image to DockerHub
+docker push skchronicles/ccbr_mafft:v0.0.1
+docker push skchronicles/ccbr_mafft:latest
+docker push nciccbr/ccbr_mafft:v0.0.1
+docker push nciccbr/ccbr_mafft:latest 
+
+# Run `covid`
+docker run -v $PWD:/data ccbr_mafft:v0.0.1 /opt/covid help
+docker run -v $PWD:/data ccbr_mafft:v0.0.1 /opt/covid list
+docker run -v $PWD:/data ccbr_mafft:v0.0.1 /opt/covid view
+docker run -v $PWD:/data ccbr_mafft:v0.0.1 /opt/covid download 
+docker run -v $PWD:/data ccbr_mafft:v0.0.1 /opt/covid msa input_seq [out_msa.fa]
