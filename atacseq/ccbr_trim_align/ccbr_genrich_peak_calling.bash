@@ -195,8 +195,9 @@ if [ "$nreplicates" -eq "2" ];then files="$PEAKFILE1 $PEAKFILE2 $POOLEDPEAKFILE"
 if [ "$nreplicates" -eq "3" ];then files="$PEAKFILE1 $PEAKFILE2 $PEAKFILE3 $POOLEDPEAKFILE"; fi
 if [ "$nreplicates" -eq "4" ];then files="$PEAKFILE1 $PEAKFILE2 $PEAKFILE3 $PEAKFILE4 $POOLEDPEAKFILE"; fi
 
-Rscript ${SCRIPTSFOLDER}/ccbr_annotate_bed.R -b $CONCENSUSBEDFILE -a ${f}.annotated -g $GENOME -l ${f}.genelist -f ${f}.annotation_summary
-cut -f1,2 ${CONCENSUSBEDFILE}.annotation_summary > ${CONCENSUSBEDFILE}.annotation_distribution
+f="$CONCENSUSBEDFILE"
+Rscript ${SCRIPTSFOLDER}/ccbr_annotate_bed.R -b $f -a ${f}.annotated -g $GENOME -l ${f}.genelist -f ${f}.annotation_summary
+cut -f1,2 ${f}.annotation_summary > ${f}.annotation_distribution
 
 if [ $FILTERPEAKS == "True" ];then
   qvalue=$QFILTER

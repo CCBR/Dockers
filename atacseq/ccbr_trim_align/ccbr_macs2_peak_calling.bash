@@ -219,7 +219,8 @@ if [ "$nreplicates" -eq 4 ];then
 python ${SCRIPTSFOLDER}/ccbr_get_concensus_peaks.py --peakfiles ${REP1NAME}.macs2.narrowPeak ${REP2NAME}.macs2.narrowPeak ${REP3NAME}.macs2.narrowPeak ${REP4NAME}.macs2.narrowPeak --outbed $CONCENSUSBEDFILE
 fi
 
-Rscript ${SCRIPTSFOLDER}/ccbr_annotate_bed.R -n $CONCENSUSBEDFILE -a ${f}.annotated -g $GENOME -l ${f}.genelist -f ${f}.annotation_summary
-cut -f1,2 ${CONCENSUSBEDFILE}.annotation_summary > ${CONCENSUSBEDFILE}.annotation_distribution
+f="$CONCENSUSBEDFILE"
+Rscript ${SCRIPTSFOLDER}/ccbr_annotate_bed.R -b $f -a ${f}.annotated -g $GENOME -l ${f}.genelist -f ${f}.annotation_summary
+cut -f1,2 ${f}.annotation_summary > ${f}.annotation_distribution
 
 conda deactivate

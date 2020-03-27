@@ -16,7 +16,7 @@ parser <- ArgumentParser()
 # specify our desired options 
 # by default ArgumentParser will add an help option 
 
-parser$add_argument("-n", "--bed", required=TRUE,
+parser$add_argument("-b", "--bed", required=TRUE,
                     dest="bed", help="narrowpeak file")
 parser$add_argument("-a", "--annotated", required=TRUE, dest="annotated",
                     help="annotated output file")
