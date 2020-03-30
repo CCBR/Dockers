@@ -4,11 +4,11 @@ import os
 
 
 # SAMPLES=["test_input"]
-GENOME="hg38"
-WORKDIR="/data/CBLCCBR/kopardevn_tmp/atacseq_pipeline/ccbr1005"
-SINGULARITY_IMAGES_DIR="/data/CBLCCBR/kopardevn_tmp/singularity_images"
+GENOME="mm10"
+WORKDIR="/data/CBLCCBR/kopardevn_tmp/atacseq_pipeline/ccbr872/test"
+SINGULARITY_IMAGES_DIR="/data/CCBR_Pipeliner/db/PipeDB/db/SingularityImages"
 SINGULARITY_VERSION="3.5.2"
-SINGULARITY_IMAGE_VERSION="0.1.10"
+SINGULARITY_IMAGE_VERSION="0.1.21"
 # SCRIPTS_DIR="/opt2"
 SCRIPTS_DIR="/data2/scripts"
 
@@ -437,20 +437,19 @@ fi
 if [ "$nsamples" -eq "2" ];then
 rep2name=$(echo {input.tagAlign2}|awk -F"/" "{{print \$NF}}"|awk -F".tagAlign" "{{print \$1}}")
 tagAlign2=$(echo {input.tagAlign2}|awk -F"/" "{{print \$NF}}")
-genomefile2=$(echo {input.genomefile2}|awk -F"/" "{{print \$NF}}")
 
 PYTHONNOUSERSITE=1 singularity exec --cleanenv \
 -B {params.workdir}/:/data2/,/data/CCBR_Pipeliner/db/PipeDB/Indices/{params.genome}_basic/indexes/:/index \
 {params.singularity_images_dir}/ccbr_atacseq_v{params.singularity_image_version}.sif \
-bash {params.scriptsdir}/ccbr_macs2_peak_calling_two_replicates.bash \
+bash {params.scriptsdir}/ccbr_macs2_peak_calling.bash \
 --tagalign1 $tagAlign1 \
 --tagalign2 $tagAlign2 \
 --rep1name $rep1name \
 --rep2name $rep2name \
 --samplename {params.grp} \
---genomefilerep1 $genomefile1 \
---genomefilerep2 $genomefile2 \
+--genomefile $genomefile1 \
 --genomename {params.genome} \
+--concensusbedfile {params.grp}.concensus.bed \
 --scriptsfolder {params.scriptsdir}
 
 ls -larth
@@ -491,8 +490,65 @@ rsync -az --progress {params.grp}.peakstats.txt {params.workdir}/peaks/macs2/
 
 fi
 
-# the groups as more than 2 replicates ... rare
-if [ "$nsamples" -gt "2" ];then
+# the groups has 3 replicates
+if [ "$nsamples" -eq "3" ];then
+rep2name=$(echo {input.tagAlign2}|awk -F"/" "{{print \$NF}}"|awk -F".tagAlign" "{{print \$1}}")
+tagAlign2=$(echo {input.tagAlign2}|awk -F"/" "{{print \$NF}}")
+rep3name=$(echo {input.tagAlign3}|awk -F"/" "{{print \$NF}}"|awk -F".tagAlign" "{{print \$1}}")
+tagAlign3=$(echo {input.tagAlign3}|awk -F"/" "{{print \$NF}}")
+
+PYTHONNOUSERSITE=1 singularity exec --cleanenv \
+-B {params.workdir}/:/data2/,/data/CCBR_Pipeliner/db/PipeDB/Indices/{params.genome}_basic/indexes/:/index \
+{params.singularity_images_dir}/ccbr_atacseq_v{params.singularity_image_version}.sif \
+bash {params.scriptsdir}/ccbr_macs2_peak_calling.bash \
+--tagalign1 $tagAlign1 \
+--tagalign2 $tagAlign2 \
+--tagalign2 $tagAlign3 \
+--rep1name $rep1name \
+--rep2name $rep2name \
+--rep2name $rep3name \
+--samplename {params.grp} \
+--genomename {params.genome} \
+--genomefile $genomefile1 \
+--concensusbedfile {params.grp}.macs2.concensus.bed \
+--scriptsfolder {params.scriptsdir}
+
+ls -larth
+
+for f in ${{rep1name}} ${{rep2name}} ${{rep3name}} {params.grp}
+do
+rsync -az --progress ${{f}}.macs2_summits.bed {params.workdir}/peaks/macs2/
+rsync -az --progress ${{f}}.macs2.narrowPeak {params.workdir}/peaks/macs2/
+rsync -az --progress ${{f}}.macs2.qfilter.narrowPeak {params.workdir}/peaks/macs2/
+
+for g in "annotated" "genelist" "annotation_summary" "annotation_distribution"
+do
+	rsync -az --progress ${{f}}.macs2.narrowPeak.${{g}} {params.workdir}/qc/peak_annotation/
+	rsync -az --progress ${{f}}.macs2.qfilter.narrowPeak.${{g}} {params.workdir}/qc/peak_annotation/
+done
+
+rsync -az --progress ${{f}}.macs2.bw {params.workdir}/peaks/macs2/bigwig/
+rsync -az --progress ${{f}}.tn5knicks.bed.gz {params.workdir}/peaks/macs2/tn5knicks/
+rsync -az --progress ${{f}}.tn5knicks.bam {params.workdir}/peaks/macs2/tn5knicks/
+rsync -az --progress ${{f}}.tn5knicks.bam.bai {params.workdir}/peaks/macs2/tn5knicks/
+
+echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/macs2/${{f}}.macs2.narrowPeak\n" >> {output.samplePeakFileList}
+echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/macs2/tn5knicks/${{f}}.tn5knicks.bam\n" >> {output.tn5knicksFileList}
+
+done
+
+rsync -az --progress {params.grp}.macs2.consensus.bed {params.workdir}/peaks/macs2/
+for g in "annotated" "genelist" "annotation_summary" "annotation_distribution"
+do
+	rsync -az --progress {params.grp}.macs2.consensus.bed.${{g}} {params.workdir}/qc/peak_annotation/
+done
+
+echo -ne "{params.grp}\t{params.grp}\t{params.workdir}/peaks/macs2/{params.grp}.macs2.consensus.bed\n" >> {output.groupPeakFileList}
+
+fi
+
+# the groups as more than 3 replicates ... rare
+if [ "$nsamples" -gt "3" ];then
 echo "THIS CODE IS NOT WRITTEN YET!!!"
 exit 1
 fi
@@ -579,7 +635,7 @@ exit 1
 fi
 
 # the groups as more than 2 replicates ... rare
-if [ "$nsamples" -gt "2" ];then
+if [ "$nsamples" -gt "3" ];then
 echo "THIS CODE IS NOT WRITTEN YET!!!"
 exit 1
 fi
@@ -627,6 +683,60 @@ rsync -az --progress ${{g}}.tn5knicks.bam.bai {params.workdir}/peaks/genrich/tn5
 done
 echo -ne "${{rep1name}}\t{{params.grp}}\t{params.workdir}/peaks/genrich/tn5knicks/${{rep1name}}.genrich.tn5knicks.bed.gz\n" >> {output.tn5knicksFileList}
 echo -ne "${{rep2name}}\t{{params.grp}}\t{params.workdir}/peaks/genrich/tn5knicks/${{rep2name}}.genrich.tn5knicks.bed.gz\n" >> {output.tn5knicksFileList}
+
+fi
+
+# the groups has 3 replicates
+if [ "$nsamples" -eq "3" ];then
+rep3name=$(echo {input.qsortedbam3}|awk -F"/" "{{print \$NF}}"|awk -F".qsorted" "{{print \$1}}")
+qsortedbam3=$(echo {input.qsortedbam3}|awk -F"/" "{{print \$NF}}")
+peakfile3="${{rep3name}}.genrich.narrowPeak"
+
+PYTHONNOUSERSITE=1 singularity exec --cleanenv \
+-B {params.workdir}/:/data2/,/data/CCBR_Pipeliner/db/PipeDB/Indices/{params.genome}_basic/indexes/:/index \
+{params.singularity_images_dir}/ccbr_atacseq_v{params.singularity_image_version}.sif \
+bash {params.scriptsdir}/ccbr_genrich_peak.bash \
+--bamrep1 $qsortedbam1 \
+--bamrep2 $qsortedbam2 \
+--bamrep3 $qsortedbam3 \
+--peakfile1 $peakfile1 \
+--peakfile2 $peakfile2 \
+--peakfile3 $peakfile3 \
+--genome {params.genome} \
+--pooledpeakfile {params.grp}.genrich.narrowPeak \
+--concensusbedfile {params.grp}.genrich.concensus.bed \
+--scriptsfolder {params.scriptsdir}
+
+ls -alrth
+
+for f in $rep1name $rep2name $rep3name {params.grp}
+do
+rsync -az --progress ${{f}}.genrich.narrowPeak {params.workdir}/peaks/genrich/
+rsync -az --progress ${{f}}.genrich.qfilter.narrowPeak {params.workdir}/peaks/genrich/
+
+for g in "annotated" "genelist" "annotation_summary" "annotation_distribution"
+do
+	rsync -az --progress ${{f}}.genrich.narrowPeak.${{g}} {params.workdir}/qc/peak_annotation/
+	rsync -az --progress ${{f}}.genrich.qfilter.narrowPeak.${{g}} {params.workdir}/qc/peak_annotation/
+done
+
+rsync -az --progress ${{f}}.genrich.reads.bw {params.workdir}/peaks/genrich/bigwig/
+rsync -az --progress ${{f}}.genrich.tn5knicks.bed.gz {params.workdir}/peaks/genrich/tn5knicks/
+rsync -az --progress ${{f}}.genrich.tn5knicks.bam {params.workdir}/peaks/genrich/tn5knicks/
+rsync -az --progress ${{f}}.genrich.tn5knicks.bam.bai {params.workdir}/peaks/genrich/tn5knicks/
+
+echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/genrich/${{f}}.genrich.narrowPeak\n" >> {output.samplePeakFileList}
+echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/genrich/tn5knicks/${{f}}.genrich.tn5knicks.bam\n" >> {output.tn5knicksFileList}
+
+done
+
+rsync -az --progress {params.grp}.genrich.consensus.bed {params.workdir}/peaks/genrich/
+for g in "annotated" "genelist" "annotation_summary" "annotation_distribution"
+do
+	rsync -az --progress {params.grp}.genrich.consensus.bed.${{g}} {params.workdir}/qc/peak_annotation/
+done
+
+echo -ne "{params.grp}\t{params.grp}\t{params.workdir}/peaks/genrich/{params.grp}.genrich.consensus.bed\n" >> {output.groupPeakFileList}
 
 fi
 """
