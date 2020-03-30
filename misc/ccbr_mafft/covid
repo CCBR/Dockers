@@ -7,8 +7,8 @@ ofname="${3:-sequence_msa_$timestamp.fa}"
 iname="${2:-}"
 
 # Functions
-view() { grep '^>' -A 50 /data/example/sequences.fa| grep -v '^--' | more ;}
-download() { echo -e "Saving output to file: sequences_${timestamp}.fa"; curl --retry 5 --verbose -L 'https://www.ncbi.nlm.nih.gov/genomes/VirusVariation/vvsearch2/?q=*:*&fq=%7B!tag=SeqType_s%7DSeqType_s:(%22Nucleotide%22)&fq=VirusLineageId_ss:(2697049)&cmd=download&sort=SourceDB_s%20desc,CreateDate_dt%20desc&dlfmt=fasta&fl=id,Definition_s,Nucleotide_seq' > sequences_"$timestamp".fa || echo 'Download failed... please try again!';}
+view() { grep '^>' -A 50 /opt/example/sequences.fa| grep -v '^--' | more ;}
+download() { echo -e "Saving output to file: sequences_${timestamp}.fa"; curl --http1.1 --retry 5 --verbose -L 'https://www.ncbi.nlm.nih.gov/genomes/VirusVariation/vvsearch2/?q=*:*&fq=%7B!tag=SeqType_s%7DSeqType_s:(%22Nucleotide%22)&fq=VirusLineageId_ss:(2697049)&cmd=download&sort=SourceDB_s%20desc,CreateDate_dt%20desc&dlfmt=fasta&fl=id,Definition_s,Nucleotide_seq' > sequences_"$timestamp".fa || echo 'Download failed... please try again!';}
 msa() { 
   # Check for required input
     [ -z "$iname" ] && echo -e "USAGE: Please provide input sequences!\n\tcovid msa  <input_sequences.fa> [output_msa.fa]" && exit 1 

@@ -56,4 +56,3 @@ Examples:
     covid msa mysequences.fa
     covid help
 ```
-
