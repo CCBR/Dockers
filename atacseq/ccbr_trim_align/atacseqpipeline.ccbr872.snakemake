@@ -216,52 +216,103 @@ if [ "$nsamples" -eq "1" ]; then
 	exit 1
 fi
 
+if [ "$nsamples" -gt "4" ]; then
+	echo "5 or more REPLICATES...THIS CODE IS NOT WRITTEN YET!!!"
+	exit 1
+fi
+
 # the groups has 2 replicates
-if [ "$nsamples" -eq "2" ]; then
+if [ "$nsamples" -ge "2" ]; then
 
 	tagAlign=$(echo {input.tagAlign1}|awk -F"/" "{{print \$NF}}")
 	samplename=$(echo $tagAlign|awk -F".tagAlign" "{{print \$1}}")
 	while read s g n;do
 		if [ "$samplename" == "$s" ];then
-			echo -ne "$s\t{input.tagAlign1}\tmacs2\tsample\t$n\n" >> {output.outfile}
+			echo -ne "$s\t{input.tagAlign1}\tmacs2\tindividual_replicate\t$n\n" >> {output.outfile}
 		fi
 	done < {input.macs_sample_peaks1}
 	while read s g n;do
-		echo -ne "$samplename\t{input.tagAlign1}\tmacs2\tgroup\t$n\n" >> {output.outfile}
+		echo -ne "$samplename\t{input.tagAlign1}\tmacs2\treplicates_pooled\t$n\n" >> {output.outfile}
+		echo -ne "$samplename\t{input.tagAlign1}\tmacs2\treplicates_consensus\t${{samplename}}.macs2.consensus.bed\n" >> {output.outfile}
 	done < {input.macs_group_peaks1}
 	while read s g n;do
 		if [ "$samplename" == "$s" ];then
-			echo -ne "$s\t{input.tagAlign1}\tgenrich\tsample\t$n\n" >> {output.outfile}
+			echo -ne "$s\t{input.tagAlign1}\tgenrich\tindividual_replicate\t$n\n" >> {output.outfile}
 		fi
 	done < {input.genrich_sample_peaks1}
 	while read s g n;do
-		echo -ne "$samplename\t{input.tagAlign1}\tgenrich\tgroup\t$n\n" >> {output.outfile}
+		echo -ne "$samplename\t{input.tagAlign1}\tgenrich\treplicates_pooled\t$n\n" >> {output.outfile}
+		echo -ne "$samplename\t{input.tagAlign1}\tgenrich\treplicates_consensus\t${{samplename}}.genrich.consensus.bed\n" >> {output.outfile}
 	done < {input.genrich_group_peaks1}
 
 	tagAlign=$(echo {input.tagAlign2}|awk -F"/" "{{print \$NF}}")
 	samplename=$(echo $tagAlign|awk -F".tagAlign" "{{print \$1}}")
 	while read s g n;do
 		if [ "$samplename" == "$s" ];then
-			echo -ne "$s\t{input.tagAlign2}\tmacs2\tsample\t$n\n" >> {output.outfile}
+			echo -ne "$s\t{input.tagAlign2}\tmacs2\tindividual_replicate\t$n\n" >> {output.outfile}
 		fi
 	done < {input.macs_sample_peaks2}
 	while read s g n;do
-		echo -ne "$samplename\t{input.tagAlign2}\tmacs2\tgroup\t$n\n" >> {output.outfile}
+		echo -ne "$samplename\t{input.tagAlign2}\tmacs2\treplicates_pooled\t$n\n" >> {output.outfile}
+		echo -ne "$samplename\t{input.tagAlign2}\tmacs2\treplicates_consensus\t${{samplename}}.macs2.consensus.bed\n" >> {output.outfile}
 	done < {input.macs_group_peaks2}
 	while read s g n;do
 		if [ "$samplename" == "$s" ];then
-			echo -ne "$s\t{input.tagAlign2}\tgenrich\tsample\t$n\n" >> {output.outfile}
+			echo -ne "$s\t{input.tagAlign2}\tgenrich\tindividual_replicate\t$n\n" >> {output.outfile}
 		fi
 	done < {input.genrich_sample_peaks2}
 	while read s g n;do
-		echo -ne "$samplename\t{input.tagAlign2}\tgenrich\tgroup\t$n\n" >> {output.outfile}
+		echo -ne "$samplename\t{input.tagAlign2}\tgenrich\treplicates_pooled\t$n\n" >> {output.outfile}
+		echo -ne "$samplename\t{input.tagAlign2}\tgenrich\treplicates_consensus\t${{samplename}}.genrich.consensus.bed\n" >> {output.outfile}
 	done < {input.genrich_group_peaks2}
+
+	if [ "$nsamples" -ge "3" ];then
+		tagAlign=$(echo {input.tagAlign3}|awk -F"/" "{{print \$NF}}")
+		samplename=$(echo $tagAlign|awk -F".tagAlign" "{{print \$1}}")
+		while read s g n;do
+			if [ "$samplename" == "$s" ];then
+				echo -ne "$s\t{input.tagAlign3}\tmacs2\tindividual_replicate\t$n\n" >> {output.outfile}
+			fi
+		done < {input.macs_sample_peaks3}
+		while read s g n;do
+			echo -ne "$samplename\t{input.tagAlign3}\tmacs2\treplicates_pooled\t$n\n" >> {output.outfile}
+			echo -ne "$samplename\t{input.tagAlign3}\tmacs2\treplicates_consensus\t${{samplename}}.macs2.consensus.bed\n" >> {output.outfile}
+		done < {input.macs_group_peaks3}
+		while read s g n;do
+			if [ "$samplename" == "$s" ];then
+				echo -ne "$s\t{input.tagAlign3}\tgenrich\tindividual_replicate\t$n\n" >> {output.outfile}
+			fi
+		done < {input.genrich_sample_peaks3}
+		while read s g n;do
+			echo -ne "$samplename\t{input.tagAlign3}\tgenrich\treplicates_pooled\t$n\n" >> {output.outfile}
+			echo -ne "$samplename\t{input.tagAlign3}\tgenrich\treplicates_consensus\t${{samplename}}.genrich.consensus.bed\n" >> {output.outfile}
+		done < {input.genrich_group_peaks3}
+
+		if [ "$nsamples" -eq "4" ];then
+			tagAlign=$(echo {input.tagAlign4}|awk -F"/" "{{print \$NF}}")
+			samplename=$(echo $tagAlign|awk -F".tagAlign" "{{print \$1}}")
+			while read s g n;do
+				if [ "$samplename" == "$s" ];then
+					echo -ne "$s\t{input.tagAlign4}\tmacs2\tindividual_replicate\t$n\n" >> {output.outfile}
+				fi
+			done < {input.macs_sample_peaks4}
+			while read s g n;do
+				echo -ne "$samplename\t{input.tagAlign4}\tmacs2\treplicates_pooled\t$n\n" >> {output.outfile}
+				echo -ne "$samplename\t{input.tagAlign4}\tmacs2\treplicates_consensus\t${{samplename}}.macs2.consensus.bed\n" >> {output.outfile}
+			done < {input.macs_group_peaks4}
+			while read s g n;do
+				if [ "$samplename" == "$s" ];then
+					echo -ne "$s\t{input.tagAlign4}\tgenrich\tindividual_replicate\t$n\n" >> {output.outfile}
+				fi
+			done < {input.genrich_sample_peaks4}
+			while read s g n;do
+				echo -ne "$samplename\t{input.tagAlign4}\tgenrich\treplicates_pooled\t$n\n" >> {output.outfile}
+				echo -ne "$samplename\t{input.tagAlign4}\tgenrich\treplicates_consensus\t${{samplename}}.genrich.consensus.bed\n" >> {output.outfile}
+			done < {input.genrich_group_peaks4}
+		fi
+	fi
 fi
 
-if [ "$nsamples" -gt "2" ]; then
-	echo "3 or more REPLICATES...THIS CODE IS NOT WRITTEN YET!!!"
-	exit 1
-fi
 
 """
 
@@ -449,44 +500,32 @@ bash {params.scriptsdir}/ccbr_macs2_peak_calling.bash \
 --samplename {params.grp} \
 --genomefile $genomefile1 \
 --genomename {params.genome} \
---concensusbedfile {params.grp}.concensus.bed \
+--concensusbedfile {params.grp}.macs2.concensus.bed \
 --scriptsfolder {params.scriptsdir}
 
 ls -larth
 
-
-rsync -az --progress ${{rep1name}}.macs2_summits.bed {params.workdir}/peaks/macs2/
-echo -ne "${{rep1name}}\t{params.grp}\t{params.workdir}/peaks/macs2/${{rep1name}}.macs2.narrowPeak\n" >> {output.samplePeakFileList}
-rsync -az --progress ${{rep1name}}.macs2.bw {params.workdir}/peaks/macs2/bigwig/
-rsync -az --progress ${{rep1name}}.tn5knicks.bed.gz {params.workdir}/peaks/macs2/tn5knicks/
-echo -ne "${{rep1name}}\t{{params.grp}}\t{params.workdir}/peaks/macs2/tn5knicks/${{rep1name}}.tn5knicks.bed.gz\n" >> {output.tn5knicksFileList}
-rsync -az --progress ${{rep1name}}.tn5knicks.bam {params.workdir}/peaks/macs2/tn5knicks/
-rsync -az --progress ${{rep1name}}.tn5knicks.bam.bai {params.workdir}/peaks/macs2/tn5knicks/
-
-
-rsync -az --progress ${{rep2name}}.macs2_summits.bed {params.workdir}/peaks/macs2/
-echo -ne "${{rep2name}}\t{params.grp}\t{params.workdir}/peaks/macs2/${{rep2name}}.macs2.narrowPeak\n" >> {output.samplePeakFileList}
-rsync -az --progress ${{rep2name}}.macs2.bw {params.workdir}/peaks/macs2/bigwig/
-rsync -az --progress ${{rep2name}}.tn5knicks.bed.gz {params.workdir}/peaks/macs2/tn5knicks/
-echo -ne "${{rep2name}}\t{{params.grp}}\t{params.workdir}/peaks/macs2/tn5knicks/${{rep2name}}.tn5knicks.bed.gz\n" >> {output.tn5knicksFileList}
-rsync -az --progress ${{rep2name}}.tn5knicks.bam {params.workdir}/peaks/macs2/tn5knicks/
-rsync -az --progress ${{rep2name}}.tn5knicks.bam.bai {params.workdir}/peaks/macs2/tn5knicks/
-
-rsync -az --progress {params.grp}.idr.narrowPeak.png {params.workdir}/peaks/macs2/
-rsync -az --progress {params.grp}.idr.log {params.workdir}/peaks/macs2/
-echo -ne "{params.grp}\t{params.grp}\t{params.workdir}/peaks/macs2/{params.grp}.idr.narrowPeak\n" >> {output.groupPeakFileList}
-
-for f in ${{rep1name}}.macs2.narrowPeak ${{rep2name}}.macs2.narrowPeak {params.grp}.idr.narrowPeak {params.grp}.idr.filt.narrowPeak ${{rep1name}}.macs2.qfilter.narrowPeak ${{rep2name}}.macs2.qfilter.narrowPeak {params.grp}.idr.qfilter.narrowPeak {params.grp}.idr.filt.qfilter.narrowPeak
+for f in $rep1name $rep2name {params.grp}
 do
-rsync -az $f {params.workdir}/peaks/macs2/
-rsync -az ${{f}}.annotated {params.workdir}/peaks/macs2/
-rsync -az ${{f}}.annotation_summary {params.workdir}/peaks/macs2/
-cut -f1,2 ${{f}}.annotation_summary > {params.workdir}/qc/peak_annotation/${{f}}.annotation_distribution
+rsync -az --progress ${{f}}.macs2_summits.bed {params.workdir}/peaks/macs2/
+rsync -az --progress ${{f}}.macs2.narrowPeak {params.workdir}/peaks/macs2/
+rsync -az --progress ${{f}}.macs2.qfilter.narrowPeak {params.workdir}/peaks/macs2/
+
+for g in "annotated" "genelist" "annotation_summary" "annotation_distribution"
+do
+	rsync -az --progress ${{f}}.macs2.narrowPeak.${{g}} {params.workdir}/qc/peak_annotation/
+	rsync -az --progress ${{f}}.macs2.qfilter.narrowPeak.${{g}} {params.workdir}/qc/peak_annotation/
 done
 
-rsync -az --progress {params.grp}.conservative.narrowPeak {params.workdir}/peaks/macs2/
-rsync -az --progress {params.grp}.optimal.narrowPeak {params.workdir}/peaks/macs2/
-rsync -az --progress {params.grp}.peakstats.txt {params.workdir}/peaks/macs2/
+rsync -az --progress ${{f}}.macs2.bw {params.workdir}/peaks/macs2/bigwig/
+rsync -az --progress ${{f}}.tn5knicks.bed.gz {params.workdir}/peaks/macs2/tn5knicks/
+rsync -az --progress ${{f}}.tn5knicks.bam {params.workdir}/peaks/macs2/tn5knicks/
+rsync -az --progress ${{f}}.tn5knicks.bam.bai {params.workdir}/peaks/macs2/tn5knicks/
+
+echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/macs2/${{f}}.macs2.narrowPeak\n" >> {output.samplePeakFileList}
+echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/macs2/tn5knicks/${{f}}.tn5knicks.bam\n" >> {output.tn5knicksFileList}
+
+done
 
 fi
 
@@ -515,7 +554,7 @@ bash {params.scriptsdir}/ccbr_macs2_peak_calling.bash \
 
 ls -larth
 
-for f in ${{rep1name}} ${{rep2name}} ${{rep3name}} {params.grp}
+for f in $rep1name $rep2name $rep3name {params.grp}
 do
 rsync -az --progress ${{f}}.macs2_summits.bed {params.workdir}/peaks/macs2/
 rsync -az --progress ${{f}}.macs2.narrowPeak {params.workdir}/peaks/macs2/
@@ -536,6 +575,11 @@ echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/macs2/${{f}}.macs2.narrow
 echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/macs2/tn5knicks/${{f}}.tn5knicks.bam\n" >> {output.tn5knicksFileList}
 
 done
+
+fi
+
+# for all replicates there will be consensus peaks
+if [ "$nsamples" -gt "2" ];then
 
 rsync -az --progress {params.grp}.macs2.consensus.bed {params.workdir}/peaks/macs2/
 for g in "annotated" "genelist" "annotation_summary" "annotation_distribution"
@@ -662,27 +706,26 @@ bash {params.scriptsdir}/ccbr_genrich_peak.bash \
 ls -alrth
 
 
-for f in $peakfile1 ${{rep1name}}.genrich.qfilter.narrowPeak $peakfile2 ${{rep2name}}.genrich.qfilter.narrowPeak {params.grp}.genrich.narrowPeak {params.grp}.genrich.qfilter.narrowPeak {params.grp}.genrich.concensus.bed; do
-rsync -az --progress $f {params.workdir}/peaks/genrich/
-rsync -az --progress ${{f}}.annotated {params.workdir}/peaks/genrich/
-rsync -az --progress ${{f}}.annotation_summary {params.workdir}/peaks/genrich/
-rsync -az --progress ${{f}}.annotation_distribution {params.workdir}/peaks/genrich/
+for f in $rep1name $rep2name {params.grp}
+do
+rsync -az --progress ${{f}}.genrich.narrowPeak {params.workdir}/peaks/genrich/
+rsync -az --progress ${{f}}.genrich.qfilter.narrowPeak {params.workdir}/peaks/genrich/
+
+for g in "annotated" "genelist" "annotation_summary" "annotation_distribution"
+do
+	rsync -az --progress ${{f}}.genrich.narrowPeak.${{g}} {params.workdir}/qc/peak_annotation/
+	rsync -az --progress ${{f}}.genrich.qfilter.narrowPeak.${{g}} {params.workdir}/qc/peak_annotation/
 done
 
-echo -ne "${{rep1name}}\t{params.grp}\t{params.workdir}/peaks/genrich/$peakfile1\n" >> {output.samplePeakFileList}
-echo -ne "${{rep2name}}\t{params.grp}\t{params.workdir}/peaks/genrich/$peakfile2\n" >> {output.samplePeakFileList}
-echo -ne "{params.grp}\t{params.grp}\t{params.workdir}/peaks/genrich/{params.grp}.genrich.narrowPeak\n" >> {output.groupPeakFileList}
+rsync -az --progress ${{f}}.genrich.reads.bw {params.workdir}/peaks/genrich/bigwig/
+rsync -az --progress ${{f}}.genrich.tn5knicks.bed.gz {params.workdir}/peaks/genrich/tn5knicks/
+rsync -az --progress ${{f}}.genrich.tn5knicks.bam {params.workdir}/peaks/genrich/tn5knicks/
+rsync -az --progress ${{f}}.genrich.tn5knicks.bam.bai {params.workdir}/peaks/genrich/tn5knicks/
 
-for f in $peakfile1 $peakfile2 {params.grp}.genrich.narrowPeak;do
-g=$(echo $f|sed "s/.narrowPeak//g")
-rsync -az --progress ${{g}}.reads.bed.gz {params.workdir}/peaks/genrich/bigwig/
-rsync -az --progress ${{g}}.reads.bw {params.workdir}/peaks/genrich/bigwig/
-rsync -az --progress ${{g}}.tn5knicks.bed.gz {params.workdir}/peaks/genrich/tn5knicks/
-rsync -az --progress ${{g}}.tn5knicks.bam {params.workdir}/peaks/genrich/tn5knicks/
-rsync -az --progress ${{g}}.tn5knicks.bam.bai {params.workdir}/peaks/genrich/tn5knicks/
+echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/genrich/${{f}}.genrich.narrowPeak\n" >> {output.samplePeakFileList}
+echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/genrich/tn5knicks/${{f}}.genrich.tn5knicks.bam\n" >> {output.tn5knicksFileList}
+
 done
-echo -ne "${{rep1name}}\t{{params.grp}}\t{params.workdir}/peaks/genrich/tn5knicks/${{rep1name}}.genrich.tn5knicks.bed.gz\n" >> {output.tn5knicksFileList}
-echo -ne "${{rep2name}}\t{{params.grp}}\t{params.workdir}/peaks/genrich/tn5knicks/${{rep2name}}.genrich.tn5knicks.bed.gz\n" >> {output.tn5knicksFileList}
 
 fi
 
@@ -729,6 +772,11 @@ echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/genrich/${{f}}.genrich.na
 echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/genrich/tn5knicks/${{f}}.genrich.tn5knicks.bam\n" >> {output.tn5knicksFileList}
 
 done
+
+fi
+
+# if you have replicates .. you will have consensus peaks
+if [ "$nsamples" -ge "2" ];then
 
 rsync -az --progress {params.grp}.genrich.consensus.bed {params.workdir}/peaks/genrich/
 for g in "annotated" "genelist" "annotation_summary" "annotation_distribution"
