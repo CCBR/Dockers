@@ -47,6 +47,7 @@ ${SCRIPTSFOLDER}/atac_assign_multimappers.py -k $multimapping --paired-end > ${s
 samtools view -@ $ncpus -bS -o ${samplename}.tmp3.bam ${samplename}.tmp2.sorted.sam
 samtools sort -@ $ncpus ${samplename}.tmp3.bam ${samplename}.tmp3.sorted
 
+
 bash ${SCRIPTSFOLDER}/ccbr_bam2nrf.bash \
 --bam ${samplename}.tmp3.sorted.bam \
 --preseq ${samplename}.preseq \

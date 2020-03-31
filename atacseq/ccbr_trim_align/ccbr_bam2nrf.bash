@@ -16,7 +16,13 @@ parser.add_argument('--nrf',required=True, help='NRF output file')
 parser.add_argument('--scriptsfolder',required=False, default='/opt2', help='folder where the scripts are... used for debuging without rebuilding the docker')
 EOF
 
+{
 preseq lc_extrap -B -D -o $PRESEQ $BAM -seed 12345 -v -l 100000000000 2> $PRESEQLOG
 python ${SCRIPTSFOLDER}/nrf.py $PRESEQLOG > $NRF
+} || {
+	echo "Preseq Failed!" > $NRF
+	cp $NRF $PRESEQLOG
+	cp $NRF $PRESEQ
+}
 
 conda deactivate
