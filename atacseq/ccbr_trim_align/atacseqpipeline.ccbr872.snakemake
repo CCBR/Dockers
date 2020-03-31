@@ -288,28 +288,28 @@ if [ "$nsamples" -ge "2" ]; then
 			echo -ne "$samplename\t{input.tagAlign3}\tgenrich\treplicates_consensus\t${{samplename}}.genrich.consensus.bed\n" >> {output.outfile}
 		done < {input.genrich_group_peaks3}
 
-		if [ "$nsamples" -eq "4" ];then
-			tagAlign=$(echo {input.tagAlign4}|awk -F"/" "{{print \$NF}}")
-			samplename=$(echo $tagAlign|awk -F".tagAlign" "{{print \$1}}")
-			while read s g n;do
-				if [ "$samplename" == "$s" ];then
-					echo -ne "$s\t{input.tagAlign4}\tmacs2\tindividual_replicate\t$n\n" >> {output.outfile}
-				fi
-			done < {input.macs_sample_peaks4}
-			while read s g n;do
-				echo -ne "$samplename\t{input.tagAlign4}\tmacs2\treplicates_pooled\t$n\n" >> {output.outfile}
-				echo -ne "$samplename\t{input.tagAlign4}\tmacs2\treplicates_consensus\t${{samplename}}.macs2.consensus.bed\n" >> {output.outfile}
-			done < {input.macs_group_peaks4}
-			while read s g n;do
-				if [ "$samplename" == "$s" ];then
-					echo -ne "$s\t{input.tagAlign4}\tgenrich\tindividual_replicate\t$n\n" >> {output.outfile}
-				fi
-			done < {input.genrich_sample_peaks4}
-			while read s g n;do
-				echo -ne "$samplename\t{input.tagAlign4}\tgenrich\treplicates_pooled\t$n\n" >> {output.outfile}
-				echo -ne "$samplename\t{input.tagAlign4}\tgenrich\treplicates_consensus\t${{samplename}}.genrich.consensus.bed\n" >> {output.outfile}
-			done < {input.genrich_group_peaks4}
-		fi
+		# if [ "$nsamples" -eq "4" ];then
+		# 	tagAlign=$(echo {input.tagAlign4}|awk -F"/" "{{print \$NF}}")
+		# 	samplename=$(echo $tagAlign|awk -F".tagAlign" "{{print \$1}}")
+		# 	while read s g n;do
+		# 		if [ "$samplename" == "$s" ];then
+		# 			echo -ne "$s\t{input.tagAlign4}\tmacs2\tindividual_replicate\t$n\n" >> {output.outfile}
+		# 		fi
+		# 	done < {input.macs_sample_peaks4}
+		# 	while read s g n;do
+		# 		echo -ne "$samplename\t{input.tagAlign4}\tmacs2\treplicates_pooled\t$n\n" >> {output.outfile}
+		# 		echo -ne "$samplename\t{input.tagAlign4}\tmacs2\treplicates_consensus\t${{samplename}}.macs2.consensus.bed\n" >> {output.outfile}
+		# 	done < {input.macs_group_peaks4}
+		# 	while read s g n;do
+		# 		if [ "$samplename" == "$s" ];then
+		# 			echo -ne "$s\t{input.tagAlign4}\tgenrich\tindividual_replicate\t$n\n" >> {output.outfile}
+		# 		fi
+		# 	done < {input.genrich_sample_peaks4}
+		# 	while read s g n;do
+		# 		echo -ne "$samplename\t{input.tagAlign4}\tgenrich\treplicates_pooled\t$n\n" >> {output.outfile}
+		# 		echo -ne "$samplename\t{input.tagAlign4}\tgenrich\treplicates_consensus\t${{samplename}}.genrich.consensus.bed\n" >> {output.outfile}
+		# 	done < {input.genrich_group_peaks4}
+		# fi
 	fi
 fi
 
