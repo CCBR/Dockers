@@ -45,9 +45,10 @@ samtools view -@ $ncpus -h ${samplename}.tmp1.sorted.bam > ${samplename}.tmp1.so
 cat ${samplename}.tmp1.sorted.sam | \
 ${SCRIPTSFOLDER}/atac_assign_multimappers.py -k $multimapping --paired-end > ${samplename}.tmp2.sorted.sam
 samtools view -@ $ncpus -bS -o ${samplename}.tmp3.bam ${samplename}.tmp2.sorted.sam
+samtools sort -@ $ncpus -o ${samplename}.tmp3.sorted.bam ${samplename}.tmp3.bam
 
 bash ${SCRIPTSFOLDER}/ccbr_bam2nrf.bash \
---bam ${samplename}.tmp2.sorted.sam \
+--bam ${samplename}.tmp3.sorted.bam \
 --preseq ${samplename}.preseq \
 --preseqlog ${samplename}.preseq.log \
 --nrf {samplename}.nrf \
@@ -99,6 +100,7 @@ if [ $KEEPFILES == "False" ];then
 rm -f ${samplename}.tmp1.bam \
 ${samplename}.tmp1.sorted.sam \
 ${samplename}.tmp2.sorted.sam \
+${samplename}.tmp3.sorted.bam \
 ${samplename}.tmp3.bam \
 ${samplename}.tmp4.bam \
 ${samplename}.tmp5.bam \
