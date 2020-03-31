@@ -52,7 +52,7 @@ bash ${SCRIPTSFOLDER}/ccbr_bam2nrf.bash \
 --bam ${samplename}.tmp3.sorted.bam \
 --preseq ${samplename}.preseq \
 --preseqlog ${samplename}.preseq.log \
---nrf {samplename}.nrf \
+--nrf ${samplename}.nrf \
 --scriptsfolder $SCRIPTSFOLDER
 
 samtools view -@ $ncpus -F 256 -u ${samplename}.tmp3.bam > ${samplename}.tmp4.bam
