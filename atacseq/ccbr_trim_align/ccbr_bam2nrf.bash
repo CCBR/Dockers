@@ -29,4 +29,8 @@ EOF
 		echo "Preseq Failed!" > $PRESEQ
 }
 
+if [ ! -f $PRESEQ ];then
+	echo "Preseq Failed!" > $PRESEQ
+fi
+
 conda deactivate
