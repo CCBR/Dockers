@@ -17,12 +17,16 @@ parser.add_argument('--scriptsfolder',required=False, default='/opt2', help='fol
 EOF
 
 {
-preseq lc_extrap -B -D -o $PRESEQ $BAM -seed 12345 -v -l 100000000000 2> $PRESEQLOG
-python ${SCRIPTSFOLDER}/nrf.py $PRESEQLOG > $NRF
+	preseq lc_extrap -B -D -o $PRESEQ $BAM -seed 12345 -v -l 100000000000 2> $PRESEQLOG
+	{
+		python ${SCRIPTSFOLDER}/nrf.py $PRESEQLOG > $NRF
+	} || {
+		echo "Preseq Failed!" > $NRF
+	}
 } || {
-	echo "Preseq Failed!" > $NRF
-	cp $NRF $PRESEQLOG
-	cp $NRF $PRESEQ
+		if [ ! -f $NRF ]; then echo "Preseq Failed!" > $NRF; fi
+		echo "Preseq Failed!" > $PRESEQLOG
+		echo "Preseq Failed!" > $PRESEQ
 }
 
 conda deactivate
