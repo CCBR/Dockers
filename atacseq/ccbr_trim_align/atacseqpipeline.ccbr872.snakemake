@@ -350,7 +350,7 @@ rule atac_trim_align_dedup:
 		sample="{sample}",
 		singularity_version=SINGULARITY_VERSION,
 		singularity_image_version=SINGULARITY_IMAGE_VERSION
-	threads: 32
+	threads: 56
 	output:
 		ta=join(WORKDIR,"tagAlign","{sample}.tagAlign.gz"),
 		fastqcraw1=join(WORKDIR,"qc","fastqc","{sample}.R1_fastqc.zip"),
