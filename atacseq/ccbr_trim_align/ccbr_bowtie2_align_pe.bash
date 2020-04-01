@@ -30,26 +30,33 @@ bowtie2 -X2000 -k $multimapping --very-sensitive --threads $ncpus -x /index/$gen
 
 
 samtools view -@ $ncpus -bS -o ${samplename}.bowtie2.bam ${samplename}.bowtie2.sam
+if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.bowtie2.sam;fi
 
 samtools sort -@ $ncpus ${samplename}.bowtie2.bam ${samplename}.bowtie2.sorted 
-
+mv ${samplename}.bowtie2.sorted.bam ${samplename}.bowtie2.bam
 samtools flagstat ${samplename}.bowtie2.bam > ${samplename}.bowtie2.bam.flagstat
-
-samtools index ${samplename}.bowtie2.sorted.bam
-
+samtools index ${samplename}.bowtie2.bam
 
 
-samtools view -@ $ncpus -F 516 -u ${samplename}.bowtie2.sorted.bam $CHROMOSOMES > ${samplename}.tmp1.bam
+samtools view -@ $ncpus -F 516 -u ${samplename}.bowtie2.bam $CHROMOSOMES > ${samplename}.tmp1.bam
 samtools sort -@ $ncpus -n ${samplename}.tmp1.bam ${samplename}.tmp1.sorted
-samtools view -@ $ncpus -h ${samplename}.tmp1.sorted.bam > ${samplename}.tmp1.sorted.sam
+mv ${samplename}.tmp1.sorted.bam ${samplename}.qsorted.bam
+
+samtools view -@ $ncpus -h ${samplename}.tmp1.bam > ${samplename}.tmp1.sorted.sam
+if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.tmp1.bam;fi
+
 cat ${samplename}.tmp1.sorted.sam | \
 ${SCRIPTSFOLDER}/atac_assign_multimappers.py -k $multimapping --paired-end > ${samplename}.tmp2.sorted.sam
-samtools view -@ $ncpus -bS -o ${samplename}.tmp3.bam ${samplename}.tmp2.sorted.sam
-samtools sort -@ $ncpus ${samplename}.tmp3.bam ${samplename}.tmp3.sorted
+if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.tmp1.sorted.sam;fi
 
+samtools view -@ $ncpus -bS -o ${samplename}.tmp3.bam ${samplename}.tmp2.sorted.sam
+if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.tmp2.sorted.sam;fi
+
+samtools sort -@ $ncpus ${samplename}.tmp3.bam ${samplename}.tmp3.sorted
+mv ${samplename}.tmp3.sorted.bam ${samplename}.tmp3.bam
 
 bash ${SCRIPTSFOLDER}/ccbr_bam2nrf.bash \
---bam ${samplename}.tmp3.sorted.bam \
+--bam ${samplename}.tmp3.bam \
 --preseq ${samplename}.preseq \
 --preseqlog ${samplename}.preseq.log \
 --nrf ${samplename}.nrf \
@@ -57,8 +64,14 @@ bash ${SCRIPTSFOLDER}/ccbr_bam2nrf.bash \
 
 samtools view -@ $ncpus -F 256 -u ${samplename}.tmp3.bam > ${samplename}.tmp4.bam
 samtools sort -@ $ncpus ${samplename}.tmp4.bam ${samplename}.dup
+if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.tmp3.bam;fi
+if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.tmp4.bam;fi
+
 samtools view -@ $ncpus -F 1796 -u ${samplename}.dup.bam > ${samplename}.tmp5.bam
 samtools sort -@ $ncpus ${samplename}.tmp5.bam ${samplename}.filt
+if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.dup.bam;fi
+if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.tmp5.bam;fi
+
 samtools index ${samplename}.filt.bam
 samtools flagstat ${samplename}.filt.bam > ${samplename}.filt.bam.flagstat
 
@@ -69,8 +82,10 @@ METRICS_FILE=${samplename}.dupmetric \
 VALIDATION_STRINGENCY=LENIENT \
 ASSUME_SORTED=true \
 REMOVE_DUPLICATES=false
+if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.filt.bam;fi
 
 samtools view -F 1796 -b -@ $ncpus -o ${samplename}.dedup.tmp.bam ${samplename}.dupmark.bam
+if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.dupmark.bam;fi
 
 samtools index ${samplename}.dedup.tmp.bam
 
@@ -78,12 +93,11 @@ samtools index ${samplename}.dedup.tmp.bam
 conda activate python3
 python ${SCRIPTSFOLDER}/ccbr_bam_filter_by_mapq.py -i ${samplename}.dedup.tmp.bam -o ${samplename}.dedup.bam -q 6
 conda deactivate
-
+if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.dedup.tmp.bam;fi
 
 samtools index ${samplename}.dedup.bam
 samtools flagstat ${samplename}.dedup.bam > ${samplename}.dedup.bam.flagstat
 samtools view -H ${samplename}.dedup.bam|grep "^@SQ"|cut -f2,3|sed "s/SN://g"|sed "s/LN://g" > ${samplename}.genome
-# samtools sort -@ $ncpus -n ${samplename}.dedup.bam ${samplename}.dedup.qsorted
 
 bedtools bamtobed -i ${samplename}.dedup.bam | \
 awk 'BEGIN{OFS="\t"}{$4="N";$5="1000";print $0}'| \
@@ -95,23 +109,4 @@ echo "$nreads"|awk '{printf("%d\tMapped reads\n",$1)}' >> ${samplename}.nreads.t
 nreads=`grep -m1 total ${samplename}.dedup.bam.flagstat|awk '{print $1}'`
 echo "$nreads"|awk '{printf("%d\tAfter deduplication\n",$1)}' >> ${samplename}.nreads.txt
 
-mv ${samplename}.tmp1.sorted.bam ${samplename}.qsorted.bam
 
-if [ $KEEPFILES == "False" ];then
-rm -f ${samplename}.tmp1.bam \
-${samplename}.tmp1.sorted.sam \
-${samplename}.tmp2.sorted.sam \
-${samplename}.tmp3.sorted.bam \
-${samplename}.tmp3.bam \
-${samplename}.tmp4.bam \
-${samplename}.tmp5.bam \
-${samplename}.dup.bam \
-${samplename}.dedup.tmp.bam* \
-${samplename}.dupmark.bam \
-${samplename}.bowtie2.bam \
-${samplename}.bowtie2.sam \
-${samplename}.filt.bam \
-${samplename}.bowtie2.sorted.bam*
-fi
-
-# rm -f ${samplename}.dedup.qsorted.bam
