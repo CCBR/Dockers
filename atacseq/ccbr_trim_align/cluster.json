@@ -1,0 +1,44 @@
+{
+    "__default__": {
+        "gres": "lscratch:256",
+        "mem": "48g",
+        "partition": "norm",
+        "threads": "2",
+        "time": "24:00:00"
+    },
+    "atac_trim_align_dedup": {
+        "mem": "48g",
+        "threads": "56",
+        "time": "24:00:00",
+        "partition": "norm,ccr",
+        "gres": "lscratch:256"
+    },
+    "atac_macs_peakcalling": {
+        "mem": "48g",
+        "threads": "2",
+        "time": "24:00:00",
+        "partition": "norm,ccr",
+        "gres": "lscratch:256"
+    },
+    "atac_genrich_peakcalling": {
+        "mem": "48g",
+        "threads": "2",
+        "time": "24:00:00",
+        "partition": "norm,ccr",
+        "gres": "lscratch:256"
+    },
+    "atac_motifs": {
+        "mem": "120g",
+        "threads": "56",
+        "time": "96:00:00",
+        "partition": "norm,ccr",
+        "gres": "lscratch:256"
+    },
+    "atac_tss": {
+        "mem": "60g",
+        "threads": "56",
+        "time": "12:00:00",
+        "partition": "norm,ccr",
+        "gres": "lscratch:256"
+    }
+}
