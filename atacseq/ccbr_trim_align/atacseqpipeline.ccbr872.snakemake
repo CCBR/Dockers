@@ -477,7 +477,7 @@ bash {params.scriptsdir}/ccbr_macs2_peak_calling.bash \
 --samplename {params.grp} \
 --genomefile $genomefile1 \
 --genome {params.genome} \
---concensusbedfile {params.grp}.macs2.concensus.bed \
+--consensusbedfile {params.grp}.macs2.consensus.bed \
 --scriptsfolder {params.scriptsdir}
 
 ls -larth
@@ -526,7 +526,7 @@ bash {params.scriptsdir}/ccbr_macs2_peak_calling.bash \
 --samplename {params.grp} \
 --genome {params.genome} \
 --genomefile $genomefile1 \
---concensusbedfile {params.grp}.macs2.concensus.bed \
+--consensusbedfile {params.grp}.macs2.consensus.bed \
 --scriptsfolder {params.scriptsdir}
 
 ls -larth
@@ -677,7 +677,7 @@ bash {params.scriptsdir}/ccbr_genrich_peak_calling.bash \
 --peakfile2 $peakfile2 \
 --genome {params.genome} \
 --pooledpeakfile {params.grp}.genrich.narrowPeak \
---concensusbedfile {params.grp}.genrich.concensus.bed \
+--consensusbedfile {params.grp}.genrich.consensus.bed \
 --scriptsfolder {params.scriptsdir}
 
 ls -alrth
@@ -728,7 +728,7 @@ bash {params.scriptsdir}/ccbr_genrich_peak_calling.bash \
 --peakfile3 $peakfile3 \
 --genome {params.genome} \
 --pooledpeakfile {params.grp}.genrich.narrowPeak \
---concensusbedfile {params.grp}.genrich.concensus.bed \
+--consensusbedfile {params.grp}.genrich.consensus.bed \
 --scriptsfolder {params.scriptsdir}
 
 ls -alrth

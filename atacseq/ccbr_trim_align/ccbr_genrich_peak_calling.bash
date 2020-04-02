@@ -67,7 +67,7 @@ parser.add_argument('--peakfile4',required=False, help='output narrowPeak file f
 
 parser.add_argument('--genome',required=True,help="hg19/38 or mm9/10")
 parser.add_argument('--pooledpeakfile',required=False, help='output narrowPeak file for both replicates combined')
-parser.add_argument('--concensusbedfile',required=False, help='consensus overlapping MAX majority peaks in bed format')
+parser.add_argument('--consensusbedfile',required=False, help='consensus overlapping MAX majority peaks in bed format')
 
 # only required if filtering
 parser.add_argument('--filterpeaks',required=False, default="True", help='filterpeaks by qvalue: True or False')
@@ -140,8 +140,8 @@ if [ "$nreplicates" -ge "2" ];then
 		echo "Pooled peak file is required if replicates are present!"
 		exit
 	fi
-	if [ ! $CONCENSUSBEDFILE ]; then
-		echo "Concensus bed file is required if replicates are present!"
+	if [ ! $CONSENSUSBEDFILE ]; then
+		echo "Consensus bed file is required if replicates are present!"
 		exit
 	fi
 fi
@@ -170,7 +170,7 @@ fi
 
 if [ "$nreplicates" -ge 2 ]; then
 
-	# merged peak calling and concensus peak calling
+	# merged peak calling and consensus peak calling
 	READSBEDFILE=${POOLEDPEAKFILE%.*}.reads.bed
 	READSBWFILE=${POOLEDPEAKFILE%.*}.reads.bw
 	KNICKSBEDFILE=${POOLEDPEAKFILE%.*}.tn5knicks.bed
@@ -178,13 +178,13 @@ if [ "$nreplicates" -ge 2 ]; then
 
 	if [ "$nreplicates" -eq "2" ];then
 	Genrich  -t $BAMREP1,$BAMREP2 -o $POOLEDPEAKFILE  -j -r -e $excludelist -v -s 5 -m 6 -b $READSBEDFILE -q 1 -l 200 -g 200
-	python ${SCRIPTSFOLDER}/ccbr_get_concensus_peaks.py --peakfiles $PEAKFILE1 $PEAKFILE2 --outbed $CONCENSUSBEDFILE
+	python ${SCRIPTSFOLDER}/ccbr_get_consensus_peaks.py --peakfiles $PEAKFILE1 $PEAKFILE2 --outbed $CONSENSUSBEDFILE
 	elif [ "$nreplicates" -eq "3" ];then
 	Genrich  -t $BAMREP1,$BAMREP2,$BAMREP3 -o $POOLEDPEAKFILE  -j -r -e $excludelist -v -s 5 -m 6 -b $READSBEDFILE -q 1 -l 200 -g 200
-	python ${SCRIPTSFOLDER}/ccbr_get_concensus_peaks.py --peakfiles $PEAKFILE1 $PEAKFILE2 $PEAKFILE3 --outbed $CONCENSUSBEDFILE
+	python ${SCRIPTSFOLDER}/ccbr_get_consensus_peaks.py --peakfiles $PEAKFILE1 $PEAKFILE2 $PEAKFILE3 --outbed $CONSENSUSBEDFILE
 	elif [ "$nreplicates" -eq "4" ];then
 	Genrich  -t $BAMREP1,$BAMREP2,$BAMREP3,$BAMREP4 -o $POOLEDPEAKFILE  -j -r -e $excludelist -v -s 5 -m 6 -b $READSBEDFILE -q 1 -l 200 -g 200
-	python ${SCRIPTSFOLDER}/ccbr_get_concensus_peaks.py --peakfiles $PEAKFILE1 $PEAKFILE2 $PEAKFILE3 $PEAKFILE4 --outbed $CONCENSUSBEDFILE
+	python ${SCRIPTSFOLDER}/ccbr_get_consensus_peaks.py --peakfiles $PEAKFILE1 $PEAKFILE2 $PEAKFILE3 $PEAKFILE4 --outbed $CONSENSUSBEDFILE
 	fi
 
 	processReadsBed $BAMREP2 $READSBEDFILE $READSBWFILE $GENOME $KNICKSBEDFILE $KNICKSBAMFILE
@@ -195,7 +195,7 @@ if [ "$nreplicates" -eq "2" ];then files="$PEAKFILE1 $PEAKFILE2 $POOLEDPEAKFILE"
 if [ "$nreplicates" -eq "3" ];then files="$PEAKFILE1 $PEAKFILE2 $PEAKFILE3 $POOLEDPEAKFILE"; fi
 if [ "$nreplicates" -eq "4" ];then files="$PEAKFILE1 $PEAKFILE2 $PEAKFILE3 $PEAKFILE4 $POOLEDPEAKFILE"; fi
 
-f="$CONCENSUSBEDFILE"
+f="$CONSENSUSBEDFILE"
 Rscript ${SCRIPTSFOLDER}/ccbr_annotate_bed.R -b $f -a ${f}.annotated -g $GENOME -l ${f}.genelist -f ${f}.annotation_summary
 cut -f1,2 ${f}.annotation_summary > ${f}.annotation_distribution
 
