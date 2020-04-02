@@ -670,7 +670,7 @@ peakfile2="${{rep2name}}.genrich.narrowPeak"
 PYTHONNOUSERSITE=1 singularity exec --cleanenv \
 -B {params.workdir}/:/data2/,/data/CCBR_Pipeliner/db/PipeDB/Indices/{params.genome}_basic/indexes/:/index \
 {params.singularity_images_dir}/ccbr_atacseq_v{params.singularity_image_version}.sif \
-bash {params.scriptsdir}/ccbr_genrich_peak.bash \
+bash {params.scriptsdir}/ccbr_genrich_peak_calling.bash \
 --bamrep1 $qsortedbam1 \
 --bamrep2 $qsortedbam2 \
 --peakfile1 $peakfile1 \
@@ -719,7 +719,7 @@ peakfile3="${{rep3name}}.genrich.narrowPeak"
 PYTHONNOUSERSITE=1 singularity exec --cleanenv \
 -B {params.workdir}/:/data2/,/data/CCBR_Pipeliner/db/PipeDB/Indices/{params.genome}_basic/indexes/:/index \
 {params.singularity_images_dir}/ccbr_atacseq_v{params.singularity_image_version}.sif \
-bash {params.scriptsdir}/ccbr_genrich_peak.bash \
+bash {params.scriptsdir}/ccbr_genrich_peak_calling.bash \
 --bamrep1 $qsortedbam1 \
 --bamrep2 $qsortedbam2 \
 --bamrep3 $qsortedbam3 \
