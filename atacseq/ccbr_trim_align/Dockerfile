@@ -239,7 +239,7 @@ COPY atac_assign_multimappers.py /opt2
 COPY ccbr_bam2FLD.py /opt2
 COPY ccbr_bam_filter_by_mapq.py /opt2
 COPY ccbr_counts2density.py /opt2
-COPY ccbr_get_concensus_peaks.py /opt2
+COPY ccbr_get_consensus_peaks.py /opt2
 COPY ccbr_narrowPeak_distributions.py /opt2
 COPY get_tss_with_bins_per_gene.py /opt2
 COPY nrf.py /opt2

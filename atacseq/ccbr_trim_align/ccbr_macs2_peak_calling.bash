@@ -81,7 +81,7 @@ parser.add_argument('--rep4name',required=False, help='Name for replicate 4')
 
 parser.add_argument('--genome',required=True,help="hg19/38 or mm9/10")
 # parser.add_argument('--pooledpeakfile',required=False, help='output narrowPeak file for all replicates combined') # pooled peakfile will be named <samplename>.macs.narrowPeak
-parser.add_argument('--concensusbedfile',required=False, help='consensus overlapping MAX majority peaks in bed format')
+parser.add_argument('--consensusbedfile',required=False, help='consensus overlapping MAX majority peaks in bed format')
 
 parser.add_argument('--extsize',required=False, default=200, help='extsize')
 parser.add_argument('--shiftsize',required=False, default=100, help='shiftsize')
@@ -161,8 +161,8 @@ if [ "$nreplicates" -eq "4" ];then
 fi
 
 if [ "$nreplicates" -ge "2" ];then
-	if [ ! $CONCENSUSBEDFILE ]; then
-		echo "Concensus bed file is required if replicates are present!"
+	if [ ! $CONSENSUSBEDFILE ]; then
+		echo "Consensus bed file is required if replicates are present!"
 		exit
 	fi
 fi
@@ -206,20 +206,20 @@ bedSort ${pooled} ${pooled}
 pigz -f -p4 ${pooled}
 callPeaks ${pooled}.gz ${SAMPLENAME}.macs2 $GENOME $SHIFTSIZE $EXTSIZE $FILTERPEAKS $QFILTER $GENOMEFILE $SCRIPTSFOLDER
 
-# concensus peak calling
+# consensus peak calling
 if [ "$nreplicates" -eq 2 ];then
-python ${SCRIPTSFOLDER}/ccbr_get_concensus_peaks.py --peakfiles ${REP1NAME}.macs2.narrowPeak ${REP2NAME}.macs2.narrowPeak --outbed $CONCENSUSBEDFILE
+python ${SCRIPTSFOLDER}/ccbr_get_consensus_peaks.py --peakfiles ${REP1NAME}.macs2.narrowPeak ${REP2NAME}.macs2.narrowPeak --outbed $CONSENSUSBEDFILE
 fi
 
 if [ "$nreplicates" -eq 3 ];then
-python ${SCRIPTSFOLDER}/ccbr_get_concensus_peaks.py --peakfiles ${REP1NAME}.macs2.narrowPeak ${REP2NAME}.macs2.narrowPeak ${REP3NAME}.macs2.narrowPeak --outbed $CONCENSUSBEDFILE
+python ${SCRIPTSFOLDER}/ccbr_get_consensus_peaks.py --peakfiles ${REP1NAME}.macs2.narrowPeak ${REP2NAME}.macs2.narrowPeak ${REP3NAME}.macs2.narrowPeak --outbed $CONSENSUSBEDFILE
 fi
 
 if [ "$nreplicates" -eq 4 ];then
-python ${SCRIPTSFOLDER}/ccbr_get_concensus_peaks.py --peakfiles ${REP1NAME}.macs2.narrowPeak ${REP2NAME}.macs2.narrowPeak ${REP3NAME}.macs2.narrowPeak ${REP4NAME}.macs2.narrowPeak --outbed $CONCENSUSBEDFILE
+python ${SCRIPTSFOLDER}/ccbr_get_consensus_peaks.py --peakfiles ${REP1NAME}.macs2.narrowPeak ${REP2NAME}.macs2.narrowPeak ${REP3NAME}.macs2.narrowPeak ${REP4NAME}.macs2.narrowPeak --outbed $CONSENSUSBEDFILE
 fi
 
-f="$CONCENSUSBEDFILE"
+f="$CONSENSUSBEDFILE"
 Rscript ${SCRIPTSFOLDER}/ccbr_annotate_bed.R -b $f -a ${f}.annotated -g $GENOME -l ${f}.genelist -f ${f}.annotation_summary
 cut -f1,2 ${f}.annotation_summary > ${f}.annotation_distribution
 

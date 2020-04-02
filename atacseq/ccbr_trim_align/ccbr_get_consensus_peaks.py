@@ -4,7 +4,7 @@ import uuid
 import pandas
 parser = argparse.ArgumentParser(description="""
 
-Get concensus peaks from multiple narrowPeak files
+Get consensus peaks from multiple narrowPeak files
 This is similar to the consensus MAX peaks from https://dx.doi.org/10.5936%2Fcsbj.201401002
 
 On Biowulf the following modules need to be pre-loaded
