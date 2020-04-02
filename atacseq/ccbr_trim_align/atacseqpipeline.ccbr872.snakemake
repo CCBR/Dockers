@@ -708,6 +708,10 @@ fi
 
 # the groups has 3 replicates
 if [ "$nsamples" -eq "3" ];then
+rep2name=$(echo {input.qsortedbam2}|awk -F"/" "{{print \$NF}}"|awk -F".qsorted" "{{print \$1}}")
+qsortedbam2=$(echo {input.qsortedbam2}|awk -F"/" "{{print \$NF}}")
+peakfile2="${{rep2name}}.genrich.narrowPeak"
+
 rep3name=$(echo {input.qsortedbam3}|awk -F"/" "{{print \$NF}}"|awk -F".qsorted" "{{print \$1}}")
 qsortedbam3=$(echo {input.qsortedbam3}|awk -F"/" "{{print \$NF}}")
 peakfile3="${{rep3name}}.genrich.narrowPeak"
