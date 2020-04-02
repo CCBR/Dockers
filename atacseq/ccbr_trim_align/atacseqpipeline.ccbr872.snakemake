@@ -476,7 +476,7 @@ bash {params.scriptsdir}/ccbr_macs2_peak_calling.bash \
 --rep2name $rep2name \
 --samplename {params.grp} \
 --genomefile $genomefile1 \
---genomename {params.genome} \
+--genome {params.genome} \
 --concensusbedfile {params.grp}.macs2.concensus.bed \
 --scriptsfolder {params.scriptsdir}
 
@@ -524,7 +524,7 @@ bash {params.scriptsdir}/ccbr_macs2_peak_calling.bash \
 --rep2name $rep2name \
 --rep3name $rep3name \
 --samplename {params.grp} \
---genomename {params.genome} \
+--genome {params.genome} \
 --genomefile $genomefile1 \
 --concensusbedfile {params.grp}.macs2.concensus.bed \
 --scriptsfolder {params.scriptsdir}
