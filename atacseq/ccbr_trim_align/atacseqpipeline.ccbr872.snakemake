@@ -495,12 +495,12 @@ do
 done
 
 rsync -az --progress ${{f}}.macs2.bw {params.workdir}/peaks/macs2/bigwig/
-rsync -az --progress ${{f}}.tn5knicks.bed.gz {params.workdir}/peaks/macs2/tn5knicks/
-rsync -az --progress ${{f}}.tn5knicks.bam {params.workdir}/peaks/macs2/tn5knicks/
-rsync -az --progress ${{f}}.tn5knicks.bam.bai {params.workdir}/peaks/macs2/tn5knicks/
+rsync -az --progress ${{f}}.macs2.tn5knicks.bed.gz {params.workdir}/peaks/macs2/tn5knicks/
+rsync -az --progress ${{f}}.macs2.tn5knicks.bam {params.workdir}/peaks/macs2/tn5knicks/
+rsync -az --progress ${{f}}.macs2.tn5knicks.bam.bai {params.workdir}/peaks/macs2/tn5knicks/
 
 echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/macs2/${{f}}.macs2.narrowPeak\n" >> {output.samplePeakFileList}
-echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/macs2/tn5knicks/${{f}}.tn5knicks.bam\n" >> {output.tn5knicksFileList}
+echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/macs2/tn5knicks/${{f}}.macs2.tn5knicks.bam\n" >> {output.tn5knicksFileList}
 
 done
 
@@ -544,12 +544,12 @@ do
 done
 
 rsync -az --progress ${{f}}.macs2.bw {params.workdir}/peaks/macs2/bigwig/
-rsync -az --progress ${{f}}.tn5knicks.bed.gz {params.workdir}/peaks/macs2/tn5knicks/
-rsync -az --progress ${{f}}.tn5knicks.bam {params.workdir}/peaks/macs2/tn5knicks/
-rsync -az --progress ${{f}}.tn5knicks.bam.bai {params.workdir}/peaks/macs2/tn5knicks/
+rsync -az --progress ${{f}}.macs2.tn5knicks.bed.gz {params.workdir}/peaks/macs2/tn5knicks/
+rsync -az --progress ${{f}}.macs2.tn5knicks.bam {params.workdir}/peaks/macs2/tn5knicks/
+rsync -az --progress ${{f}}.macs2.tn5knicks.bam.bai {params.workdir}/peaks/macs2/tn5knicks/
 
 echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/macs2/${{f}}.macs2.narrowPeak\n" >> {output.samplePeakFileList}
-echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/macs2/tn5knicks/${{f}}.tn5knicks.bam\n" >> {output.tn5knicksFileList}
+echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/macs2/tn5knicks/${{f}}.macs2.tn5knicks.bam\n" >> {output.tn5knicksFileList}
 
 done
 
