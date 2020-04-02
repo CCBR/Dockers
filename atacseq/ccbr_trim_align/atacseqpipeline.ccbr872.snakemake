@@ -519,10 +519,10 @@ PYTHONNOUSERSITE=1 singularity exec --cleanenv \
 bash {params.scriptsdir}/ccbr_macs2_peak_calling.bash \
 --tagalign1 $tagAlign1 \
 --tagalign2 $tagAlign2 \
---tagalign2 $tagAlign3 \
+--tagalign3 $tagAlign3 \
 --rep1name $rep1name \
 --rep2name $rep2name \
---rep2name $rep3name \
+--rep3name $rep3name \
 --samplename {params.grp} \
 --genomename {params.genome} \
 --genomefile $genomefile1 \
