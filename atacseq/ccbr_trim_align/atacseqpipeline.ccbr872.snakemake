@@ -232,8 +232,7 @@ if [ "$nsamples" -ge "2" ]; then
 		fi
 	done < {input.macs_sample_peaks1}
 	while read s g n;do
-		echo -ne "$samplename\t{input.tagAlign1}\tmacs2\treplicates_pooled\t$n\n" >> {output.outfile}
-		echo -ne "$samplename\t{input.tagAlign1}\tmacs2\treplicates_consensus\t${{samplename}}.macs2.consensus.bed\n" >> {output.outfile}
+		echo -ne "$samplename\t{input.tagAlign1}\tmacs2\treplicates_consensus\t$n\n" >> {output.outfile}
 	done < {input.macs_group_peaks1}
 	while read s g n;do
 		if [ "$samplename" == "$s" ];then
@@ -241,8 +240,7 @@ if [ "$nsamples" -ge "2" ]; then
 		fi
 	done < {input.genrich_sample_peaks1}
 	while read s g n;do
-		echo -ne "$samplename\t{input.tagAlign1}\tgenrich\treplicates_pooled\t$n\n" >> {output.outfile}
-		echo -ne "$samplename\t{input.tagAlign1}\tgenrich\treplicates_consensus\t${{samplename}}.genrich.consensus.bed\n" >> {output.outfile}
+		echo -ne "$samplename\t{input.tagAlign1}\tgenrich\treplicates_consensus\t$n\n" >> {output.outfile}
 	done < {input.genrich_group_peaks1}
 
 	tagAlign=$(echo {input.tagAlign2}|awk -F"/" "{{print \$NF}}")
@@ -253,8 +251,7 @@ if [ "$nsamples" -ge "2" ]; then
 		fi
 	done < {input.macs_sample_peaks2}
 	while read s g n;do
-		echo -ne "$samplename\t{input.tagAlign2}\tmacs2\treplicates_pooled\t$n\n" >> {output.outfile}
-		echo -ne "$samplename\t{input.tagAlign2}\tmacs2\treplicates_consensus\t${{samplename}}.macs2.consensus.bed\n" >> {output.outfile}
+		echo -ne "$samplename\t{input.tagAlign2}\tmacs2\treplicates_consensus\t$n\n" >> {output.outfile}
 	done < {input.macs_group_peaks2}
 	while read s g n;do
 		if [ "$samplename" == "$s" ];then
@@ -262,8 +259,7 @@ if [ "$nsamples" -ge "2" ]; then
 		fi
 	done < {input.genrich_sample_peaks2}
 	while read s g n;do
-		echo -ne "$samplename\t{input.tagAlign2}\tgenrich\treplicates_pooled\t$n\n" >> {output.outfile}
-		echo -ne "$samplename\t{input.tagAlign2}\tgenrich\treplicates_consensus\t${{samplename}}.genrich.consensus.bed\n" >> {output.outfile}
+		echo -ne "$samplename\t{input.tagAlign2}\tgenrich\treplicates_consensus\t$n\n" >> {output.outfile}
 	done < {input.genrich_group_peaks2}
 
 	if [ "$nsamples" -ge "3" ];then
@@ -275,8 +271,7 @@ if [ "$nsamples" -ge "2" ]; then
 			fi
 		done < {input.macs_sample_peaks3}
 		while read s g n;do
-			echo -ne "$samplename\t{input.tagAlign3}\tmacs2\treplicates_pooled\t$n\n" >> {output.outfile}
-			echo -ne "$samplename\t{input.tagAlign3}\tmacs2\treplicates_consensus\t${{samplename}}.macs2.consensus.bed\n" >> {output.outfile}
+			echo -ne "$samplename\t{input.tagAlign3}\tmacs2\treplicates_consensus\t$n\n" >> {output.outfile}
 		done < {input.macs_group_peaks3}
 		while read s g n;do
 			if [ "$samplename" == "$s" ];then
@@ -284,8 +279,7 @@ if [ "$nsamples" -ge "2" ]; then
 			fi
 		done < {input.genrich_sample_peaks3}
 		while read s g n;do
-			echo -ne "$samplename\t{input.tagAlign3}\tgenrich\treplicates_pooled\t$n\n" >> {output.outfile}
-			echo -ne "$samplename\t{input.tagAlign3}\tgenrich\treplicates_consensus\t${{samplename}}.genrich.consensus.bed\n" >> {output.outfile}
+			echo -ne "$samplename\t{input.tagAlign3}\tgenrich\treplicates_consensus\t$n\n" >> {output.outfile}
 		done < {input.genrich_group_peaks3}
 	fi
 fi
