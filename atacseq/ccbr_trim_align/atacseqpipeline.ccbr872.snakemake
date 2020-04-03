@@ -478,26 +478,27 @@ ls -larth
 
 for f in $rep1name $rep2name {params.grp}
 do
-rsync -az --progress ${{f}}.macs2_summits.bed {params.workdir}/peaks/macs2/
-rsync -az --progress ${{f}}.macs2.narrowPeak {params.workdir}/peaks/macs2/
-rsync -az --progress ${{f}}.macs2.qfilter.narrowPeak {params.workdir}/peaks/macs2/
+	rsync -az --progress ${{f}}.macs2_summits.bed {params.workdir}/peaks/macs2/
+	rsync -az --progress ${{f}}.macs2.narrowPeak {params.workdir}/peaks/macs2/
+	rsync -az --progress ${{f}}.macs2.qfilter.narrowPeak {params.workdir}/peaks/macs2/
 
-for g in "annotated" "genelist" "annotation_summary" "annotation_distribution"
-do
-	rsync -az --progress ${{f}}.macs2.narrowPeak.${{g}} {params.workdir}/qc/peak_annotation/
-	rsync -az --progress ${{f}}.macs2.qfilter.narrowPeak.${{g}} {params.workdir}/qc/peak_annotation/
+	for g in "annotated" "genelist" "annotation_summary" "annotation_distribution"
+	do
+		rsync -az --progress ${{f}}.macs2.narrowPeak.${{g}} {params.workdir}/qc/peak_annotation/
+		rsync -az --progress ${{f}}.macs2.qfilter.narrowPeak.${{g}} {params.workdir}/qc/peak_annotation/
+	done
+
+	rsync -az --progress ${{f}}.macs2.bw {params.workdir}/peaks/macs2/bigwig/
+	rsync -az --progress ${{f}}.macs2.tn5knicks.bed.gz {params.workdir}/peaks/macs2/tn5knicks/
+	rsync -az --progress ${{f}}.macs2.tn5knicks.bam {params.workdir}/peaks/macs2/tn5knicks/
+	rsync -az --progress ${{f}}.macs2.tn5knicks.bam.bai {params.workdir}/peaks/macs2/tn5knicks/
+
+	echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/macs2/tn5knicks/${{f}}.macs2.tn5knicks.bam\n" >> {output.tn5knicksFileList}
 done
 
-rsync -az --progress ${{f}}.macs2.bw {params.workdir}/peaks/macs2/bigwig/
-rsync -az --progress ${{f}}.macs2.tn5knicks.bed.gz {params.workdir}/peaks/macs2/tn5knicks/
-rsync -az --progress ${{f}}.macs2.tn5knicks.bam {params.workdir}/peaks/macs2/tn5knicks/
-rsync -az --progress ${{f}}.macs2.tn5knicks.bam.bai {params.workdir}/peaks/macs2/tn5knicks/
-
-echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/macs2/${{f}}.macs2.narrowPeak\n" >> {output.samplePeakFileList}
-echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/macs2/tn5knicks/${{f}}.macs2.tn5knicks.bam\n" >> {output.tn5knicksFileList}
-
+for f in $rep1name $rep2name
 done
-
+	echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/macs2/${{f}}.macs2.narrowPeak\n" >> {output.samplePeakFileList}
 fi
 
 # the groups has 3 replicates
@@ -527,24 +528,27 @@ ls -larth
 
 for f in $rep1name $rep2name $rep3name {params.grp}
 do
-rsync -az --progress ${{f}}.macs2_summits.bed {params.workdir}/peaks/macs2/
-rsync -az --progress ${{f}}.macs2.narrowPeak {params.workdir}/peaks/macs2/
-rsync -az --progress ${{f}}.macs2.qfilter.narrowPeak {params.workdir}/peaks/macs2/
+	rsync -az --progress ${{f}}.macs2_summits.bed {params.workdir}/peaks/macs2/
+	rsync -az --progress ${{f}}.macs2.narrowPeak {params.workdir}/peaks/macs2/
+	rsync -az --progress ${{f}}.macs2.qfilter.narrowPeak {params.workdir}/peaks/macs2/
 
-for g in "annotated" "genelist" "annotation_summary" "annotation_distribution"
-do
-	rsync -az --progress ${{f}}.macs2.narrowPeak.${{g}} {params.workdir}/qc/peak_annotation/
-	rsync -az --progress ${{f}}.macs2.qfilter.narrowPeak.${{g}} {params.workdir}/qc/peak_annotation/
+	for g in "annotated" "genelist" "annotation_summary" "annotation_distribution"
+	do
+		rsync -az --progress ${{f}}.macs2.narrowPeak.${{g}} {params.workdir}/qc/peak_annotation/
+		rsync -az --progress ${{f}}.macs2.qfilter.narrowPeak.${{g}} {params.workdir}/qc/peak_annotation/
+	done
+
+	rsync -az --progress ${{f}}.macs2.bw {params.workdir}/peaks/macs2/bigwig/
+	rsync -az --progress ${{f}}.macs2.tn5knicks.bed.gz {params.workdir}/peaks/macs2/tn5knicks/
+	rsync -az --progress ${{f}}.macs2.tn5knicks.bam {params.workdir}/peaks/macs2/tn5knicks/
+	rsync -az --progress ${{f}}.macs2.tn5knicks.bam.bai {params.workdir}/peaks/macs2/tn5knicks/
+
+
+	echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/macs2/tn5knicks/${{f}}.macs2.tn5knicks.bam\n" >> {output.tn5knicksFileList}
 done
 
-rsync -az --progress ${{f}}.macs2.bw {params.workdir}/peaks/macs2/bigwig/
-rsync -az --progress ${{f}}.macs2.tn5knicks.bed.gz {params.workdir}/peaks/macs2/tn5knicks/
-rsync -az --progress ${{f}}.macs2.tn5knicks.bam {params.workdir}/peaks/macs2/tn5knicks/
-rsync -az --progress ${{f}}.macs2.tn5knicks.bam.bai {params.workdir}/peaks/macs2/tn5knicks/
-
-echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/macs2/${{f}}.macs2.narrowPeak\n" >> {output.samplePeakFileList}
-echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/macs2/tn5knicks/${{f}}.macs2.tn5knicks.bam\n" >> {output.tn5knicksFileList}
-
+for f in $rep1name $rep2name $rep3name
+	echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/macs2/${{f}}.macs2.narrowPeak\n" >> {output.samplePeakFileList}
 done
 
 fi
@@ -679,23 +683,26 @@ ls -alrth
 
 for f in $rep1name $rep2name {params.grp}
 do
-rsync -az --progress ${{f}}.genrich.narrowPeak {params.workdir}/peaks/genrich/
-rsync -az --progress ${{f}}.genrich.qfilter.narrowPeak {params.workdir}/peaks/genrich/
+	rsync -az --progress ${{f}}.genrich.narrowPeak {params.workdir}/peaks/genrich/
+	rsync -az --progress ${{f}}.genrich.qfilter.narrowPeak {params.workdir}/peaks/genrich/
 
-for g in "annotated" "genelist" "annotation_summary" "annotation_distribution"
-do
-	rsync -az --progress ${{f}}.genrich.narrowPeak.${{g}} {params.workdir}/qc/peak_annotation/
-	rsync -az --progress ${{f}}.genrich.qfilter.narrowPeak.${{g}} {params.workdir}/qc/peak_annotation/
+	for g in "annotated" "genelist" "annotation_summary" "annotation_distribution"
+	do
+		rsync -az --progress ${{f}}.genrich.narrowPeak.${{g}} {params.workdir}/qc/peak_annotation/
+		rsync -az --progress ${{f}}.genrich.qfilter.narrowPeak.${{g}} {params.workdir}/qc/peak_annotation/
+	done
+
+	rsync -az --progress ${{f}}.genrich.reads.bw {params.workdir}/peaks/genrich/bigwig/
+	rsync -az --progress ${{f}}.genrich.tn5knicks.bed.gz {params.workdir}/peaks/genrich/tn5knicks/
+	rsync -az --progress ${{f}}.genrich.tn5knicks.bam {params.workdir}/peaks/genrich/tn5knicks/
+	rsync -az --progress ${{f}}.genrich.tn5knicks.bam.bai {params.workdir}/peaks/genrich/tn5knicks/
+
+	echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/genrich/tn5knicks/${{f}}.genrich.tn5knicks.bam\n" >> {output.tn5knicksFileList}
 done
 
-rsync -az --progress ${{f}}.genrich.reads.bw {params.workdir}/peaks/genrich/bigwig/
-rsync -az --progress ${{f}}.genrich.tn5knicks.bed.gz {params.workdir}/peaks/genrich/tn5knicks/
-rsync -az --progress ${{f}}.genrich.tn5knicks.bam {params.workdir}/peaks/genrich/tn5knicks/
-rsync -az --progress ${{f}}.genrich.tn5knicks.bam.bai {params.workdir}/peaks/genrich/tn5knicks/
-
-echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/genrich/${{f}}.genrich.narrowPeak\n" >> {output.samplePeakFileList}
-echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/genrich/tn5knicks/${{f}}.genrich.tn5knicks.bam\n" >> {output.tn5knicksFileList}
-
+for f in $rep1name $rep2name
+do
+	echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/genrich/${{f}}.genrich.narrowPeak\n" >> {output.samplePeakFileList}
 done
 
 fi
@@ -729,23 +736,26 @@ ls -alrth
 
 for f in $rep1name $rep2name $rep3name {params.grp}
 do
-rsync -az --progress ${{f}}.genrich.narrowPeak {params.workdir}/peaks/genrich/
-rsync -az --progress ${{f}}.genrich.qfilter.narrowPeak {params.workdir}/peaks/genrich/
+	rsync -az --progress ${{f}}.genrich.narrowPeak {params.workdir}/peaks/genrich/
+	rsync -az --progress ${{f}}.genrich.qfilter.narrowPeak {params.workdir}/peaks/genrich/
 
-for g in "annotated" "genelist" "annotation_summary" "annotation_distribution"
-do
-	rsync -az --progress ${{f}}.genrich.narrowPeak.${{g}} {params.workdir}/qc/peak_annotation/
-	rsync -az --progress ${{f}}.genrich.qfilter.narrowPeak.${{g}} {params.workdir}/qc/peak_annotation/
+	for g in "annotated" "genelist" "annotation_summary" "annotation_distribution"
+	do
+		rsync -az --progress ${{f}}.genrich.narrowPeak.${{g}} {params.workdir}/qc/peak_annotation/
+		rsync -az --progress ${{f}}.genrich.qfilter.narrowPeak.${{g}} {params.workdir}/qc/peak_annotation/
+	done
+
+	rsync -az --progress ${{f}}.genrich.reads.bw {params.workdir}/peaks/genrich/bigwig/
+	rsync -az --progress ${{f}}.genrich.tn5knicks.bed.gz {params.workdir}/peaks/genrich/tn5knicks/
+	rsync -az --progress ${{f}}.genrich.tn5knicks.bam {params.workdir}/peaks/genrich/tn5knicks/
+	rsync -az --progress ${{f}}.genrich.tn5knicks.bam.bai {params.workdir}/peaks/genrich/tn5knicks/
+
+	echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/genrich/tn5knicks/${{f}}.genrich.tn5knicks.bam\n" >> {output.tn5knicksFileList}
 done
 
-rsync -az --progress ${{f}}.genrich.reads.bw {params.workdir}/peaks/genrich/bigwig/
-rsync -az --progress ${{f}}.genrich.tn5knicks.bed.gz {params.workdir}/peaks/genrich/tn5knicks/
-rsync -az --progress ${{f}}.genrich.tn5knicks.bam {params.workdir}/peaks/genrich/tn5knicks/
-rsync -az --progress ${{f}}.genrich.tn5knicks.bam.bai {params.workdir}/peaks/genrich/tn5knicks/
-
-echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/genrich/${{f}}.genrich.narrowPeak\n" >> {output.samplePeakFileList}
-echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/genrich/tn5knicks/${{f}}.genrich.tn5knicks.bam\n" >> {output.tn5knicksFileList}
-
+for f in $rep1name $rep2name $rep3name
+do
+	echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/genrich/${{f}}.genrich.narrowPeak\n" >> {output.samplePeakFileList}
 done
 
 fi
