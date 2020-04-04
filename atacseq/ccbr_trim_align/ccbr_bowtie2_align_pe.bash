@@ -32,7 +32,7 @@ bowtie2 -X2000 -k $multimapping --very-sensitive --threads $ncpus -x /index/$gen
 
 
 samtools view -@ $ncpus -bS -o ${samplename}.bowtie2.bam ${samplename}.bowtie2.sam
-if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.bowtie2.sam;fi
+rm -rf ${samplename}.bowtie2.sam
 
 samtools sort -@ $ncpus -o ${samplename}.bowtie2.sorted.bam ${samplename}.bowtie2.bam 
 mv ${samplename}.bowtie2.sorted.bam ${samplename}.bowtie2.bam
@@ -45,14 +45,14 @@ samtools sort -@ $ncpus -n -o ${samplename}.tmp1.sorted.bam ${samplename}.tmp1.b
 mv ${samplename}.tmp1.sorted.bam ${samplename}.qsorted.bam
 
 samtools view -@ $ncpus -h ${samplename}.tmp1.bam > ${samplename}.tmp1.sorted.sam
-if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.tmp1.bam;fi
+rm -rf ${samplename}.tmp1.bam
 
 cat ${samplename}.tmp1.sorted.sam | \
 ${SCRIPTSFOLDER}/atac_assign_multimappers.py -k $multimapping --paired-end > ${samplename}.tmp2.sorted.sam
-if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.tmp1.sorted.sam;fi
+rm -rf ${samplename}.tmp1.sorted.sam
 
 samtools view -@ $ncpus -bS -o ${samplename}.tmp3.bam ${samplename}.tmp2.sorted.sam
-if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.tmp2.sorted.sam;fi
+rm -rf ${samplename}.tmp2.sorted.sam
 
 samtools sort -@ $ncpus -o ${samplename}.tmp3.sorted.bam ${samplename}.tmp3.bam 
 mv ${samplename}.tmp3.sorted.bam ${samplename}.tmp3.bam
@@ -66,13 +66,11 @@ bash ${SCRIPTSFOLDER}/ccbr_bam2nrf.bash \
 
 samtools view -@ $ncpus -F 256 -u ${samplename}.tmp3.bam > ${samplename}.tmp4.bam
 samtools sort -@ $ncpus -o ${samplename}.dup.bam ${samplename}.tmp4.bam
-if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.tmp3.bam;fi
-if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.tmp4.bam;fi
+rm -rf ${samplename}.tmp3.bam ${samplename}.tmp4.bam
 
 samtools view -@ $ncpus -F 1796 -u ${samplename}.dup.bam > ${samplename}.tmp5.bam
 samtools sort -@ $ncpus -o ${samplename}.filt.bam ${samplename}.tmp5.bam 
-if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.dup.bam;fi
-if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.tmp5.bam;fi
+rm -rf ${samplename}.dup.bam ${samplename}.tmp5.bam
 
 samtools index ${samplename}.filt.bam
 samtools flagstat ${samplename}.filt.bam > ${samplename}.filt.bam.flagstat
@@ -95,7 +93,7 @@ samtools index ${samplename}.dedup.tmp.bam
 conda activate python3
 python ${SCRIPTSFOLDER}/ccbr_bam_filter_by_mapq.py -i ${samplename}.dedup.tmp.bam -o ${samplename}.dedup.bam -q 6
 conda deactivate
-if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.dedup.tmp.bam;fi
+rm -rf ${samplename}.dedup.tmp.bam
 
 samtools index ${samplename}.dedup.bam
 samtools flagstat ${samplename}.dedup.bam > ${samplename}.dedup.bam.flagstat
