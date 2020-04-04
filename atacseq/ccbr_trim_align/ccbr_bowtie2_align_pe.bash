@@ -75,7 +75,7 @@ rm -rf ${samplename}.dup.bam ${samplename}.tmp5.bam
 samtools index ${samplename}.filt.bam
 samtools flagstat ${samplename}.filt.bam > ${samplename}.filt.bam.flagstat
 
-java -Xmx4G -jar ${SCRIPTSFOLDER}/picardcloud.jar MarkDuplicates \
+java -Xmx100G -jar ${SCRIPTSFOLDER}/picardcloud.jar MarkDuplicates \
 INPUT=${samplename}.filt.bam \
 OUTPUT=${samplename}.dupmark.bam \
 METRICS_FILE=${samplename}.dupmetric \
