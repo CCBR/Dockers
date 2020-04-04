@@ -1,5 +1,7 @@
 #!/bin/bash
 
+. /opt2/conda/etc/profile.d/conda.sh
+conda activate python3
 
 set -e -x -o pipefail
 ARGPARSE_DESCRIPTION="Adapter trimmed (and blacklist filtered) fastqs are aligned to genome using bowtie2, multimappers are properly assigned, deduplicated using picard, filtered based on mapq, bams converted to tagAlign files."      # this is optional
@@ -32,14 +34,14 @@ bowtie2 -X2000 -k $multimapping --very-sensitive --threads $ncpus -x /index/$gen
 samtools view -@ $ncpus -bS -o ${samplename}.bowtie2.bam ${samplename}.bowtie2.sam
 if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.bowtie2.sam;fi
 
-samtools sort -@ $ncpus ${samplename}.bowtie2.bam ${samplename}.bowtie2.sorted 
+samtools sort -@ $ncpus -o ${samplename}.bowtie2.sorted.bam ${samplename}.bowtie2.bam 
 mv ${samplename}.bowtie2.sorted.bam ${samplename}.bowtie2.bam
 samtools flagstat ${samplename}.bowtie2.bam > ${samplename}.bowtie2.bam.flagstat
 samtools index ${samplename}.bowtie2.bam
 
 
 samtools view -@ $ncpus -F 516 -u ${samplename}.bowtie2.bam $CHROMOSOMES > ${samplename}.tmp1.bam
-samtools sort -@ $ncpus -n ${samplename}.tmp1.bam ${samplename}.tmp1.sorted
+samtools sort -@ $ncpus -n -o ${samplename}.tmp1.sorted.bam ${samplename}.tmp1.bam 
 mv ${samplename}.tmp1.sorted.bam ${samplename}.qsorted.bam
 
 samtools view -@ $ncpus -h ${samplename}.tmp1.bam > ${samplename}.tmp1.sorted.sam
@@ -52,7 +54,7 @@ if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.tmp1.sorted.sam;fi
 samtools view -@ $ncpus -bS -o ${samplename}.tmp3.bam ${samplename}.tmp2.sorted.sam
 if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.tmp2.sorted.sam;fi
 
-samtools sort -@ $ncpus ${samplename}.tmp3.bam ${samplename}.tmp3.sorted
+samtools sort -@ $ncpus -o ${samplename}.tmp3.sorted.bam ${samplename}.tmp3.bam 
 mv ${samplename}.tmp3.sorted.bam ${samplename}.tmp3.bam
 
 bash ${SCRIPTSFOLDER}/ccbr_bam2nrf.bash \
@@ -63,12 +65,12 @@ bash ${SCRIPTSFOLDER}/ccbr_bam2nrf.bash \
 --scriptsfolder $SCRIPTSFOLDER
 
 samtools view -@ $ncpus -F 256 -u ${samplename}.tmp3.bam > ${samplename}.tmp4.bam
-samtools sort -@ $ncpus ${samplename}.tmp4.bam ${samplename}.dup
+samtools sort -@ $ncpus -o ${samplename}.dup.bam ${samplename}.tmp4.bam
 if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.tmp3.bam;fi
 if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.tmp4.bam;fi
 
 samtools view -@ $ncpus -F 1796 -u ${samplename}.dup.bam > ${samplename}.tmp5.bam
-samtools sort -@ $ncpus ${samplename}.tmp5.bam ${samplename}.filt
+samtools sort -@ $ncpus -o ${samplename}.filt.bam ${samplename}.tmp5.bam 
 if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.dup.bam;fi
 if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.tmp5.bam;fi
 
@@ -109,4 +111,5 @@ echo "$nreads"|awk '{printf("%d\tMapped reads\n",$1)}' >> ${samplename}.nreads.t
 nreads=`grep -m1 total ${samplename}.dedup.bam.flagstat|awk '{print $1}'`
 echo "$nreads"|awk '{printf("%d\tAfter deduplication\n",$1)}' >> ${samplename}.nreads.txt
 
+conda deactivate
 
