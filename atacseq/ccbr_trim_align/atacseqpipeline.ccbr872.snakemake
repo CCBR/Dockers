@@ -497,8 +497,9 @@ do
 done
 
 for f in $rep1name $rep2name
-done
+do
 	echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/macs2/${{f}}.macs2.narrowPeak\n" >> {output.samplePeakFileList}
+done
 fi
 
 # the groups has 3 replicates
@@ -548,6 +549,7 @@ do
 done
 
 for f in $rep1name $rep2name $rep3name
+do
 	echo -ne "${{f}}\t{params.grp}\t{params.workdir}/peaks/macs2/${{f}}.macs2.narrowPeak\n" >> {output.samplePeakFileList}
 done
 
