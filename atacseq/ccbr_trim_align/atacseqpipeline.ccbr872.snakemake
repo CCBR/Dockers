@@ -11,6 +11,7 @@ SINGULARITY_VERSION="3.5.2"
 SINGULARITY_IMAGE_VERSION="0.1.21"
 # SCRIPTS_DIR="/opt2"
 SCRIPTS_DIR="/data2/scripts"
+N_REPLICATES_MAX=4
 
 # define functions
 def check_existence(filename):
@@ -46,11 +47,10 @@ SAMPLES=list(sample2label.keys())
 # OTHER FUNCTIONS
 
 def get_sample_tagAlignFiles_for_group(wildcards):
-	# files=[]
-	# for i in group2samples[wildcards.grp]:
-	# 	files.append(join(WORKDIR,"tagAlign",i+".tagAlign.gz"))
-	# for i in group2samples[]
 	d=dict()
+	for i in range(N_REPLICATES_MAX):
+		d["tagAlign"+str(i+1)]=""
+		d["genomefile"+str(i+1)]=""
 	for i,f in enumerate(group2samples[wildcards.grp]):
 		d["tagAlign"+str(i+1)]=join(WORKDIR,"tagAlign",f+".tagAlign.gz")
 		d["genomefile"+str(i+1)]=join(WORKDIR,"bam",f+".genome")
@@ -58,6 +58,8 @@ def get_sample_tagAlignFiles_for_group(wildcards):
 
 def get_sample_qsortedbamfiles_for_group(wildcards):
 	d=dict()
+	for i in range(N_REPLICATES_MAX):
+		d["qsortedbam"+str(i+1)]=""
 	for i,f in enumerate(group2samples[wildcards.grp]):
 		d["qsortedbam"+str(i+1)]=join(WORKDIR,"bam",f+".qsorted.bam")
 	return d
@@ -65,8 +67,13 @@ def get_sample_qsortedbamfiles_for_group(wildcards):
 
 def get_frip_input(wildcards):
 	d=dict()
+	for i in range(N_REPLICATES_MAX):
+		d["tagAlign"+str(i+1)]=""
+		d["macs_sample_peaks"+str(i+1)]=""
+		d["genrich_sample_peaks"+str(i+1)]=""
+		d["macs_group_peaks"+str(i+1)]=""
+		d["genrich_group_peaks"+str(i+1)]=""	
 	for i,f in enumerate(group2samples[wildcards.grp]):
-		# d["sample"+str(i+1)]=f
 		d["tagAlign"+str(i+1)]=join(WORKDIR,"tagAlign",f+".tagAlign.gz")
 		d["macs_sample_peaks"+str(i+1)]=join(WORKDIR,"peaks","macs2",wildcards.grp+".sample.macs2.peakfiles")
 		d["genrich_sample_peaks"+str(i+1)]=join(WORKDIR,"peaks","genrich",wildcards.grp+".sample.genrich.peakfiles")
