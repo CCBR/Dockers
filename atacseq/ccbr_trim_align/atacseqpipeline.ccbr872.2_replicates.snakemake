@@ -5,7 +5,7 @@ import os
 
 # SAMPLES=["test_input"]
 GENOME="mm10"
-WORKDIR="/data/CBLCCBR/kopardevn_tmp/atacseq_pipeline/ccbr872/test"
+WORKDIR="/data/CBLCCBR/kopardevn_tmp/atacseq_pipeline/ccbr872/test_2_replicates"
 SINGULARITY_IMAGES_DIR="/data/CCBR_Pipeliner/db/PipeDB/db/SingularityImages"
 SINGULARITY_VERSION="3.5.2"
 SINGULARITY_IMAGE_VERSION="0.1.21"
