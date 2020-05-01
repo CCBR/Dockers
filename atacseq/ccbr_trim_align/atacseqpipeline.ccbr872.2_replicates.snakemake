@@ -49,8 +49,8 @@ SAMPLES=list(sample2label.keys())
 def get_sample_tagAlignFiles_for_group(wildcards):
 	d=dict()
 	for i in range(N_REPLICATES_MAX):
-		d["tagAlign"+str(i+1)]=""
-		d["genomefile"+str(i+1)]=""
+		d["tagAlign"+str(i+1)]=join(WORKDIR,"dummy")
+		d["genomefile"+str(i+1)]=join(WORKDIR,"dummy")
 	for i,f in enumerate(group2samples[wildcards.grp]):
 		d["tagAlign"+str(i+1)]=join(WORKDIR,"tagAlign",f+".tagAlign.gz")
 		d["genomefile"+str(i+1)]=join(WORKDIR,"bam",f+".genome")
@@ -59,7 +59,7 @@ def get_sample_tagAlignFiles_for_group(wildcards):
 def get_sample_qsortedbamfiles_for_group(wildcards):
 	d=dict()
 	for i in range(N_REPLICATES_MAX):
-		d["qsortedbam"+str(i+1)]=""
+		d["qsortedbam"+str(i+1)]=join(WORKDIR,"dummy")
 	for i,f in enumerate(group2samples[wildcards.grp]):
 		d["qsortedbam"+str(i+1)]=join(WORKDIR,"bam",f+".qsorted.bam")
 	return d
@@ -68,11 +68,11 @@ def get_sample_qsortedbamfiles_for_group(wildcards):
 def get_frip_input(wildcards):
 	d=dict()
 	for i in range(N_REPLICATES_MAX):
-		d["tagAlign"+str(i+1)]=""
-		d["macs_sample_peaks"+str(i+1)]=""
-		d["genrich_sample_peaks"+str(i+1)]=""
-		d["macs_group_peaks"+str(i+1)]=""
-		d["genrich_group_peaks"+str(i+1)]=""	
+		d["tagAlign"+str(i+1)]=join(WORKDIR,"dummy")
+		d["macs_sample_peaks"+str(i+1)]=join(WORKDIR,"dummy")
+		d["genrich_sample_peaks"+str(i+1)]=join(WORKDIR,"dummy")
+		d["macs_group_peaks"+str(i+1)]=join(WORKDIR,"dummy")
+		d["genrich_group_peaks"+str(i+1)]=join(WORKDIR,"dummy")
 	for i,f in enumerate(group2samples[wildcards.grp]):
 		d["tagAlign"+str(i+1)]=join(WORKDIR,"tagAlign",f+".tagAlign.gz")
 		d["macs_sample_peaks"+str(i+1)]=join(WORKDIR,"peaks","macs2",wildcards.grp+".sample.macs2.peakfiles")
