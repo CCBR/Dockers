@@ -213,7 +213,9 @@ rule atac_frip_init:
 set -e -x -o pipefail
 nsamples=0
 for i in {input};do
+	if [ $(basename $i) != "dummy" ]; then
 	nsamples=$(echo "$nsamples+1"|bc)
+	fi
 done
 nsamples=$(echo "$nsamples/5"|bc)
 
@@ -449,7 +451,9 @@ cd /lscratch/$SLURM_JOBID
 
 nsamples=0
 for i in {input};do
+	if [ $(basename $i) != "dummy" ];then
 	nsamples=$(echo "$nsamples+1"|bc)
+	fi
 done
 nsamples=$(echo "$nsamples/2"|bc)
 rep1name=$(echo {input.tagAlign1}|awk -F"/" "{{print \$NF}}"|awk -F".tagAlign" "{{print \$1}}")
@@ -645,7 +649,9 @@ cd /lscratch/$SLURM_JOBID
 
 nsamples=0
 for i in {input};do
+	if [ $(basename $i) != "dummy" ]; then
 	nsamples=$(echo "$nsamples+1"|bc)
+	fi
 done
 
 if [ ! -d {params.workdir}/peaks/genrich/bigwig ];then mkdir -p {params.workdir}/peaks/genrich/bigwig;fi
