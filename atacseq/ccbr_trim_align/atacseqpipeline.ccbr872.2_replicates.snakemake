@@ -567,7 +567,7 @@ done
 fi
 
 # for all replicates there will be consensus peaks
-if [ "$nsamples" -gt "2" ];then
+if [ "$nsamples" -ge "2" ];then
 
 rsync -az --progress {params.grp}.macs2.consensus.bed {params.workdir}/peaks/macs2/
 for g in "annotated" "genelist" "annotation_summary" "annotation_distribution"
@@ -575,8 +575,10 @@ do
 	rsync -az --progress {params.grp}.macs2.consensus.bed.${{g}} {params.workdir}/qc/peak_annotation/
 done
 
-echo -ne "{params.grp}\t{params.grp}\t{params.workdir}/peaks/macs2/{params.grp}.macs2.consensus.bed\n" >> {output.groupPeakFileList}
+echo -ne "{params.grp}\t{params.grp}\t{params.workdir}/peaks/macs2/{params.grp}.macs2.consensus.bed\n" > {output.groupPeakFileList}
 
+else
+ touch {output.groupPeakFileList}
 fi
 
 # the groups as more than 3 replicates ... rare
@@ -585,7 +587,6 @@ echo "THIS CODE IS NOT WRITTEN YET!!!"
 exit 1
 fi
 
-# touch peaks/macs2/{wildcards.grp}.group.macs2.peakfiles
 """
 
 
@@ -784,8 +785,10 @@ do
 	rsync -az --progress {params.grp}.genrich.consensus.bed.${{g}} {params.workdir}/qc/peak_annotation/
 done
 
-echo -ne "{params.grp}\t{params.grp}\t{params.workdir}/peaks/genrich/{params.grp}.genrich.consensus.bed\n" >> {output.groupPeakFileList}
+echo -ne "{params.grp}\t{params.grp}\t{params.workdir}/peaks/genrich/{params.grp}.genrich.consensus.bed\n" > {output.groupPeakFileList}
 
+else
+touch {output.groupPeakFileList}
 fi
 """
 
