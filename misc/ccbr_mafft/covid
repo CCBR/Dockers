@@ -1,0 +1,63 @@
+#!/bin/bash
+
+timestamp=$(date '+%Y-%m-%d-%H-%M')
+
+# Setting default $ofame to sequence_msa_${timestamp}.fa
+ofname="${3:-sequence_msa_$timestamp.fa}"
+iname="${2:-}"
+
+# Functions
+view() { grep '^>' -A 50 /opt/example/sequences.fa| grep -v '^--' | more ;}
+download() { echo -e "Saving output to file: sequences_${timestamp}.fa"; curl --http1.1 --retry 5 --verbose -L 'https://www.ncbi.nlm.nih.gov/genomes/VirusVariation/vvsearch2/?q=*:*&fq=%7B!tag=SeqType_s%7DSeqType_s:(%22Nucleotide%22)&fq=VirusLineageId_ss:(2697049)&cmd=download&sort=SourceDB_s%20desc,CreateDate_dt%20desc&dlfmt=fasta&fl=id,Definition_s,Nucleotide_seq' > sequences_"$timestamp".fa || echo 'Download failed... please try again!';}
+msa() { 
+  # Check for required input
+    [ -z "$iname" ] && echo -e "USAGE: Please provide input sequences!\n\tcovid msa  <input_sequences.fa> [output_msa.fa]" && exit 1 
+    echo "Running Multiple Sequence Alignment using MAFFT" 
+    echo "/opt/bin/mafft --retree 2 --reorder ${iname} > ${ofname}" 
+  # Run MAFFT
+    /opt/bin/mafft --retree 2 --reorder "${iname}" > "$ofname"
+}
+
+list(){ cat << EOF
+Available sub-commands:
+    view       Displays an example input fasta file
+    download   Downloads the latest SARS-CoV-2 sequences from RefSeq and GenBank
+    msa        Run Multiple Sequence Alignment using MAFFT
+    list       Lists all available sub-commands
+    help       Displays usage and this help page
+EOF
+}
+
+help() { cat << EOF
+USAGE:
+    covid <view|download|msa|list|help>  input_sequences.fa  [output_msa_results.fa]
+
+Help Information:
+    view       Displays an example input fasta file
+    download   Downloads the latest SARS-CoV-2 sequences from RefSeq and GenBank
+    msa        Run Multiple Sequence Alignment using MAFFT
+    list       Lists all available sub-commands
+    help       Displays usage and this help page
+
+Examples:
+    covid list
+    covid view
+    covid download
+    covid msa mysequences.fa
+    covid help
+EOF
+}
+
+
+# Main: parse sub-commands 
+case "$1" in 
+	view) view ;;
+	download) download ;;
+	msa) msa ;;
+	list) list ;;
+	help) help && exit 0;;
+	-h) help && exit 0;;
+        --help) help && exit 0;;
+        *) help && exit 0;;
+esac
+
