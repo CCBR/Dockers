@@ -118,7 +118,7 @@ RUN . /opt2/conda/etc/profile.d/conda.sh && \
   pip install --upgrade pip && \
   pip install cutadapt==1.18 && \
   pip install numpy && \
-  pip install matplotlib
+  pip install matplotlib===3.1.2
 
 # INSTALL idr
 
@@ -167,7 +167,7 @@ ENV PATH="/opt2/Genrich-master:${PATH}"
 
 RUN . /opt2/conda/etc/profile.d/conda.sh && \
   conda activate python3 && \
-  pip install multiqc
+  pip install multiqc==1.8
 
 # INSTALL homer2
 # conda meme (ame) does not work ... hence installed separately
