@@ -1,0 +1,91 @@
+custom_data:
+    tss_knicking_sites_files:
+        file_format: 'tsv'
+        section_name: 'TSS Score Scatter'
+        description: ': TSS score to TSS with >20 Tn5knicking sites scatter'
+        plot_type: 'scatter'
+        pconfig:
+            id: 'TSS_scatter'
+            title: 'TSS_Score_Scatter'
+            ylab: 'TSS score'
+            xlab: 'Number of TSS sites with > 20 Tn5 knick sites'
+    peak_width_files:
+        file_format: 'tsv'
+        section_name: 'Peak width distribution'
+        description: 'Per sample Peak width density'
+        plot_type: 'linegraph'
+        pconfig:
+            id: 'PWD'
+            title: 'Peak Width Distribution'
+            ylab: 'Peak Density Percentage'
+            xlab: 'Peak Width'
+            xmax: 20000
+    fld_files:
+        file_format: 'tsv'
+        section_name: 'Fragment length distribution'
+        description: 'Per sample FLD'
+        plot_type: 'linegraph'
+        pconfig:
+            id: 'FLD'
+            title: 'Fragment Length Distribution'
+            ylab: 'Normalized read density X 1e3'
+            xlab: 'Fragment Length'
+            xmax: 1000
+    tss_files:
+        file_format: 'tsv'
+        section_name: 'TSS distribution'
+        description: 'Greenleaf Normalized TSS per sample distribution'
+        plot_type: 'linegraph'
+        pconfig:
+            id: 'TSS Enrichment'
+            title: 'TSS Enrichment Distribution'
+            ylab: 'Greenleaf Normalized TSS Enrichment'
+            xlab: 'Distance from TSS'
+    nrf_stats:
+        file_format: 'tsv'
+        section_name: 'NRF Stats'
+        description: 'Non-redundant Fraction'
+        plot_type: 'table'
+        pconfig:
+            id: 'NRF Stats'
+            title: 'NRF Stats table'
+    frip_stats:
+        file_format: 'tsv'
+        section_name: 'FRiP Stats'
+        description: 'Fraction of Reads in Peaks/DHS/Enhancers/Promoters'
+        plot_type: 'table'
+        pconfig:
+            id: 'FRiP Stats'
+            title: 'FRiP Stats table'
+    fld_stats:
+        file_format: 'tsv'
+        section_name: 'FLD Stats'
+        description: 'Fraction Length Distribution Peak details'
+        plot_type: 'table'
+        pconfig:
+            id: 'FLD Stats'
+            title: 'FLD Stats table'
+sp:
+    nrf_stats:
+        fn: 'NRF_stats.txt'
+    frip_stats:
+        fn: 'FRiP_stats.txt'
+    fld_stats:
+        fn: 'FLD_stats.txt'
+    tss_knicking_sites_files:
+        fn: 'data.tss_knicking_sites.txt'
+    peak_width_files:
+        fn: '*.annotated.peak_width_density'
+    fld_files:
+        fn: '*.fld.txt'
+    tss_files:
+        fn: '*.tss.txt'
+fn_clean_exts:
+     - '.genrich.narrowPeak.annotation_distribution'
+     - '.consensus.bed.annotated.peak_width_density'
+     - '.filt.bam'
+     - '.preseq'
+     - '.tss.txt'
+     - '.fld.txt'
+     - '.bowtie2.log'
+     - '.fastq.gz'
