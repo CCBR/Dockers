@@ -118,7 +118,7 @@ RUN . /opt2/conda/etc/profile.d/conda.sh && \
   pip install --upgrade pip && \
   pip install cutadapt==1.18 && \
   pip install numpy && \
-  pip install matplotlib===3.1.2
+  pip install matplotlib===3.1.1
 
 # INSTALL idr
 
@@ -245,6 +245,8 @@ COPY ccbr_get_consensus_peaks.py /opt2
 COPY ccbr_narrowPeak_distributions.py /opt2
 COPY get_tss_with_bins_per_gene.py /opt2
 COPY nrf.py /opt2
+COPY qc_annotated2peakwidthdensity.py /opt2
+COPY qc_get_frip_stats_table.py /opt2
 
 # bash scripts
 
