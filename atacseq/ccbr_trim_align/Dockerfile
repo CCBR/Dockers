@@ -107,8 +107,8 @@ RUN . /opt2/conda/etc/profile.d/conda.sh && \
   pip install numpy && \
   pip install pysam && \
   pip install scipy && \
-  pip install pybedtools && \
-  pip install metaseq
+  pip install pybedtools
+#  pip install metaseq
 
 
 # INSTALL cutadapt
@@ -232,6 +232,8 @@ COPY the_blacklists.fa.ann /opt2
 COPY the_blacklists.fa.bwt /opt2
 COPY the_blacklists.fa.pac /opt2
 COPY the_blacklists.fa.sa /opt2
+COPY transpose.sh /opt2
+COPY ccbr_atac_config.yaml /opt2
 
 # python scripts
 
@@ -248,16 +250,15 @@ COPY nrf.py /opt2
 
 COPY ccbr_atac_motif_enrichment.bash /opt2  
 COPY ccbr_atac_trim_align_pe.bash /opt2
+COPY ccbr_atac_qc.bash /opt2
 COPY ccbr_bam2FLD.bash /opt2
 COPY ccbr_bam2nrf.bash /opt2
 COPY ccbr_bowtie2_align_pe.bash /opt2
 COPY ccbr_cutadapt_pe.bash /opt2
 COPY ccbr_frip.bash /opt2
 COPY ccbr_genrich_peak_calling.bash /opt2
-COPY ccbr_genrich_peak_calling_two_replicates.bash /opt2
 COPY ccbr_jaccard_pca.bash /opt2
 COPY ccbr_macs2_peak_calling.bash /opt2
-COPY ccbr_macs2_peak_calling_two_replicates.bash /opt2
 COPY ccbr_narrowPeak_distribution.bash /opt2
 COPY ccbr_remove_blacklisted_reads_pe.bash /opt2
 COPY ccbr_tagAlign2TSS.bash /opt2
