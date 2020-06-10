@@ -62,7 +62,14 @@ RUN apt-get install -y \
 
 # INSTALL R packages
 
-RUN apt-get install -y --allow-unauthenticated r-base-core
+
+RUN apt-get install -y --allow-unauthenticated r-base-core libblas-dev liblapack-dev
+
+# latest Rcpp version 1.0.4 causes errors while installing GoSemSim --> enrichplot --> ChIPseeker .. hence install previous version
+COPY Rcpp_1.0.3.tar.gz /opt2
+WORKDIR /opt2
+RUN R CMD INSTALL Rcpp_1.0.3.tar.gz
+
 COPY install_R_packages.R /opt2
 WORKDIR /opt2
 RUN Rscript install_R_packages.R
@@ -100,8 +107,8 @@ RUN . /opt2/conda/etc/profile.d/conda.sh && \
   pip install numpy && \
   pip install pysam && \
   pip install scipy && \
-  pip install pybedtools && \
-  pip install metaseq
+  pip install pybedtools
+#  pip install metaseq
 
 
 # INSTALL cutadapt
@@ -111,7 +118,7 @@ RUN . /opt2/conda/etc/profile.d/conda.sh && \
   pip install --upgrade pip && \
   pip install cutadapt==1.18 && \
   pip install numpy && \
-  pip install matplotlib
+  pip install matplotlib===3.1.1
 
 # INSTALL idr
 
@@ -160,7 +167,7 @@ ENV PATH="/opt2/Genrich-master:${PATH}"
 
 RUN . /opt2/conda/etc/profile.d/conda.sh && \
   conda activate python3 && \
-  pip install multiqc
+  pip install multiqc==1.8
 
 # INSTALL homer2
 # conda meme (ame) does not work ... hence installed separately
@@ -193,6 +200,23 @@ RUN . /opt2/conda/etc/profile.d/conda.sh && \
   conda activate python3 && \
   conda install -c bioconda deeptools
 
+# INSTALL pandas
+
+RUN . /opt2/conda/etc/profile.d/conda.sh && \
+  conda activate python3 && \
+  pip install --upgrade pip && \
+  pip install pandas
+  
+# INSTALL preseq
+# download from https://github.com/smithlabcode/preseq/releases/download/v2.0.1/preseq_v2.0.1.tar.bz2
+RUN apt-get install -y --allow-unauthenticated libgsl2 libgsl-dev
+COPY preseq_v2.0.1.tar.bz2 /opt2
+WORKDIR /opt2
+RUN tar xjvf preseq_v2.0.1.tar.bz2 && \
+	cd preseq && \
+	make
+ENV PATH="/opt2/preseq:${PATH}"
+
 
 # SCRIPTS AND DB files
 
@@ -208,6 +232,8 @@ COPY the_blacklists.fa.ann /opt2
 COPY the_blacklists.fa.bwt /opt2
 COPY the_blacklists.fa.pac /opt2
 COPY the_blacklists.fa.sa /opt2
+COPY transpose.sh /opt2
+COPY ccbr_atac_config.yaml /opt2
 
 # python scripts
 
@@ -215,22 +241,26 @@ COPY atac_assign_multimappers.py /opt2
 COPY ccbr_bam2FLD.py /opt2
 COPY ccbr_bam_filter_by_mapq.py /opt2
 COPY ccbr_counts2density.py /opt2
+COPY ccbr_get_consensus_peaks.py /opt2
 COPY ccbr_narrowPeak_distributions.py /opt2
 COPY get_tss_with_bins_per_gene.py /opt2
+COPY nrf.py /opt2
+COPY qc_annotated2peakwidthdensity.py /opt2
+COPY qc_get_frip_stats_table.py /opt2
 
 # bash scripts
 
 COPY ccbr_atac_motif_enrichment.bash /opt2  
 COPY ccbr_atac_trim_align_pe.bash /opt2
+COPY ccbr_atac_qc.bash /opt2
 COPY ccbr_bam2FLD.bash /opt2
+COPY ccbr_bam2nrf.bash /opt2
 COPY ccbr_bowtie2_align_pe.bash /opt2
 COPY ccbr_cutadapt_pe.bash /opt2
 COPY ccbr_frip.bash /opt2
 COPY ccbr_genrich_peak_calling.bash /opt2
-COPY ccbr_genrich_peak_calling_two_replicates.bash /opt2
 COPY ccbr_jaccard_pca.bash /opt2
 COPY ccbr_macs2_peak_calling.bash /opt2
-COPY ccbr_macs2_peak_calling_two_replicates.bash /opt2
 COPY ccbr_narrowPeak_distribution.bash /opt2
 COPY ccbr_remove_blacklisted_reads_pe.bash /opt2
 COPY ccbr_tagAlign2TSS.bash /opt2
@@ -239,6 +269,7 @@ COPY ccbr_tagAlign2TSS.bash /opt2
 
 COPY pairwise.Rmd /opt2
 COPY ccbr_annotate_peaks.R /opt2
+COPY ccbr_annotate_bed.R /opt2
 COPY db /opt2/db 
 
 RUN chmod a+x /opt2/bedSort
