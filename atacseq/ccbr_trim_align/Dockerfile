@@ -238,6 +238,7 @@ COPY ccbr_atac_config.yaml /opt2
 # python scripts
 
 COPY atac_assign_multimappers.py /opt2
+COPY ccbr_atac_make_qcstats_table.py /opt2
 COPY ccbr_bam2FLD.py /opt2
 COPY ccbr_bam_filter_by_mapq.py /opt2
 COPY ccbr_counts2density.py /opt2
