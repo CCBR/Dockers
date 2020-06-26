@@ -253,6 +253,7 @@ COPY qc_get_frip_stats_table.py /opt2
 
 COPY ccbr_atac_motif_enrichment.bash /opt2  
 COPY ccbr_atac_trim_align_pe.bash /opt2
+COPY ccbr_atac_trim_align_pe_with_reference_tarball.bash /opt2
 COPY ccbr_atac_qc.bash /opt2
 COPY ccbr_bam2FLD.bash /opt2
 COPY ccbr_bam2nrf.bash /opt2
