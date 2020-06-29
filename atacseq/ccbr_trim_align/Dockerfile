@@ -217,6 +217,14 @@ RUN tar xjvf preseq_v2.0.1.tar.bz2 && \
 	make
 ENV PATH="/opt2/preseq:${PATH}"
 
+# INSTALL fastq_screen
+RUN apt-get install -y libgd-dev
+RUN perl -MCPAN -e "install GD"
+WORKDIR /opt2
+COPY FastQ-Screen-0.14.1.tar.gz /opt2
+RUN tar xzvf FastQ-Screen-0.14.1.tar.gz && cd FastQ-Screen-0.14.1 && chmod a+x fastq_screen
+ENV PATH="/opt2/FastQ-Screen-0.14.1:${PATH}"
+
 
 # SCRIPTS AND DB files
 
@@ -260,6 +268,7 @@ COPY ccbr_bam2nrf.bash /opt2
 COPY ccbr_bowtie2_align_pe.bash /opt2
 COPY ccbr_cutadapt_pe.bash /opt2
 COPY ccbr_frip.bash /opt2
+COPY ccbr_fqscreen.bash /opt2
 COPY ccbr_genrich_peak_calling.bash /opt2
 COPY ccbr_jaccard_pca.bash /opt2
 COPY ccbr_macs2_peak_calling.bash /opt2
