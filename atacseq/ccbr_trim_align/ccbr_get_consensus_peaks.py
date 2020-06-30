@@ -34,7 +34,7 @@ rand_name=str(uuid.uuid4())
 cmd="cat"
 for p in args.peakfiles:
 	cmd+=" "+p
-cmd+=" > "+rand_name+".concat.bed"
+cmd+=" | cut -f1-3 > "+rand_name+".concat.bed"
 
 deleteFiles.append(rand_name+".concat.bed")
 print(cmd)
