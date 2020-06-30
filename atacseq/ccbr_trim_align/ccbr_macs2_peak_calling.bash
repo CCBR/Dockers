@@ -35,8 +35,16 @@ callPeaks(){
 
 # annotate
 	for f in ${PREFIX}.narrowPeak ${PREFIX}.qfilter.narrowPeak;do
-		Rscript ${SCRIPTSFOLDER}/ccbr_annotate_peaks.R -n $f  -a ${f}.annotated -g $GENOME -l ${f}.genelist -f ${f}.annotation_summary 
-		cut -f1,2 ${f}.annotation_summary > ${f}.annotation_distribution
+		npeaks=$(wc -l $f|awk '{print $1}')
+		if [ "$npeaks" -gt "0" ];then
+			Rscript ${SCRIPTSFOLDER}/ccbr_annotate_peaks.R -n $f  -a ${f}.annotated -g $GENOME -l ${f}.genelist -f ${f}.annotation_summary 
+			cut -f1,2 ${f}.annotation_summary > ${f}.annotation_distribution
+		else
+			touch ${f}.annotated
+			touch ${f}.genelist
+			touch ${f}.annotation_summary
+			touch ${f}.annotation_distribution
+		fi
 	done
 
 # save bigwig
@@ -220,7 +228,15 @@ python ${SCRIPTSFOLDER}/ccbr_get_consensus_peaks.py --peakfiles ${REP1NAME}.macs
 fi
 
 f="$CONSENSUSBEDFILE"
-Rscript ${SCRIPTSFOLDER}/ccbr_annotate_bed.R -b $f -a ${f}.annotated -g $GENOME -l ${f}.genelist -f ${f}.annotation_summary
-cut -f1,2 ${f}.annotation_summary > ${f}.annotation_distribution
+npeaks_consensus=$(wc -l $f|awk '{print $1}')
+if [ "$npeaks_consensus" -gt "0" ];then
+	Rscript ${SCRIPTSFOLDER}/ccbr_annotate_bed.R -b $f -a ${f}.annotated -g $GENOME -l ${f}.genelist -f ${f}.annotation_summary
+	cut -f1,2 ${f}.annotation_summary > ${f}.annotation_distribution
+else
+	touch ${f}.annotated
+	touch ${f}.genelist
+	touch ${f}.annotation_summary
+	touch ${f}.annotation_distribution
+fi
 
 conda deactivate
