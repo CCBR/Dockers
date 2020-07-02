@@ -227,16 +227,18 @@ if [ "$nreplicates" -eq 4 ];then
 python ${SCRIPTSFOLDER}/ccbr_get_consensus_peaks.py --peakfiles ${REP1NAME}.macs2.narrowPeak ${REP2NAME}.macs2.narrowPeak ${REP3NAME}.macs2.narrowPeak ${REP4NAME}.macs2.narrowPeak --outbed $CONSENSUSBEDFILE
 fi
 
-f="$CONSENSUSBEDFILE"
-npeaks_consensus=$(wc -l $f|awk '{print $1}')
-if [ "$npeaks_consensus" -gt "0" ];then
-	Rscript ${SCRIPTSFOLDER}/ccbr_annotate_bed.R -b $f -a ${f}.annotated -g $GENOME -l ${f}.genelist -f ${f}.annotation_summary
-	cut -f1,2 ${f}.annotation_summary > ${f}.annotation_distribution
-else
-	touch ${f}.annotated
-	touch ${f}.genelist
-	touch ${f}.annotation_summary
-	touch ${f}.annotation_distribution
+if [ $CONSENSUSBEDFILE ];then
+	f="$CONSENSUSBEDFILE"
+	npeaks_consensus=$(wc -l $f|awk '{print $1}')
+	if [ "$npeaks_consensus" -gt "0" ];then
+		Rscript ${SCRIPTSFOLDER}/ccbr_annotate_bed.R -b $f -a ${f}.annotated -g $GENOME -l ${f}.genelist -f ${f}.annotation_summary
+		cut -f1,2 ${f}.annotation_summary > ${f}.annotation_distribution
+	else
+		touch ${f}.annotated
+		touch ${f}.genelist
+		touch ${f}.annotation_summary
+		touch ${f}.annotation_distribution
+	fi
 fi
 
 conda deactivate
