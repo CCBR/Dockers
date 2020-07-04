@@ -89,7 +89,7 @@ parser.add_argument('--rep4name',required=False, help='Name for replicate 4')
 
 parser.add_argument('--genome',required=True,help="hg19/38 or mm9/10")
 # parser.add_argument('--pooledpeakfile',required=False, help='output narrowPeak file for all replicates combined') # pooled peakfile will be named <samplename>.macs.narrowPeak
-parser.add_argument('--consensusbedfile',required=False, help='consensus overlapping MAX majority peaks in bed format')
+# parser.add_argument('--consensusbedfile',required=False, help='consensus overlapping MAX majority peaks in bed format')
 
 parser.add_argument('--extsize',required=False, default=200, help='extsize')
 parser.add_argument('--shiftsize',required=False, default=100, help='shiftsize')
@@ -100,7 +100,7 @@ parser.add_argument('--filterpeaks',required=False, default="True", help='filter
 parser.add_argument('--qfilter',required=False, default=0.693147, help='default qfiltering value is 0.693147 (-log10 of 0.5) for q=0.5')
 
 # only required if saving bigwigs/tn5knicks.bed/bam etc.
-parser.add_argument('--genomefile',required=True, help='dedupbam based genome file ... required by bedGraphToBigWig')
+# parser.add_argument('--genomefile',required=True, help='dedupbam based genome file ... required by bedGraphToBigWig')
 # parser.add_argument('--savebigwig',required=False, default="False", help='save bigwig file: True or False')
 # parser.add_argument('--savetn5knicksbed',required=False, default="False", help='save tn5knicks bed and bam file: True or False')
 
@@ -108,6 +108,8 @@ parser.add_argument('--scriptsfolder',required=False, default='/opt2', help='fol
 
 EOF
 
+GENOMEFILE="/opt2/db/${GENOME}.genome"
+CONSENSUSBEDFILE="${SAMPLENAME}.consensus.bed"
 
 nreplicates=1
 if [ $TAGALIGN2 ];then
@@ -168,13 +170,6 @@ if [ "$nreplicates" -eq "4" ];then
 	fi
 fi
 
-if [ "$nreplicates" -ge "2" ];then
-	if [ ! $CONSENSUSBEDFILE ]; then
-		echo "Consensus bed file is required if replicates are present!"
-		exit
-	fi
-fi
-
 
 # replicate 1 peak calling
 callPeaks $TAGALIGN1 ${REP1NAME}.macs2 $GENOME $SHIFTSIZE $EXTSIZE $FILTERPEAKS $QFILTER $GENOMEFILE $SCRIPTSFOLDER
@@ -210,9 +205,11 @@ zcat $TAGALIGN1 $TAGALIGN2 $TAGALIGN3 $TAGALIGN4 > ${pooled}
 fi
 
 # pooled peak calling
+if [ "$nreplicates" -ge 2 ];then
 bedSort ${pooled} ${pooled}
 pigz -f -p4 ${pooled}
 callPeaks ${pooled}.gz ${SAMPLENAME}.macs2 $GENOME $SHIFTSIZE $EXTSIZE $FILTERPEAKS $QFILTER $GENOMEFILE $SCRIPTSFOLDER
+fi
 
 # consensus peak calling
 if [ "$nreplicates" -eq 2 ];then
@@ -227,7 +224,7 @@ if [ "$nreplicates" -eq 4 ];then
 python ${SCRIPTSFOLDER}/ccbr_get_consensus_peaks.py --peakfiles ${REP1NAME}.macs2.narrowPeak ${REP2NAME}.macs2.narrowPeak ${REP3NAME}.macs2.narrowPeak ${REP4NAME}.macs2.narrowPeak --outbed $CONSENSUSBEDFILE
 fi
 
-if [ $CONSENSUSBEDFILE ];then
+if [ "$nreplicates" -ge 2 ];then
 	f="$CONSENSUSBEDFILE"
 	npeaks_consensus=$(wc -l $f|awk '{print $1}')
 	if [ "$npeaks_consensus" -gt "0" ];then
