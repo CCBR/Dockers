@@ -19,12 +19,12 @@ parser.add_argument('--outbed', required = True, dest = 'outbed', help = 'consen
 parser.add_argument('--nofilter', action = 'store_true', default = 'store_false',required = False,dest = 'nofilter',help = ' do not filter keep all peaks with score')
 
 
-out=open(args.outbed,'w')
-
 deleteFiles=[]
 
 args = parser.parse_args()
 print(args)
+out=open(args.outbed,'w')
+
 
 filter=0.5
 

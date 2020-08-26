@@ -109,7 +109,7 @@ parser.add_argument('--scriptsfolder',required=False, default='/opt2', help='fol
 EOF
 
 GENOMEFILE="/opt2/db/${GENOME}.genome"
-CONSENSUSBEDFILE="${SAMPLENAME}.consensus.bed"
+CONSENSUSBEDFILE="${SAMPLENAME}.macs2.consensus.bed"
 
 nreplicates=1
 if [ $TAGALIGN2 ];then
