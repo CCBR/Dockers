@@ -70,6 +70,8 @@ COPY Rcpp_1.0.3.tar.gz /opt2
 WORKDIR /opt2
 RUN R CMD INSTALL Rcpp_1.0.3.tar.gz
 
+COPY XML_3.98-1.20.tar.gz /opt2
+
 COPY install_R_packages.R /opt2
 WORKDIR /opt2
 RUN Rscript install_R_packages.R

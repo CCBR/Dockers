@@ -1,3 +1,7 @@
+install.packages("/opt2/XML_3.98-1.20.tar.gz",repos=NULL,type="source")
+install.packages("caTools", repos="http://cran.us.r-project.org")
+# install.packages("XML", repos="http://cran.us.r-project.org")
+install.packages("RCurl", repos="http://cran.us.r-project.org")
 install.packages("plotly", repos="http://cran.us.r-project.org")
 install.packages("RColorBrewer", repos="http://cran.us.r-project.org")
 install.packages("reshape2", repos="http://cran.us.r-project.org")
