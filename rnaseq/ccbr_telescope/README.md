@@ -42,3 +42,11 @@ docker push skchronicles/ccbr_telescope:latest
 docker push nciccbr/ccbr_telescope:v0.0.1
 docker push nciccbr/ccbr_telescope:latest
 ```
+
+### Run using Singularity
+```bash
+module load singularity
+# Pull from DockerHub
+SINGULARITY_CACHEDIR=$PWD singularity pull -F docker://nciccbr/ccbr_telescope
+singularity exec -B $PWD:$PWD ccbr_telescope_latest.sif ./HERVx -r1 small_S25_1.fastq -r2 small_S25_2.fastq -o ERV_hg38
+```
