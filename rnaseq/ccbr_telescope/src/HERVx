@@ -4,7 +4,7 @@ set -euo pipefail
 
 function usage() { cat << EOF
 
-HERVx: Pipeline to characterize of Human Endogenous Retrovirus (HERV) expression
+HERVx: Pipeline to characterize Human Endogenous Retrovirus (HERV) expression
 
 USAGE:
     HERVx [OPTIONS] -r1 SRR4235541_1.fastq -r2 SRR4235541_2.fastq -o outdir_path
