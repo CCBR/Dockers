@@ -4,7 +4,7 @@ set -euo pipefail
 
 function usage() { cat << EOF
 
-HERVx: Characterizes of Human Endogenous Retrovirus (HERV) expression
+HERVx: Pipeline to characterizes of Human Endogenous Retrovirus (HERV) expression
 
 USAGE:
     HERVx [OPTIONS] -r1 SRR4235541_1.fastq -r2 SRR4235541_2.fastq -o outdir_path
@@ -16,40 +16,86 @@ Telescope directly addresses uncertainty in fragment assignment by reassigning
 ambiguously mapped fragments to the most probable source transcript as
 determined within a Bayesian statistical model.
 
-HERVx runs cutadapt to remove adapter sequences and to perform quality-trimming,
-bowtie2 to align reads against the Human reference genome (hg38), SAMtools to
-convert from SAM to BAM format and to sort the BAM file, and Telescope to
-characterize Human Endogenous Retrovirus (HERV) expression. Reference files
-are located in /opt2/ in the container's filesystem. Dockerfile using t
+The HERVx pipeline runs cutadapt to remove adapter sequences and to perform
+quality-trimming, bowtie2 to align reads against the Human reference genome (hg38),
+SAMtools to convert from SAM to BAM format  and to sort reads by name, and Telescope
+to characterize Human Endogenous Retrovirus (HERV) expression.
 
 Required Arguments:
     -r1, --read-1  [Type: File]  Input R1 FastQ file
     -r2, --read-2  [Type: File]  Input R2 FastQ file
     -o, --outdir   [Type: Path]  Path to output directory
 
+Optional Arguments:
+    -t, --threads  [Type: Int]   Number of threads (Default = 4)
+
 OPTIONS:
-    -h, --help                 Displays usage and help information
+    -h, --help                   Displays usage and help information
 
 Example:
-    HERVx -r1 /tmp/SRR4235541_1.fastq -r2 /tmp/SRR4235541_2.fastq -outdir /tmp/
-
+    $ HERVx -r1 /tmp/SRR4235541_1.fastq -r2 /tmp/SRR4235541_2.fastq -outdir ERV_hg38
+    $ singularity exec -B $PWD:$PWD ccbr_telescope_latest.sif \
+                       ./HERVx -r1 S25_1.fastq -r2 small_S25_2.fastq -o ERV_hg38
 NOTES:
-    Reference files are located in /opt2/ in the container's filesystem.
-    Dockerfile to build this image is located in /opt2/Dockerfile.
+    + DockerHub: https://hub.docker.com/repository/docker/nciccbr/ccbr_telescope
+    + Reference files are located in /opt2/ in the container's filesystem.
+    + Dockerfile to build this image is located in /opt2/Dockerfile.
 EOF
 }
 
 # Functions
 function err() { cat <<< "$@" 1>&2; }
 function fatal() { cat <<< "$@" 1>&2; usage; exit 1; }
+
+function parser() {
+  # Adds parsed command-line args to GLOBAL $Arguments associative array
+  # + KEYS = short_cli_flag ("r1", "r2", "o")
+  # + VALUES = parsed_user_value ("WT_1.fastq" "WT_2.fastq", "/scratch")
+  # @INPUT "$@" = user command-line arguments
+  # @CALLS check() to see if the user provided all the required arguments
+
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case $key in
+      -h  | --help) usage && exit 0;;
+      -r1 | --read-1)  provided "$key" "${2-}"; Arguments["r1"]="$2"; shift; shift;;
+      -r2 | --read-2)  provided "$key" "${2-}"; Arguments["r2"]="$2"; shift; shift;;
+      -o  | --outdir)  provided "$key" "${2-}"; Arguments["o"]="$2"; shift; shift;;
+      -t  | --threads) provided "$key" "${2-}"; Arguments["t"]="$2"; shift; shift;;
+      -*  | --*) err "Error: Failed to parse unsupported argument: '${key}'."; usage && exit 1;;
+      *) err "Error: Failed to parse unrecognized argument: '${key}'. Do any of your inputs have spaces?"; usage && exit 1;;
+    esac
+  done
+
+  # Check for required args
+  check
+}
+
 function provided() {
   # Checks to see if the argument's value exists
   # @INPUT $1 = name of user provided argument
   # @INPUT $2 = value of user provided argument
   # @CALLS fatal() if value is empty string or NULL
+
   if [[ -z "${2-}" ]]; then
      fatal "Fatal: Failed to provide value to '${1}'!";
   fi
+}
+
+function check(){
+  # Checks to see if user provided required arguments
+  # @INPUTS $Arguments = Global Associative Array
+  # @CALLS fatal() if user did NOT provide all the $required args
+
+  # List of required arguments
+  required=("r1" "r2" "o")
+  echo -e "Provided Required Inputs"
+  for arg in "${required[@]}"; do
+    value=${Arguments[${arg}]-}; [[ -z "${value}" ]] && {
+      fatal "Failed to provide all required args.. missing ${arg}"
+    }
+    echo -e "\t-${arg}\t${value}"
+  done
 }
 
 function trim(){
@@ -58,9 +104,11 @@ function trim(){
   # @INPUT $2 = Read1 FastQ file
   # @INPUT $3 = Read2 FastQ file
   # @INPUT $4 = Outdir (trim directory)
+  # @INPUT $5 = Threads
+  # @CALLS cutadapt
 
   mkdir -p "${4}"
-  cutadapt -j 32 -b file:trimmonatic_TruSeqv3_adapters.fa -B file:trimmonatic_TruSeqv3_adapters.fa \
+  cutadapt -j "${5}" -b file:/opt2/refs/trimmonatic_TruSeqv3_adapters.fa -B file:/opt2/refs/trimmonatic_TruSeqv3_adapters.fa \
           --nextseq-trim=2 --trim-n -n 5 -O 5 -q 10,10 -m 35:35 \
           -o ${4}/${1}_trimmed_R1.fastq -p ${4}/${1}_trimmed_R2.fastq \
           "$2" "$3" 1> ${4}/${1}_cutadapt.log
@@ -72,15 +120,18 @@ function align(){
   # @INPUT $2 = Trimmed Read1 FastQ file
   # @INPUT $3 = Trimmed Read2 FastQ file
   # @INPUT $4 = Outdir (bam directory)
+  # @INPUT $5 = Threads
+  # @CALLS bowtie2, samtools
+
 
   mkdir -p "${4}"
-  bowtie2 -p 32 -k 100 --very-sensitive-local --score-min "L,0,1.6" \
-          -x /path/2/indices/hg38 -1 "${2}" -2 "${3}" \
+  bowtie2 -p "${5}" -k 100 --very-sensitive-local --score-min "L,0,1.6" \
+          -x refs/bowtie2/hg38 -1 "${2}" -2 "${3}" \
           -S ${4}/${1}_bowtie.sam
 
   # Step 3.) SAMtools: covert SAM to BAM and sort by name
-  samtools view -@ 32 -b ${4}/${1}_bowtie.sam > ${4}/${1}_bowtie.bam
-  samtools sort -@ 32 -n ${4}/${1}_bowtie.bam -o ${4}/${1}_bowtie.sorted.bam
+  samtools view -@ "${5}" -b ${4}/${1}_bowtie.sam > ${4}/${1}_bowtie.bam
+  samtools sort -@ "${5}" -n ${4}/${1}_bowtie.bam -o ${4}/${1}_bowtie.sorted.bam
   rm ${4}/${1}_bowtie.bam ${4}/${1}_bowtie.sam
 }
 
@@ -89,49 +140,37 @@ function hervx(){
   # @INPUT $1 = basename (sample name without PATH and file ext)
   # @INPUT $2 = BAM file (sorted by name)
   # @INPUT $3 = Outdir (hervx directory)
+  # @CALLS telescope
 
-  mkdir -p "${4}"
-  telescope assign --theta_prior 200000 --max_iter 200 --outdir $3 ${3}/${1}_bowtie.sorted.bam refs/HERV_rmsk.hg38.v2.genes.gtf
+  mkdir -p "${3}"
+  telescope assign --theta_prior 200000 --max_iter 200 \
+                   --outdir "$3" "${2}" refs/HERV_rmsk.hg38.v2.genes.gtf
 }
 
 
 function main(){
+  # Parses args and runs trimming, aligment, and quantifies HERV expression
+  # @INPUT "$@" = command-line arguments
+  # @CALLS parser(), trim(), align(), hervx()
+
+  echo -e "HERVx (version 0.0.1)\t$(date)"
   if [ $# -eq 0 ]; then usage; exit 1; fi
 
-  # Parses user provided command-line arguments, adds values to an associative array
-  # where keys = short_flag ("r1", "r2", "o") and values = parsed_user_value
-  declare -A Arguments # store parsed args
-  while [[ $# -gt 0 ]]; do
-    key="$1"
-    case $key in
-      -h  | --help) usage && exit 0;;
-      -r1 | --read-1) provided "$key" "${2-}"; Arguments["r1"]="$2"; shift; shift;;
-      -r2 | --read-2) provided "$key" "${2-}"; Arguments["r2"]="$2"; shift; shift;;
-      -o  | --outdir) provided "$key" "${2-}"; Arguments["o"]="$2"; shift; shift;;
-      -*  | --*) err "Error: Failed to parse unsupported argument: '${key}'."; usage && exit 1;;
-      *) err "Error: Failed to parse unrecognized argument: '${key}'. Do any of your inputs have spaces?"; usage && exit 1;;
-    esac
-  done
+  # Associative array to store parsed args
+  declare -Ag Arguments
+  # Parses user provided command-line arguments
+  parser "$@"
 
-  # Checking for required args
-  required=("r1" "r2" "o")
-  for arg in "${required[@]}"; do
-    value=${Arguments[${arg}]-}; [[ -z "${value}" ]] && {
-      fatal "Failed to provide all required args.. missing ${arg}"
-    }
-    echo -e "Parsed... ${arg}\t${value}"
-  done
+  # Getting parsed values
+  base=$(basename "${Arguments[r1]}" | sed 's/_[1-2].fastq$//g')
+  read1="${Arguments[r1]}"; read2="${Arguments[r2]}"
+  outdir="${Arguments[o]%/}"
+  threads="${Arguments[t]-4}" # default is 8 threads
 
-# Get basename of the file
-base=$(basename "${Arguments[r1]}" | sed 's/_[1-2].fastq$//g')
-read1="${Arguments[r1]}"
-read2="${Arguments[r2]}"
-outdir="${Arguments[o]%/}"
-
-# HERVx Pipeline
-trim "$base" "$read1" "$read2" "${outdir}/trim"
-align "$base" "${outdir}/trim/${base}_trimmed_R1.fastq" "${outdir}/trim/${base}_trimmed_R2.fastq" "${outdir}/bams"
-hervx "$base" "${outdir}/bams/${base}_bowtie.sorted.bam" "${outdir}/hervx"
+  # HERVx Pipeline
+  trim "$base" "$read1" "$read2" "${outdir}/trim" "$threads"
+  align "$base" "${outdir}/trim/${base}_trimmed_R1.fastq" "${outdir}/trim/${base}_trimmed_R2.fastq" "${outdir}/bams" "$threads"
+  hervx "$base" "${outdir}/bams/${base}_bowtie.sorted.bam" "${outdir}/hervx"
 
 }
 
