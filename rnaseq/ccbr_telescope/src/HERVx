@@ -4,7 +4,7 @@ set -euo pipefail
 
 function usage() { cat << EOF
 
-HERVx: Pipeline to characterizes of Human Endogenous Retrovirus (HERV) expression
+HERVx: Pipeline to characterize of Human Endogenous Retrovirus (HERV) expression
 
 USAGE:
     HERVx [OPTIONS] -r1 SRR4235541_1.fastq -r2 SRR4235541_2.fastq -o outdir_path
@@ -34,8 +34,7 @@ OPTIONS:
 
 Example:
     $ HERVx -r1 /tmp/SRR4235541_1.fastq -r2 /tmp/SRR4235541_2.fastq -outdir ERV_hg38
-    $ singularity exec -B $PWD:$PWD ccbr_telescope_latest.sif \
-                       ./HERVx -r1 S25_1.fastq -r2 small_S25_2.fastq -o ERV_hg38
+
 NOTES:
     + DockerHub: https://hub.docker.com/repository/docker/nciccbr/ccbr_telescope
     + Reference files are located in /opt2/ in the container's filesystem.
@@ -165,7 +164,7 @@ function main(){
   base=$(basename "${Arguments[r1]}" | sed 's/_[1-2].fastq$//g')
   read1="${Arguments[r1]}"; read2="${Arguments[r2]}"
   outdir="${Arguments[o]%/}"
-  threads="${Arguments[t]-4}" # default is 8 threads
+  threads="${Arguments[t]-4}" # default is 4 threads
 
   # HERVx Pipeline
   trim "$base" "$read1" "$read2" "${outdir}/trim" "$threads"
