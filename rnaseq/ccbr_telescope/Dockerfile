@@ -35,7 +35,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install --yes \
     libncurses5-dev \ 
     libncursesw5-dev \
     libcurl4-gnutls-dev \
-    liblzma-dev && \
+    liblzma-dev \
+    locales && \
 apt-get clean && apt-get purge && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -75,7 +76,11 @@ COPY refs/HERV_rmsk.hg38.v2.genes.gtf /opt2/refs
 COPY refs/HERV_rmsk.hg38.v2.transcripts.gtf /opt2/refs
 
 # Set environment variable(s)
-ENV LANG en_US.UTF-8
+# Configure "locale", see https://github.com/rocker-org/rocker/issues/19
+RUN apt-get install -y locales
+RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
+   && locale-gen en_US.utf8 \
+   && /usr/sbin/update-locale LANG=en_US.UTF-8
 
 # Copy the Dockerfile used to create image in /opt2
 COPY Dockerfile /opt2
