@@ -74,6 +74,19 @@ RUN mkdir -p /opt2/refs
 COPY refs/trimmonatic_TruSeqv3_adapters.fa /opt2/refs
 COPY refs/HERV_rmsk.hg38.v2.genes.gtf /opt2/refs
 COPY refs/HERV_rmsk.hg38.v2.transcripts.gtf /opt2/refs
+COPY refs/L1Base.hg38.v1.transcripts.gtf /opt2/refs
+COPY refs/retro.hg38.v1.transcripts.gtf /opt2/refs
+
+
+# hg38 bowtie2 indices
+RUN mkdir -p /opt2/bowtie2/
+COPY refs/hg38.1.bt2  /opt2/bowtie2/
+COPY refs/hg38.2.bt2  /opt2/bowtie2/
+COPY refs/hg38.3.bt2  /opt2/bowtie2/
+COPY refs/hg38.4.bt2  /opt2/bowtie2/
+COPY refs/hg38.rev.1.bt2  /opt2/bowtie2/
+COPY refs/hg38.rev.2.bt2  /opt2/bowtie2/
+
 
 # Set environment variable(s)
 # Configure "locale", see https://github.com/rocker-org/rocker/issues/19
@@ -81,6 +94,13 @@ RUN apt-get install -y locales
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
    && locale-gen en_US.utf8 \
    && /usr/sbin/update-locale LANG=en_US.UTF-8
+
+
+# Add HERVx pipeline PATH
+RUN mkdir -p /opt2/HERVx/
+COPY src/HERVx /opt2/HERVx/
+ENV PATH=${PATH}:/opt2/HERVx
+
 
 # Copy the Dockerfile used to create image in /opt2
 COPY Dockerfile /opt2

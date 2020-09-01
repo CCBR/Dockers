@@ -10,8 +10,11 @@ Currently, the following files are located in `/opt2/refs/`:
  - trimmonatic_TruSeqv3_adapters.fa
  - HERV_rmsk.hg38.v2.genes.gtf
  - HERV_rmsk.hg38.v2.transcripts.gtf
+ - L1Base.hg38.v1.transcripts.gtf
+ - retro.hg38.v1.transcripts.gtf
 
-> **Please Note:** Large reference files are not bundled in the container's filesystem (i.e bowtie2 indices). As so, you will need to mount the host filesystem to the container filesystem.
+
+> **Please Note:** Bowtie2 indices for `hg38` are bundled in the container's filesystem in `/opt2/bowtie2/`. Other indices can be provided by mounting the host filesystem to this PATH (overrides current hg38 indices).
 
 ### Build from Dockerfile
 
@@ -48,5 +51,20 @@ docker push nciccbr/ccbr_telescope:latest
 module load singularity
 # Pull from DockerHub
 SINGULARITY_CACHEDIR=$PWD singularity pull -F docker://nciccbr/ccbr_telescope
-singularity exec -B $PWD:$PWD ccbr_telescope_latest.sif ./HERVx -r1 small_S25_1.fastq -r2 small_S25_2.fastq -o ERV_hg38
+# Display usage and help information 
+singularity exec -B $PWD:$PWD ccbr_telescope_latest.sif HERVx -h
+# Run HERVx pipeline
+singularity exec -B $PWD:$PWD ccbr_telescope_latest.sif HERVx -r1 small_S25_1.fastq -r2 small_S25_2.fastq -o ERV_hg38
+```
+
+### Build bowtie2 indices
+```bash
+# Get UCSC hg38 genome
+wget http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz
+zcat hg38.fa.gz > hg38.fa
+
+# Build the indices
+module load singularity
+SINGULARITY_CACHEDIR=$PWD singularity pull -F docker://nciccbr/ccbr_telescope
+singularity exec -B $PWD:$PWD ccbr_telescope_latest.sif bowtie2-build hg38.fa hg38
 ```

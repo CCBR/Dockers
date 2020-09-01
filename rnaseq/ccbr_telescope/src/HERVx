@@ -22,18 +22,31 @@ SAMtools to convert from SAM to BAM format  and to sort reads by name, and Teles
 to characterize Human Endogenous Retrovirus (HERV) expression.
 
 Required Arguments:
-    -r1, --read-1  [Type: File]  Input R1 FastQ file
-    -r2, --read-2  [Type: File]  Input R2 FastQ file
-    -o, --outdir   [Type: Path]  Path to output directory
-
-Optional Arguments:
-    -t, --threads  [Type: Int]   Number of threads (Default = 4)
+    -r1, --read-1  [Type: File]  Input R1 FastQ file.
+    -r2, --read-2  [Type: File]  Input R2 FastQ file.
+    -o,  --outdir  [Type: Path]  Path to output directory.
 
 OPTIONS:
-    -h, --help                   Displays usage and help information
+    -t, --threads [Type: Int]   Number of threads (Default = 2).
+    -g, --gtf     [Type: File]  Input annotation file in GTF format.
+                                 NOTE: User must choose from one of the following
+                                 GTFs in the container filesystem ("/opt2/refs/"):
+                                    + HERV_rmsk.hg38.v2.transcripts.gtf (Default)
+                                    + HERV_rmsk.hg38.v2.genes.gtf
+                                    + L1Base.hg38.v1.transcripts.gtf
+                                    + retro.hg38.v1.transcripts.gtf
+    -p, --prior   [Type: Int]   Prior on theta for Telescope (Default = 200000).
+                                 Equivalent to adding N non-unique reads.
+                                 NOTE: It is recommended to set this prior to a
+                                 large value. This increases the penalty for
+                                 non-unique reads and improves accuracy.
+    -m, --max-iter [Type: Int]  Maximum number of iterations to test convergence
+                                 of the EM algorithm (Default = 200).
+    -h, --help                  Displays usage and help information
 
 Example:
     $ HERVx -r1 /tmp/SRR4235541_1.fastq -r2 /tmp/SRR4235541_2.fastq -outdir ERV_hg38
+    $ singularity exec -B $PWD:$PWD ccbr_telescope.sif HERVx -r1 S25_1.fastq -r2 S25_2.fastq -o tmp
 
 NOTES:
     + DockerHub: https://hub.docker.com/repository/docker/nciccbr/ccbr_telescope
@@ -61,6 +74,9 @@ function parser() {
       -r2 | --read-2)  provided "$key" "${2-}"; Arguments["r2"]="$2"; shift; shift;;
       -o  | --outdir)  provided "$key" "${2-}"; Arguments["o"]="$2"; shift; shift;;
       -t  | --threads) provided "$key" "${2-}"; Arguments["t"]="$2"; shift; shift;;
+      -g  | --gtf)     provided "$key" "${2-}"; Arguments["g"]="$2"; shift; shift;;
+      -p  | --prior)   provided "$key" "${2-}"; Arguments["p"]="$2"; shift; shift;;
+      -m  | --max-iter) provided "$key" "${2-}"; Arguments["m"]="$2"; shift; shift;;
       -*  | --*) err "Error: Failed to parse unsupported argument: '${key}'."; usage && exit 1;;
       *) err "Error: Failed to parse unrecognized argument: '${key}'. Do any of your inputs have spaces?"; usage && exit 1;;
     esac
@@ -106,6 +122,7 @@ function trim(){
   # @INPUT $5 = Threads
   # @CALLS cutadapt
 
+  echo -e "\nStarted Trimming at $(date) with INPUTS: $@"
   mkdir -p "${4}"
   cutadapt -j "${5}" -b file:/opt2/refs/trimmonatic_TruSeqv3_adapters.fa -B file:/opt2/refs/trimmonatic_TruSeqv3_adapters.fa \
           --nextseq-trim=2 --trim-n -n 5 -O 5 -q 10,10 -m 35:35 \
@@ -122,10 +139,10 @@ function align(){
   # @INPUT $5 = Threads
   # @CALLS bowtie2, samtools
 
-
+  echo -e "\nStarting Alignment at $(date) with INPUTS: $@"
   mkdir -p "${4}"
   bowtie2 -p "${5}" -k 100 --very-sensitive-local --score-min "L,0,1.6" \
-          -x refs/bowtie2/hg38 -1 "${2}" -2 "${3}" \
+          -x /opt2/bowtie2/hg38 -1 "${2}" -2 "${3}" \
           -S ${4}/${1}_bowtie.sam
 
   # Step 3.) SAMtools: covert SAM to BAM and sort by name
@@ -135,15 +152,19 @@ function align(){
 }
 
 function hervx(){
-  # Step 2.) Bowtie2: align against reference genome and sorts BAM file
+  # Step 3.) Telescope: characterizes of Human Endogenous Retrovirus (HERV) expression
   # @INPUT $1 = basename (sample name without PATH and file ext)
   # @INPUT $2 = BAM file (sorted by name)
   # @INPUT $3 = Outdir (hervx directory)
+  # @INPUT $4 = GTF file
+  # @INPUT $5 = theta-prior (recommended value = 200000)
+  # @INPUT $6 = Max EM iterations (recommended value = 200)
   # @CALLS telescope
 
+  echo -e "\nStarting Telescope at $(date) with INPUTS: $@"
   mkdir -p "${3}"
-  telescope assign --theta_prior 200000 --max_iter 200 \
-                   --outdir "$3" "${2}" refs/HERV_rmsk.hg38.v2.genes.gtf
+  telescope assign --theta_prior "${5}" --max_iter "${6}" \
+                   --outdir "$3" "${2}" "/opt2/refs/${4}"
 }
 
 
@@ -152,7 +173,7 @@ function main(){
   # @INPUT "$@" = command-line arguments
   # @CALLS parser(), trim(), align(), hervx()
 
-  echo -e "HERVx (version 0.0.1)\t$(date)"
+  echo -e "\nHERVx (version 0.0.1)\t$(date)"
   if [ $# -eq 0 ]; then usage; exit 1; fi
 
   # Associative array to store parsed args
@@ -160,19 +181,24 @@ function main(){
   # Parses user provided command-line arguments
   parser "$@"
 
-  # Getting parsed values
+  # Required Arguments
   base=$(basename "${Arguments[r1]}" | sed 's/_[1-2].fastq$//g')
   read1="${Arguments[r1]}"; read2="${Arguments[r2]}"
   outdir="${Arguments[o]%/}"
-  threads="${Arguments[t]-4}" # default is 4 threads
+
+  # Optional Arguments
+  threads="${Arguments[t]-2}"                             # default is 2 threads
+  gtf="${Arguments[g]-HERV_rmsk.hg38.v2.transcripts.gtf}" # default = HERV_rmsk.hg38.v2.transcripts.gtf
+  prior="${Arguments[p]-200000}"                          # default = 200000
+  iter="${Arguments[m]-200}"                              # default = 200
 
   # HERVx Pipeline
   trim "$base" "$read1" "$read2" "${outdir}/trim" "$threads"
   align "$base" "${outdir}/trim/${base}_trimmed_R1.fastq" "${outdir}/trim/${base}_trimmed_R2.fastq" "${outdir}/bams" "$threads"
-  hervx "$base" "${outdir}/bams/${base}_bowtie.sorted.bam" "${outdir}/hervx"
+  hervx "$base" "${outdir}/bams/${base}_bowtie.sorted.bam" "${outdir}/hervx" "${gtf}" "${prior}" "${iter}"
 
 }
 
-# Main: check usage and run HERVx
+# Main: check usage, parse args, and run HERVx pipeline
 main "$@"
 
