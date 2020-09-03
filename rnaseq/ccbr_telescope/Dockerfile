@@ -36,7 +36,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install --yes \
     libncursesw5-dev \
     libcurl4-gnutls-dev \
     liblzma-dev \
-    locales && \
+    locales \
+    pigz && \
 apt-get clean && apt-get purge && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -90,7 +91,7 @@ COPY refs/hg38.rev.2.bt2  /opt2/bowtie2/
 
 # Set environment variable(s)
 # Configure "locale", see https://github.com/rocker-org/rocker/issues/19
-RUN apt-get install -y locales
+# Adding pigz for cutadapt
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
    && locale-gen en_US.utf8 \
    && /usr/sbin/update-locale LANG=en_US.UTF-8
