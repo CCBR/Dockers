@@ -160,3 +160,10 @@ mv Genrich_Peak_Annotations_mqc.csv.tmp Genrich_Peak_Annotations_mqc.csv
 #OUTPUT:multiqc_report.html
 #####
 multiqc -c ${SCRIPTSFOLDER}/ccbr_atac_config.yaml -f --interactive -v .
+
+
+#####
+#Create a QC stats table
+#OUTPUT: QCStats.txt
+#####
+python /opt2/ccbr_atac_make_qcstats_table.py

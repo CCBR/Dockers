@@ -19,12 +19,12 @@ parser.add_argument('--outbed', required = True, dest = 'outbed', help = 'consen
 parser.add_argument('--nofilter', action = 'store_true', default = 'store_false',required = False,dest = 'nofilter',help = ' do not filter keep all peaks with score')
 
 
-
-
 deleteFiles=[]
 
 args = parser.parse_args()
 print(args)
+out=open(args.outbed,'w')
+
 
 filter=0.5
 
@@ -34,7 +34,7 @@ rand_name=str(uuid.uuid4())
 cmd="cat"
 for p in args.peakfiles:
 	cmd+=" "+p
-cmd+=" > "+rand_name+".concat.bed"
+cmd+=" | cut -f1-3 > "+rand_name+".concat.bed"
 
 deleteFiles.append(rand_name+".concat.bed")
 print(cmd)
@@ -50,6 +50,7 @@ os.system(cmd)
 # check merged count
 npeaks=len(open(rand_name+".merged.bed").readlines())
 if (npeaks==0):
+	out.close()
 	exit("Number of merged peaks = 0")
 
 
@@ -78,7 +79,7 @@ df=df.set_index("peakid")
 df=df.sum(axis=1)/len(df.columns)
 df=pandas.DataFrame({'peakid':df.index,'score':df.values})
 
-out=open(args.outbed,'w')
+
 for index, row in df.iterrows():
 	chrom,coords=row["peakid"].split(":")
 	start,end=coords.split("-")

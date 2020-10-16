@@ -82,6 +82,9 @@ METRICS_FILE=${samplename}.dupmetric \
 VALIDATION_STRINGENCY=LENIENT \
 ASSUME_SORTED=true \
 REMOVE_DUPLICATES=false
+
+ls -alrth
+
 if [ $KEEPFILES == "False" ];then rm -rf ${samplename}.filt.bam;fi
 
 samtools view -F 1796 -b -@ $ncpus -o ${samplename}.dedup.tmp.bam ${samplename}.dupmark.bam

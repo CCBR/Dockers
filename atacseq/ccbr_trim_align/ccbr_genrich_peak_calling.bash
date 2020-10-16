@@ -195,19 +195,45 @@ if [ "$nreplicates" -eq "2" ];then files="$PEAKFILE1 $PEAKFILE2 $POOLEDPEAKFILE"
 if [ "$nreplicates" -eq "3" ];then files="$PEAKFILE1 $PEAKFILE2 $PEAKFILE3 $POOLEDPEAKFILE"; fi
 if [ "$nreplicates" -eq "4" ];then files="$PEAKFILE1 $PEAKFILE2 $PEAKFILE3 $PEAKFILE4 $POOLEDPEAKFILE"; fi
 
-f="$CONSENSUSBEDFILE"
-Rscript ${SCRIPTSFOLDER}/ccbr_annotate_bed.R -b $f -a ${f}.annotated -g $GENOME -l ${f}.genelist -f ${f}.annotation_summary
-cut -f1,2 ${f}.annotation_summary > ${f}.annotation_distribution
+if [ $CONSENSUSBEDFILE ];then
+	f="$CONSENSUSBEDFILE"
+	npeaks_consensus=$(wc -l $f|awk '{print $1}')
+	if [ "$npeaks_consensus" -gt "0" ];then
+		Rscript ${SCRIPTSFOLDER}/ccbr_annotate_bed.R -b $f -a ${f}.annotated -g $GENOME -l ${f}.genelist -f ${f}.annotation_summary
+		cut -f1,2 ${f}.annotation_summary > ${f}.annotation_distribution
+	else
+		touch ${f}.annotated
+		touch ${f}.genelist
+		touch ${f}.annotation_summary
+		touch ${f}.annotation_distribution
+	fi
+fi
 
 if [ $FILTERPEAKS == "True" ];then
   qvalue=$QFILTER
   for f in $files;do
 	filteredpeakfile=$(echo $f|sed "s/.narrowPeak/.qfilter.narrowPeak/g")
 	awk -F"\t" -v q=$qvalue "{if (\$9>q){print}}" $f > $filteredpeakfile
-	Rscript ${SCRIPTSFOLDER}/ccbr_annotate_peaks.R -n $f -a ${f}.annotated -g $GENOME -l ${f}.genelist -f ${f}.annotation_summary 
-	Rscript ${SCRIPTSFOLDER}/ccbr_annotate_peaks.R -n $filteredpeakfile -a ${filteredpeakfile}.annotated -g $GENOME -l ${filteredpeakfile}.genelist -f ${filteredpeakfile}.annotation_summary
-	cut -f1,2 ${f}.annotation_summary > ${f}.annotation_distribution
-	cut -f1,2 ${filteredpeakfile}.annotation_summary > ${filteredpeakfile}.annotation_distribution
+	npeaks=$(wc -l $f|awk '{print $1}')
+	if [ "$npeaks" -gt "0" ];then
+		Rscript ${SCRIPTSFOLDER}/ccbr_annotate_peaks.R -n $f -a ${f}.annotated -g $GENOME -l ${f}.genelist -f ${f}.annotation_summary
+		cut -f1,2 ${f}.annotation_summary > ${f}.annotation_distribution
+	else
+		touch ${f}.annotated
+		touch ${f}.genelist
+		touch ${f}.annotation_summary
+		touch ${f}.annotation_distribution
+	fi
+	npeaks_filtered=$(wc -l $filteredpeakfile|awk '{print $1}')
+	if [ "$npeaks_filtered" -gt "0" ];then
+		Rscript ${SCRIPTSFOLDER}/ccbr_annotate_peaks.R -n $filteredpeakfile -a ${filteredpeakfile}.annotated -g $GENOME -l ${filteredpeakfile}.genelist -f ${filteredpeakfile}.annotation_summary
+		cut -f1,2 ${filteredpeakfile}.annotation_summary > ${filteredpeakfile}.annotation_distribution
+	else
+		touch ${filteredpeakfile}.annotated
+		touch ${filteredpeakfile}.genelist
+		touch ${filteredpeakfile}.annotation_summary
+		touch ${filteredpeakfile}.annotation_distribution
+	fi		
   done
 fi
 
