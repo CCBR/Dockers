@@ -1,0 +1,250 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+
+function usage() { cat << EOF
+
+HERVx: Pipeline to characterize Human Endogenous Retrovirus (HERV) expression
+
+USAGE:
+  HERVx [OPTIONS] -r1 SRR4235541_1.fastq -r2 SRR4235541_2.fastq -o outdir_path
+
+SYNOPSIS:
+  HERVx calculates Human Endogenous Retrovirus (HERV) expression in paired-end
+RNA-seq data. Characterization of HERV retrotranscriptome is difficult due to
+uncertainty that arises in fragment assignment because of sequence similarity.
+Telescope directly addresses uncertainty in fragment assignment by reassigning
+ambiguously mapped fragments to the most probable source transcript as
+determined within a Bayesian statistical model.
+
+  The HERVx pipeline runs cutadapt to remove adapter sequences and to perform
+quality-trimming, bowtie2 to align reads against the Human reference genome (hg38),
+SAMtools to convert from SAM to BAM format  and to sort reads by name, and Telescope
+to characterize Human Endogenous Retrovirus (HERV) expression.
+
+Required Arguments:
+  -r1, --read-1  [Type: File]  Input R1 FastQ file.
+  -r2, --read-2  [Type: File]  Input R2 FastQ file.
+  -o,  --outdir  [Type: Path]  Path to output directory.
+
+OPTIONS:
+  -b, --basename [Type: Str]   Base name of the sample. This is the name of the
+                                sample without the PATH and the file extension.
+                                WHERE:
+                                  file extension = MateInfo + .fastq + .gz [opt]
+                                Given: /tmp/S25_WT_1.fastq /tmp/S25_WT_2.fastq
+                                the base name would be "S25_rep1". This string is
+                                used to deterministically resolve output filenames.
+                                If not provided, the base name will be resolved
+                                automatically by cleaning the provided "-r1" input
+                                filename against a list of common extensions.
+  -t, --threads  [Type: Int]   Number of threads (Default = 2).
+  -g, --gtf      [Type: File]  Input annotation file in GTF format.
+                                NOTE: User must choose from one of the following
+                                GTFs in the container ("/opt2/refs/"):
+                                  1. HERV_rmsk.hg38.v2.transcripts.gtf (Default)
+                                  2. HERV_rmsk.hg38.v2.genes.gtf
+                                  3. L1Base.hg38.v1.transcripts.gtf
+                                  4. retro.hg38.v1.transcripts.gtf
+  -p, --prior    [Type: Int]   Prior on theta for Telescope (Default = 200000).
+                                Equivalent to adding N non-unique reads.
+                                NOTE: It is recommended to set this prior to a
+                                large value. This increases the penalty for
+                                non-unique reads and improves accuracy.
+  -m, --max-iter [Type: Int]   Maximum number of iterations to test convergence
+                                of the EM algorithm (Default = 200).
+  -h, --help                   Displays usage and help information
+
+Example:
+  $ HERVx -r1 /tmp/SRR4235541_1.fastq -r2 /tmp/SRR4235541_2.fastq -outdir ERV_hg38
+  $ singularity exec -B $PWD:$PWD ccbr_telescope.sif HERVx -r1 S25_1.fastq -r2 S25_2.fastq -o tmp
+
+NOTES:
+  + DockerHub: https://hub.docker.com/repository/docker/nciccbr/ccbr_telescope
+  + Reference files are located in /opt2/ in the container's filesystem.
+  + Dockerfile to build this image is located in /opt2/Dockerfile.
+EOF
+}
+
+
+# Functions
+function err() { cat <<< "$@" 1>&2; }
+function fatal() { cat <<< "$@" 1>&2; usage; exit 1; }
+
+function parser() {
+  # Adds parsed command-line args to GLOBAL $Arguments associative array
+  # + KEYS = short_cli_flag ("r1", "r2", "o", ...)
+  # + VALUES = parsed_user_value ("WT_1.fastq" "WT_2.fastq", "/scratch", ...)
+  # @INPUT "$@" = user command-line arguments
+  # @CALLS check() to see if the user provided all the required arguments
+
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case $key in
+      -h  | --help) usage && exit 0;;
+      -r1 | --read-1)  provided "$key" "${2-}"; Arguments["r1"]="$2"; shift; shift;;
+      -r2 | --read-2)  provided "$key" "${2-}"; Arguments["r2"]="$2"; shift; shift;;
+      -o  | --outdir)  provided "$key" "${2-}"; Arguments["o"]="$2"; shift; shift;;
+      -t  | --threads) provided "$key" "${2-}"; Arguments["t"]="$2"; shift; shift;;
+      -g  | --gtf)     provided "$key" "${2-}"; Arguments["g"]="$2"; shift; shift;;
+      -p  | --prior)   provided "$key" "${2-}"; Arguments["p"]="$2"; shift; shift;;
+      -m  | --max-iter) provided "$key" "${2-}"; Arguments["m"]="$2"; shift; shift;;
+      -b  | --basename) provided "$key" "${2-}"; Arguments["b"]="$2"; shift; shift;;
+      -*  | --*) err "Error: Failed to parse unsupported argument: '${key}'."; usage && exit 1;;
+      *) err "Error: Failed to parse unrecognized argument: '${key}'. Do any of your inputs have spaces?"; usage && exit 1;;
+    esac
+  done
+
+  # Check for required args
+  check
+}
+
+
+function provided() {
+  # Checks to see if the argument's value exists
+  # @INPUT $1 = name of user provided argument
+  # @INPUT $2 = value of user provided argument
+  # @CALLS fatal() if value is empty string or NULL
+
+  if [[ -z "${2-}" ]]; then
+     fatal "Fatal: Failed to provide value to '${1}'!";
+  fi
+}
+
+
+function clean(){
+  # Finds the base name of the sample
+  # @INPUT $1 = From optional basename argument
+  # @RETURN $bname = cleaned base name (PATH and EXT removed)
+
+  local bname=${1-}
+  local exts=("_1.fastq" "_2.fastq" ".R1.fastq" ".R2.fastq" "_R1.fastq" "_R2.fastq")
+
+  if [[ -z "$bname" ]]; then
+     bname="${Arguments[r1]}"  # Determine base name from R1 input
+  fi
+
+  # Remove PATH and .gz extension
+  bname=$(basename $bname | sed 's/.gz$//g')
+
+  # Clean remaining extensions (MateInfo + )
+  for ext in "${exts[@]}"; do
+    if [[ $bname == *${ext} ]]; then
+      bname=$(echo "$bname" | sed "s@$ext\$@@")
+      break # only remove one extension
+    fi
+  done
+
+  echo "$bname"
+}
+
+
+function check(){
+  # Checks to see if user provided required arguments
+  # @INPUTS $Arguments = Global Associative Array
+  # @CALLS fatal() if user did NOT provide all the $required args
+
+  # List of required arguments
+  local required=("r1" "r2" "o")
+  echo -e "Provided Required Inputs"
+  for arg in "${required[@]}"; do
+    value=${Arguments[${arg}]-}; [[ -z "${value}" ]] && {
+      fatal "Failed to provide all required args.. missing ${arg}"
+    }
+    echo -e "\t-${arg}\t${value}"
+  done
+}
+
+
+function trim(){
+  # Step 1.) Cutadapt: remove adapter sequences and quality-trimming
+  # @INPUT $1 = basename (sample name without PATH and file ext)
+  # @INPUT $2 = Read1 FastQ file
+  # @INPUT $3 = Read2 FastQ file
+  # @INPUT $4 = Outdir (trim directory)
+  # @INPUT $5 = Threads
+  # @CALLS cutadapt
+
+  echo -e "\nStarted Trimming at $(date) with INPUTS: $@"
+  mkdir -p "${4}"
+  cutadapt -j "${5}" -b file:/opt2/refs/trimmonatic_TruSeqv3_adapters.fa -B file:/opt2/refs/trimmonatic_TruSeqv3_adapters.fa \
+          --nextseq-trim=2 --trim-n -n 5 -O 5 -q 10,10 -m 35:35 \
+          -o ${4}/${1}_trimmed.R1.fastq.gz -p ${4}/${1}_trimmed.R2.fastq.gz \
+          "$2" "$3" 1> ${4}/${1}_cutadapt.log
+}
+
+
+function align(){
+  # Step 2.) Bowtie2: align against reference genome and sorts BAM file
+  # @INPUT $1 = basename (sample name without PATH and file ext)
+  # @INPUT $2 = Trimmed Read1 FastQ file
+  # @INPUT $3 = Trimmed Read2 FastQ file
+  # @INPUT $4 = Outdir (bam directory)
+  # @INPUT $5 = Threads
+  # @CALLS bowtie2, samtools
+
+  echo -e "\nStarting Alignment at $(date) with INPUTS: $@"
+  mkdir -p "${4}"
+  bowtie2 -p "${5}" -k 100 --very-sensitive-local --score-min "L,0,1.6" \
+          -x /opt2/bowtie2/hg38 -1 "${2}" -2 "${3}" \
+          -S ${4}/${1}_bowtie.sam
+
+  # Step 3.) SAMtools: covert SAM to BAM and sort by name
+  samtools view -@ "${5}" -b ${4}/${1}_bowtie.sam > ${4}/${1}_bowtie.bam
+  samtools sort -@ "${5}" -n ${4}/${1}_bowtie.bam -o ${4}/${1}_bowtie.sorted.bam
+  rm ${4}/${1}_bowtie.bam ${4}/${1}_bowtie.sam
+}
+
+
+function hervx(){
+  # Step 3.) Telescope: characterizes of Human Endogenous Retrovirus (HERV) expression
+  # @INPUT $1 = basename (sample name without PATH and file ext)
+  # @INPUT $2 = BAM file (sorted by name)
+  # @INPUT $3 = Outdir (hervx directory)
+  # @INPUT $4 = GTF file
+  # @INPUT $5 = theta-prior (recommended value = 200000)
+  # @INPUT $6 = Max EM iterations (recommended value = 200)
+  # @CALLS telescope
+
+  echo -e "\nStarting Telescope at $(date) with INPUTS: $@"
+  mkdir -p "${3}"
+  telescope assign --theta_prior "${5}" --max_iter "${6}" \
+                   --outdir "$3" "${2}" "/opt2/refs/${4}"
+}
+
+
+function main(){
+  # Parses args and runs trimming, aligment, and quantifies HERV expression
+  # @INPUT "$@" = command-line arguments
+  # @CALLS parser(), trim(), align(), hervx()
+
+  echo -e "\nHERVx (version 0.0.1)\t$(date)"
+  if [ $# -eq 0 ]; then usage; exit 1; fi
+
+  # Associative array to store parsed args
+  declare -Ag Arguments
+  # Parses user provided command-line arguments
+  parser "$@"
+
+  # Required Arguments
+  base=$(clean "${Arguments[b]-}")
+  read1="${Arguments[r1]}"; read2="${Arguments[r2]}"
+  outdir="${Arguments[o]%/}"
+
+  # Optional Arguments
+  threads="${Arguments[t]-2}"                             # default is 2 threads
+  gtf="${Arguments[g]-HERV_rmsk.hg38.v2.transcripts.gtf}" # default = HERV_rmsk.hg38.v2.transcripts.gtf
+  prior="${Arguments[p]-200000}"                          # default = 200000
+  iter="${Arguments[m]-200}"                              # default = 200
+
+  # HERVx Pipeline
+  trim "$base" "$read1" "$read2" "${outdir}/trim" "$threads"
+  align "$base" "${outdir}/trim/${base}_trimmed.R1.fastq.gz" "${outdir}/trim/${base}_trimmed.R2.fastq.gz" "${outdir}/bams" "$threads"
+  hervx "$base" "${outdir}/bams/${base}_bowtie.sorted.bam" "${outdir}/hervx/${base}" "${gtf}" "${prior}" "${iter}"
+
+}
+
+
+# Main: check usage, parse args, and run HERVx pipeline
+main "$@"
+
