@@ -76,6 +76,8 @@ bash /opt/ccbr_picard_filterdup_pe.bash \
 --bam ${samplename}.Q5.bam \
 --outBam ${samplename}.Q5DD.bam
 
+# /opt/ccbr_picard_filterdup_pe.bash --> also generates Q5DD.bam.bg bedgraph file.
+
 fastqc --threads $ncpus --format fastq $infastq1 $infastq2 $noBLfastq1 $noBLfastq2
 
 rm -f $trimmedfastq1 \

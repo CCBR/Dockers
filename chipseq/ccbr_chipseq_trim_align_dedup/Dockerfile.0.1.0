@@ -1,0 +1,65 @@
+FROM continuumio/miniconda3
+MAINTAINER vishal.koparde@nih.gov
+
+RUN mkdir -p /data && \
+mkdir -p /opt && \
+mkdir -p /usr/share/man/man1
+
+RUN apt-get update && \
+    apt-get upgrade -y
+
+RUN apt-get install -y gcc g++ make build-essential 
+RUN apt-get install -y default-jre libbz2-dev zlib1g-dev libcurl4-openssl-dev libssl-dev liblzma-dev \
+bedtools bowtie2 samtools bwa cpanminus unzip pigz
+
+RUN pip install pysam
+
+RUN pip install cutadapt==1.18
+
+RUN cpanm FindBin 
+
+COPY fastqc_v0.11.8.zip /opt
+
+WORKDIR /opt
+RUN unzip fastqc_v0.11.8.zip
+WORKDIR /opt/FastQC
+RUN chmod 755 fastqc
+RUN ln -s /opt/FastQC/fastqc /usr/local/bin/fastqc
+
+RUN conda create -n macs python=2.7
+RUN . /opt/conda/etc/profile.d/conda.sh && \
+    conda activate macs && \
+    pip install numpy && \
+    pip install macs2
+
+COPY TruSeq_and_nextera_adapters.consolidated.fa /opt
+COPY Dockerfile.0.0.2 /opt
+COPY picardcloud.jar /opt
+COPY bedSort /opt
+COPY argparse.bash /opt
+COPY ccbr_cutadapt_pe.bash /opt
+COPY ccbr_remove_blacklisted_reads_pe.bash /opt
+COPY ccbr_chipseq_trim_align_dedup_pe.bash /opt
+COPY ccbr_bwa_align_pe.bash /opt
+COPY ccbr_macs_filterdup_pe.bash /opt
+COPY ccbr_picard_filterdup_pe.bash /opt
+COPY bam_filter_by_mapq.py /opt
+COPY bam_se_2_bedgraph.py /opt
+COPY bam_pe_2_bedgraph.py /opt
+COPY the_blacklists.fa /opt
+COPY the_blacklists.fa.amb /opt
+COPY the_blacklists.fa.ann /opt
+COPY the_blacklists.fa.bwt /opt
+COPY the_blacklists.fa.pac /opt
+COPY the_blacklists.fa.sa /opt
+
+RUN chmod a+x /opt/bedSort
+RUN chmod a+x /opt/*.bash
+
+ENV PATH="/opt:${PATH}"
+
+WORKDIR /data
+
+RUN apt-get clean
+
+WORKDIR /data

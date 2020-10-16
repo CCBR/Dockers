@@ -23,3 +23,5 @@ samtools flagstat $OUTBAM > ${OUTBAM}.flagstat
 
 nreads_mapped=`grep -m1 mapped ${OUTBAM}.flagstat|awk '{print $1}'`
 echo "$nreads_mapped"|awk '{printf("%d\tQ5DD reads\n",$1)}' >> ${SAMPLENAME}.nreads.txt
+
+python /opt/bam_pe_2_bedgraph.py -i $OUTBAM 
