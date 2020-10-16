@@ -1,0 +1,23 @@
+FROM alpine:3.7
+MAINTAINER vishal.koparde@nih.gov
+
+RUN mkdir -p /data
+RUN mkdir -p /opt
+
+RUN apk update && \
+    apk upgrade 
+
+RUN apk add zlib zlib-dev make gcc g++ wget
+
+WORKDIR /opt
+RUN wget https://github.com/alexdobin/STAR/archive/2.6.0a.tar.gz
+RUN tar -xzf 2.6.0a.tar.gz
+WORKDIR /opt/STAR-2.6.0a/source
+RUN make STAR
+
+ENV PATH="/opt/STAR-2.6.0a/source":$PATH
+
+WORKDIR /data
+COPY Dockerfile /opt
+
+
