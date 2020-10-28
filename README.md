@@ -19,4 +19,5 @@ The docker images were pushed to dockerhub and are available [here](https://hub.
  
  * All docker images are built using one of the following base images:
    * ```ubuntu:16.04```
+   * ```ubuntu:18.04```
    * ```bitnami/minideb:jessie``` : Docker images built using this base image tend to have a smaller digital footprint.
