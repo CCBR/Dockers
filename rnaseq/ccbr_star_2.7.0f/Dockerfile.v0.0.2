@@ -1,0 +1,36 @@
+# STAR/2.7.0f Dockerfile (v0.0.2)
+FROM ubuntu:16.04
+
+MAINTAINER vishal.koparde@nih.gov kuhnsa@nih.gov
+
+RUN mkdir -p /data2
+RUN mkdir -p /opt2
+
+# Apt-get packages to build STAR from source
+RUN apt-get update && \
+    apt-get upgrade -y 
+
+# Adding python for readlengths.py script
+RUN apt-get install -y \
+	zlibc \
+	zlib1g \
+	zlib1g-dev \
+	make \
+	gcc \
+	g++ \
+	wget \
+	python && \
+apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+WORKDIR /opt2
+
+RUN wget https://github.com/alexdobin/STAR/archive/2.7.0f.tar.gz && \
+	tar -xzf 2.7.0f.tar.gz && \
+	cd /opt2/STAR-2.7.0f/source && \
+	make STAR
+
+ENV PATH="/opt2/STAR-2.7.0f/source":$PATH
+
+COPY Dockerfile /opt2
+WORKDIR /data2

@@ -1,3 +1,4 @@
+# Dockerfile for ccbr_star_2.7.0f/v0.0.1
 FROM ubuntu:16.04
 
 RUN mkdir -p /data
