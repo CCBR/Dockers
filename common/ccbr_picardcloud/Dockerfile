@@ -19,9 +19,11 @@ apt-get clean && \
 
 WORKDIR /opt2/picard
 
-# Get specified release of Picard
+# Get specified release of Picard and Cloud Picard JAR
 ENV PICARD_VERSION="2.11.0"
-RUN wget https://github.com/broadinstitute/picard/releases/download/${PICARD_VERSION}/picard.jar
+RUN wget https://github.com/broadinstitute/picard/releases/download/${PICARD_VERSION}/picard.jar && \
+	mv picard.jar picard_2.11.0.jar
+COPY resources/picardcloud.jar /opt2/picard/picard.jar
 RUN chmod a+x /opt2/picard/*.jar
 ENV PICARDJARPATH=/opt2/picard
 
