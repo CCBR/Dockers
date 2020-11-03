@@ -2,6 +2,8 @@
 
 Directly below are instructions for building an image using the provided Dockerfile:
 
+If using GNU parallel, please use the `--will-cite` flag to ignore interactive prompt (i.e. `parallel --will-cite < mycmds.sh`).
+
 ```bash
 # See listing of images on computer
 docker image ls
