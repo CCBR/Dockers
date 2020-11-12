@@ -1,0 +1,157 @@
+#!/bin/bash
+
+# ABOUT: Adding Wolfgang's bbtools wrapper because bbtools may allocate memory
+# in a greddy/inncorrect manner. This is important as the automatic memory detection 
+# by the individual tools is not slurm aware and reports incorrect amounts of available memory.
+
+#U .TH bbtools 1
+#U .SH NAME
+#U bbtools \- BBMap short read aligner and other bioinformatic tools
+#U .SH SYNOPSIS
+#U .B bbtools
+#U command [options]
+#U .SH DESCRIPTION
+#U .B bbtools
+#U is a convenient frontend to the collection of bioinformatic tools
+#U created by Brian Bushnell at the Joint Genome Institute.
+#U It includes a short read mapper, a k-mer based normalization tool,
+#U reformatting tools, and many more. The wrapper script will automatically
+#U set an appropriate maximum memory for the JVM executing the code. It 
+#U will limit runs on helix to 10GB and use SLURM to determine the correct
+#U amount of memory for batch/interactive jobs.
+#U .SH COMMANDS
+#U .IP help 8
+#U display this help message
+#U .IP man 8
+#U list all available commands with their descrcription and general
+#U usage information
+#U .IP list 8
+#U list all available commands
+#U .PP
+#U All other commands are essentially the name of the 
+#U corresponding bbtools script without the extension.
+#U .SH OPTIONS
+#U Options are tool specific. See tool documentation for more details.
+#U use --help to get tool specific help.
+#U .SH AUTHOR OF WRAPPER SCRIPT
+#U  Auhtor: Wolfgang Resch. Contact staff AT helix.nih.gov for help.
+#U  Modified: Skyler Kuhn. Contact kuhnsa AT nih.gov for more details.  
+
+BBTOOLS_ROOT=/opt2/bbmap
+
+function usage() {
+    grep '^#U ' "${BASH_SOURCE[0]}" \
+        | cut -c4- \
+        | groff -Tascii -man \
+        | less -e
+}
+
+function contains() {
+    local needle=${1:none}
+    shift
+    local word=""
+    for word in "$@"; do
+        if [[ "$word" == "$needle" ]]; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+function xmx_to_mb() {
+    local n unit
+    n=$(echo "$1" | sed -re 's/-Xmx([0-9]+)./\1/')
+    unit=$(echo "$1" | sed -re 's/-Xmx[0-9]+([gGmMkK])/\1/')
+    case $unit in
+        [gG]) echo $((n * 1024));;
+        [mM]) echo "$n";;
+        [kK]) echo $((n / 1024));;
+           *) echo "could not parse '$1'" >&2; echo 0;;
+    esac
+}
+
+function set_memory() {
+    local mem_mb i opt mem_limit_b mem_limit_mb
+    mem_mb=10240
+    i=0
+    opt=""
+    while [[ $i -lt ${#CMD_ARGS[@]} ]]; do
+        opt=${CMD_ARGS[$i]}
+        if [[ "$opt" =~ -[xX]mx.* ]]; then
+            mem_mb=$(xmx_to_mb "$opt")
+            break
+        fi
+        (( i++ ))
+    done
+    if [[ ${SLURM_JOB_ID:-none} == "none" ]]; then
+        # limit non batch jobs to 10g
+        if [[ $mem_mb -gt 10240 ]]; then
+            mem_mb=10240
+        fi
+    #else
+    #    mem_limit_b=$(cat \
+    #        "/sys/fs/cgroup/memory/slurm/uid_${UID}/job_${SLURM_JOB_ID}/memory.limit_in_bytes")
+    #    mem_limit_mb=$((mem_limit_b * 85 / 104857600))
+    #    if [[ $mem_mb -gt $mem_limit_mb ]]; then
+    #        mem_mb=$mem_limit_mb
+    #    fi
+    fi
+    CMD_ARGS[$i]="-Xmx${mem_mb}m"
+}
+        
+
+function main() {
+    local cmd script
+    local -a tools
+    if [[ $# -eq 0 ]]; then
+        usage
+        exit 0
+    fi
+    cmd="${1,,}"
+    shift
+    mapfile -t tools < <(ls "${BBTOOLS_ROOT}" | grep ".*\.sh$")
+    script="none"
+    case "$cmd" in 
+        help) usage; exit 0;;
+        list) 
+              echo "Available commands:"
+              for c in "${tools[@]}"; do
+                  echo "    ${c%%.sh}"
+              done;
+              exit 0
+              ;;
+        man) 
+              #groff -Tascii -man "${BBTOOLS_ROOT}/docs/ToolDescriptions.man" | less -e; 
+              less "${BBTOOLS_ROOT}/docs/ToolDescriptions.txt"
+              exit 0
+              ;;
+           *)
+              if contains "${cmd}.sh" "${tools[@]}"; then
+                  script="${BBTOOLS_ROOT}/${cmd}.sh"
+              fi
+              ;;
+    esac
+    if [[ "$script" == "none" ]]; then
+        echo "'$cmd' is not a valid command" >&2
+        exit 1
+    fi
+
+    # do some busy work so that bbtools will show up in the pacct data
+    for i in {1..50000}; do echo $((13**42)) > /dev/null;  done
+    
+    # create a global array of command arguments
+    CMD_ARGS=("$@")
+
+    # add/modify the -Xmx argument
+    set_memory
+
+    # can't modify the temp dir explicitly
+
+    # can't modify the temp dir explicitly; leaving threads up to user
+    unset TERM  # otherwise lmod gets very confused when this script is
+                # used as part of a pipe                               
+
+    exec "$script" "${CMD_ARGS[@]}"
+}
+    
+main "$@"
