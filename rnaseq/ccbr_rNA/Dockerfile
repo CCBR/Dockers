@@ -58,11 +58,11 @@ RUN git clone https://github.com/CCBR/rNA.git && \
 # For more information, check out: https://cran.r-project.org/bin/linux/ubuntu/
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 51716619E084DAB9
 RUN add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/"
-RUN apt update && DEBIAN_FRONTEND=noninteractive apt install --yes r-base
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt install --yes r-base
 
 # Install Required R packages
 RUN Rscript -e 'install.packages(c("argparse", "knitr", "plyr", "plotly", "ggplot2", "RColorBrewer"), repos="http://cran.r-project.org")'
-RUN Rscript -e 'install.packages(c("gridExtra", "flexdashboard", "rmarkdown", "crosstalk", "DT", "reshape2", "circlize", "viridis"), repos="http://cran.r-project.org")'
+RUN Rscript -e 'install.packages(c("shiny", "gridExtra", "flexdashboard", "rmarkdown", "crosstalk", "DT", "reshape2", "circlize", "viridis"), repos="http://cran.r-project.org")'
 RUN Rscript -e 'install.packages("BiocManager"); BiocManager::install(c("limma", "edgeR", "ComplexHeatmap"))'
 
 # PLEASE NOTE: The bioconductor Package, Repitools, expects a cache directory hold cache files
@@ -78,7 +78,7 @@ RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
     && locale-gen en_US.utf8 \
     && /usr/sbin/update-locale LANG=en_US.UTF-8
 
-# Add QualiMap to PATH
+# Add rNA to PATH
 ENV PATH="/opt2/rNA":$PATH
 
 # Clean-up Image
