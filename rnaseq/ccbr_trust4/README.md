@@ -40,3 +40,15 @@ docker push nciccbr/ccbr_trust4:latest
 ```
 
 > **Please Note**: Any references to `skchronicles` should be replaced your username if you would also like to push the image to a non-org account.
+
+Run TRUST4 using example dataset:
+```
+# Singularity
+# Assumes Singularity in $PATH
+# Pull Image from DockerHub
+SINGULARITY_CACHEDIR=$PWD singularity pull -F docker://nciccbr/ccbr_trust4:latest
+# Run with example BAM file as Input
+singularity exec -B $PWD:/data2 ccbr_trust4_latest.sif run-trust4 -b /opt2/TRUST4/example/example.bam -f /opt2/TRUST4/hg38_bcrtcr.fa --ref /opt2/TRUST4/human_IMGT+C.fa -o /data2/test1
+# Run with example FastQ file as Input
+singularity exec -B $PWD:/data2 ccbr_trust4_latest.sif run-trust4 -f /opt2/TRUST4/human_IMGT+C.fa --ref /opt2/TRUST4/human_IMGT+C.fa -1 /opt2/TRUST4/example/example_1.fq -2 /opt2/TRUST4/example/example_2.fq  -o /data2/test2
+```
