@@ -1,4 +1,6 @@
-# TRUST4/v0.1.0 Dockerfile (tag: v0.0.1)
+# TRUST4 Dockerfile
+# Define release with --build-arg TRUST4_VERSION=$RELEASE_VERSION
+# See README for an Example
 
 # Overview of TRUST4 Dependencies
 # 1. pthreads (bundled with OS)
@@ -12,6 +14,10 @@
 FROM ubuntu:18.04
 
 MAINTAINER Skyler Kuhn <kuhnsa@nih.gov>
+
+# Setting build time arg for defining a release
+# Default = 1.0.2-beta   
+ARG TRUST4_VERSION=1.0.2-beta
 
 RUN mkdir -p /data2
 RUN mkdir -p /opt2
@@ -27,6 +33,7 @@ RUN apt-get update && \
 RUN DEBIAN_FRONTEND=noninteractive apt-get install --yes \
     build-essential \
     git-all \
+    wget \
     gcc \
     make \
     perl \
@@ -43,8 +50,12 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install --yes \
 apt-get clean && apt-get purge && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Install TRUST4
-RUN git clone https://github.com/liulab-dfci/TRUST4.git && \
+# Install Defined Release of TRUST4
+# Release Archive also contains the example datasets 
+RUN wget https://github.com/liulab-dfci/TRUST4/archive/v${TRUST4_VERSION}.tar.gz && \
+    tar -xzf v${TRUST4_VERSION}.tar.gz && \
+    rm v${TRUST4_VERSION}.tar.gz && \
+    mv TRUST4-${TRUST4_VERSION} TRUST4 && \
     cd TRUST4/ && \
     make
 
