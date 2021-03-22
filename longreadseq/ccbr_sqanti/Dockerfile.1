@@ -1,0 +1,41 @@
+FROM nciccbr/ccbr_ubuntu_base_18.04:v1.0
+RUN apt-get update 
+
+WORKDIR /opt2
+
+#install cDNA Cupcake
+#ADD https://github.com/Magdoll/cDNA_Cupcake/archive/refs/tags/v22.0.0.tar.gz /opt2
+COPY v22.0.0.tar.gz /opt2/
+RUN tar xzvf v22.0.0.tar.gz && rm -f v22.0.0.tar.gz
+WORKDIR /opt2/cDNA_Cupcake-22.0.0
+RUN pip install numpy Cython
+#RUN python setup.py build && python setup.py install
+RUN pip install .
+
+#install R
+RUN apt-get update && apt-get install -y dirmngr gnupg apt-transport-https ca-certificates software-properties-common libcurl4-openssl-dev libssl-dev libboost-dev libxml2-dev
+RUN cp /usr/lib/python3/dist-packages/apt_pkg.cpython-36m-x86_64-linux-gnu.so /usr/lib/python3/dist-packages/apt_pkg.so && cp /usr/lib/python3/dist-packages/gi/_gi.cpython-36m-x86_64-linux-gnu.so /usr/lib/python3/dist-packages/gi/_gi.so
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 \
+&& add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
+
+RUN apt-get update && apt-get -y install r-base r-base-core r-recommended r-base-dev
+WORKDIR /opt2
+COPY install_packages.R /opt2
+RUN Rscript install_packages.R
+
+#install miniconda
+WORKDIR /opt2
+#ADD https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh /opt2/miniconda.sh
+COPY Miniconda3-latest-Linux-x86_64.sh /opt2/miniconda.sh
+RUN bash miniconda.sh -b -p /opt2/conda && \
+    rm -f /opt2/miniconda.sh && \
+    ln -s /opt2/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
+    echo ". /opt2/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
+    echo "conda activate base" >> ~/.bashrc
+
+
+ADD Dockerfile /opt2
+RUN chmod -R a+rX /opt2
+WORKDIR /data2
+
+MAINTAINER vishal.koparde@nih.gov

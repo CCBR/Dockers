@@ -1,0 +1,45 @@
+FROM nciccbr/ccbr_baser:latest
+RUN apt-get update 
+
+WORKDIR /opt2
+COPY install_packages.R /opt2
+RUN Rscript install_packages.R
+
+#install miniconda
+WORKDIR /opt2
+#ADD https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh /opt2/miniconda.sh
+COPY Miniconda3-latest-Linux-x86_64.sh /opt2/miniconda.sh
+RUN bash miniconda.sh -b -p /opt2/conda && \
+    rm -f /opt2/miniconda.sh && \
+    ln -s /opt2/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
+    echo ". /opt2/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
+    echo "conda activate base" >> ~/.bashrc
+
+#install cDNA Cupcake
+#ADD https://github.com/Magdoll/cDNA_Cupcake/archive/refs/tags/v22.0.0.tar.gz /opt2
+COPY v22.0.0.tar.gz /opt2/
+RUN tar xzvf v22.0.0.tar.gz && rm -f v22.0.0.tar.gz
+WORKDIR /opt2/cDNA_Cupcake-22.0.0
+RUN . /opt2/conda/etc/profile.d/conda.sh && conda activate base && pip install numpy Cython && pip install .
+
+#add minimap2
+WORKDIR /opt2
+RUN apt-get install -y curl 
+RUN curl -L https://github.com/lh3/minimap2/releases/download/v2.17/minimap2-2.17_x64-linux.tar.bz2 -O && \
+    tar xjvf minimap2-2.17_x64-linux.tar.bz2 && rm -rf minimap2-2.17_x64-linux.tar.bz2
+ENV PATH=$PATH:/opt2/minimap2-2.17_x64-linux
+
+#install SQANTI3
+WORKDIR /opt2
+RUN apt-get install -y git && \
+    git clone https://github.com/ConesaLab/SQANTI3.git
+WORKDIR /opt2/SQANTI3/ 
+RUN . /opt2/conda/etc/profile.d/conda.sh && conda activate base && \
+    conda env update -n base --file SQANTI3.conda_env.yml	
+ENV PATH /opt2/conda/envs/env/bin:$PATH
+
+ADD Dockerfile /opt2
+#RUN chmod -R a+rX /opt2
+WORKDIR /data2
+
+MAINTAINER vishal.koparde@nih.gov
