@@ -1,0 +1,7 @@
+name: fastqc_env
+channels:
+  - bioconda
+  - conda
+dependencies:
+  - python=3.6.5   # or 2.7
+  - fastqc
