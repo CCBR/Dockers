@@ -1,0 +1,17 @@
+
+install.packages("BiocManager", repos="http://cran.us.r-project.org")
+install.packages("argparse", repos="http://cran.us.r-project.org")
+
+BiocManager::install("S4Vectors")
+BiocManager::install("SummarizedExperiment")
+BiocManager::install("IRanges")
+BiocManager::install("GenomeInfoDb")
+BiocManager::install("GenomicRanges")
+BiocManager::install("Biobase")
+BiocManager::install("DelayedArray")
+install.packages("matrixStats")
+install.packages("httr")
+install.packages("plotly")
+BiocManager::install("SingleCellExperiment")
+BiocManager::install("SingleR")
+BiocManager::install("Seurat")
