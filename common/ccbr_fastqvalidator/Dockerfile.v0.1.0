@@ -1,0 +1,16 @@
+FROM	ubuntu:16.04
+MAINTAINER	vishal.koparde@nih.gov
+
+RUN	mkdir -p /data && mkdir -p /opt
+RUN	apt-get update && apt-get install -y git g++ gfortran zlib1g-dev build-essential
+
+WORKDIR	/opt
+RUN	git clone https://github.com/statgen/fastQValidator.git
+WORKDIR	/opt/fastQValidator
+RUN	make cloneLib && make
+ENV	PATH=$PATH:/opt/fastQValidator/bin
+
+RUN	apt-get clean
+
+COPY	Dockerfile.0.1.0 /opt
+WORKDIR	/data
