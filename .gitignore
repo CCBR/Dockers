@@ -7,3 +7,4 @@ test.sh
 **/*_test/
 **/*_testing/
 **/weeder2.0.1.tar.gz
+**/Miniconda3*sh
