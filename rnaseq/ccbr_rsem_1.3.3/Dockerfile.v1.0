@@ -1,0 +1,33 @@
+FROM nciccbr/ccbr_ubuntu_base_20.04:v1.1
+
+RUN apt-get update && \
+    apt-get upgrade -y 
+
+RUN apt-get install -y zlibc zlib1g zlib1g-dev libncurses-dev libbz2-dev liblzma-dev
+RUN apt-get install -y r-base-core libboost-dev
+
+ADD https://github.com/alexdobin/STAR/archive/refs/tags/2.7.8a.tar.gz /opt2
+WORKDIR /opt2
+RUN tar xzvf 2.7.8a.tar.gz 
+WORKDIR STAR-2.7.8a/source 
+RUN make STAR
+ENV PATH="/opt/STAR-2.7.8a/source":$PATH
+
+WORKDIR /opt2
+ADD https://github.com/deweylab/RSEM/archive/v1.3.3.tar.gz /opt2
+RUN tar -xzf v1.3.3.tar.gz
+WORKDIR /opt2/RSEM-1.3.3
+RUN make && make ebseq
+ENV PATH="/opt2/RSEM-1.3.3":$PATH
+
+WORKDIR /opt2
+RUN curl -o HISAT2_2.2.1.zip https://cloud.biohpc.swmed.edu/index.php/s/fE9QCsX3NH4QwBi/download && unzip HISAT2_2.2.1.zip && rm -f HISAT2_2.2.1.zip
+WORKDIR /opt2/hisat2-2.2.1
+RUN make
+ENV PATH="/opt2/hisat2-2.2.1":$PATH
+
+WORKDIR /data2
+COPY Dockerfile /opt2
+RUN apt-get clean
+
+MAINTAINER vishal.koparde@nih.gov
