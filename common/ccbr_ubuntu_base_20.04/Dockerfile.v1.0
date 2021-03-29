@@ -12,10 +12,6 @@ RUN apt-get install -y locales && localedef -i en_US -f UTF-8 en_US.UTF-8
 #install pip
 RUN apt-get install -y python3-pip
 
-#install other bioinformatics tools
-RUN apt-get install -y bowtie bowtie2 bwa bedtools bedops samtools bcftools vcftools
-RUN apt-get install -y curl cmake pigz parallel
-
 ADD Dockerfile /opt2/Dockerfile.baseimage
 RUN chmod -R a+rX /opt2
 WORKDIR /data2
