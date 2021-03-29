@@ -1,0 +1,23 @@
+FROM continuumio/miniconda3
+MAINTAINER vishal.koparde@nih.gov
+
+RUN mkdir -p /data
+RUN mkdir -p /opt
+
+RUN apt-get update && \
+    apt-get upgrade -y
+
+RUN apt-get install -y gcc g++ make build-essential
+RUN apt-get install -y libbz2-dev zlib1g-dev libcurl4-openssl-dev libssl-dev liblzma-dev \
+bedtools bowtie2 samtools bwa cpanminus unzip pigz
+
+RUN pip install pysam
+
+COPY bam_pe_2_bedgraph.py /opt
+COPY bam_se_2_bedgraph.py /opt
+COPY bedSort /opt
+
+ENV PATH=$PATH:/opt
+RUN chmod a+rx /opt/*
+
+WORKDIR /data
