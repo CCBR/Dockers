@@ -3,3 +3,6 @@
 test.sh
 **/test.sh
 **/tmp/
+**/test/
+**/*_test/
+**/weeder2.0.1.tar.gz
