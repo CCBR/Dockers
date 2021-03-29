@@ -1,0 +1,36 @@
+FROM ubuntu:16.04
+
+RUN mkdir -p /data2
+RUN mkdir -p /opt2
+
+# Need to add cloud repo to install R v3.6 on ubuntu v16.04
+# else default is R v3.2.3 which does not have required libraries like RCurl
+RUN apt-get update && \
+    apt-get upgrade -y
+
+RUN apt-get install -y libxml2-dev software-properties-common apt-transport-https build-essential
+RUN apt-get install -y libcurl4-gnutls-dev gfortran \
+    libbz2-dev \
+    liblzma-dev \
+    libssl-dev \
+    zlib1g-dev
+RUN echo "deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/" >> /etc/apt/sources.list
+# RUN add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -s -c) main"
+RUN apt-get update && \
+    apt-get upgrade -y --allow-unauthenticated
+
+#RUN apt-get install -y --allow-unauthenticated r-base-core=3.5.0-1xenial
+RUN apt-get install -y --allow-unauthenticated r-base-core
+
+RUN apt-get install -y libblas-dev liblapack-dev
+COPY Rcpp_1.0.3.tar.gz /opt2
+WORKDIR /opt2
+RUN R CMD INSTALL Rcpp_1.0.3.tar.gz
+
+COPY install_R_packages.R /opt2
+RUN Rscript install_R_packages.R
+
+COPY install_R_packages_chipseeker.R /opt2
+RUN Rscript install_R_packages_chipseeker.R
+
+
