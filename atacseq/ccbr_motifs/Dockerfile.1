@@ -1,0 +1,58 @@
+FROM ubuntu:16.04
+
+# Tools installed in this docker image:
+# gimmemotifs     0.14       conda:python3
+
+RUN mkdir -p /data2
+RUN mkdir -p /opt2
+
+RUN apt-get update && \
+    apt-get upgrade -y
+
+RUN apt-get install -y \
+  autoconf \
+  automake \
+  build-essential \
+  cython \
+  gfortran \
+  ghostscript \
+  ghostscript \
+  libatlas-base-dev \
+  libatlas-base-dev \
+  libbz2-dev \
+  libexpat1-dev \
+  libexpat1-dev \
+  libfreetype6-dev \
+  libgd-dev \
+  libgs-dev \
+  libgsl0-dev \
+  libhtml-template-compiled-perl \
+  liblapack-dev \
+  libopenmpi-dev \
+  libtool \
+  libxml-libxml-debugging-perl \
+  libxml-opml-simplegen-perl \
+  libxml2-dev \
+  libxslt-dev \
+  openmpi-bin \
+  openssh-server \
+  sudo \
+  libpng12-dev \
+  zlib1g-dev
+
+RUN apt-get install -y libicu-dev
+
+
+
+WORKDIR /opt2
+ADD http://meme-suite.org/meme-software/5.1.0/meme-5.1.0.tar.gz meme.tar.gz
+RUN tar xzvf meme.tar.gz && cd meme-5.1.0 && \
+./configure --prefix=/opt2/meme --with-url=http://meme-suite.org/ --enable-build-libxml2 --enable-build-libxslt && \
+make && \
+make install
+
+ENV PATH=$PATH:/opt2/meme/bin:/opt2/meme/libexec/meme-5.1.0
+
+COPY Dockerfile.1 /opt2
+MAINTAINER vishal.koparde@nih.gov
+
