@@ -1,0 +1,39 @@
+FROM ubuntu:16.04
+# NOT WORKING!!!!
+# Tools installed in this docker image:
+# gimmemotifs     0.18       conda:python3
+
+RUN mkdir -p /data2
+RUN mkdir -p /opt2
+
+RUN apt-get update && \
+    apt-get upgrade -y
+
+# INSTALL miniconda
+
+WORKDIR /opt2
+COPY Miniconda3-4.7.12.1-Linux-x86_64.sh /opt2/miniconda.sh
+# ADD https://repo.anaconda.com/miniconda/Miniconda3-4.7.12.1-Linux-x86_64.sh /opt2
+RUN /bin/bash /opt2/miniconda.sh -b -p /opt2/conda && \
+    rm /opt2/miniconda.sh && \
+    ln -s /opt2/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
+    echo ". /opt2/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
+    echo "conda activate base" >> ~/.bashrc
+
+# CREATE MINICONDA PYTHON3 ENVIRONMENT
+
+RUN . /opt2/conda/etc/profile.d/conda.sh && \
+  conda create -n python3 python=3.6 && \
+  conda create -n python2 python=2.7
+
+# INSTALL gimmemotifs directly
+
+RUN . /opt2/conda/etc/profile.d/conda.sh && \
+  conda activate python3 && \
+  conda install -c bioconda/label/cf201901 gimmemotifs
+
+WORKDIR /data2
+
+RUN apt-get clean
+
+MAINTAINER vishal.koparde@nih.gov
