@@ -1,2 +1,2 @@
 # Dockerfiles
-*ockerfile* linguist-language=Dockerfile
+Dockerfile.* linguist-language=Dockerfile
