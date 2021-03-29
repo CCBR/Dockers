@@ -1,0 +1,10 @@
+FROM haskell:8
+
+RUN mkdir -p /opt2 && mkdir -p /data2
+
+RUN apt-get update && apt-get install -y git libjudy-dev
+RUN cabal update
+
+WORKDIR /opt2
+RUN cd /opt2 && git clone https://ustenzel@bitbucket.org/ustenzel/biohazard-tools.git
+#RUN cd /opt2 && cabal install biohazard-tools/
