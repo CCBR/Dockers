@@ -1,0 +1,49 @@
+FROM ubuntu:20.04
+RUN mkdir -p /opt2 && mkdir -p /data2
+ENV TZ=America/New_York
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+RUN apt update
+# perl fixes
+RUN apt-get install -y cpanminus build-essential gfortran make gcc g++ cmake 
+RUN cpanm FindBin Term::ReadLine
+# Set the locale
+RUN apt-get install -y locales && localedef -i en_US -f UTF-8 en_US.UTF-8
+# RUN apt-get install -y zlib1g-dev libncurses-dev libbz2-dev liblzma-dev libxml2-dev libssl-dev libexpat1-dev libgd-dev
+RUN apt-get install -y librtmp-dev libssl-dev libatlas-base-dev libblas-dev libboost-dev libbz2-dev \
+ libexpat1-dev libfreetype6-dev libgd-dev libgd-perl libgs-dev libgsl-dev libgsl0-dev \
+ libhtml-template-compiled-perl libicu-dev libjudy-dev liblapack-dev liblzma-dev libmysqlclient-dev libncurses-dev \
+ libopenmpi-dev libpng-dev libssl-dev libtool libxml-libxml-debugging-perl libxml-opml-simplegen-perl \
+ libxml2-dev libxslt-dev manpages-dev zlib1g-dev
+RUN apt-get install -y unzip zlibc zlib1g bzip2 wget git curl pigz parallel
+
+
+#install pip
+RUN apt-get install -y python3-pip
+RUN pip3 install --upgrade pip && \
+	pip3 install numpy && \
+	pip3 install scipy && \
+	pip3 install argparse && \
+	pip3 install pysam
+
+#install other bioinformatics tools
+RUN apt-get install -y bowtie bowtie2 bwa bedtools bedops samtools bcftools vcftools  
+
+#install R
+RUN apt-get install -y r-base r-base-dev r-base-core
+
+#install java
+RUN apt-get install -y openjdk-8-jdk
+
+#install figlet
+RUN apt-get install -y figlet
+
+ADD Dockerfile.v1.2 /opt2/Dockerfile.baseimage
+COPY argparse.bash /opt2
+COPY printversions.bash /opt2/printversions
+RUN chmod -R a+rX /opt2 && chmod -R a+x /opt2/argparse.bash && chmod -R a+x /opt2/printversions
+ENV PATH="/opt2/:$PATH"
+WORKDIR /data2
+
+RUN apt-get clean
+MAINTAINER vishal.koparde@nih.gov
