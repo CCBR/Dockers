@@ -1,0 +1,6 @@
+FROM nciccbr/ccbr_ubuntu_base_20.04:v1.1
+RUN apt-get update && apt-get install -y porechop
+
+COPY Dockerfile.v1.0 /opt2/Dockerfile
+RUN apt-get clean && chmod -R a+rX /opt2
+MAINTAINER vishal.koparde@nih.gov
