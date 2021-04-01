@@ -1,0 +1,23 @@
+FROM nciccbr/ccbr_ubuntu_base_20.04:v1.0
+
+RUN apt-get update 
+
+RUN apt-get install -y zlibc zlib1g zlib1g-dev make gcc g++ wget \
+   bowtie2 libgd-perl pkg-config libgd-dev
+
+RUN cpanm GD::Graph::bars
+
+COPY fastq_screen_v0.13.0.tar.gz /opt2
+WORKDIR /opt2
+RUN tar xzvf fastq_screen_v0.13.0.tar.gz
+WORKDIR /opt2/fastq_screen_v0.13.0
+RUN chmod 755 fastq_screen
+ENV PATH="/opt2/fastq_screen_v0.13.0":$PATH
+
+COPY Dockerfile /opt2
+
+WORKDIR /data2
+
+RUN apt-get clean
+
+MAINTAINER vishal.koparde@nih.gov
