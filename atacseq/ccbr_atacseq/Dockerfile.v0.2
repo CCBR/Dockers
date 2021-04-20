@@ -1,0 +1,68 @@
+FROM nciccbr/ccbr_ubuntu_base_20.04:v1.3
+ENV TAG="v0.2"
+
+RUN apt-get upgrade -y
+
+# install cutadapt
+RUN	pip3 install cutadapt==1.18
+
+# install preseq
+RUN apt-get install -y libcurl4 libcurl4-openssl-dev
+WORKDIR /opt2
+ADD https://github.com/samtools/htslib/releases/download/1.12/htslib-1.12.tar.bz2 /opt2
+RUN tar -xjvf htslib-1.12.tar.bz2
+WORKDIR /opt2/htslib-1.12
+RUN ./configure && make && make install
+WORKDIR /opt2
+ADD https://github.com/smithlabcode/preseq/releases/download/v3.1.2/preseq-3.1.2.tar.gz /opt2
+RUN tar -xzvf preseq-3.1.2.tar.gz 
+WORKDIR /opt2/preseq-3.1.2
+RUN ./configure --enable-hts && make && make install
+
+# install python2.7
+RUN apt-get install -y python2.7 && ln -s /usr/bin/python2.7 /usr/bin/python2
+
+# SCRIPTS AND DB files
+
+# blacklist indexes
+COPY resources/hg19.blacklist.chrM.chr_rDNA.fa.gz /opt2
+COPY resources/hg19_blacklist.amb /opt2
+COPY resources/hg19_blacklist.ann /opt2
+COPY resources/hg19_blacklist.bwt /opt2
+COPY resources/hg19_blacklist.pac /opt2
+COPY resources/hg19_blacklist.sa /opt2
+COPY resources/hg38.blacklist.chrM.chr_rDNA.fa.gz /opt2
+COPY resources/hg38_blacklist.amb /opt2
+COPY resources/hg38_blacklist.ann /opt2
+COPY resources/hg38_blacklist.bwt /opt2
+COPY resources/hg38_blacklist.pac /opt2
+COPY resources/hg38_blacklist.sa /opt2
+COPY resources/mm10.blacklist.chrM.chr_rDNA.fa.gz /opt2
+COPY resources/mm10_blacklist.amb /opt2
+COPY resources/mm10_blacklist.ann /opt2
+COPY resources/mm10_blacklist.bwt /opt2
+COPY resources/mm10_blacklist.pac /opt2
+COPY resources/mm10_blacklist.sa /opt2
+
+COPY resources/TruSeq_and_nextera_adapters.consolidated.fa /opt2
+COPY Dockerfile.$TAG /opt2
+COPY resources/picardcloud.jar /opt2
+COPY resources/bedSort /opt2
+COPY resources/bedGraphToBigWig /opt2
+COPY resources/transpose.sh /opt2
+# COPY ccbr_atac_config.yaml /opt2
+
+RUN chmod a+x /opt2/*.bash && \
+ chmod a+r /opt2/*.* && \
+ chmod a+r /opt2/Dockerfile.$TAG && \
+ chmod a+x /opt2/bed*
+
+# RUN chmod -R a+rX /opt2/db
+
+ENV PATH="/opt2:${PATH}"
+
+WORKDIR /data2
+
+RUN apt-get clean
+
+MAINTAINER vishal.koparde@nih.gov
