@@ -1,0 +1,11 @@
+FROM nciccbr/ccbr_ubuntu_base_20.04:v1.3
+ENV TAG="v1.4"
+
+#add python2/rsync
+RUN apt-get install -y python2.7 rsync && ln -s /usr/bin/python2.7 /usr/bin/python2
+
+COPY Dockerfile.$TAG /opt2/Dockerfile.baseimage
+RUN chmod -R a+rX /opt2
+WORKDIR /data2
+
+RUN apt-get clean

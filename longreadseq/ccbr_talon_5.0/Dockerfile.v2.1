@@ -1,0 +1,26 @@
+FROM nciccbr/ccbr_ubuntu_base_20.04:v1.2
+RUN apt-get update 
+
+WORKDIR /opt2
+#ADD v5.0.tar.gz /opt2
+#RUN pip install pybedtools==0.8.1
+RUN git clone https://github.com/kopardev/TALON.git
+WORKDIR /opt2/TALON
+RUN pip3 install .
+
+RUN pip3 install pyfasta
+RUN pip3 install pybedtools
+# RUN wget https://github.com/mortazavilab/TranscriptClean/archive/refs/tags/v2.0.2.tar.gz
+COPY v2.0.2.tar.gz /opt2
+WORKDIR /opt2
+RUN tar xzvf v2.0.2.tar.gz && rm -f v2.0.2.tar.gz
+WORKDIR /opt2/TranscriptClean-2.0.2
+RUN echo "#!/usr/bin/env python3" > test.py && cat TranscriptClean.py >> test.py && chmod a+x test.py && mv TranscriptClean.py TranscriptClean.py.original && mv test.py TranscriptClean.py
+ENV PATH="/opt2/TranscriptClean-2.0.2:$PATH"
+
+
+ADD Dockerfile.v2.1 /opt2/Dockerfile
+RUN chmod -R a+rX /opt2
+WORKDIR /data2
+
+MAINTAINER vishal.koparde@nih.gov

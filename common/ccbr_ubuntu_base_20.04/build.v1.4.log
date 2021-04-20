@@ -1,0 +1,78 @@
+Sending build context to Docker daemon  444.4kB
+Step 1/7 : FROM nciccbr/ccbr_ubuntu_base_20.04:v1.3
+ ---> 97fa0784ffda
+Step 2/7 : ENV TAG="v1.4"
+ ---> Running in c7d2db764fc1
+Removing intermediate container c7d2db764fc1
+ ---> 25554f3b1def
+Step 3/7 : RUN apt-get install -y python2.7 rsync && ln -s /usr/bin/python2.7 /usr/bin/python2
+ ---> Running in 375916ab9ac9
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  libpopt0 libpython2.7-minimal libpython2.7-stdlib python2.7-minimal
+Suggested packages:
+  python2.7-doc binfmt-support openssh-server
+The following NEW packages will be installed:
+  libpopt0 libpython2.7-minimal libpython2.7-stdlib python2.7
+  python2.7-minimal rsync
+0 upgraded, 6 newly installed, 0 to remove and 7 not upgraded.
+Need to get 4103 kB of archives.
+After this operation, 17.0 MB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu focal/main amd64 libpopt0 amd64 1.16-14 [26.3 kB]
+Get:2 http://archive.ubuntu.com/ubuntu focal/main amd64 rsync amd64 3.1.3-8 [322 kB]
+Get:3 http://archive.ubuntu.com/ubuntu focal-updates/universe amd64 libpython2.7-minimal amd64 2.7.18-1~20.04.1 [335 kB]
+Get:4 http://archive.ubuntu.com/ubuntu focal-updates/universe amd64 python2.7-minimal amd64 2.7.18-1~20.04.1 [1285 kB]
+Get:5 http://archive.ubuntu.com/ubuntu focal-updates/universe amd64 libpython2.7-stdlib amd64 2.7.18-1~20.04.1 [1887 kB]
+Get:6 http://archive.ubuntu.com/ubuntu focal-updates/universe amd64 python2.7 amd64 2.7.18-1~20.04.1 [248 kB]
+[91mdebconf: delaying package configuration, since apt-utils is not installed
+[0mFetched 4103 kB in 2s (2258 kB/s)
+Selecting previously unselected package libpopt0:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 71174 files and directories currently installed.)
+Preparing to unpack .../0-libpopt0_1.16-14_amd64.deb ...
+Unpacking libpopt0:amd64 (1.16-14) ...
+Selecting previously unselected package rsync.
+Preparing to unpack .../1-rsync_3.1.3-8_amd64.deb ...
+Unpacking rsync (3.1.3-8) ...
+Selecting previously unselected package libpython2.7-minimal:amd64.
+Preparing to unpack .../2-libpython2.7-minimal_2.7.18-1~20.04.1_amd64.deb ...
+Unpacking libpython2.7-minimal:amd64 (2.7.18-1~20.04.1) ...
+Selecting previously unselected package python2.7-minimal.
+Preparing to unpack .../3-python2.7-minimal_2.7.18-1~20.04.1_amd64.deb ...
+Unpacking python2.7-minimal (2.7.18-1~20.04.1) ...
+Selecting previously unselected package libpython2.7-stdlib:amd64.
+Preparing to unpack .../4-libpython2.7-stdlib_2.7.18-1~20.04.1_amd64.deb ...
+Unpacking libpython2.7-stdlib:amd64 (2.7.18-1~20.04.1) ...
+Selecting previously unselected package python2.7.
+Preparing to unpack .../5-python2.7_2.7.18-1~20.04.1_amd64.deb ...
+Unpacking python2.7 (2.7.18-1~20.04.1) ...
+Setting up libpython2.7-minimal:amd64 (2.7.18-1~20.04.1) ...
+Setting up python2.7-minimal (2.7.18-1~20.04.1) ...
+Linking and byte-compiling packages for runtime python2.7...
+Setting up libpopt0:amd64 (1.16-14) ...
+Setting up libpython2.7-stdlib:amd64 (2.7.18-1~20.04.1) ...
+Setting up rsync (3.1.3-8) ...
+invoke-rc.d: could not determine current runlevel
+invoke-rc.d: policy-rc.d denied execution of start.
+Setting up python2.7 (2.7.18-1~20.04.1) ...
+Processing triggers for mime-support (3.64ubuntu1) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.2) ...
+Removing intermediate container 375916ab9ac9
+ ---> cbec56987b14
+Step 4/7 : COPY Dockerfile.$TAG /opt2/Dockerfile.baseimage
+ ---> 1b7075ea062c
+Step 5/7 : RUN chmod -R a+rX /opt2
+ ---> Running in 48498d5d08a8
+Removing intermediate container 48498d5d08a8
+ ---> 6bb8f261e5c3
+Step 6/7 : WORKDIR /data2
+ ---> Running in 1bea3ed2de17
+Removing intermediate container 1bea3ed2de17
+ ---> e3712a02ac47
+Step 7/7 : RUN apt-get clean
+ ---> Running in 0a8fa9049f6b
+Removing intermediate container 0a8fa9049f6b
+ ---> 9e5ea1156c2d
+Successfully built 9e5ea1156c2d
+Successfully tagged nciccbr/ccbr_ubuntu_base_20.04:v1.4
