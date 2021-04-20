@@ -1,0 +1,91 @@
+Sending build context to Docker daemon  197.2MB
+Step 1/31 : FROM nciccbr/ccbr_ubuntu_base_20.04:v1.3
+ ---> 97fa0784ffda
+Step 2/31 : RUN	pip3 install cutadapt==1.18
+ ---> Running in 8264eaf2fc9e
+Collecting cutadapt==1.18
+  Downloading cutadapt-1.18.tar.gz (342 kB)
+Collecting xopen>=0.3.2
+  Downloading xopen-1.1.0-py2.py3-none-any.whl (10 kB)
+Collecting isal>=0.3.0
+  Downloading isal-0.10.0-cp38-cp38-manylinux2014_x86_64.whl (989 kB)
+Building wheels for collected packages: cutadapt
+  Building wheel for cutadapt (setup.py): started
+  Building wheel for cutadapt (setup.py): finished with status 'done'
+  Created wheel for cutadapt: filename=cutadapt-1.18-cp38-cp38-linux_x86_64.whl size=702399 sha256=4a00c1780038670da2d120efd8ecacf5fdc2e7460e0784bd9f78b99fb4e7e9b6
+  Stored in directory: /root/.cache/pip/wheels/23/35/64/47cc36c735b7a1ba414d178636ff733743962701458ca67dc2
+Successfully built cutadapt
+Installing collected packages: isal, xopen, cutadapt
+Successfully installed cutadapt-1.18 isal-0.10.0 xopen-1.1.0
+Removing intermediate container 8264eaf2fc9e
+ ---> 126e3f50f9b7
+Step 3/31 : COPY resources/hg19.blacklist.chrM.chr_rDNA.fa.gz /opt2
+ ---> 3700a7bdde97
+Step 4/31 : COPY resources/hg19_blacklist.amb /opt2
+ ---> dbdaa88d4cce
+Step 5/31 : COPY resources/hg19_blacklist.ann /opt2
+ ---> c85961d4174d
+Step 6/31 : COPY resources/hg19_blacklist.bwt /opt2
+ ---> 77ee2f5a186b
+Step 7/31 : COPY resources/hg19_blacklist.pac /opt2
+ ---> 222273dacd9b
+Step 8/31 : COPY resources/hg19_blacklist.sa /opt2
+ ---> 2047141823e3
+Step 9/31 : COPY resources/hg38.blacklist.chrM.chr_rDNA.fa.gz /opt2
+ ---> db56e6b89b07
+Step 10/31 : COPY resources/hg38_blacklist.amb /opt2
+ ---> 859c8aa2414d
+Step 11/31 : COPY resources/hg38_blacklist.ann /opt2
+ ---> dd087811527c
+Step 12/31 : COPY resources/hg38_blacklist.bwt /opt2
+ ---> 3bb4f66ca8f6
+Step 13/31 : COPY resources/hg38_blacklist.pac /opt2
+ ---> 98e0169f8a25
+Step 14/31 : COPY resources/hg38_blacklist.sa /opt2
+ ---> b75cad24f11f
+Step 15/31 : COPY resources/mm10.blacklist.chrM.chr_rDNA.fa.gz /opt2
+ ---> 1ef1e01c1ce6
+Step 16/31 : COPY resources/mm10_blacklist.amb /opt2
+ ---> 54d06048b602
+Step 17/31 : COPY resources/mm10_blacklist.ann /opt2
+ ---> 437f3f7f0647
+Step 18/31 : COPY resources/mm10_blacklist.bwt /opt2
+ ---> 6e70a59249ee
+Step 19/31 : COPY resources/mm10_blacklist.pac /opt2
+ ---> 82aaf9721ad2
+Step 20/31 : COPY resources/mm10_blacklist.sa /opt2
+ ---> 525c72c2e909
+Step 21/31 : COPY resources/TruSeq_and_nextera_adapters.consolidated.fa /opt2
+ ---> 2e2d44d27447
+Step 22/31 : COPY Dockerfile.v0.1 /opt2
+ ---> 8cacd48c9905
+Step 23/31 : COPY resources/picardcloud.jar /opt2
+ ---> 66cc28e83575
+Step 24/31 : COPY resources/bedSort /opt2
+ ---> 6c2922d9e5f7
+Step 25/31 : COPY resources/bedGraphToBigWig /opt2
+ ---> 537056448790
+Step 26/31 : COPY resources/transpose.sh /opt2
+ ---> 6a61dfde7197
+Step 27/31 : RUN chmod a+x /opt2/*.bash &&  chmod a+r /opt2/*.* &&  chmod a+r /opt2/Dockerfile.v0.1 &&  chmod a+x /opt2/bed*
+ ---> Running in 471f1dfac262
+Removing intermediate container 471f1dfac262
+ ---> f9fb829f0602
+Step 28/31 : ENV PATH="/opt2:${PATH}"
+ ---> Running in 92e0ae4d7494
+Removing intermediate container 92e0ae4d7494
+ ---> c4dcf56014a5
+Step 29/31 : WORKDIR /data2
+ ---> Running in c9465a658a10
+Removing intermediate container c9465a658a10
+ ---> 4cb1823d2609
+Step 30/31 : RUN apt-get clean
+ ---> Running in b36c8d194b20
+Removing intermediate container b36c8d194b20
+ ---> a99327e7817d
+Step 31/31 : MAINTAINER vishal.koparde@nih.gov
+ ---> Running in fbd92055ed8d
+Removing intermediate container fbd92055ed8d
+ ---> 7be833fbfb8c
+Successfully built 7be833fbfb8c
+Successfully tagged nciccbr/ccbr_atacseq:v0.1

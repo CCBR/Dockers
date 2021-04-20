@@ -1,3 +1,4 @@
 # Dockerfiles
 Dockerfile.* linguist-language=Dockerfile
 *.tar.gz filter=lfs diff=lfs merge=lfs -text
+*.bwt filter=bwt diff=bwt merge=bwt -text
