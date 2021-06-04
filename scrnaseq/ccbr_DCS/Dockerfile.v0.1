@@ -1,0 +1,26 @@
+FROM nciccbr/ccbr_ubuntu_base_20.04:v1.4
+
+# install cutadapt
+RUN pip3 install DigitalCellSorter==1.3.7.6 \
+ && pip install --upgrade cython \
+ && pip install umap-learn \
+ && pip install phate \
+ && apt-get -y install libfftw3-dev \
+ && pip install fitsne
+
+RUN apt-get install -y fuse python-psutil
+WORKDIR /opt2
+run wget https://github.com/plotly/orca/releases/download/v1.3.1/orca-1.3.1.AppImage \
+&& chmod a+x orca-1.3.1.AppImage && ln -s orca-1.3.1.AppImage orca
+
+COPY Dockerfile.v0.1 /opt2
+
+RUN chmod a+r /opt2/Dockerfile.v0.1
+
+ENV PATH="/opt2:${PATH}"
+
+WORKDIR /data2
+
+RUN apt-get clean
+
+MAINTAINER vishal.koparde@nih.gov

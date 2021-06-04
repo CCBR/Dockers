@@ -1,0 +1,272 @@
+Sending build context to Docker daemon  3.072kB
+Step 1/11 : FROM nciccbr/ccbr_ubuntu_base_20.04:v1.4
+ ---> 9e5ea1156c2d
+Step 2/11 : RUN pip3 install DigitalCellSorter==1.3.7.6  && pip install --upgrade cython  && pip install umap-learn  && pip install phate  && apt-get -y install libfftw3-dev  && pip install fitsne
+ ---> Running in 3ed59681054f
+Collecting DigitalCellSorter==1.3.7.6
+  Downloading DigitalCellSorter-1.3.7.6-py3-none-any.whl (14.6 MB)
+Collecting adjustText>=0.7.3
+  Downloading adjustText-0.7.3.tar.gz (7.5 kB)
+Collecting tables>=3.5.1
+  Downloading tables-3.6.1-cp38-cp38-manylinux1_x86_64.whl (4.3 MB)
+Collecting patsy>=0.5.1
+  Downloading patsy-0.5.1-py2.py3-none-any.whl (231 kB)
+Collecting xlrd>=1.2.0
+  Downloading xlrd-2.0.1-py2.py3-none-any.whl (96 kB)
+Requirement already satisfied: scipy>=1.3.0 in /usr/local/lib/python3.8/dist-packages (from DigitalCellSorter==1.3.7.6) (1.6.2)
+Collecting plotly>=4.1.1
+  Downloading plotly-4.14.3-py2.py3-none-any.whl (13.2 MB)
+Collecting matplotlib>=3.1.0
+  Downloading matplotlib-3.4.2-cp38-cp38-manylinux1_x86_64.whl (10.3 MB)
+Collecting mygene>=3.1.0
+  Downloading mygene-3.2.2-py2.py3-none-any.whl (5.4 kB)
+Collecting pandas>=0.24.2
+  Downloading pandas-1.2.4-cp38-cp38-manylinux1_x86_64.whl (9.7 MB)
+Collecting openpyxl>=3.0.3
+  Downloading openpyxl-3.0.7-py2.py3-none-any.whl (243 kB)
+Requirement already satisfied: numpy>=1.16.4 in /usr/local/lib/python3.8/dist-packages (from DigitalCellSorter==1.3.7.6) (1.20.2)
+Collecting scikit-learn>=0.21.2
+  Downloading scikit_learn-0.24.2-cp38-cp38-manylinux2010_x86_64.whl (24.9 MB)
+Requirement already satisfied: python-dateutil>=2.7 in /usr/lib/python3/dist-packages (from matplotlib>=3.1.0->DigitalCellSorter==1.3.7.6) (2.7.3)
+Collecting pillow>=6.2.0
+  Downloading Pillow-8.2.0-cp38-cp38-manylinux1_x86_64.whl (3.0 MB)
+Collecting cycler>=0.10
+  Downloading cycler-0.10.0-py2.py3-none-any.whl (6.5 kB)
+Collecting kiwisolver>=1.0.1
+  Downloading kiwisolver-1.3.1-cp38-cp38-manylinux1_x86_64.whl (1.2 MB)
+Requirement already satisfied: pyparsing>=2.2.1 in /usr/lib/python3/dist-packages (from matplotlib>=3.1.0->DigitalCellSorter==1.3.7.6) (2.4.6)
+Requirement already satisfied: six in /usr/lib/python3/dist-packages (from cycler>=0.10->matplotlib>=3.1.0->DigitalCellSorter==1.3.7.6) (1.14.0)
+Collecting biothings-client>=0.2.6
+  Downloading biothings_client-0.2.6-py2.py3-none-any.whl (37 kB)
+Requirement already satisfied: requests>=2.3.0 in /usr/lib/python3/dist-packages (from biothings-client>=0.2.6->mygene>=3.1.0->DigitalCellSorter==1.3.7.6) (2.22.0)
+Collecting et-xmlfile
+  Downloading et_xmlfile-1.1.0-py3-none-any.whl (4.7 kB)
+Collecting pytz>=2017.3
+  Downloading pytz-2021.1-py2.py3-none-any.whl (510 kB)
+Collecting retrying>=1.3.3
+  Downloading retrying-1.3.3.tar.gz (10 kB)
+Collecting threadpoolctl>=2.0.0
+  Downloading threadpoolctl-2.1.0-py3-none-any.whl (12 kB)
+Collecting joblib>=0.11
+  Downloading joblib-1.0.1-py3-none-any.whl (303 kB)
+Collecting numexpr>=2.6.2
+  Downloading numexpr-2.7.3-cp38-cp38-manylinux2010_x86_64.whl (473 kB)
+Building wheels for collected packages: adjustText, retrying
+  Building wheel for adjustText (setup.py): started
+  Building wheel for adjustText (setup.py): finished with status 'done'
+  Created wheel for adjustText: filename=adjustText-0.7.3-py3-none-any.whl size=7095 sha256=9a2c00d97b2fc465b4860055f016bee07bda5808750f8f7a937532bf82bf3e53
+  Stored in directory: /root/.cache/pip/wheels/06/b2/e0/b239bd2c0ff89b98c4f0c86a63e7059f38a8dfaf6df2641c63
+  Building wheel for retrying (setup.py): started
+  Building wheel for retrying (setup.py): finished with status 'done'
+  Created wheel for retrying: filename=retrying-1.3.3-py3-none-any.whl size=11430 sha256=2e6478eb5887b9a58b734f53217302e8377ae75980588638ad4634a0fe24ef5e
+  Stored in directory: /root/.cache/pip/wheels/c4/a7/48/0a434133f6d56e878ca511c0e6c38326907c0792f67b476e56
+Successfully built adjustText retrying
+Installing collected packages: pillow, kiwisolver, cycler, threadpoolctl, retrying, pytz, numexpr, matplotlib, joblib, et-xmlfile, biothings-client, xlrd, tables, scikit-learn, plotly, patsy, pandas, openpyxl, mygene, adjustText, DigitalCellSorter
+Successfully installed DigitalCellSorter-1.3.7.6 adjustText-0.7.3 biothings-client-0.2.6 cycler-0.10.0 et-xmlfile-1.1.0 joblib-1.0.1 kiwisolver-1.3.1 matplotlib-3.4.2 mygene-3.2.2 numexpr-2.7.3 openpyxl-3.0.7 pandas-1.2.4 patsy-0.5.1 pillow-8.2.0 plotly-4.14.3 pytz-2021.1 retrying-1.3.3 scikit-learn-0.24.2 tables-3.6.1 threadpoolctl-2.1.0 xlrd-2.0.1
+[91mWARNING: You are using pip version 21.0.1; however, version 21.1.2 is available.
+You should consider upgrading via the '/usr/bin/python3 -m pip install --upgrade pip' command.
+[0mCollecting cython
+  Downloading Cython-0.29.23-cp38-cp38-manylinux1_x86_64.whl (1.9 MB)
+Installing collected packages: cython
+Successfully installed cython-0.29.23
+[91mWARNING: You are using pip version 21.0.1; however, version 21.1.2 is available.
+You should consider upgrading via the '/usr/bin/python3 -m pip install --upgrade pip' command.
+[0mCollecting umap-learn
+  Downloading umap-learn-0.5.1.tar.gz (80 kB)
+Collecting numba>=0.49
+  Downloading numba-0.53.1-cp38-cp38-manylinux2014_x86_64.whl (3.4 MB)
+Requirement already satisfied: numpy>=1.17 in /usr/local/lib/python3.8/dist-packages (from umap-learn) (1.20.2)
+Collecting pynndescent>=0.5
+  Downloading pynndescent-0.5.2.tar.gz (1.1 MB)
+Requirement already satisfied: scikit-learn>=0.22 in /usr/local/lib/python3.8/dist-packages (from umap-learn) (0.24.2)
+Requirement already satisfied: scipy>=1.0 in /usr/local/lib/python3.8/dist-packages (from umap-learn) (1.6.2)
+Collecting llvmlite<0.37,>=0.36.0rc1
+  Downloading llvmlite-0.36.0-cp38-cp38-manylinux2010_x86_64.whl (25.3 MB)
+Requirement already satisfied: setuptools in /usr/lib/python3/dist-packages (from numba>=0.49->umap-learn) (45.2.0)
+Requirement already satisfied: joblib>=0.11 in /usr/local/lib/python3.8/dist-packages (from pynndescent>=0.5->umap-learn) (1.0.1)
+Requirement already satisfied: threadpoolctl>=2.0.0 in /usr/local/lib/python3.8/dist-packages (from scikit-learn>=0.22->umap-learn) (2.1.0)
+Building wheels for collected packages: umap-learn, pynndescent
+  Building wheel for umap-learn (setup.py): started
+  Building wheel for umap-learn (setup.py): finished with status 'done'
+  Created wheel for umap-learn: filename=umap_learn-0.5.1-py3-none-any.whl size=76567 sha256=494ae249c4ef39700e53df2fee071b879d85d3af8fde65ba531091863079f7a3
+  Stored in directory: /root/.cache/pip/wheels/95/85/b7/b4b7040e49367b6d1505d7e8fb57e3e79b22fa6ac26f72520b
+  Building wheel for pynndescent (setup.py): started
+  Building wheel for pynndescent (setup.py): finished with status 'done'
+  Created wheel for pynndescent: filename=pynndescent-0.5.2-py3-none-any.whl size=51347 sha256=b79f35acc1982233e4c9150996f39ecaca9221ee8683dba11ff25ac7a0cfb543
+  Stored in directory: /root/.cache/pip/wheels/bb/81/5d/c78c8f15f3c815197129f91ec435d8ae0bb0a7a856d962c3ce
+Successfully built umap-learn pynndescent
+Installing collected packages: llvmlite, numba, pynndescent, umap-learn
+Successfully installed llvmlite-0.36.0 numba-0.53.1 pynndescent-0.5.2 umap-learn-0.5.1
+[91mWARNING: You are using pip version 21.0.1; however, version 21.1.2 is available.
+You should consider upgrading via the '/usr/bin/python3 -m pip install --upgrade pip' command.
+[0mCollecting phate
+  Downloading phate-1.0.7-py3-none-any.whl (23 kB)
+Collecting tasklogger>=1.0
+  Downloading tasklogger-1.1.0-py3-none-any.whl (15 kB)
+Requirement already satisfied: matplotlib>=3.0 in /usr/local/lib/python3.8/dist-packages (from phate) (3.4.2)
+Collecting future
+  Downloading future-0.18.2.tar.gz (829 kB)
+Collecting scprep>=0.11.1
+  Downloading scprep-1.1.0-py3-none-any.whl (104 kB)
+Collecting Deprecated
+  Downloading Deprecated-1.2.12-py2.py3-none-any.whl (9.5 kB)
+Requirement already satisfied: numpy>=1.16.0 in /usr/local/lib/python3.8/dist-packages (from phate) (1.20.2)
+Collecting graphtools>=1.3.1
+  Downloading graphtools-1.5.2-py3-none-any.whl (45 kB)
+Requirement already satisfied: scipy>=1.1.0 in /usr/local/lib/python3.8/dist-packages (from phate) (1.6.2)
+Requirement already satisfied: scikit-learn>=0.20.0 in /usr/local/lib/python3.8/dist-packages (from phate) (0.24.2)
+Collecting s-gd2>=1.5
+  Downloading s_gd2-1.8-cp38-cp38-manylinux2010_x86_64.whl (419 kB)
+Collecting pygsp>=0.5.1
+  Downloading PyGSP-0.5.1-py2.py3-none-any.whl (1.8 MB)
+Requirement already satisfied: cycler>=0.10 in /usr/local/lib/python3.8/dist-packages (from matplotlib>=3.0->phate) (0.10.0)
+Requirement already satisfied: pillow>=6.2.0 in /usr/local/lib/python3.8/dist-packages (from matplotlib>=3.0->phate) (8.2.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /usr/local/lib/python3.8/dist-packages (from matplotlib>=3.0->phate) (1.3.1)
+Requirement already satisfied: python-dateutil>=2.7 in /usr/lib/python3/dist-packages (from matplotlib>=3.0->phate) (2.7.3)
+Requirement already satisfied: pyparsing>=2.2.1 in /usr/lib/python3/dist-packages (from matplotlib>=3.0->phate) (2.4.6)
+Requirement already satisfied: six in /usr/lib/python3/dist-packages (from cycler>=0.10->matplotlib>=3.0->phate) (1.14.0)
+Requirement already satisfied: joblib>=0.11 in /usr/local/lib/python3.8/dist-packages (from scikit-learn>=0.20.0->phate) (1.0.1)
+Requirement already satisfied: threadpoolctl>=2.0.0 in /usr/local/lib/python3.8/dist-packages (from scikit-learn>=0.20.0->phate) (2.1.0)
+Requirement already satisfied: pandas>=0.25 in /usr/local/lib/python3.8/dist-packages (from scprep>=0.11.1->phate) (1.2.4)
+Collecting packaging
+  Downloading packaging-20.9-py2.py3-none-any.whl (40 kB)
+Requirement already satisfied: decorator>=4.3.0 in /usr/lib/python3/dist-packages (from scprep>=0.11.1->phate) (4.4.2)
+Requirement already satisfied: pytz>=2017.3 in /usr/local/lib/python3.8/dist-packages (from pandas>=0.25->scprep>=0.11.1->phate) (2021.1)
+Collecting wrapt<2,>=1.10
+  Downloading wrapt-1.12.1.tar.gz (27 kB)
+Building wheels for collected packages: wrapt, future
+  Building wheel for wrapt (setup.py): started
+  Building wheel for wrapt (setup.py): finished with status 'done'
+  Created wheel for wrapt: filename=wrapt-1.12.1-cp38-cp38-linux_x86_64.whl size=78555 sha256=fe254e38e9708139cd43e3ab2c29f1b20820e8ddbc55d976377f6b3d99cd9f25
+  Stored in directory: /root/.cache/pip/wheels/5f/fd/9e/b6cf5890494cb8ef0b5eaff72e5d55a70fb56316007d6dfe73
+  Building wheel for future (setup.py): started
+  Building wheel for future (setup.py): finished with status 'done'
+  Created wheel for future: filename=future-0.18.2-py3-none-any.whl size=491058 sha256=5bc9486f01c29792b82091fadfc8a86d6077d722679dd18ff42e7251f4590d5b
+  Stored in directory: /root/.cache/pip/wheels/8e/70/28/3d6ccd6e315f65f245da085482a2e1c7d14b90b30f239e2cf4
+Successfully built wrapt future
+Installing collected packages: wrapt, Deprecated, tasklogger, pygsp, packaging, future, scprep, s-gd2, graphtools, phate
+Successfully installed Deprecated-1.2.12 future-0.18.2 graphtools-1.5.2 packaging-20.9 phate-1.0.7 pygsp-0.5.1 s-gd2-1.8 scprep-1.1.0 tasklogger-1.1.0 wrapt-1.12.1
+[91mWARNING: You are using pip version 21.0.1; however, version 21.1.2 is available.
+You should consider upgrading via the '/usr/bin/python3 -m pip install --upgrade pip' command.
+[0mReading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  libfftw3-bin libfftw3-double3 libfftw3-long3 libfftw3-quad3 libfftw3-single3
+Suggested packages:
+  libfftw3-doc
+The following NEW packages will be installed:
+  libfftw3-bin libfftw3-dev libfftw3-double3 libfftw3-long3 libfftw3-quad3
+  libfftw3-single3
+0 upgraded, 6 newly installed, 0 to remove and 7 not upgraded.
+Need to get 4714 kB of archives.
+After this operation, 24.6 MB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu focal/main amd64 libfftw3-double3 amd64 3.3.8-2ubuntu1 [728 kB]
+Get:2 http://archive.ubuntu.com/ubuntu focal/main amd64 libfftw3-long3 amd64 3.3.8-2ubuntu1 [313 kB]
+Get:3 http://archive.ubuntu.com/ubuntu focal/main amd64 libfftw3-quad3 amd64 3.3.8-2ubuntu1 [673 kB]
+Get:4 http://archive.ubuntu.com/ubuntu focal/main amd64 libfftw3-single3 amd64 3.3.8-2ubuntu1 [756 kB]
+Get:5 http://archive.ubuntu.com/ubuntu focal/main amd64 libfftw3-bin amd64 3.3.8-2ubuntu1 [32.2 kB]
+Get:6 http://archive.ubuntu.com/ubuntu focal/main amd64 libfftw3-dev amd64 3.3.8-2ubuntu1 [2211 kB]
+[91mdebconf: delaying package configuration, since apt-utils is not installed
+[0mFetched 4714 kB in 2s (2424 kB/s)
+Selecting previously unselected package libfftw3-double3:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 71930 files and directories currently installed.)
+Preparing to unpack .../0-libfftw3-double3_3.3.8-2ubuntu1_amd64.deb ...
+Unpacking libfftw3-double3:amd64 (3.3.8-2ubuntu1) ...
+Selecting previously unselected package libfftw3-long3:amd64.
+Preparing to unpack .../1-libfftw3-long3_3.3.8-2ubuntu1_amd64.deb ...
+Unpacking libfftw3-long3:amd64 (3.3.8-2ubuntu1) ...
+Selecting previously unselected package libfftw3-quad3:amd64.
+Preparing to unpack .../2-libfftw3-quad3_3.3.8-2ubuntu1_amd64.deb ...
+Unpacking libfftw3-quad3:amd64 (3.3.8-2ubuntu1) ...
+Selecting previously unselected package libfftw3-single3:amd64.
+Preparing to unpack .../3-libfftw3-single3_3.3.8-2ubuntu1_amd64.deb ...
+Unpacking libfftw3-single3:amd64 (3.3.8-2ubuntu1) ...
+Selecting previously unselected package libfftw3-bin.
+Preparing to unpack .../4-libfftw3-bin_3.3.8-2ubuntu1_amd64.deb ...
+Unpacking libfftw3-bin (3.3.8-2ubuntu1) ...
+Selecting previously unselected package libfftw3-dev:amd64.
+Preparing to unpack .../5-libfftw3-dev_3.3.8-2ubuntu1_amd64.deb ...
+Unpacking libfftw3-dev:amd64 (3.3.8-2ubuntu1) ...
+Setting up libfftw3-single3:amd64 (3.3.8-2ubuntu1) ...
+Setting up libfftw3-long3:amd64 (3.3.8-2ubuntu1) ...
+Setting up libfftw3-quad3:amd64 (3.3.8-2ubuntu1) ...
+Setting up libfftw3-double3:amd64 (3.3.8-2ubuntu1) ...
+Setting up libfftw3-bin (3.3.8-2ubuntu1) ...
+Setting up libfftw3-dev:amd64 (3.3.8-2ubuntu1) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.2) ...
+Collecting fitsne
+  Downloading fitsne-1.2.1.tar.gz (158 kB)
+Requirement already satisfied: cython in /usr/local/lib/python3.8/dist-packages (from fitsne) (0.29.23)
+Requirement already satisfied: numpy in /usr/local/lib/python3.8/dist-packages (from fitsne) (1.20.2)
+Building wheels for collected packages: fitsne
+  Building wheel for fitsne (setup.py): started
+  Building wheel for fitsne (setup.py): finished with status 'done'
+  Created wheel for fitsne: filename=fitsne-1.2.1-cp38-cp38-linux_x86_64.whl size=964805 sha256=e506c64b7c605a89a566929efc8ef849ff84bac1e5bfb04bc07bb3bd568878f0
+  Stored in directory: /root/.cache/pip/wheels/0b/fc/56/6125dde5b1eefa5f1372bae0e5f79857f895a76ec25c2d2098
+Successfully built fitsne
+Installing collected packages: fitsne
+Successfully installed fitsne-1.2.1
+[91mWARNING: You are using pip version 21.0.1; however, version 21.1.2 is available.
+You should consider upgrading via the '/usr/bin/python3 -m pip install --upgrade pip' command.
+[0mRemoving intermediate container 3ed59681054f
+ ---> 28c9cddadfa1
+Step 3/11 : RUN apt-get install -y fuse python-psutil
+ ---> Running in 7530485de49f
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  libfuse2 libpython2-stdlib python2 python2-minimal
+Suggested packages:
+  python-psutil-doc python2-doc python-tk
+The following NEW packages will be installed:
+  fuse libfuse2 libpython2-stdlib python-psutil python2 python2-minimal
+0 upgraded, 6 newly installed, 0 to remove and 7 not upgraded.
+Need to get 310 kB of archives.
+After this operation, 1668 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu focal/universe amd64 python2-minimal amd64 2.7.17-2ubuntu4 [27.5 kB]
+Get:2 http://archive.ubuntu.com/ubuntu focal/universe amd64 libpython2-stdlib amd64 2.7.17-2ubuntu4 [7072 B]
+Get:3 http://archive.ubuntu.com/ubuntu focal/universe amd64 python2 amd64 2.7.17-2ubuntu4 [26.5 kB]
+Get:4 http://archive.ubuntu.com/ubuntu focal/main amd64 libfuse2 amd64 2.9.9-3 [82.0 kB]
+Get:5 http://archive.ubuntu.com/ubuntu focal/main amd64 fuse amd64 2.9.9-3 [26.0 kB]
+Get:6 http://archive.ubuntu.com/ubuntu focal/universe amd64 python-psutil amd64 5.5.1-1ubuntu4 [141 kB]
+[91mdebconf: delaying package configuration, since apt-utils is not installed
+[0mFetched 310 kB in 1s (328 kB/s)
+Selecting previously unselected package python2-minimal.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 72033 files and directories currently installed.)
+Preparing to unpack .../python2-minimal_2.7.17-2ubuntu4_amd64.deb ...
+Unpacking python2-minimal (2.7.17-2ubuntu4) ...
+Selecting previously unselected package libpython2-stdlib:amd64.
+Preparing to unpack .../libpython2-stdlib_2.7.17-2ubuntu4_amd64.deb ...
+Unpacking libpython2-stdlib:amd64 (2.7.17-2ubuntu4) ...
+Setting up python2-minimal (2.7.17-2ubuntu4) ...
+Selecting previously unselected package python2.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 72062 files and directories currently installed.)
+Preparing to unpack .../python2_2.7.17-2ubuntu4_amd64.deb ...
+Unpacking python2 (2.7.17-2ubuntu4) ...
+Selecting previously unselected package libfuse2:amd64.
+Preparing to unpack .../libfuse2_2.9.9-3_amd64.deb ...
+Unpacking libfuse2:amd64 (2.9.9-3) ...
+Selecting previously unselected package fuse.
+Preparing to unpack .../fuse_2.9.9-3_amd64.deb ...
+Unpacking fuse (2.9.9-3) ...
+Selecting previously unselected package python-psutil.
+Preparing to unpack .../python-psutil_5.5.1-1ubuntu4_amd64.deb ...
+Unpacking python-psutil (5.5.1-1ubuntu4) ...
+Setting up libpython2-stdlib:amd64 (2.7.17-2ubuntu4) ...
+Setting up libfuse2:amd64 (2.9.9-3) ...
+Setting up python2 (2.7.17-2ubuntu4) ...
+Setting up python-psutil (5.5.1-1ubuntu4) ...
+Setting up fuse (2.9.9-3) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.2) ...
+Removing intermediate container 7530485de49f
+ ---> 07dcb9967e53
+Step 4/11 : WORKDIR /opt2
+ ---> Running in 0aedfb4c4ba1
+Removing intermediate container 0aedfb4c4ba1
+ ---> 66afac81cdaa
+Step 5/11 : RUN ADD https://github.com/plotly/orca/releases/download/v1.3.1/orca-1.3.1.AppImage && chmod a+x orca-1.3.1.AppImage && ln -s orca-1.3.1.AppImage orca
+ ---> Running in 3060ee420896
+[91m/bin/sh: 1: ADD: not found
+[0m
