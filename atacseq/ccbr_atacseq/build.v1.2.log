@@ -1,0 +1,359 @@
+Sending build context to Docker daemon  197.3MB
+Step 1/12 : FROM nciccbr/ccbr_atacseq:v1.1
+ ---> ccf4a41a34e6
+Step 2/12 : ENV TAG="v1.2"
+ ---> Running in f26364c803e3
+Removing intermediate container f26364c803e3
+ ---> 84705fbb4f89
+Step 3/12 : ADD https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.9.zip /opt2/
+
+ ---> 983394c6a3fb
+Step 4/12 : WORKDIR /opt2
+ ---> Running in dac51ac57c11
+Removing intermediate container dac51ac57c11
+ ---> 20a30d21f5ca
+Step 5/12 : RUN unzip fastqc_v0.11.9.zip
+ ---> Running in 408ad70d2831
+Archive:  fastqc_v0.11.9.zip
+  inflating: FastQC/cisd-jhdf5.jar   
+   creating: FastQC/Configuration/
+  inflating: FastQC/Configuration/adapter_list.txt  
+  inflating: FastQC/Configuration/contaminant_list.txt  
+  inflating: FastQC/Configuration/limits.txt  
+  inflating: FastQC/fastqc           
+  inflating: FastQC/fastqc_icon.ico  
+   creating: FastQC/Help/
+   creating: FastQC/Help/1 Introduction/
+   creating: FastQC/Help/1 Introduction/.svn/
+  inflating: FastQC/Help/1 Introduction/.svn/entries  
+   creating: FastQC/Help/1 Introduction/.svn/props/
+   creating: FastQC/Help/1 Introduction/.svn/text-base/
+  inflating: FastQC/Help/1 Introduction/.svn/text-base/1.1 What is FastQC.html.svn-base  
+   creating: FastQC/Help/1 Introduction/.svn/tmp/
+   creating: FastQC/Help/1 Introduction/.svn/tmp/props/
+  inflating: FastQC/Help/1 Introduction/1.1 What is FastQC.html  
+   creating: FastQC/Help/2 Basic Operations/
+   creating: FastQC/Help/2 Basic Operations/.svn/
+  inflating: FastQC/Help/2 Basic Operations/.svn/entries  
+   creating: FastQC/Help/2 Basic Operations/.svn/props/
+   creating: FastQC/Help/2 Basic Operations/.svn/text-base/
+  inflating: FastQC/Help/2 Basic Operations/.svn/text-base/2.1 Opening a sequence file.html.svn-base  
+  inflating: FastQC/Help/2 Basic Operations/.svn/text-base/2.2 Evaluating Results.html.svn-base  
+  inflating: FastQC/Help/2 Basic Operations/.svn/text-base/2.3 Saving a Report.html.svn-base  
+   creating: FastQC/Help/2 Basic Operations/.svn/tmp/
+   creating: FastQC/Help/2 Basic Operations/.svn/tmp/props/
+  inflating: FastQC/Help/2 Basic Operations/2.1 Opening a sequence file.html  
+  inflating: FastQC/Help/2 Basic Operations/2.2 Evaluating Results.html  
+  inflating: FastQC/Help/2 Basic Operations/2.3 Saving a Report.html  
+   creating: FastQC/Help/3 Analysis Modules/
+   creating: FastQC/Help/3 Analysis Modules/.svn/
+  inflating: FastQC/Help/3 Analysis Modules/.svn/entries  
+   creating: FastQC/Help/3 Analysis Modules/.svn/prop-base/
+ extracting: FastQC/Help/3 Analysis Modules/.svn/prop-base/duplication_levels.png.svn-base  
+  inflating: FastQC/Help/3 Analysis Modules/.svn/prop-base/kmer_profiles.png.svn-base  
+ extracting: FastQC/Help/3 Analysis Modules/.svn/prop-base/per_base_gc_content.png.svn-base  
+ extracting: FastQC/Help/3 Analysis Modules/.svn/prop-base/per_base_n_content.png.svn-base  
+ extracting: FastQC/Help/3 Analysis Modules/.svn/prop-base/per_base_quality.png.svn-base  
+ extracting: FastQC/Help/3 Analysis Modules/.svn/prop-base/per_base_sequence_content.png.svn-base  
+ extracting: FastQC/Help/3 Analysis Modules/.svn/prop-base/per_sequence_gc_content.png.svn-base  
+ extracting: FastQC/Help/3 Analysis Modules/.svn/prop-base/per_sequence_quality.png.svn-base  
+ extracting: FastQC/Help/3 Analysis Modules/.svn/prop-base/per_tile_quality.png.svn-base  
+ extracting: FastQC/Help/3 Analysis Modules/.svn/prop-base/sequence_length_distribution.png.svn-base  
+   creating: FastQC/Help/3 Analysis Modules/.svn/props/
+   creating: FastQC/Help/3 Analysis Modules/.svn/text-base/
+  inflating: FastQC/Help/3 Analysis Modules/.svn/text-base/1 Basic Statistics.html.svn-base  
+  inflating: FastQC/Help/3 Analysis Modules/.svn/text-base/10 Adapter Content.html.svn-base  
+  inflating: FastQC/Help/3 Analysis Modules/.svn/text-base/11 Kmer Content.html.svn-base  
+  inflating: FastQC/Help/3 Analysis Modules/.svn/text-base/12 Per Tile Sequence Quality.html.svn-base  
+  inflating: FastQC/Help/3 Analysis Modules/.svn/text-base/2 Per Base Sequence Quality.html.svn-base  
+  inflating: FastQC/Help/3 Analysis Modules/.svn/text-base/3 Per Sequence Quality Scores.html.svn-base  
+  inflating: FastQC/Help/3 Analysis Modules/.svn/text-base/4 Per Base Sequence Content.html.svn-base  
+  inflating: FastQC/Help/3 Analysis Modules/.svn/text-base/5 Per Sequence GC Content.html.svn-base  
+  inflating: FastQC/Help/3 Analysis Modules/.svn/text-base/6 Per Base N Content.html.svn-base  
+  inflating: FastQC/Help/3 Analysis Modules/.svn/text-base/7 Sequence Length Distribution.html.svn-base  
+  inflating: FastQC/Help/3 Analysis Modules/.svn/text-base/8 Duplicate Sequences.html.svn-base  
+  inflating: FastQC/Help/3 Analysis Modules/.svn/text-base/9 Overrepresented Sequences.html.svn-base  
+  inflating: FastQC/Help/3 Analysis Modules/.svn/text-base/duplication_levels.png.svn-base  
+  inflating: FastQC/Help/3 Analysis Modules/.svn/text-base/kmer_profiles.png.svn-base  
+  inflating: FastQC/Help/3 Analysis Modules/.svn/text-base/per_base_gc_content.png.svn-base  
+  inflating: FastQC/Help/3 Analysis Modules/.svn/text-base/per_base_n_content.png.svn-base  
+  inflating: FastQC/Help/3 Analysis Modules/.svn/text-base/per_base_quality.png.svn-base  
+  inflating: FastQC/Help/3 Analysis Modules/.svn/text-base/per_base_sequence_content.png.svn-base  
+  inflating: FastQC/Help/3 Analysis Modules/.svn/text-base/per_sequence_gc_content.png.svn-base  
+  inflating: FastQC/Help/3 Analysis Modules/.svn/text-base/per_sequence_quality.png.svn-base  
+  inflating: FastQC/Help/3 Analysis Modules/.svn/text-base/per_tile_quality.png.svn-base  
+  inflating: FastQC/Help/3 Analysis Modules/.svn/text-base/sequence_length_distribution.png.svn-base  
+   creating: FastQC/Help/3 Analysis Modules/.svn/tmp/
+   creating: FastQC/Help/3 Analysis Modules/.svn/tmp/props/
+  inflating: FastQC/Help/3 Analysis Modules/1 Basic Statistics.html  
+  inflating: FastQC/Help/3 Analysis Modules/10 Adapter Content.html  
+  inflating: FastQC/Help/3 Analysis Modules/11 Kmer Content.html  
+  inflating: FastQC/Help/3 Analysis Modules/12 Per Tile Sequence Quality.html  
+  inflating: FastQC/Help/3 Analysis Modules/2 Per Base Sequence Quality.html  
+  inflating: FastQC/Help/3 Analysis Modules/3 Per Sequence Quality Scores.html  
+  inflating: FastQC/Help/3 Analysis Modules/4 Per Base Sequence Content.html  
+  inflating: FastQC/Help/3 Analysis Modules/5 Per Sequence GC Content.html  
+  inflating: FastQC/Help/3 Analysis Modules/6 Per Base N Content.html  
+  inflating: FastQC/Help/3 Analysis Modules/7 Sequence Length Distribution.html  
+  inflating: FastQC/Help/3 Analysis Modules/8 Duplicate Sequences.html  
+  inflating: FastQC/Help/3 Analysis Modules/9 Overrepresented Sequences.html  
+  inflating: FastQC/Help/3 Analysis Modules/duplication_levels.png  
+  inflating: FastQC/Help/3 Analysis Modules/kmer_profiles.png  
+  inflating: FastQC/Help/3 Analysis Modules/per_base_gc_content.png  
+  inflating: FastQC/Help/3 Analysis Modules/per_base_n_content.png  
+  inflating: FastQC/Help/3 Analysis Modules/per_base_quality.png  
+  inflating: FastQC/Help/3 Analysis Modules/per_base_sequence_content.png  
+  inflating: FastQC/Help/3 Analysis Modules/per_sequence_gc_content.png  
+  inflating: FastQC/Help/3 Analysis Modules/per_sequence_quality.png  
+  inflating: FastQC/Help/3 Analysis Modules/per_tile_quality.png  
+  inflating: FastQC/Help/3 Analysis Modules/sequence_length_distribution.png  
+  inflating: FastQC/INSTALL.txt      
+  inflating: FastQC/jbzip2-0.9.jar   
+  inflating: FastQC/LICENSE          
+  inflating: FastQC/LICENSE.txt      
+  inflating: FastQC/LICENSE_JHDF5.txt  
+   creating: FastQC/net/
+   creating: FastQC/net/sourceforge/
+   creating: FastQC/net/sourceforge/iharder/
+   creating: FastQC/net/sourceforge/iharder/base64/
+  inflating: FastQC/net/sourceforge/iharder/base64/Base64$1.class  
+  inflating: FastQC/net/sourceforge/iharder/base64/Base64$InputStream.class  
+  inflating: FastQC/net/sourceforge/iharder/base64/Base64$OutputStream.class  
+  inflating: FastQC/net/sourceforge/iharder/base64/Base64.class  
+   creating: FastQC/org/
+   creating: FastQC/org/apache/
+   creating: FastQC/org/apache/commons/
+   creating: FastQC/org/apache/commons/math3/
+   creating: FastQC/org/apache/commons/math3/analysis/
+   creating: FastQC/org/apache/commons/math3/analysis/solvers/
+  inflating: FastQC/org/apache/commons/math3/analysis/solvers/AbstractUnivariateSolver.class  
+  inflating: FastQC/org/apache/commons/math3/analysis/solvers/AllowedSolution.class  
+  inflating: FastQC/org/apache/commons/math3/analysis/solvers/BaseAbstractUnivariateSolver.class  
+  inflating: FastQC/org/apache/commons/math3/analysis/solvers/BaseUnivariateSolver.class  
+  inflating: FastQC/org/apache/commons/math3/analysis/solvers/BracketedUnivariateSolver.class  
+  inflating: FastQC/org/apache/commons/math3/analysis/solvers/BrentSolver.class  
+  inflating: FastQC/org/apache/commons/math3/analysis/solvers/UnivariateSolver.class  
+  inflating: FastQC/org/apache/commons/math3/analysis/solvers/UnivariateSolverUtils.class  
+  inflating: FastQC/org/apache/commons/math3/analysis/UnivariateFunction.class  
+   creating: FastQC/org/apache/commons/math3/distribution/
+  inflating: FastQC/org/apache/commons/math3/distribution/AbstractIntegerDistribution.class  
+  inflating: FastQC/org/apache/commons/math3/distribution/AbstractRealDistribution$1.class  
+  inflating: FastQC/org/apache/commons/math3/distribution/AbstractRealDistribution.class  
+  inflating: FastQC/org/apache/commons/math3/distribution/BetaDistribution.class  
+  inflating: FastQC/org/apache/commons/math3/distribution/BinomialDistribution.class  
+  inflating: FastQC/org/apache/commons/math3/distribution/CauchyDistribution.class  
+  inflating: FastQC/org/apache/commons/math3/distribution/ChiSquaredDistribution.class  
+  inflating: FastQC/org/apache/commons/math3/distribution/FDistribution.class  
+  inflating: FastQC/org/apache/commons/math3/distribution/GammaDistribution.class  
+  inflating: FastQC/org/apache/commons/math3/distribution/HypergeometricDistribution.class  
+  inflating: FastQC/org/apache/commons/math3/distribution/IntegerDistribution.class  
+  inflating: FastQC/org/apache/commons/math3/distribution/NormalDistribution.class  
+  inflating: FastQC/org/apache/commons/math3/distribution/PascalDistribution.class  
+  inflating: FastQC/org/apache/commons/math3/distribution/PoissonDistribution.class  
+  inflating: FastQC/org/apache/commons/math3/distribution/RealDistribution.class  
+  inflating: FastQC/org/apache/commons/math3/distribution/SaddlePointExpansion.class  
+  inflating: FastQC/org/apache/commons/math3/distribution/TDistribution.class  
+  inflating: FastQC/org/apache/commons/math3/distribution/WeibullDistribution.class  
+  inflating: FastQC/org/apache/commons/math3/distribution/ZipfDistribution.class  
+   creating: FastQC/org/apache/commons/math3/exception/
+  inflating: FastQC/org/apache/commons/math3/exception/ConvergenceException.class  
+  inflating: FastQC/org/apache/commons/math3/exception/DimensionMismatchException.class  
+  inflating: FastQC/org/apache/commons/math3/exception/MathArithmeticException.class  
+  inflating: FastQC/org/apache/commons/math3/exception/MathIllegalArgumentException.class  
+  inflating: FastQC/org/apache/commons/math3/exception/MathIllegalNumberException.class  
+  inflating: FastQC/org/apache/commons/math3/exception/MathIllegalStateException.class  
+  inflating: FastQC/org/apache/commons/math3/exception/MathInternalError.class  
+  inflating: FastQC/org/apache/commons/math3/exception/MaxCountExceededException.class  
+  inflating: FastQC/org/apache/commons/math3/exception/NoBracketingException.class  
+  inflating: FastQC/org/apache/commons/math3/exception/NotFiniteNumberException.class  
+  inflating: FastQC/org/apache/commons/math3/exception/NotPositiveException.class  
+  inflating: FastQC/org/apache/commons/math3/exception/NotStrictlyPositiveException.class  
+  inflating: FastQC/org/apache/commons/math3/exception/NullArgumentException.class  
+  inflating: FastQC/org/apache/commons/math3/exception/NumberIsTooLargeException.class  
+  inflating: FastQC/org/apache/commons/math3/exception/NumberIsTooSmallException.class  
+  inflating: FastQC/org/apache/commons/math3/exception/OutOfRangeException.class  
+  inflating: FastQC/org/apache/commons/math3/exception/TooManyEvaluationsException.class  
+   creating: FastQC/org/apache/commons/math3/exception/util/
+  inflating: FastQC/org/apache/commons/math3/exception/util/ArgUtils.class  
+  inflating: FastQC/org/apache/commons/math3/exception/util/ExceptionContext.class  
+  inflating: FastQC/org/apache/commons/math3/exception/util/ExceptionContextProvider.class  
+  inflating: FastQC/org/apache/commons/math3/exception/util/Localizable.class  
+  inflating: FastQC/org/apache/commons/math3/exception/util/LocalizedFormats.class  
+   creating: FastQC/org/apache/commons/math3/random/
+  inflating: FastQC/org/apache/commons/math3/random/AbstractWell.class  
+  inflating: FastQC/org/apache/commons/math3/random/BitsStreamGenerator.class  
+  inflating: FastQC/org/apache/commons/math3/random/RandomData.class  
+  inflating: FastQC/org/apache/commons/math3/random/RandomDataImpl.class  
+  inflating: FastQC/org/apache/commons/math3/random/RandomGenerator.class  
+  inflating: FastQC/org/apache/commons/math3/random/Well19937c.class  
+   creating: FastQC/org/apache/commons/math3/special/
+  inflating: FastQC/org/apache/commons/math3/special/Beta$1.class  
+  inflating: FastQC/org/apache/commons/math3/special/Beta.class  
+  inflating: FastQC/org/apache/commons/math3/special/Erf.class  
+  inflating: FastQC/org/apache/commons/math3/special/Gamma$1.class  
+  inflating: FastQC/org/apache/commons/math3/special/Gamma.class  
+   creating: FastQC/org/apache/commons/math3/util/
+  inflating: FastQC/org/apache/commons/math3/util/ArithmeticUtils.class  
+  inflating: FastQC/org/apache/commons/math3/util/ContinuedFraction.class  
+  inflating: FastQC/org/apache/commons/math3/util/DoubleArray.class  
+  inflating: FastQC/org/apache/commons/math3/util/FastMath$ExpFracTable.class  
+  inflating: FastQC/org/apache/commons/math3/util/FastMath$ExpIntTable.class  
+  inflating: FastQC/org/apache/commons/math3/util/FastMath$lnMant.class  
+  inflating: FastQC/org/apache/commons/math3/util/FastMath.class  
+  inflating: FastQC/org/apache/commons/math3/util/FastMathCalc.class  
+  inflating: FastQC/org/apache/commons/math3/util/FastMathLiteralArrays.class  
+  inflating: FastQC/org/apache/commons/math3/util/Incrementor$1.class  
+  inflating: FastQC/org/apache/commons/math3/util/Incrementor$MaxCountExceededCallback.class  
+  inflating: FastQC/org/apache/commons/math3/util/Incrementor.class  
+  inflating: FastQC/org/apache/commons/math3/util/MathUtils.class  
+  inflating: FastQC/org/apache/commons/math3/util/Precision.class  
+  inflating: FastQC/org/apache/commons/math3/util/ResizableDoubleArray.class  
+  inflating: FastQC/README.md        
+  inflating: FastQC/README.txt       
+  inflating: FastQC/RELEASE_NOTES.txt  
+  inflating: FastQC/run_fastqc.bat   
+  inflating: FastQC/sam-1.103.jar    
+   creating: FastQC/Templates/
+  inflating: FastQC/Templates/fastqc2fo.xsl  
+  inflating: FastQC/Templates/header_template.html  
+   creating: FastQC/Templates/Icons/
+ extracting: FastQC/Templates/Icons/error.png  
+ extracting: FastQC/Templates/Icons/fastqc_icon.png  
+ extracting: FastQC/Templates/Icons/tick.png  
+ extracting: FastQC/Templates/Icons/warning.png  
+   creating: FastQC/uk/
+   creating: FastQC/uk/ac/
+   creating: FastQC/uk/ac/babraham/
+   creating: FastQC/uk/ac/babraham/FastQC/
+   creating: FastQC/uk/ac/babraham/FastQC/Analysis/
+  inflating: FastQC/uk/ac/babraham/FastQC/Analysis/AnalysisListener.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Analysis/AnalysisQueue.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Analysis/AnalysisRunner.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Analysis/OfflineRunner.class  
+   creating: FastQC/uk/ac/babraham/FastQC/Dialogs/
+  inflating: FastQC/uk/ac/babraham/FastQC/Dialogs/AboutDialog$1.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Dialogs/AboutDialog.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Dialogs/FastQCTitlePanel$SmoothJLabel.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Dialogs/FastQCTitlePanel.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Dialogs/WelcomePanel.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/FastQCApplication$1.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/FastQCApplication.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/FastQCConfig.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/FastQCMenuBar.class  
+   creating: FastQC/uk/ac/babraham/FastQC/FileFilters/
+  inflating: FastQC/uk/ac/babraham/FastQC/FileFilters/BAMFileFilter.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/FileFilters/CasavaFastQFileFilter.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/FileFilters/FastQFileFilter.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/FileFilters/GobyFileFilter.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/FileFilters/MappedBAMFileFilter.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/FileFilters/SequenceFileFilter.class  
+   creating: FastQC/uk/ac/babraham/FastQC/Graphs/
+  inflating: FastQC/uk/ac/babraham/FastQC/Graphs/BaseGroup.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Graphs/LineGraph.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Graphs/QualityBoxPlot.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Graphs/TileGraph.class  
+   creating: FastQC/uk/ac/babraham/FastQC/Help/
+  inflating: FastQC/uk/ac/babraham/FastQC/Help/HelpDialog.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Help/HelpIndexRoot$FileSorter.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Help/HelpIndexRoot.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Help/HelpPage.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Help/HelpPageDisplay$HelpEditor.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Help/HelpPageDisplay.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Help/HelpSearchPanel.class  
+   creating: FastQC/uk/ac/babraham/FastQC/Modules/
+  inflating: FastQC/uk/ac/babraham/FastQC/Modules/AbstractQCModule.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Modules/AdapterContent$Adapter.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Modules/AdapterContent$ResultsTable.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Modules/AdapterContent.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Modules/BasicStats$ResultsTable.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Modules/BasicStats.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Modules/DuplicationLevel.class  
+   creating: FastQC/uk/ac/babraham/FastQC/Modules/GCModel/
+  inflating: FastQC/uk/ac/babraham/FastQC/Modules/GCModel/GCModel.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Modules/GCModel/GCModelValue.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Modules/KmerContent$Kmer.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Modules/KmerContent$ResultsTable.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Modules/KmerContent.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Modules/ModuleConfig.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Modules/ModuleFactory.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Modules/NContent.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Modules/OverRepresentedSeqs$OverrepresentedSeq.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Modules/OverRepresentedSeqs$ResultsTable.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Modules/OverRepresentedSeqs.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Modules/PerBaseQualityScores.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Modules/PerBaseSequenceContent.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Modules/PerSequenceGCContent.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Modules/PerSequenceQualityScores.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Modules/PerTileQualityScores.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Modules/QCModule.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Modules/SequenceLengthDistribution.class  
+   creating: FastQC/uk/ac/babraham/FastQC/Report/
+  inflating: FastQC/uk/ac/babraham/FastQC/Report/HTMLReportArchive.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Report/stylesheet.txt  
+   creating: FastQC/uk/ac/babraham/FastQC/Resources/
+ extracting: FastQC/uk/ac/babraham/FastQC/Resources/error.png  
+ extracting: FastQC/uk/ac/babraham/FastQC/Resources/fastqc_icon.png  
+  inflating: FastQC/uk/ac/babraham/FastQC/Resources/fastqc_icon.svg  
+ extracting: FastQC/uk/ac/babraham/FastQC/Resources/fastqc_icon_100.png  
+ extracting: FastQC/uk/ac/babraham/FastQC/Resources/tick.png  
+ extracting: FastQC/uk/ac/babraham/FastQC/Resources/warning.png  
+   creating: FastQC/uk/ac/babraham/FastQC/Results/
+  inflating: FastQC/uk/ac/babraham/FastQC/Results/ResultsPanel$ModuleRenderer.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Results/ResultsPanel.class  
+   creating: FastQC/uk/ac/babraham/FastQC/Sequence/
+  inflating: FastQC/uk/ac/babraham/FastQC/Sequence/BAMFile.class  
+   creating: FastQC/uk/ac/babraham/FastQC/Sequence/Contaminant/
+  inflating: FastQC/uk/ac/babraham/FastQC/Sequence/Contaminant/Contaminant.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Sequence/Contaminant/ContaminantHit.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Sequence/Contaminant/ContaminentFinder.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Sequence/Fast5File.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Sequence/FastQFile.class  
+   creating: FastQC/uk/ac/babraham/FastQC/Sequence/QualityEncoding/
+  inflating: FastQC/uk/ac/babraham/FastQC/Sequence/QualityEncoding/PhredEncoding.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Sequence/Sequence.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Sequence/SequenceFactory.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Sequence/SequenceFile.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Sequence/SequenceFileGroup.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Sequence/SequenceFormatException.class  
+   creating: FastQC/uk/ac/babraham/FastQC/Statistics/
+  inflating: FastQC/uk/ac/babraham/FastQC/Statistics/NormalDistribution.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Statistics/PearsonCorrelation.class  
+   creating: FastQC/uk/ac/babraham/FastQC/Utilities/
+  inflating: FastQC/uk/ac/babraham/FastQC/Utilities/CasavaBasename.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Utilities/HotColdColourGradient.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Utilities/ImageToBase64.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Utilities/MultiMemberGZIPInputStream.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Utilities/NameFormatException.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Utilities/NanoporeBasename.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Utilities/QualityCount.class  
+  inflating: FastQC/uk/ac/babraham/FastQC/Utilities/RGB.class  
+Removing intermediate container 408ad70d2831
+ ---> 05e84bd2ec69
+Step 6/12 : WORKDIR /opt2/FastQC
+ ---> Running in f36f4c60b8c4
+Removing intermediate container f36f4c60b8c4
+ ---> ed6f651a37f8
+Step 7/12 : RUN chmod 755 fastqc
+ ---> Running in 0d262957194a
+Removing intermediate container 0d262957194a
+ ---> 589ba45a8952
+Step 8/12 : RUN ln -s /opt2/FastQC/fastqc /usr/local/bin/fastqc
+ ---> Running in 5c6eb8b6400e
+Removing intermediate container 5c6eb8b6400e
+ ---> 62e32ecd438a
+Step 9/12 : COPY Dockerfile.$TAG /opt2
+ ---> a1cf18b48c9a
+Step 10/12 : RUN chmod a+r /opt2/Dockerfile.$TAG
+ ---> Running in 13acc5a1d01d
+Removing intermediate container 13acc5a1d01d
+ ---> c1779d8055aa
+Step 11/12 : WORKDIR /data2
+ ---> Running in ad4009a22b86
+Removing intermediate container ad4009a22b86
+ ---> 5f9024149024
+Step 12/12 : RUN apt-get clean
+ ---> Running in a277ae5ee4e8
+Removing intermediate container a277ae5ee4e8
+ ---> e97ee81bd02e
+Successfully built e97ee81bd02e
+Successfully tagged nciccbr/ccbr_atacseq:v1.2

@@ -1,0 +1,39 @@
+Sending build context to Docker daemon  200.4MB
+Step 1/12 : FROM nciccbr/ccbr_atacseq:v1.1
+ ---> ccf4a41a34e6
+Step 2/12 : ENV TAG="v1.2"
+ ---> Using cache
+ ---> 84705fbb4f89
+Step 3/12 : ADD https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.9.zip /opt2/
+
+ ---> Using cache
+ ---> 983394c6a3fb
+Step 4/12 : WORKDIR /opt2
+ ---> Using cache
+ ---> 20a30d21f5ca
+Step 5/12 : RUN unzip fastqc_v0.11.9.zip
+ ---> Using cache
+ ---> 05e84bd2ec69
+Step 6/12 : WORKDIR /opt2/FastQC
+ ---> Using cache
+ ---> ed6f651a37f8
+Step 7/12 : RUN chmod 755 fastqc
+ ---> Using cache
+ ---> 589ba45a8952
+Step 8/12 : RUN ln -s /opt2/FastQC/fastqc /usr/local/bin/fastqc
+ ---> Using cache
+ ---> 62e32ecd438a
+Step 9/12 : COPY Dockerfile.$TAG /opt2
+ ---> Using cache
+ ---> a1cf18b48c9a
+Step 10/12 : RUN chmod a+r /opt2/Dockerfile.$TAG
+ ---> Using cache
+ ---> c1779d8055aa
+Step 11/12 : WORKDIR /data2
+ ---> Using cache
+ ---> 5f9024149024
+Step 12/12 : RUN apt-get clean
+ ---> Using cache
+ ---> e97ee81bd02e
+Successfully built e97ee81bd02e
+Successfully tagged nciccbr/ccbr_atacseq:v1.3
