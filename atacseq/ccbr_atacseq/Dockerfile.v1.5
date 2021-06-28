@@ -1,0 +1,20 @@
+FROM nciccbr/ccbr_atacseq:v1.4.2
+ENV TAG="v1.5"
+
+# install MEME suite
+WORKDIR /opt2
+RUN wget https://meme-suite.org/meme/meme-software/5.3.3/meme-5.3.3.tar.gz && \
+  tar xzvf meme-5.3.3.tar.gz && rm -f meme-5.3.3.tar.gz && \ 
+  cd meme-5.3.3 && \
+  ./configure --prefix=/opt2/meme --with-url=http://meme-suite.org/ --enable-build-libxml2 --enable-build-libxslt && \
+  make && \
+  make install
+ENV PATH=$PATH:/opt2/meme/bin:/opt2/meme/libexec/meme-5.3.3
+
+# SCRIPTS AND DB files
+
+COPY Dockerfile.$TAG /opt2
+RUN chmod a+r /opt2/Dockerfile.$TAG
+
+WORKDIR /data2
+RUN apt-get clean
