@@ -1,0 +1,21 @@
+FROM nciccbr/ccbr_atacseq:v1.5
+ENV TAG="v1.6"
+
+# install HOMER
+COPY install_packages_v1.6.R /opt2
+WORKDIR /opt2
+RUN Rscript install_packages_v1.6.R
+RUN mkdir /opt2/homer
+WORKDIR /opt2/homer
+RUN wget http://homer.ucsd.edu/homer/configureHomer.pl
+RUN perl configureHomer.pl -install
+
+ENV PATH="/opt2/homer/bin":$PATH
+
+# SCRIPTS AND DB files
+
+COPY Dockerfile.$TAG /opt2
+RUN chmod a+r /opt2/Dockerfile.$TAG
+
+WORKDIR /data2
+RUN apt-get clean

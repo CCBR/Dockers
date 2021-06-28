@@ -1,0 +1,1916 @@
+Sending build context to Docker daemon  206.2MB
+Step 1/14 : FROM nciccbr/ccbr_atacseq:v1.5
+v1.5: Pulling from nciccbr/ccbr_atacseq
+a70d879fa598: Pulling fs layer
+c4394a92d1f8: Pulling fs layer
+10e6159c56c0: Pulling fs layer
+495c87e93332: Pulling fs layer
+e6d1a0b1d761: Pulling fs layer
+e4357c3f3ae6: Pulling fs layer
+6823fd269082: Pulling fs layer
+c8b3a6787d36: Pulling fs layer
+8f1d592ed584: Pulling fs layer
+6457abe9a4c8: Pulling fs layer
+1ac6a5ddcac4: Pulling fs layer
+8c185cb1d043: Pulling fs layer
+03378c9d9fb2: Pulling fs layer
+558bec3d1149: Pulling fs layer
+cf51797a530c: Pulling fs layer
+e2634533fc3d: Pulling fs layer
+35127720beb2: Pulling fs layer
+de47c8406856: Pulling fs layer
+f23c3122d7ce: Pulling fs layer
+bede9f090cef: Pulling fs layer
+eaef47d0d7e8: Pulling fs layer
+a74d8df13f74: Pulling fs layer
+728fa2140e7d: Pulling fs layer
+ebbabb720f91: Pulling fs layer
+00e678fbe635: Pulling fs layer
+a104e47e93e2: Pulling fs layer
+b38ff0ceb06c: Pulling fs layer
+d33942789d4c: Pulling fs layer
+795fbcd1e231: Pulling fs layer
+1a183bd6bb68: Pulling fs layer
+64d254a1053e: Pulling fs layer
+8fdd61123f2b: Pulling fs layer
+422b5d89d251: Pulling fs layer
+724829dbfbb1: Pulling fs layer
+3ebaae584730: Pulling fs layer
+892b8a1378b4: Pulling fs layer
+1d972437e589: Pulling fs layer
+a218f0432a46: Pulling fs layer
+e277a4fbd013: Pulling fs layer
+3db9131eba3b: Pulling fs layer
+0f964079aa80: Pulling fs layer
+b6befcf4d355: Pulling fs layer
+d66647a8df10: Pulling fs layer
+6dba89edad4b: Pulling fs layer
+d11e799fb0b2: Pulling fs layer
+60b08caa4ce4: Pulling fs layer
+a1893101eea6: Pulling fs layer
+3573a629bc0a: Pulling fs layer
+529b3f6b0017: Pulling fs layer
+3e20930f3322: Pulling fs layer
+87e5e557f2d3: Pulling fs layer
+c6c22e34c6b4: Pulling fs layer
+7230e3a2c9ab: Pulling fs layer
+7fffe67acc40: Pulling fs layer
+04097552d07b: Pulling fs layer
+b6d16d9a0b59: Pulling fs layer
+0cdd6f338e32: Pulling fs layer
+c52da078d918: Pulling fs layer
+75519d641196: Pulling fs layer
+0ebab8709a8c: Pulling fs layer
+15a0c1740854: Pulling fs layer
+3cc35d0d20d9: Pulling fs layer
+834a1c02775f: Pulling fs layer
+ec3aea5e4418: Pulling fs layer
+23606dbff5c0: Pulling fs layer
+0e25e45a92a0: Pulling fs layer
+fff7d376c7eb: Pulling fs layer
+e0edca41d2d4: Pulling fs layer
+e20c943cbdff: Pulling fs layer
+05b4cba82c42: Pulling fs layer
+450e3d8b5286: Pulling fs layer
+78e15b21a66e: Pulling fs layer
+fdad54647e1c: Pulling fs layer
+209be6da5f23: Pulling fs layer
+2a8dadd7e0fa: Pulling fs layer
+810ea4f57635: Pulling fs layer
+c3d49a4a57a3: Pulling fs layer
+b345754967a9: Pulling fs layer
+a1be6b7ac2bc: Pulling fs layer
+aba29409eaf0: Pulling fs layer
+14f512e54d9d: Pulling fs layer
+2a129e599ede: Pulling fs layer
+412cb5a9b707: Pulling fs layer
+1fa5e7c21ab9: Pulling fs layer
+e79969616c43: Pulling fs layer
+a0bd4c91225f: Pulling fs layer
+0a9a9f6c7149: Pulling fs layer
+ad4599277f23: Pulling fs layer
+ffbc448a476b: Pulling fs layer
+ae98dc5ea786: Pulling fs layer
+7b3ab25fd1f9: Pulling fs layer
+23606dbff5c0: Waiting
+0e25e45a92a0: Waiting
+fff7d376c7eb: Waiting
+e0edca41d2d4: Waiting
+e20c943cbdff: Waiting
+05b4cba82c42: Waiting
+450e3d8b5286: Waiting
+78e15b21a66e: Waiting
+fdad54647e1c: Waiting
+209be6da5f23: Waiting
+2a8dadd7e0fa: Waiting
+810ea4f57635: Waiting
+c3d49a4a57a3: Waiting
+b345754967a9: Waiting
+a1be6b7ac2bc: Waiting
+aba29409eaf0: Waiting
+2a129e599ede: Waiting
+412cb5a9b707: Waiting
+1fa5e7c21ab9: Waiting
+e79969616c43: Waiting
+a0bd4c91225f: Waiting
+0a9a9f6c7149: Waiting
+ad4599277f23: Waiting
+ffbc448a476b: Waiting
+ae98dc5ea786: Waiting
+7b3ab25fd1f9: Waiting
+14f512e54d9d: Waiting
+495c87e93332: Waiting
+e6d1a0b1d761: Waiting
+e4357c3f3ae6: Waiting
+6823fd269082: Waiting
+c8b3a6787d36: Waiting
+8f1d592ed584: Waiting
+6457abe9a4c8: Waiting
+1ac6a5ddcac4: Waiting
+8c185cb1d043: Waiting
+03378c9d9fb2: Waiting
+558bec3d1149: Waiting
+cf51797a530c: Waiting
+e2634533fc3d: Waiting
+35127720beb2: Waiting
+de47c8406856: Waiting
+f23c3122d7ce: Waiting
+bede9f090cef: Waiting
+eaef47d0d7e8: Waiting
+a74d8df13f74: Waiting
+728fa2140e7d: Waiting
+ebbabb720f91: Waiting
+00e678fbe635: Waiting
+a104e47e93e2: Waiting
+b38ff0ceb06c: Waiting
+d33942789d4c: Waiting
+795fbcd1e231: Waiting
+1a183bd6bb68: Waiting
+64d254a1053e: Waiting
+8fdd61123f2b: Waiting
+422b5d89d251: Waiting
+724829dbfbb1: Waiting
+3ebaae584730: Waiting
+892b8a1378b4: Waiting
+1d972437e589: Waiting
+a218f0432a46: Waiting
+e277a4fbd013: Waiting
+3db9131eba3b: Waiting
+0f964079aa80: Waiting
+b6befcf4d355: Waiting
+d66647a8df10: Waiting
+6dba89edad4b: Waiting
+d11e799fb0b2: Waiting
+60b08caa4ce4: Waiting
+a1893101eea6: Waiting
+3573a629bc0a: Waiting
+529b3f6b0017: Waiting
+3e20930f3322: Waiting
+87e5e557f2d3: Waiting
+c6c22e34c6b4: Waiting
+7230e3a2c9ab: Waiting
+7fffe67acc40: Waiting
+04097552d07b: Waiting
+b6d16d9a0b59: Waiting
+0cdd6f338e32: Waiting
+c52da078d918: Waiting
+75519d641196: Waiting
+0ebab8709a8c: Waiting
+15a0c1740854: Waiting
+3cc35d0d20d9: Waiting
+834a1c02775f: Waiting
+ec3aea5e4418: Waiting
+c4394a92d1f8: Verifying Checksum
+c4394a92d1f8: Download complete
+10e6159c56c0: Verifying Checksum
+10e6159c56c0: Download complete
+495c87e93332: Verifying Checksum
+495c87e93332: Download complete
+e6d1a0b1d761: Verifying Checksum
+e6d1a0b1d761: Download complete
+a70d879fa598: Verifying Checksum
+a70d879fa598: Download complete
+c8b3a6787d36: Verifying Checksum
+c8b3a6787d36: Download complete
+8f1d592ed584: Verifying Checksum
+8f1d592ed584: Download complete
+a70d879fa598: Pull complete
+c4394a92d1f8: Pull complete
+10e6159c56c0: Pull complete
+495c87e93332: Pull complete
+e6d1a0b1d761: Pull complete
+e4357c3f3ae6: Verifying Checksum
+e4357c3f3ae6: Download complete
+e4357c3f3ae6: Pull complete
+1ac6a5ddcac4: Verifying Checksum
+1ac6a5ddcac4: Download complete
+6457abe9a4c8: Verifying Checksum
+6457abe9a4c8: Download complete
+8c185cb1d043: Verifying Checksum
+8c185cb1d043: Download complete
+558bec3d1149: Verifying Checksum
+558bec3d1149: Download complete
+03378c9d9fb2: Verifying Checksum
+03378c9d9fb2: Download complete
+6823fd269082: Verifying Checksum
+6823fd269082: Download complete
+35127720beb2: Verifying Checksum
+35127720beb2: Download complete
+de47c8406856: Verifying Checksum
+de47c8406856: Download complete
+f23c3122d7ce: Verifying Checksum
+f23c3122d7ce: Download complete
+bede9f090cef: Verifying Checksum
+bede9f090cef: Download complete
+eaef47d0d7e8: Verifying Checksum
+eaef47d0d7e8: Download complete
+a74d8df13f74: Verifying Checksum
+a74d8df13f74: Download complete
+728fa2140e7d: Verifying Checksum
+728fa2140e7d: Download complete
+ebbabb720f91: Verifying Checksum
+ebbabb720f91: Download complete
+00e678fbe635: Verifying Checksum
+00e678fbe635: Download complete
+a104e47e93e2: Verifying Checksum
+a104e47e93e2: Download complete
+b38ff0ceb06c: Verifying Checksum
+b38ff0ceb06c: Download complete
+d33942789d4c: Verifying Checksum
+d33942789d4c: Download complete
+795fbcd1e231: Verifying Checksum
+795fbcd1e231: Download complete
+1a183bd6bb68: Verifying Checksum
+1a183bd6bb68: Download complete
+64d254a1053e: Verifying Checksum
+64d254a1053e: Download complete
+8fdd61123f2b: Verifying Checksum
+8fdd61123f2b: Download complete
+e2634533fc3d: Verifying Checksum
+e2634533fc3d: Download complete
+724829dbfbb1: Verifying Checksum
+724829dbfbb1: Download complete
+3ebaae584730: Verifying Checksum
+3ebaae584730: Download complete
+892b8a1378b4: Verifying Checksum
+892b8a1378b4: Download complete
+1d972437e589: Verifying Checksum
+1d972437e589: Download complete
+a218f0432a46: Verifying Checksum
+a218f0432a46: Download complete
+e277a4fbd013: Verifying Checksum
+e277a4fbd013: Download complete
+3db9131eba3b: Verifying Checksum
+3db9131eba3b: Download complete
+422b5d89d251: Verifying Checksum
+422b5d89d251: Download complete
+0f964079aa80: Verifying Checksum
+0f964079aa80: Download complete
+cf51797a530c: Verifying Checksum
+cf51797a530c: Download complete
+6dba89edad4b: Verifying Checksum
+6dba89edad4b: Download complete
+b6befcf4d355: Verifying Checksum
+b6befcf4d355: Download complete
+d11e799fb0b2: Verifying Checksum
+d11e799fb0b2: Download complete
+d66647a8df10: Verifying Checksum
+d66647a8df10: Download complete
+60b08caa4ce4: Verifying Checksum
+60b08caa4ce4: Download complete
+529b3f6b0017: Verifying Checksum
+529b3f6b0017: Download complete
+a1893101eea6: Verifying Checksum
+a1893101eea6: Download complete
+3e20930f3322: Verifying Checksum
+3e20930f3322: Download complete
+6823fd269082: Pull complete
+c8b3a6787d36: Pull complete
+87e5e557f2d3: Verifying Checksum
+87e5e557f2d3: Download complete
+c6c22e34c6b4: Verifying Checksum
+c6c22e34c6b4: Download complete
+3573a629bc0a: Verifying Checksum
+3573a629bc0a: Download complete
+7230e3a2c9ab: Verifying Checksum
+7230e3a2c9ab: Download complete
+7fffe67acc40: Verifying Checksum
+7fffe67acc40: Download complete
+04097552d07b: Verifying Checksum
+04097552d07b: Download complete
+b6d16d9a0b59: Verifying Checksum
+b6d16d9a0b59: Download complete
+8f1d592ed584: Pull complete
+75519d641196: Verifying Checksum
+75519d641196: Download complete
+0ebab8709a8c: Verifying Checksum
+0ebab8709a8c: Download complete
+c52da078d918: Verifying Checksum
+c52da078d918: Download complete
+3cc35d0d20d9: Verifying Checksum
+3cc35d0d20d9: Download complete
+834a1c02775f: Verifying Checksum
+834a1c02775f: Download complete
+0cdd6f338e32: Verifying Checksum
+0cdd6f338e32: Download complete
+23606dbff5c0: Verifying Checksum
+23606dbff5c0: Download complete
+ec3aea5e4418: Verifying Checksum
+ec3aea5e4418: Download complete
+0e25e45a92a0: Verifying Checksum
+0e25e45a92a0: Download complete
+fff7d376c7eb: Verifying Checksum
+fff7d376c7eb: Download complete
+e0edca41d2d4: Verifying Checksum
+e0edca41d2d4: Download complete
+05b4cba82c42: Verifying Checksum
+05b4cba82c42: Download complete
+e20c943cbdff: Verifying Checksum
+e20c943cbdff: Download complete
+78e15b21a66e: Verifying Checksum
+78e15b21a66e: Download complete
+fdad54647e1c: Verifying Checksum
+fdad54647e1c: Download complete
+209be6da5f23: Verifying Checksum
+209be6da5f23: Download complete
+2a8dadd7e0fa: Verifying Checksum
+2a8dadd7e0fa: Download complete
+810ea4f57635: Verifying Checksum
+810ea4f57635: Download complete
+c3d49a4a57a3: Verifying Checksum
+c3d49a4a57a3: Download complete
+b345754967a9: Verifying Checksum
+b345754967a9: Download complete
+a1be6b7ac2bc: Verifying Checksum
+a1be6b7ac2bc: Download complete
+aba29409eaf0: Verifying Checksum
+aba29409eaf0: Download complete
+14f512e54d9d: Verifying Checksum
+14f512e54d9d: Download complete
+6457abe9a4c8: Pull complete
+1ac6a5ddcac4: Pull complete
+2a129e599ede: Verifying Checksum
+2a129e599ede: Download complete
+412cb5a9b707: Verifying Checksum
+412cb5a9b707: Download complete
+1fa5e7c21ab9: Verifying Checksum
+1fa5e7c21ab9: Download complete
+8c185cb1d043: Pull complete
+e79969616c43: Verifying Checksum
+e79969616c43: Download complete
+a0bd4c91225f: Verifying Checksum
+a0bd4c91225f: Download complete
+0a9a9f6c7149: Verifying Checksum
+0a9a9f6c7149: Download complete
+ad4599277f23: Verifying Checksum
+ad4599277f23: Download complete
+15a0c1740854: Verifying Checksum
+15a0c1740854: Download complete
+ae98dc5ea786: Verifying Checksum
+ae98dc5ea786: Download complete
+7b3ab25fd1f9: Verifying Checksum
+7b3ab25fd1f9: Download complete
+03378c9d9fb2: Pull complete
+558bec3d1149: Pull complete
+ffbc448a476b: Verifying Checksum
+ffbc448a476b: Download complete
+cf51797a530c: Pull complete
+e2634533fc3d: Pull complete
+35127720beb2: Pull complete
+de47c8406856: Pull complete
+f23c3122d7ce: Pull complete
+bede9f090cef: Pull complete
+eaef47d0d7e8: Pull complete
+a74d8df13f74: Pull complete
+728fa2140e7d: Pull complete
+ebbabb720f91: Pull complete
+00e678fbe635: Pull complete
+a104e47e93e2: Pull complete
+b38ff0ceb06c: Pull complete
+d33942789d4c: Pull complete
+795fbcd1e231: Pull complete
+1a183bd6bb68: Pull complete
+64d254a1053e: Pull complete
+8fdd61123f2b: Pull complete
+422b5d89d251: Pull complete
+724829dbfbb1: Pull complete
+3ebaae584730: Pull complete
+892b8a1378b4: Pull complete
+1d972437e589: Pull complete
+a218f0432a46: Pull complete
+e277a4fbd013: Pull complete
+3db9131eba3b: Pull complete
+0f964079aa80: Pull complete
+b6befcf4d355: Pull complete
+d66647a8df10: Pull complete
+6dba89edad4b: Pull complete
+d11e799fb0b2: Pull complete
+450e3d8b5286: Verifying Checksum
+450e3d8b5286: Download complete
+60b08caa4ce4: Pull complete
+a1893101eea6: Pull complete
+3573a629bc0a: Pull complete
+529b3f6b0017: Pull complete
+3e20930f3322: Pull complete
+87e5e557f2d3: Pull complete
+c6c22e34c6b4: Pull complete
+7230e3a2c9ab: Pull complete
+7fffe67acc40: Pull complete
+04097552d07b: Pull complete
+b6d16d9a0b59: Pull complete
+0cdd6f338e32: Pull complete
+c52da078d918: Pull complete
+75519d641196: Pull complete
+0ebab8709a8c: Pull complete
+15a0c1740854: Pull complete
+3cc35d0d20d9: Pull complete
+834a1c02775f: Pull complete
+ec3aea5e4418: Pull complete
+23606dbff5c0: Pull complete
+0e25e45a92a0: Pull complete
+fff7d376c7eb: Pull complete
+e0edca41d2d4: Pull complete
+e20c943cbdff: Pull complete
+05b4cba82c42: Pull complete
+450e3d8b5286: Pull complete
+78e15b21a66e: Pull complete
+fdad54647e1c: Pull complete
+209be6da5f23: Pull complete
+2a8dadd7e0fa: Pull complete
+810ea4f57635: Pull complete
+c3d49a4a57a3: Pull complete
+b345754967a9: Pull complete
+a1be6b7ac2bc: Pull complete
+aba29409eaf0: Pull complete
+14f512e54d9d: Pull complete
+2a129e599ede: Pull complete
+412cb5a9b707: Pull complete
+1fa5e7c21ab9: Pull complete
+e79969616c43: Pull complete
+a0bd4c91225f: Pull complete
+0a9a9f6c7149: Pull complete
+ad4599277f23: Pull complete
+ffbc448a476b: Pull complete
+ae98dc5ea786: Pull complete
+7b3ab25fd1f9: Pull complete
+Digest: sha256:2e41b0589edf54267d822c15cd7ff210d621debe85cf8d00515a158acaf27db8
+Status: Downloaded newer image for nciccbr/ccbr_atacseq:v1.5
+ ---> 1ac8f9b7d3bb
+Step 2/14 : ENV TAG="v1.6"
+ ---> Running in 68b334fedc88
+Removing intermediate container 68b334fedc88
+ ---> c37a96e11c03
+Step 3/14 : COPY install_packages_v1.6.R /opt2
+ ---> b966e5d731c9
+Step 4/14 : WORKDIR /opt2
+ ---> Running in 94f0c7fb1342
+Removing intermediate container 94f0c7fb1342
+ ---> 0866fe931d27
+Step 5/14 : RUN Rscript install_packages_v1.6.R
+ ---> Running in da02fd227bed
+[91m'getOption("repos")' replaces Bioconductor standard repositories, see
+'?repositories' for details
+
+replacement repositories:
+    CRAN: https://cloud.r-project.org
+
+[0m[91mBioconductor version 3.10 (BiocManager 1.30.16), R 3.6.3 (2020-02-29)
+[0m[91mInstalling package(s) 'limma'
+[0m[91mtrying URL 'https://bioconductor.org/packages/3.10/bioc/src/contrib/limma_3.42.2.tar.gz'
+[0m[91mContent type 'application/x-gzip'[0m[91m length 1494662 bytes (1.4 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m
+[0m[91mdownloaded 1.4 MB
+
+[0m[91m* installing *source* package 'limma' ...
+[0m[91m** using staged installation
+[0m[91m** libs
+[0mgcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c init.c -o init.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c normexp.c -o normexp.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c weighted_lowess.c -o weighted_lowess.o
+gcc -std=gnu99 -shared -L/usr/lib/R/lib -Wl,-Bsymbolic-functions -Wl,-z,relro -o limma.so init.o normexp.o weighted_lowess.o -L/usr/lib/R/lib -lR
+[91minstalling to /usr/local/lib/R/site-library/00LOCK-limma/00new/limma/libs
+[0m[91m** R
+[0m[91m** inst
+[0m[91m** byte-compile and prepare package for lazy loading
+[0m[91m** help
+[0m[91m*** installing help indices
+[0m[91m** building package indices
+[0m[91m** installing vignettes
+[0m[91m** testing if installed package can be loaded from temporary location
+[0m[91m** checking absolute paths in shared objects and dynamic libraries
+[0m[91m** testing if installed package can be loaded from final location
+[0m[91m** testing if installed package keeps a record of temporary installation path
+[0m[91m* DONE (limma)
+[0m[91m
+[0m[91mThe downloaded source packages are in
+	'/tmp/RtmpIMndgL/downloaded_packages'[0m[91m
+[0m[91mOld packages: 'curl', 'mime', 'KernSmooth', 'MASS', 'Matrix', 'boot', 'class',
+  'cluster', 'codetools', 'lattice', 'mgcv', 'nlme', 'nnet', 'spatial',
+  'survival'
+[0m[91m'getOption("repos")' replaces Bioconductor standard repositories, see
+'?repositories' for details
+
+replacement repositories:
+    CRAN: https://cloud.r-project.org
+
+[0m[91mBioconductor version 3.10 (BiocManager 1.30.16), R 3.6.3 (2020-02-29)
+[0m[91mInstalling package(s) 'edgeR'
+[0m[91malso installing the dependency 'locfit'
+
+[0m[91mtrying URL 'https://cloud.r-project.org/src/contrib/locfit_1.5-9.4.tar.gz'
+[0m[91mContent type 'application/x-gzip'[0m[91m length 200998 bytes (196 KB)
+[0m[91m=[0m[91m=[0m[91m====[0m[91m====[0m[91m========[0m[91m====[0m[91m=============[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m===
+downloaded 196 KB
+
+trying URL 'https://bioconductor.org/packages/3.10/bioc/src/contrib/edgeR_3.28.1.tar.gz'
+[0m[91mContent type 'application/x-gzip'[0m[91m length 1481788 bytes (1.4 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m
+[0m[91mdownloaded 1.4 MB
+
+[0m[91m* installing *source* package 'locfit' ...
+[0m[91m** package 'locfit' successfully unpacked and MD5 sums checked
+[0m[91m** using staged installation
+[0m[91m** libs
+[0mgcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c S_enter.c -o S_enter.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c band.c -o band.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c dbinom.c -o dbinom.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c dens_haz.c -o dens_haz.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c dens_int.c -o dens_int.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c dens_odi.c -o dens_odi.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c density.c -o density.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c ev_atree.c -o ev_atree.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c ev_interp.c -o ev_interp.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c ev_kdtre.c -o ev_kdtre.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c ev_main.c -o ev_main.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c ev_sphere.c -o ev_sphere.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c ev_trian.c -o ev_trian.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c family.c -o family.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c fitted.c -o fitted.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c frend.c -o frend.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c lf_adap.c -o lf_adap.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c lf_dercor.c -o lf_dercor.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c lf_fitfun.c -o lf_fitfun.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c lf_nbhd.c -o lf_nbhd.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c lf_robust.c -o lf_robust.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c lf_vari.c -o lf_vari.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c lf_wdiag.c -o lf_wdiag.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c lfstr.c -o lfstr.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c locfit.c -o locfit.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c m_chol.c -o m_chol.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c m_eigen.c -o m_eigen.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c m_icirc.c -o m_icirc.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c m_imont.c -o m_imont.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c m_isimp.c -o m_isimp.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c m_isphr.c -o m_isphr.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c m_jacob.c -o m_jacob.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c m_max.c -o m_max.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c m_qr.c -o m_qr.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c m_solve.c -o m_solve.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c m_svd.c -o m_svd.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c m_vector.c -o m_vector.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c math.c -o math.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c minmax.c -o minmax.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c pcomp.c -o pcomp.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c preplot.c -o preplot.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c prob.c -o prob.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c procv.c -o procv.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c scb.c -o scb.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c scb_cons.c -o scb_cons.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c scb_crit.c -o scb_crit.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c scb_iface.c -o scb_iface.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c simul.c -o simul.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c smisc.c -o smisc.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c startlf.c -o startlf.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c weight.c -o weight.o
+gcc -std=gnu99 -shared -L/usr/lib/R/lib -Wl,-Bsymbolic-functions -Wl,-z,relro -o locfit.so S_enter.o band.o dbinom.o dens_haz.o dens_int.o dens_odi.o density.o ev_atree.o ev_interp.o ev_kdtre.o ev_main.o ev_sphere.o ev_trian.o family.o fitted.o frend.o lf_adap.o lf_dercor.o lf_fitfun.o lf_nbhd.o lf_robust.o lf_vari.o lf_wdiag.o lfstr.o locfit.o m_chol.o m_eigen.o m_icirc.o m_imont.o m_isimp.o m_isphr.o m_jacob.o m_max.o m_qr.o m_solve.o m_svd.o m_vector.o math.o minmax.o pcomp.o preplot.o prob.o procv.o scb.o scb_cons.o scb_crit.o scb_iface.o simul.o smisc.o startlf.o weight.o -L/usr/lib/R/lib -lR
+[91minstalling to /usr/local/lib/R/site-library/00LOCK-locfit/00new/locfit/libs
+[0m[91m** R
+[0m[91m** data
+[0m[91m** byte-compile and prepare package for lazy loading
+[0m[91m** help
+[0m[91m*** installing help indices
+[0m[91m** building package indices
+[0m[91m** testing if installed package can be loaded from temporary location
+[0m[91m** checking absolute paths in shared objects and dynamic libraries
+[0m[91m** testing if installed package can be loaded from final location
+[0m[91m** testing if installed package keeps a record of temporary installation path
+[0m[91m* DONE (locfit)
+[0m[91m* installing *source* package 'edgeR' ...
+[0m[91m** using staged installation
+[0m[91m** libs
+[0mg++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c R_add_prior_count.cpp -o R_add_prior_count.o
+g++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c R_ave_log_cpm.cpp -o R_ave_log_cpm.o
+g++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c R_calculate_cpm.cpp -o R_calculate_cpm.o
+g++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c R_check_poisson_bound.cpp -o R_check_poisson_bound.o
+g++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c R_compute_apl.cpp -o R_compute_apl.o
+g++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c R_compute_nbdev.cpp -o R_compute_nbdev.o
+g++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c R_exact_test_by_deviance.cpp -o R_exact_test_by_deviance.o
+g++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c R_fit_levenberg.cpp -o R_fit_levenberg.o
+g++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c R_fit_one_group.cpp -o R_fit_one_group.o
+g++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c R_get_one_way_fitted.cpp -o R_get_one_way_fitted.o
+g++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c R_initialize_levenberg.cpp -o R_initialize_levenberg.o
+g++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c R_loess_by_col.cpp -o R_loess_by_col.o
+g++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c R_maximize_interpolant.cpp -o R_maximize_interpolant.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c R_process_hairpin_reads.c -o R_process_hairpin_reads.o
+g++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c R_simple_good_turing.cpp -o R_simple_good_turing.o
+g++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c add_prior.cpp -o add_prior.o
+g++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c adj_coxreid.cpp -o adj_coxreid.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c fmm_spline.c -o fmm_spline.o
+g++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c glm_levenberg.cpp -o glm_levenberg.o
+g++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c glm_one_group.cpp -o glm_one_group.o
+g++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c init.cpp -o init.o
+g++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c interpolator.cpp -o interpolator.o
+g++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c nbdev.cpp -o nbdev.o
+g++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c objects.cpp -o objects.o
+g++ -std=gnu++11 -shared -L/usr/lib/R/lib -Wl,-Bsymbolic-functions -Wl,-z,relro -o edgeR.so R_add_prior_count.o R_ave_log_cpm.o R_calculate_cpm.o R_check_poisson_bound.o R_compute_apl.o R_compute_nbdev.o R_exact_test_by_deviance.o R_fit_levenberg.o R_fit_one_group.o R_get_one_way_fitted.o R_initialize_levenberg.o R_loess_by_col.o R_maximize_interpolant.o R_process_hairpin_reads.o R_simple_good_turing.o add_prior.o adj_coxreid.o fmm_spline.o glm_levenberg.o glm_one_group.o init.o interpolator.o nbdev.o objects.o -llapack -lblas -lgfortran -lm -lquadmath -L/usr/lib/R/lib -lR
+[91minstalling to /usr/local/lib/R/site-library/00LOCK-edgeR/00new/edgeR/libs
+[0m[91m** R
+[0m[91m** inst
+[0m[91m** byte-compile and prepare package for lazy loading
+[0m[91m** help
+[0m[91m*** installing help indices
+[0m[91m** building package indices
+[0m[91m** installing vignettes
+[0m[91m** testing if installed package can be loaded from temporary location
+[0m[91m** checking absolute paths in shared objects and dynamic libraries
+[0m[91m** testing if installed package can be loaded from final location
+[0m[91m** testing if installed package keeps a record of temporary installation path
+[0m[91m* DONE (edgeR)
+[0m[91m
+[0m[91mThe downloaded source packages are in
+	'/tmp/RtmpIMndgL/downloaded_packages'[0m[91m
+[0m[91mOld packages: 'curl', 'mime', 'KernSmooth', 'MASS', 'Matrix', 'boot', 'class',
+  'cluster', 'codetools', 'lattice', 'mgcv', 'nlme', 'nnet', 'spatial',
+  'survival'
+[0m[91m'getOption("repos")' replaces Bioconductor standard repositories, see
+'?repositories' for details
+
+replacement repositories:
+    CRAN: https://cloud.r-project.org
+
+[0m[91mBioconductor version 3.10 (BiocManager 1.30.16), R 3.6.3 (2020-02-29)
+[0m[91mInstalling package(s) 'DESeq2'
+[0m[91malso installing the dependencies 'backports', 'png', 'jpeg', 'checkmate', 'rstudioapi', 'annotate', 'Formula', 'latticeExtra', 'htmlTable', 'genefilter', 'geneplotter', 'Hmisc'
+
+[0m[91mtrying URL 'https://cloud.r-project.org/src/contrib/backports_1.2.1.tar.gz'
+[0m[91mContent type 'application/x-gzip'[0m[91m length 21184 bytes (20 KB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=====================================
+downloaded 20 KB
+
+[0m[91mtrying URL 'https://cloud.r-project.org/src/contrib/png_0.1-7.tar.gz'
+[0m[91mContent type 'application/x-gzip'[0m[91m length 24990 bytes (24 KB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=========================
+downloaded 24 KB
+
+[0m[91mtrying URL 'https://cloud.r-project.org/src/contrib/jpeg_0.1-8.1.tar.gz'
+[0m[91mContent type 'application/x-gzip'[0m[91m length 18116 bytes (17 KB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m===============================
+downloaded 17 KB
+
+[0m[91mtrying URL 'https://cloud.r-project.org/src/contrib/checkmate_2.0.0.tar.gz'
+[0m[91mContent type 'application/x-gzip'[0m[91m length 168716 bytes (164 KB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=========[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m======
+downloaded 164 KB
+
+[0m[91mtrying URL 'https://cloud.r-project.org/src/contrib/rstudioapi_0.13.tar.gz'
+[0m[91mContent type 'application/x-gzip'[0m[91m length 110472 bytes (107 KB)
+[0m[91m==============[0m[91m========[0m[91m======[0m[91m========[0m[91m=======[0m[91m=======
+downloaded 107 KB
+
+[0m[91mtrying URL 'https://bioconductor.org/packages/3.10/bioc/src/contrib/annotate_1.64.0.tar.gz'
+[0m[91mContent type 'application/x-gzip'[0m[91m length 1873132 bytes (1.8 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m
+[0m[91mdownloaded 1.8 MB
+
+[0m[91mtrying URL 'https://cloud.r-project.org/src/contrib/Formula_1.2-4.tar.gz'
+[0m[91mContent type 'application/x-gzip'[0m[91m length 164214 bytes (160 KB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=====[0m[91m==========[0m[91m=====[0m[91m=====[0m[91m=====[0m[91m=====[0m[91m======
+downloaded 160 KB
+
+trying URL 'https://cloud.r-project.org/src/contrib/latticeExtra_0.6-29.tar.gz'
+[0m[91mContent type 'application/x-gzip'[0m[91m length 1292315 bytes (1.2 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m====[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m===[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m
+[0m[91mdownloaded 1.2 MB
+
+[0m[91mtrying URL 'https://cloud.r-project.org/src/contrib/htmlTable_2.2.1.tar.gz'
+[0m[91mContent type 'application/x-gzip'[0m[91m length 422456 bytes (412 KB)
+[0m[91m=[0m[91m=[0m[91m==================================[0m[91m==[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m===[0m[91m=[0m[91m=[0m[91m==
+downloaded 412 KB
+
+[0m[91mtrying URL 'https://bioconductor.org/packages/3.10/bioc/src/contrib/genefilter_1.68.0.tar.gz'
+[0m[91mContent type 'application/x-gzip'[0m[91m length 1421076 bytes (1.4 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m====
+downloaded 1.4 MB
+
+[0m[91mtrying URL 'https://bioconductor.org/packages/3.10/bioc/src/contrib/geneplotter_1.64.0.tar.gz'
+[0m[91mContent type 'application/x-gzip'[0m[91m length 1431450 bytes (1.4 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==
+downloaded 1.4 MB
+
+[0m[91mtrying URL 'https://cloud.r-project.org/src/contrib/Hmisc_4.5-0.tar.gz'
+[0m[91mContent type 'application/x-gzip'[0m[91m length 775444 bytes (757 KB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m====[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m====[0m[91m==[0m[91m=[0m[91m=[0m[91m===
+downloaded 757 KB
+
+[0m[91mtrying URL 'https://bioconductor.org/packages/3.10/bioc/src/contrib/DESeq2_1.26.0.tar.gz'
+[0m[91mContent type 'application/x-gzip'[0m[91m length 2060061 bytes (2.0 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m
+[0m[91mdownloaded 2.0 MB
+
+[0m[91m* installing *source* package 'backports' ...
+[0m[91m** package 'backports' successfully unpacked and MD5 sums checked
+[0m[91m** using staged installation
+[0m[91m** libs
+[0mgcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c dotsElt.c -o dotsElt.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c dotsLength.c -o dotsLength.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c init.c -o init.o
+gcc -std=gnu99 -shared -L/usr/lib/R/lib -Wl,-Bsymbolic-functions -Wl,-z,relro -o backports.so dotsElt.o dotsLength.o init.o -L/usr/lib/R/lib -lR
+[91minstalling to /usr/local/lib/R/site-library/00LOCK-backports/00new/backports/libs
+[0m[91m** R
+[0m[91m** byte-compile and prepare package for lazy loading
+[0m[91m** help
+[0m[91m*** installing help indices
+[0m[91m** building package indices
+[0m[91m** testing if installed package can be loaded from temporary location
+[0m[91m** checking absolute paths in shared objects and dynamic libraries
+[0m[91m** testing if installed package can be loaded from final location
+[0m[91m** testing if installed package keeps a record of temporary installation path
+[0m[91m* DONE (backports)
+[0m[91m* installing *source* package 'png' ...
+[0m[91m** package 'png' successfully unpacked and MD5 sums checked
+[0m[91m** using staged installation
+[0m[91m** libs
+[0mgcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     `libpng-config --cflags` -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c read.c -o read.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     `libpng-config --cflags` -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c write.c -o write.o
+gcc -std=gnu99 -shared -L/usr/lib/R/lib -Wl,-Bsymbolic-functions -Wl,-z,relro -o png.so read.o write.o -lpng16 -lm -lz -lm -L/usr/lib/R/lib -lR
+[91minstalling to /usr/local/lib/R/site-library/00LOCK-png/00new/png/libs
+[0m[91m** R
+[0m[91m** inst
+[0m[91m** byte-compile and prepare package for lazy loading
+[0m[91m** help
+[0m[91m*** installing help indices
+[0m[91m** building package indices
+[0m[91m** testing if installed package can be loaded from temporary location
+[0m[91m** checking absolute paths in shared objects and dynamic libraries
+[0m[91m** testing if installed package can be loaded from final location
+[0m[91m** testing if installed package keeps a record of temporary installation path
+[0m[91m* DONE (png)
+[0m[91m* installing *source* package 'jpeg' ...
+[0m[91m** package 'jpeg' successfully unpacked and MD5 sums checked
+[0m[91m** using staged installation
+[0m[91m** libs
+[0mgcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c read.c -o read.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c write.c -o write.o
+gcc -std=gnu99 -shared -L/usr/lib/R/lib -Wl,-Bsymbolic-functions -Wl,-z,relro -o jpeg.so read.o write.o -ljpeg -L/usr/lib/R/lib -lR
+[91minstalling to /usr/local/lib/R/site-library/00LOCK-jpeg/00new/jpeg/libs
+[0m[91m** R
+[0m[91m** inst
+[0m[91m** byte-compile and prepare package for lazy loading
+[0m[91m** help
+[0m[91m*** installing help indices
+[0m[91m** building package indices
+[0m[91m** testing if installed package can be loaded from temporary location
+[0m[91m** checking absolute paths in shared objects and dynamic libraries
+[0m[91m** testing if installed package can be loaded from final location
+[0m[91m** testing if installed package keeps a record of temporary installation path
+[0m[91m* DONE (jpeg)
+[0m[91m* installing *source* package 'rstudioapi' ...
+[0m[91m** package 'rstudioapi' successfully unpacked and MD5 sums checked
+[0m[91m** using staged installation
+[0m[91m** R
+[0m[91m** inst
+[0m[91m** byte-compile and prepare package for lazy loading
+[0m[91m** help
+[0m[91m*** installing help indices
+[0m[91m*** copying figures
+[0m[91m** building package indices
+[0m[91m** installing vignettes
+[0m[91m** testing if installed package can be loaded from temporary location
+[0m[91m** testing if installed package can be loaded from final location
+[0m[91m** testing if installed package keeps a record of temporary installation path
+[0m[91m* DONE (rstudioapi)
+[0m[91m* installing *source* package 'annotate' ...
+[0m[91m** using staged installation
+[0m[91m** R
+[0m[91m** data
+[0m[91m** inst
+[0m[91m** byte-compile and prepare package for lazy loading
+[0m[91m** help
+[0m[91m*** installing help indices
+[0m[91m** building package indices
+[0m[91m** installing vignettes
+[0m[91m** testing if installed package can be loaded from temporary location
+[0m[91m** testing if installed package can be loaded from final location
+[0m[91m** testing if installed package keeps a record of temporary installation path
+[0m[91m* DONE (annotate)
+[0m[91m* installing *source* package 'Formula' ...
+[0m[91m** package 'Formula' successfully unpacked and MD5 sums checked
+[0m[91m** using staged installation
+[0m[91m** R
+[0m[91m** inst
+[0m[91m** byte-compile and prepare package for lazy loading
+[0m[91m** help
+[0m[91m*** installing help indices
+[0m[91m** building package indices
+[0m[91m** installing vignettes
+[0m[91m** testing if installed package can be loaded from temporary location
+[0m[91m** testing if installed package can be loaded from final location
+[0m[91m** testing if installed package keeps a record of temporary installation path
+[0m[91m* DONE (Formula)
+[0m[91m* installing *source* package 'checkmate' ...
+[0m[91m** package 'checkmate' successfully unpacked and MD5 sums checked
+[0m[91m** using staged installation
+[0m[91m** libs
+[0mgcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c all_missing.c -o all_missing.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c any_infinite.c -o any_infinite.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c any_missing.c -o any_missing.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c any_nan.c -o any_nan.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c checks.c -o checks.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c find_min_nchar.c -o find_min_nchar.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c guess_type.c -o guess_type.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c helper.c -o helper.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c init.c -o init.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c integerish.c -o integerish.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c is_sorted.c -o is_sorted.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c qassert.c -o qassert.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c which_first.c -o which_first.o
+gcc -std=gnu99 -shared -L/usr/lib/R/lib -Wl,-Bsymbolic-functions -Wl,-z,relro -o checkmate.so all_missing.o any_infinite.o any_missing.o any_nan.o checks.o find_min_nchar.o guess_type.o helper.o init.o integerish.o is_sorted.o qassert.o which_first.o -L/usr/lib/R/lib -lR
+[91minstalling to /usr/local/lib/R/site-library/00LOCK-checkmate/00new/checkmate/libs
+[0m[91m** R
+[0m[91m** inst
+[0m[91m** byte-compile and prepare package for lazy loading
+[0m[91m** help
+[0m[91m*** installing help indices
+[0m[91m** building package indices
+[0m[91m** installing vignettes
+[0m[91m** testing if installed package can be loaded from temporary location
+[0m[91m** checking absolute paths in shared objects and dynamic libraries
+[0m[91m** testing if installed package can be loaded from final location
+[0m[91m** testing if installed package keeps a record of temporary installation path
+[0m[91m* DONE (checkmate)
+[0m[91m* installing *source* package 'latticeExtra' ...
+[0m[91m** package 'latticeExtra' successfully unpacked and MD5 sums checked
+[0m[91m** using staged installation
+[0m[91m** R
+[0m[91m** data
+[0m[91m*** moving datasets to lazyload DB
+[0m[91m** inst
+[0m[91m** byte-compile and prepare package for lazy loading
+[0m[91m** help
+[0m[91m*** installing help indices
+[0m[91m** building package indices
+[0m[91m** testing if installed package can be loaded from temporary location
+[0m[91m** testing if installed package can be loaded from final location
+[0m[91m** testing if installed package keeps a record of temporary installation path
+[0m[91m* DONE (latticeExtra)
+[0m[91m* installing *source* package 'genefilter' ...
+[0m[91m** using staged installation
+[0m[91m** libs
+[0mg++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c half_range_mode.cpp -o half_range_mode.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c init.c -o init.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c nd.c -o nd.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c pAUC.c -o pAUC.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c rowPAUCs.c -o rowPAUCs.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c rowttests.c -o rowttests.o
+gfortran -fno-optimize-sibling-calls  -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong  -c ttest.f -o ttest.o
+g++ -std=gnu++11 -shared -L/usr/lib/R/lib -Wl,-Bsymbolic-functions -Wl,-z,relro -o genefilter.so half_range_mode.o init.o nd.o pAUC.o rowPAUCs.o rowttests.o ttest.o -lgfortran -lm -lquadmath -L/usr/lib/R/lib -lR
+[91minstalling to /usr/local/lib/R/site-library/00LOCK-genefilter/00new/genefilter/libs
+[0m[91m** R
+[0m[91m** data
+[0m[91m*** moving datasets to lazyload DB
+[0m[91m** inst
+[0m[91m** byte-compile and prepare package for lazy loading
+[0m[91m** help
+[0m[91m*** installing help indices
+[0m[91m** building package indices
+[0m[91m** installing vignettes
+[0m[91m** testing if installed package can be loaded from temporary location
+[0m[91m** checking absolute paths in shared objects and dynamic libraries
+[0m[91m** testing if installed package can be loaded from final location
+[0m[91m** testing if installed package keeps a record of temporary installation path
+[0m[91m* DONE (genefilter)
+[0m[91m* installing *source* package 'geneplotter' ...
+[0m[91m** using staged installation
+[0m[91m** R
+[0m[91m** data
+[0m[91m** inst
+[0m[91m** byte-compile and prepare package for lazy loading
+[0m[91m** help
+[0m[91m*** installing help indices
+[0m[91m** building package indices
+[0m[91m** installing vignettes
+[0m[91m** testing if installed package can be loaded from temporary location
+[0m[91m** testing if installed package can be loaded from final location
+[0m[91m** testing if installed package keeps a record of temporary installation path
+[0m[91m* DONE (geneplotter)
+[0m[91m* installing *source* package 'htmlTable' ...
+[0m[91m** package 'htmlTable' successfully unpacked and MD5 sums checked
+[0m[91m** using staged installation
+[0m[91m** R
+[0m[91m** data
+[0m[91m** inst
+[0m[91m** byte-compile and prepare package for lazy loading
+[0m[91m** help
+[0m[91m*** installing help indices
+[0m[91m** building package indices
+[0m[91m** installing vignettes
+[0m[91m** testing if installed package can be loaded from temporary location
+[0m[91m** testing if installed package can be loaded from final location
+[0m[91m** testing if installed package keeps a record of temporary installation path
+[0m[91m* DONE (htmlTable)
+[0m[91m* installing *source* package 'Hmisc' ...
+[0m[91m** package 'Hmisc' successfully unpacked and MD5 sums checked
+[0m[91m** using staged installation
+[0m[91m** libs
+[0mgcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c Hmisc.c -o Hmisc.o
+gfortran -fno-optimize-sibling-calls  -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong  -c cidxcn.f -o cidxcn.o
+gfortran -fno-optimize-sibling-calls  -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong  -c cidxcp.f -o cidxcp.o
+gfortran -fno-optimize-sibling-calls  -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong  -c hoeffd.f -o hoeffd.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c init.c -o init.o
+gfortran -fno-optimize-sibling-calls  -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong  -c jacklins.f -o jacklins.o
+gfortran -fno-optimize-sibling-calls  -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong  -c largrec.f -o largrec.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mChoice.c -o mChoice.o
+gfortran -fno-optimize-sibling-calls  -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong  -c maxempr.f -o maxempr.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c nstr.c -o nstr.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c ranksort.c -o ranksort.o
+gfortran -fno-optimize-sibling-calls  -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong  -c rcorr.f -o rcorr.o
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c string_box.c -o string_box.o
+gfortran -fno-optimize-sibling-calls  -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong  -c wclosest.f -o wclosest.o
+gcc -std=gnu99 -shared -L/usr/lib/R/lib -Wl,-Bsymbolic-functions -Wl,-z,relro -o Hmisc.so Hmisc.o cidxcn.o cidxcp.o hoeffd.o init.o jacklins.o largrec.o mChoice.o maxempr.o nstr.o ranksort.o rcorr.o string_box.o wclosest.o -lgfortran -lm -lquadmath -L/usr/lib/R/lib -lR
+[91minstalling to /usr/local/lib/R/site-library/00LOCK-Hmisc/00new/Hmisc/libs
+[0m[91m** R
+[0m[91m** inst
+[0m[91m** byte-compile and prepare package for lazy loading
+[0m[91m** help
+[0m[91m*** installing help indices
+[0m[91m** building package indices
+[0m[91m** testing if installed package can be loaded from temporary location
+[0m[91m** checking absolute paths in shared objects and dynamic libraries
+[0m[91m** testing if installed package can be loaded from final location
+[0m[91m** testing if installed package keeps a record of temporary installation path
+[0m[91m* DONE (Hmisc)
+[0m[91m* installing *source* package 'DESeq2' ...
+[0m[91m** using staged installation
+[0m[91m** libs
+[0mg++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include" -I"/usr/local/lib/R/site-library/RcppArmadillo/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c DESeq2.cpp -o DESeq2.o
+g++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include" -I"/usr/local/lib/R/site-library/RcppArmadillo/include"   -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c RcppExports.cpp -o RcppExports.o
+g++ -std=gnu++11 -shared -L/usr/lib/R/lib -Wl,-Bsymbolic-functions -Wl,-z,relro -o DESeq2.so DESeq2.o RcppExports.o -llapack -lblas -lgfortran -lm -lquadmath -L/usr/lib/R/lib -lR
+[91minstalling to /usr/local/lib/R/site-library/00LOCK-DESeq2/00new/DESeq2/libs
+[0m[91m** R
+[0m[91m** inst
+[0m[91m** byte-compile and prepare package for lazy loading
+[0m[91m** help
+[0m[91m*** installing help indices
+[0m[91m** building package indices
+[0m[91m** installing vignettes
+[0m[91m** testing if installed package can be loaded from temporary location
+[0m[91m** checking absolute paths in shared objects and dynamic libraries
+[0m[91m** testing if installed package can be loaded from final location
+[0m[91m** testing if installed package keeps a record of temporary installation path
+[0m[91m* DONE (DESeq2)
+[0m[91m
+[0m[91mThe downloaded source packages are in
+	'/tmp/RtmpIMndgL/downloaded_packages'[0m[91m
+[0m[91mOld packages: 'curl', 'mime', 'KernSmooth', 'MASS', 'Matrix', 'boot', 'class',
+  'cluster', 'codetools', 'lattice', 'mgcv', 'nlme', 'nnet', 'spatial',
+  'survival'
+[0mRemoving intermediate container da02fd227bed
+ ---> 25742313b8ba
+Step 6/14 : RUN mkdir /opt2/homer
+ ---> Running in 15641a7b406d
+Removing intermediate container 15641a7b406d
+ ---> d0bdec0f103d
+Step 7/14 : WORKDIR /opt2/homer
+ ---> Running in 23d9974be9ab
+Removing intermediate container 23d9974be9ab
+ ---> aee89a8728a3
+Step 8/14 : RUN wget http://homer.ucsd.edu/homer/configureHomer.pl
+ ---> Running in e73065bb8a40
+[91m--2021-06-23 22:28:57--  http://homer.ucsd.edu/homer/configureHomer.pl
+Resolving homer.ucsd.edu (homer.ucsd.edu)... [0m[91m169.228.63.226
+Connecting to homer.ucsd.edu (homer.ucsd.edu)|169.228.63.226|:80... [0m[91mconnected.
+HTTP request sent, awaiting response... [0m[91m200 OK
+Length: 27477 (27K) [application/x-perl]
+Saving to: 'configureHomer.pl'
+
+     0K .....[0m[91m..... .[0m[91m......... ......                          100%  210K=0.1s
+
+2021-06-23 22:28:57 (210 KB/s) - 'configureHomer.pl' saved [27477/27477]
+
+[0mRemoving intermediate container e73065bb8a40
+ ---> faac3aed4d05
+Step 9/14 : RUN perl configureHomer.pl -install
+ ---> Running in e6ffde5871d9
+[91m
+	Current base directory for HOMER is /opt2/homer/./
+
+[0m[91m--2021-06-23 22:28:58--  http://homer.ucsd.edu/homer/update.txt
+[0m[91mResolving homer.ucsd.edu (homer.ucsd.edu)... [0m[91m169.228.63.226[0m[91m
+[0m[91mConnecting to homer.ucsd.edu (homer.ucsd.edu)|169.228.63.226|:80... [0m[91mconnected.
+HTTP request sent, awaiting response... [0m[91m200 OK
+Length: 17859 (17K) [text/plain]
+Saving to: '/opt2/homer/.//update.txt'
+
+     0K ....[0m[91m...... .[0m[91m......                                    100%  188K=0.09s
+
+2021-06-23 22:28:59 (188 KB/s) - '/opt2/homer/.//update.txt' saved [17859/17859]
+
+	Updating Settings...
+`wget -O 0.371266743009077.tmp http://homer.ucsd.edu/homer/configureHomer.pl`;
+--2021-06-23 22:28:59--  http://homer.ucsd.edu/homer/configureHomer.pl
+Resolving homer.ucsd.edu (homer.ucsd.edu)... [0m[91m169.228.63.226[0m[91m
+[0m[91mConnecting to homer.ucsd.edu (homer.ucsd.edu)|169.228.63.226|:80... [0m[91mconnected.
+HTTP request sent, awaiting response... [0m[91m200 OK
+Length: 27477 (27K) [application/x-perl]
+Saving to: '0.371266743009077.tmp'
+
+     0K ....[0m[91m...... .[0m[91m........[0m[91m. .[0m[91m.....                          100%  120K=0.2s
+
+2021-06-23 22:28:59 (120 KB/s) - '0.371266743009077.tmp' saved [27477/27477]
+
+[0m[91m	configureHomer.pl script is up-to-date
+[0m[91m	Packages to Install...
+[0m[91m		homer -> [0m[91m
+[0m[91m
+	Checking for standard utilities and 3rd party software:
+
+[0m[91m		(Note: seqlogo, gs, and blat no longer required)
+[0m[91m	Checking for wget... [0m[91m/usr/bin/wget
+[0m[91m	Checking for cut... [0m[91m/usr/bin/cut
+[0m[91m	Checking for gcc... [0m[91m/usr/bin/gcc
+[0m[91m	Checking for g++... [0m[91m/usr/bin/g++
+[0m[91m	Checking for zip... [0m[91m/usr/bin/zip
+[0m[91m	Checking for unzip... [0m[91m/usr/bin/unzip
+[0m[91m	Checking for make... [0m[91m/usr/bin/make
+[0m[91m	Checking for tar... [0m[91m/usr/bin/tar
+[0m[91m	Checking for gunzip... [0m[91m/usr/bin/gunzip
+[0m[91m	Checking for gzip... [0m[91m/usr/bin/gzip
+[0m[91m
+[0m[91m	All auxilary programs found.
+
+[0m[91m	Pausing for 3 seconds (hit ctrl-C to stop)
+[0m[91m	Installing: homer
+		Downloading...
+--2021-06-23 22:29:02--  http://homer.ucsd.edu/homer/data/software/homer.v4.11.1.zip
+Resolving homer.ucsd.edu (homer.ucsd.edu)... [0m[91m169.228.63.226[0m[91m
+[0m[91mConnecting to homer.ucsd.edu (homer.ucsd.edu)|169.228.63.226|:80... [0m[91mconnected.
+HTTP request sent, awaiting response... [0m[91m200 OK
+Length: 35954701 (34M) [application/zip]
+Saving to: 'homer.package.zip'
+
+     0K ..[0m[91m........ .[0m[91m...[0m[91m...... .......... ...[0m[91m....... ..........  0%  217K 2m41s
+    50K .......... .......... ........[0m[91m..[0m[91m .......[0m[91m... ...[0m[91m.......  0%  423K 2m2s
+   100K .......... .......... .[0m[91m......... .......... ...[0m[91m.......  0%  456K 1m47s
+   150K ....[0m[91m...... .......... ........[0m[91m.. .......... ..........  0% 6.57M 81s
+   200K .........[0m[91m. ......[0m[91m.... .......... .......... .[0m[91m.........  0%  457K 80s
+   250K .......... .......... ..........[0m[91m .......... ..[0m[91m.[0m[91m.......  0%  423K 80s[0m[91m
+   300K .......... .......[0m[91m... .......... .......... ..........  0% 5.62M 70s
+   350K ..[0m[91m........ .......... .......... .......... ..........  1%  402K 72s
+   400K .......... .......... ..........[0m[91m .......... ..........  1%  393K 73s
+   450K .......... .......... .......... .......[0m[91m... ..........  1% 24.0M 66s
+   500K .......... .[0m[91m......... .......... ......[0m[91m.... ......[0m[91m....  1%  392K 68s
+   550K .......... .......... .......... ......[0m[91m.... ...[0m[91m...[0m[91m..[0m[91m..  1%  572K 67s
+   600K ......[0m[91m....[0m[91m ...[0m[91m....... .......... .......... ..........  1% 1.21M 64s
+   650K .......... .......... .......... ....[0m[91m...... ........[0m[91m..  1%  313K 67s
+   700K .......[0m[91m... .......... .......... .......... ..........  2% 19.4M 63s
+   750K .......... .......... .[0m[91m......... ......[0m[91m.... .[0m[91m..[0m[91m.......  2%  284K 66s
+   800K .......... .......... .......... ...[0m[91m....... ..........  2% 12.4M 63s
+   850K .......... ..[0m[91m........ .......... ...[0m[91m...[0m[91m.... .[0m[91m........[0m[91m.  2%  262K 66s
+   900K .......[0m[91m... .......... .......... .[0m[91m......... ..........  2% 4.63M 63s[0m[91m
+   950K .......[0m[91m...[0m[91m ...[0m[91m.[0m[91m..[0m[91m.... ..[0m[91m........ ......[0m[91m..[0m[91m.. .[0m[91m.........  2%  457K 64s
+  1000K .......... ......[0m[91m.... ......[0m[91m.... .......... ..........  2% 6.63M 61s
+  1050K .......... .......... .[0m[91m...[0m[91m...... .[0m[91m......... ........[0m[91m..  3%  578K 61s
+  1100K .......... .......... .......... ...[0m[91m....... ..........  3% 13.3M 58s
+  1150K .......... .....[0m[91m.[0m[91m.... .......... ...[0m[91m....... .[0m[91m.........  3%  829K 57s
+  1200K .......... ...[0m[91m....... .......... .......... ..........  3% 1.52M 56s
+  1250K .......... .......... .......... .......... ..........  3% 7.31M 54s
+  1300K ...[0m[91m..[0m[91m..... .......... .......... ..[0m[91m........ ..........  3%  484K 54s
+  1350K .......... .......... .......[0m[91m..[0m[91m. .......... ....[0m[91m......  3% 6.32M 52s
+  1400K ...[0m[91m....... ....[0m[91m...... .[0m[91m......[0m[91m..[0m[91m. .[0m[91m.[0m[91m....[0m[91m...[0m[91m. ...[0m[91m....[0m[91m..[0m[91m.  4% 1.41M 51s
+  1450K ...[0m[91m.[0m[91m.....[0m[91m. ......[0m[91m.... .......... ..........[0m[91m ..........  4%  634K 51s
+  1500K .......... ..........[0m[91m [0m[91m.......... .......... ..........  4% 7.01M 50s
+  1550K .........[0m[91m. .......... .[0m[91m..[0m[91m....[0m[91m... ..........[0m[91m .........[0m[91m.  4%  788K 49s[0m[91m
+  1600K ....[0m[91m...... .......... .......... ........[0m[91m.. ....[0m[91m.....[0m[91m.  4% 1.18M 49s
+  1650K .......... ........[0m[91m.. .......... ..........[0m[91m ........[0m[91m..  4% 1.85M 48s[0m[91m
+  1700K .......... ........[0m[91m.. ..[0m[91m........ .........[0m[91m. ..........  4%  761K 47s
+  1750K .......... .......... .......... ........[0m[91m.. ..........  5% 5.16M 46s
+  1800K .......... ..[0m[91m........ ...[0m[91m....... ..[0m[91m..[0m[91m...... ..........  5% 2.13M 45s
+  1850K ....[0m[91m...... ...[0m[91m...[0m[91m.... ........[0m[91m.. .......... ..........  5%  813K 45s
+  1900K .......... ........[0m[91m.. .......... ..[0m[91m........ ..........  5% 4.38M 44s
+  1950K .......... .......... ....[0m[91m.[0m[91m..... ...[0m[91m....... ..........  5%  794K 44s
+  2000K ...[0m[91m....... .......... .......[0m[91m..[0m[91m. .......... ..........  5% 3.15M 43s[0m[91m
+  2050K ........[0m[91m.. .[0m[91m......... .......... .[0m[91m......... .......[0m[91m...  5%  599K 43s
+  2100K .......... .......... ....[0m[91m...... .......... ..........  6% 10.0M 42s
+  2150K .......... .......... .....[0m[91m..... ....[0m[91m....[0m[91m.. ..........  6% 3.89M 41s
+  2200K ...[0m[91m....... .......[0m[91m... ..[0m[91m.....[0m[91m... .......... ..........  6% 1.06M 41s
+  2250K ........[0m[91m.. .......... ........[0m[91m..[0m[91m ...[0m[91m....... ..........  6%  851K 41s
+  2300K .......... ........[0m[91m.. ....[0m[91m...... .......... ..........  6% 4.71M 40s
+  2350K .......... .......... ..........[0m[91m ...[0m[91m.......[0m[91m ..[0m[91m........  6% 1.05M 40s
+  2400K .......... .......... .........[0m[91m. .......... ........[0m[91m..  6% 1.22M 40s
+  2450K .......... .......... .......... .......... ..........  7% 8.20M 39s
+  2500K .......... .......... ...[0m[91m.[0m[91m...... .[0m[91m.[0m[91m..[0m[91m.[0m[91m..... ..........  7% 2.28M 38s
+  2550K .[0m[91m........[0m[91m. .......... .......... .......... ..........  7% 1.03M 38s
+  2600K .......... ....[0m[91m.[0m[91m..... .[0m[91m.[0m[91m........ .[0m[91m......... ..........  7% 3.23M 38s
+  2650K ..........[0m[91m ...[0m[91m....... .........[0m[91m. .[0m[91m......... ..........  7% 1.48M 37s
+  2700K ..[0m[91m........ .......... .......... .......... ........[0m[91m.[0m[91m.  7% 1016K 37s
+  2750K .......... .........[0m[91m. .......... ...[0m[91m....... ..........  7% 4.79M 36s
+  2800K .......... ..........[0m[91m ........[0m[91m.. .......... ..........  8% 3.77M 36s
+  2850K .[0m[91m........[0m[91m. .......... .......[0m[91m... .......... ..[0m[91m..[0m[91m......  8%  855K 36s
+  2900K .....[0m[91m..... .......... ....[0m[91m.....[0m[91m. .......... ...[0m[91m.......  8% 2.07M 35s
+  2950K ...[0m[91m....... .......... .....[0m[91m..... .......... ....[0m[91m......  8% 9.45M 35s
+  3000K .......[0m[91m... .....[0m[91m..... .......... .......[0m[91m... ........[0m[91m..  8% 2.45M 34s
+  3050K .........[0m[91m. .......... .......... .....[0m[91m..... .[0m[91m.........  8% 1.27M 34s
+  3100K .......... .......... ..[0m[91m........ ..[0m[91m....[0m[91m.... .[0m[91m.[0m[91m.......[0m[91m.  8% 1.65M 34s
+  3150K .......... ....[0m[91m...... .......... .......... ..........  9% 5.86M 33s
+  3200K .......... ..........[0m[91m [0m[91m.[0m[91m.[0m[91m........ .......... .....[0m[91m...[0m[91m..  9% 2.65M 33s
+  3250K .......... .......... .......... ......[0m[91m...[0m[91m. ..........  9% 1.44M 33s
+  3300K .......... ..........[0m[91m .[0m[91m......... ........[0m[91m.. ..........  9% 2.38M 32s
+  3350K ...[0m[91m....... .......... .[0m[91m......... .......... ..........  9% 2.36M 32s
+  3400K .......... .......... .......... .......... ...[0m[91m..[0m[91m.....  9% 4.13M 32s
+  3450K .......... .......... .......... ........[0m[91m.. .........[0m[91m.  9% 1.41M 32s
+  3500K .......... .......[0m[91m... .......... .....[0m[91m..[0m[91m.[0m[91m.. ........[0m[91m.. 10% 1.55M 31s
+  3550K .[0m[91m......... .......... .......... ....[0m[91m.[0m[91m..... ........[0m[91m.. 10% 4.07M 31s
+  3600K .......... .......... .......... ..........[0m[91m .........[0m[91m. 10% 3.92M 31s
+  3650K .......... ........[0m[91m.. .......... .....[0m[91m..... .......... 10% 1.38M 30s
+  3700K .......... .....[0m[91m..... .......... ........[0m[91m.. .......... 10% 1.76M 30s
+  3750K .......... .[0m[91m......... .......... ..[0m[91m.....[0m[91m... ...[0m[91m....... 10% 4.35M 30s
+  3800K ..........[0m[91m .......... ........[0m[91m.. .........[0m[91m. ......[0m[91m...[0m[91m. 10% 2.47M 30s
+  3850K .[0m[91m....[0m[91m..... .[0m[91m......... .......... ...[0m[91m..[0m[91m..... .[0m[91m......... 11% 1.69M 29s
+  3900K .......... ..[0m[91m.......[0m[91m. .......... .........[0m[91m. .......... 11% 1.62M 29s
+  3950K .......... ......[0m[91m.... .......... ...[0m[91m....... .......... 11% 4.44M 29s
+  4000K ......[0m[91m....[0m[91m .......... .......... .....[0m[91m...[0m[91m.. ......[0m[91m.[0m[91m... 11% 2.72M 29s
+  4050K .....[0m[91m..... .......... ..........[0m[91m ...[0m[91m....... .......... 11% 1.53M 28s[0m[91m
+  4100K .........[0m[91m. .[0m[91m......... .........[0m[91m. ..........[0m[91m ..[0m[91m........ 11% 1.80M 28s
+  4150K .......... ..........[0m[91m .......... .[0m[91m...[0m[91m.....[0m[91m. .......[0m[91m... 11% 3.38M 28s
+  4200K ...[0m[91m....... .......... .......... .....[0m[91m..... ........[0m[91m.. 12% 2.66M 28s
+  4250K .......... .....[0m[91m.....[0m[91m .......... ...[0m[91m....... .......... 12% 1.77M 28s
+  4300K .......... ..[0m[91m..[0m[91m...... .......... ......[0m[91m.... ..[0m[91m...[0m[91m..... 12% 1.78M 27s
+  4350K .......... .......... .......... ..[0m[91m....[0m[91m...[0m[91m. .......... 12% 2.31M 27s
+  4400K ....[0m[91m...... ..[0m[91m..[0m[91m...... .......... .......[0m[91m... .......... 12% 1.75M 27s
+  4450K .......... .......... .......... ..[0m[91m...[0m[91m..... ...[0m[91m....... 12% 2.99M 27s
+  4500K .......... ...[0m[91m....... ..........[0m[91m .......... ......[0m[91m..[0m[91m.. 12% 1.95M 27s
+  4550K .......... .......... .......... ....[0m[91m...[0m[91m... .....[0m[91m..... 13% 2.11M 26s
+  4600K .......... ...[0m[91m....... .........[0m[91m. .......... .......... 13% 1.83M 26s
+  4650K .......... ....[0m[91m...... .....[0m[91m..... ....[0m[91m..[0m[91m.... .......... 13% 3.44M 26s
+  4700K .......... ....[0m[91m...... .......... .......... ...[0m[91m....... 13% 2.13M 26s
+  4750K ..[0m[91m........ .......... .......... .....[0m[91m..... .......... 13% 2.42M 26s
+  4800K .......... .....[0m[91m...[0m[91m.. ..........[0m[91m .......... .......... 13% 1.67M 26s
+  4850K .......... .......... .......... ......[0m[91m..[0m[91m.. .......... 13% 4.83M 25s
+  4900K .......... .....[0m[91m...[0m[91m.. .......... .......... ......[0m[91m..[0m[91m.. 14% 1.66M 25s
+  4950K ...[0m[91m..[0m[91m..... .......... .......... ..[0m[91m...[0m[91m..... .......... 14% 2.24M 25s
+  5000K .......... ...[0m[91m..[0m[91m..... ......[0m[91m.... .....[0m[91m..[0m[91m... .......... 14% 1.77M 25s
+  5050K .......... .......... .......... .......... .[0m[91m......... 14% 6.05M 25s
+  5100K ....[0m[91m...... ...[0m[91m..[0m[91m.....[0m[91m ..[0m[91m........[0m[91m .........[0m[91m. .......... 14% 1.67M 25s[0m[91m
+  5150K ...[0m[91m....... .........[0m[91m. ..........[0m[91m .......... .......... 14% 2.17M 24s
+  5200K .[0m[91m.........[0m[91m ..[0m[91m........ .......... .........[0m[91m. .......... 14% 1.70M 24s
+  5250K .......... .......... .......... ....[0m[91m.[0m[91m..... .......... 15% 6.62M 24s[0m[91m
+  5300K[0m[91m .......... .......[0m[91m... .........[0m[91m. ..[0m[91m.[0m[91m....... ....[0m[91m...[0m[91m... 15% 1.58M 24s
+  5350K .[0m[91m......... ..[0m[91m........ .......... .[0m[91m..[0m[91m....... .......... 15% 2.12M 24s
+  5400K .......[0m[91m...[0m[91m .......... .......... ..........[0m[91m .......... 15% 1.64M 24s
+  5450K .....[0m[91m..... .......... .......... ....[0m[91m.....[0m[91m. .......... 15% 4.82M 24s
+  5500K .......... ......[0m[91m..[0m[91m.. .......... ........[0m[91m.. .....[0m[91m...[0m[91m.. 15% 1.89M 23s
+  5550K ..........[0m[91m ..[0m[91m........ .......... .[0m[91m......[0m[91m... ......[0m[91m.... 15% 2.34M 23s
+  5600K .....[0m[91m..... .......... .......... .......... ...[0m[91m..[0m[91m..... 16% 1.65M 23s
+  5650K ......[0m[91m.... .......... .......... ...[0m[91m....... ....[0m[91m...... 16% 4.35M 23s
+  5700K .......... .......[0m[91m... .......... .......... ......[0m[91m.... 16% 1.96M 23s
+  5750K .......[0m[91m... .......... .......... ........[0m[91m.. .........[0m[91m. 16% 2.26M 23s
+  5800K ......[0m[91m.... .......... .......... ..........[0m[91m ...[0m[91m......[0m[91m. 16% 1.24M 23s
+  5850K .......... .......... .......... .......... .......... 16% 10.9M 23s
+  5900K .......... ........[0m[91m.[0m[91m. .......... .......... ..[0m[91m.....[0m[91m... 16% 3.64M 22s[0m[91m
+  5950K ......[0m[91m..[0m[91m.. .......... ..........[0m[91m .......... ..[0m[91m...[0m[91m..... 17% 1.52M 22s
+  6000K .......... .[0m[91m..[0m[91m....... ..........[0m[91m ...[0m[91m.......[0m[91m .[0m[91m...[0m[91m...... 17% 1.28M 22s
+  6050K .......... .......... .......... .......... ..[0m[91m........ 17% 7.95M 22s
+  6100K .......... ......[0m[91m....[0m[91m .....[0m[91m..... .......... ......[0m[91m..[0m[91m.. 17% 2.95M 22s
+  6150K .......[0m[91m... .......... ....[0m[91m...... .......... ..[0m[91m.....[0m[91m... 17% 1.71M 22s
+  6200K ........[0m[91m.. .......[0m[91m..[0m[91m. ......[0m[91m.... .....[0m[91m..[0m[91m... ......[0m[91m.... 17% 1.31M 22s
+  6250K ...[0m[91m....... .....[0m[91m..... .......... .........[0m[91m. .......... 17% 4.18M 22s
+  6300K ....[0m[91m...... ..[0m[91m........ .......... .......... .......... 18% 7.81M 22s
+  6350K ...[0m[91m...[0m[91m.... ....[0m[91m...[0m[91m... .[0m[91m..[0m[91m..[0m[91m..... .......... .......... 18% 1.99M 21s
+  6400K ...[0m[91m.....[0m[91m.. .......... .....[0m[91m...[0m[91m.. .....[0m[91m..... ...[0m[91m....... 18% 1.37M 21s
+  6450K .[0m[91m........[0m[91m. .......... .......... ..[0m[91m........ .......[0m[91m..[0m[91m. 18% 1.92M 21s
+  6500K .......... .......... .......[0m[91m... .......... .......... 18% 5.25M 21s
+  6550K .......[0m[91m... .......... .......... .....[0m[91m..[0m[91m... .......... 18% 2.11M 21s
+  6600K .......... ..[0m[91m..[0m[91m...... .......... .[0m[91m...[0m[91m..[0m[91m.... .......... 18% 1.92M 21s
+  6650K .......[0m[91m..[0m[91m. .......... .......... .......... ...[0m[91m.[0m[91m...[0m[91m... 19% 1.81M 21s
+  6700K .......... .....[0m[91m..... .......... .[0m[91m......... .......... 19% 4.02M 21s
+  6750K .......[0m[91m..[0m[91m. .......... .....[0m[91m..... .......... .[0m[91m.[0m[91m........ 19% 2.24M 21s
+  6800K .......... ......[0m[91m...[0m[91m. .......... .......... ...[0m[91m....... 19% 2.04M 21s
+  6850K .......... .....[0m[91m...[0m[91m.. .......... ...[0m[91m....... .......... 19% 2.10M 20s
+  6900K ..[0m[91m........ .......... .......... ........[0m[91m.. .......... 19% 2.73M 20s
+  6950K ......[0m[91m.... ....[0m[91m...... .......... .........[0m[91m. .........[0m[91m. 19% 2.33M 20s
+  7000K ........[0m[91m.. .......... ....[0m[91m...... ......[0m[91m.... .......... 20% 4.82M 20s
+  7050K ..[0m[91m..[0m[91m...... ....[0m[91m...... ...[0m[91m....... ...[0m[91m....... ........[0m[91m.. 20% 1.25M 20s
+  7100K .........[0m[91m. .[0m[91m......... ........[0m[91m.. .......... .......[0m[91m... 20% 2.71M 20s
+  7150K ....[0m[91m...... .......... .[0m[91m..[0m[91m....... ...[0m[91m....... .......... 20% 3.79M 20s
+  7200K ....[0m[91m...... .......... .......... .[0m[91m..[0m[91m......[0m[91m. .......... 20% 2.20M 20s
+  7250K ..........[0m[91m ..[0m[91m........ ..[0m[91m........ ..[0m[91m........ .......... 20% 1.43M 20s
+  7300K .......... ..........[0m[91m .........[0m[91m. .......... .......... 20% 3.83M 20s
+  7350K .......[0m[91m...[0m[91m .......... .........[0m[91m. .......... .......... 21% 2.16M 20s
+  7400K .......[0m[91m... ....[0m[91m...... .[0m[91m......[0m[91m... .........[0m[91m. .......... 21% 3.93M 19s[0m[91m
+  7450K .......... ........[0m[91m.. ........[0m[91m.. .......... ..[0m[91m..[0m[91m...... 21% 1.62M 19s
+  7500K ..[0m[91m........ ........[0m[91m.. ....[0m[91m...... .[0m[91m......... ........[0m[91m.. 21% 1.76M 19s
+  7550K .......... .......... .......... ........[0m[91m.[0m[91m. ....[0m[91m.[0m[91m....[0m[91m. 21% 1.70M 19s
+  7600K .......... .......... .......... .......... .......... 21% 9.20M 19s
+  7650K .......... ..[0m[91m........ .......[0m[91m.[0m[91m..[0m[91m .......... .[0m[91m......... 21% 2.22M 19s[0m[91m
+  7700K ..[0m[91m........ .[0m[91m......... .......... ......[0m[91m.... .[0m[91m...[0m[91m...... 22% 1.39M 19s
+  7750K .......... ...[0m[91m....... .......... ......[0m[91m.... .......[0m[91m... 22% 2.53M 19s
+  7800K ......[0m[91m.... .[0m[91m..[0m[91m.....[0m[91m.. .......... .......... .......... 22% 3.44M 19s
+  7850K ...[0m[91m....... .......... .......... ......[0m[91m.... .......... 22% 2.81M 19s
+  7900K ........[0m[91m.. .......... ........[0m[91m.. .........[0m[91m. .......... 22% 2.36M 19s
+  7950K ..[0m[91m........ .......... .......... .......... .......... 22% 2.29M 19s
+  8000K .........[0m[91m. .......... ....[0m[91m...... .......... .......... 22% 1.37M 19s
+  8050K ........[0m[91m.[0m[91m.[0m[91m [0m[91m......[0m[91m.[0m[91m... .......... .......... .......... 23% 4.23M 18s
+  8100K .......... ........[0m[91m.. .......... ...[0m[91m.......[0m[91m .......... 23% 2.70M 18s
+  8150K .......... ...[0m[91m.[0m[91m...... .........[0m[91m. .....[0m[91m..... .[0m[91m.......[0m[91m.. 23% 2.17M 18s
+  8200K .......... .......... ..[0m[91m..[0m[91m......[0m[91m .....[0m[91m..... ......[0m[91m.... 23% 2.04M 18s
+  8250K ..[0m[91m........ .......... .......... .......... .......... 23% 3.43M 18s
+  8300K .......... ..[0m[91m........ ....[0m[91m...... .......... .......... 23% 3.92M 18s[0m[91m
+  8350K .......... .......... .[0m[91m....[0m[91m...[0m[91m.. .......... .......... 23% 1.25M 18s
+  8400K .......... .......... .......... .....[0m[91m..[0m[91m... .......... 24% 3.44M 18s
+  8450K ........[0m[91m.. .......... .......... .......... ........[0m[91m.. 24% 1.31M 18s
+  8500K .......... .......... .......... .......... .[0m[91m......... 24% 5.09M 18s
+  8550K .......... .......... .......... ....[0m[91m...... ........[0m[91m.. 24% 2.16M 18s
+  8600K .......... .......... .......... .....[0m[91m.....[0m[91m .......... 24% 4.40M 18s
+  8650K .......... ..[0m[91m..[0m[91m.[0m[91m....[0m[91m. .[0m[91m......... ...[0m[91m....... ...[0m[91m....... 24% 1.39M 18s
+  8700K ..........[0m[91m ...[0m[91m....... .......... .......... .......... 24% 3.98M 17s
+  8750K .........[0m[91m. .......... .......... ..[0m[91m........ ......[0m[91m.... 25% 2.80M 17s
+  8800K ........[0m[91m.. .......... .......... ........[0m[91m.. .[0m[91m......... 25% 2.65M 17s
+  8850K .......... .......... ......[0m[91m.... .....[0m[91m..[0m[91m... .......... 25% 1.26M 17s
+  8900K .......... ......[0m[91m.... ....[0m[91m...... ...[0m[91m....... .......... 25% 4.01M 17s
+  8950K .......... .......... .....[0m[91m..... .......... .......... 25% 4.73M 17s
+  9000K ..[0m[91m..[0m[91m...... .......... ..[0m[91m........ .[0m[91m......... .......... 25% 3.03M 17s
+  9050K ...[0m[91m..[0m[91m..... .[0m[91m......... .......... .......[0m[91m..[0m[91m. ....[0m[91m...... 25%  997K 17s
+  9100K .......... .......... .......... .........[0m[91m. .......... 26% 3.61M 17s
+  9150K .......... .......... ........[0m[91m.. ........[0m[91m..[0m[91m .......... 26% 4.84M 17s
+  9200K .......... .......[0m[91m.[0m[91m.. .......... .[0m[91m.....[0m[91m.... .......... 26% 3.52M 17s
+  9250K .......... ......[0m[91m.... .......... .......... .....[0m[91m...[0m[91m.. 26% 2.15M 17s
+  9300K ......[0m[91m.... .......... .......... ..[0m[91m........[0m[91m .......... 26% 1.43M 17s
+  9350K .....[0m[91m..[0m[91m... .......... ...[0m[91m....... .......... .......... 26% 2.41M 17s
+  9400K ....[0m[91m...... .......... .......... ...[0m[91m.[0m[91m...... ........[0m[91m.. 26% 5.19M 16s
+  9450K .......... .......... .........[0m[91m. .......... .[0m[91m......... 27% 3.06M 16s
+  9500K .........[0m[91m. ..........[0m[91m .......... .......... .......... 27% 1.11M 16s
+  9550K .......... .......... ..[0m[91m..[0m[91m...... .....[0m[91m.....[0m[91m .......... 27% 3.27M 16s
+  9600K ........[0m[91m.. .......[0m[91m... .........[0m[91m. .......... .......... 27% 2.91M 16s
+  9650K .......... .......... .......... ....[0m[91m...... .....[0m[91m..... 27% 3.94M 16s
+  9700K .......... ........[0m[91m.[0m[91m.[0m[91m [0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m..... .....[0m[91m...[0m[91m.. .......... 27% 1.25M 16s
+  9750K ........[0m[91m.. .......[0m[91m... ....[0m[91m...... ........[0m[91m.. .....[0m[91m....[0m[91m. 27% 5.09M 16s
+  9800K ......[0m[91m..[0m[91m.. .......... .....[0m[91m..... .......... .......... 28% 2.13M 16s
+  9850K .......... ......[0m[91m.... ...[0m[91m....[0m[91m... .......... .......... 28% 4.05M 16s
+  9900K .......... .[0m[91m......... .......... ..........[0m[91m .......... 28% 3.73M 16s
+  9950K ..[0m[91m....[0m[91m.... ....[0m[91m...... .......... .......... ......[0m[91m.... 28% 1.47M 16s
+ 10000K ...[0m[91m...[0m[91m.... .......... ...[0m[91m....... .[0m[91m......... .[0m[91m......... 28% 1.89M 16s
+ 10050K .......... .......... ..[0m[91m........ ..........[0m[91m .......... 28% 3.64M 16s
+ 10100K .......[0m[91m... .......... .......... .......... .......... 28% 4.92M 16s
+ 10150K .......[0m[91m..[0m[91m. .......... ..[0m[91m........ .......... .......... 29% 1.36M 16s
+ 10200K ....[0m[91m...[0m[91m... ........[0m[91m.. .......... .......[0m[91m... ..[0m[91m........ 29% 2.63M 16s
+ 10250K ...[0m[91m....[0m[91m... ...[0m[91m....... .......... .......... ........[0m[91m.. 29% 3.29M 15s
+ 10300K .........[0m[91m. ..........[0m[91m .......... .......... .......... 29% 2.72M 15s
+ 10350K .......... .....[0m[91m..... .......... .......[0m[91m...[0m[91m .......... 29% 1.27M 15s
+ 10400K .......... ....[0m[91m...... .......[0m[91m... .......... .......... 29% 3.42M 15s
+ 10450K ......[0m[91m.[0m[91m..[0m[91m. ..[0m[91m.......[0m[91m. .......... .......... .......... 29% 2.09M 15s
+ 10500K ....[0m[91m...... ......[0m[91m.... .......... .[0m[91m......... .[0m[91m......... 30% 4.07M 15s
+ 10550K .....[0m[91m..... .......... .......[0m[91m...[0m[91m .......... .......[0m[91m..[0m[91m. 30% 1.28M 15s
+ 10600K ........[0m[91m.[0m[91m. .......... ....[0m[91m..[0m[91m.... .......... .......... 30% 3.94M 15s
+ 10650K .[0m[91m......... .......... .....[0m[91m..... ........[0m[91m.. ........[0m[91m.. 30% 1.99M 15s[0m[91m
+ 10700K ..........[0m[91m .......... .......[0m[91m... .......... .......... 30% 4.73M 15s
+ 10750K .....[0m[91m.....[0m[91m ....[0m[91m...... .......... .[0m[91m......... ..[0m[91m......[0m[91m.. 30% 3.15M 15s
+ 10800K ....[0m[91m...... ......[0m[91m.... .....[0m[91m..[0m[91m...[0m[91m ........[0m[91m.. .......... 30% 1.30M 15s
+ 10850K ..[0m[91m........ .......... ......[0m[91m.... .......... ....[0m[91m...[0m[91m... 31% 2.73M 15s
+ 10900K .......... .....[0m[91m..... .[0m[91m......... ..[0m[91m........ .......... 31% 2.99M 15s
+ 10950K ..........[0m[91m [0m[91m.......... ..[0m[91m........ .......... .......... 31% 1.78M 15s
+ 11000K .......... ......[0m[91m.... .......... .......[0m[91m... ........[0m[91m.. 31% 2.10M 15s[0m[91m
+ 11050K ......[0m[91m.... .......... ...[0m[91m....... .......... .......[0m[91m... 31% 6.08M 15s
+ 11100K .........[0m[91m. ......[0m[91m...[0m[91m. .[0m[91m......... .......... ...[0m[91m....[0m[91m..[0m[91m. 31% 1.14M 15s
+ 11150K .........[0m[91m. .......... .......... .......... ...[0m[91m....... 31% 2.31M 15s
+ 11200K ..........[0m[91m .[0m[91m.[0m[91m........ ..[0m[91m........ .......... .......... 32% 6.02M 15s
+ 11250K ......[0m[91m.... .......[0m[91m... .......[0m[91m... .......... .......... 32% 3.16M 14s
+ 11300K .[0m[91m......... .......... ...[0m[91m.[0m[91m...... ..[0m[91m...[0m[91m...[0m[91m.. .......... 32% 3.14M 14s
+ 11350K ....[0m[91m...... .[0m[91m....[0m[91m..... .......... .......... ....[0m[91m...... 32% 1.49M 14s
+ 11400K .......... ...[0m[91m....... ...[0m[91m....... .......[0m[91m... ....[0m[91m...... 32% 1.76M 14s
+ 11450K ..[0m[91m........ .......... .......[0m[91m... .......... .......... 32% 3.58M 14s
+ 11500K .......... ........[0m[91m.. .........[0m[91m. .......... .......... 32% 4.99M 14s
+ 11550K ........[0m[91m.. .......... ...[0m[91m....[0m[91m... .......[0m[91m... .......... 33% 1.30M 14s
+ 11600K .......... .......... .......... .....[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m. ....[0m[91m...... 33% 2.09M 14s
+ 11650K ......[0m[91m.[0m[91m... .......... .......... .......... ......[0m[91m.... 33% 3.63M 14s
+ 11700K .......... .......... ..........[0m[91m .......... .....[0m[91m..... 33% 6.20M 14s
+ 11750K .......... .....[0m[91m..... ..........[0m[91m ......[0m[91m.... .......... 33% 2.15M 14s
+ 11800K ........[0m[91m.. .[0m[91m......... ..........[0m[91m ........[0m[91m.. .......... 33% 2.49M 14s[0m[91m
+ 11850K .......... .[0m[91m..[0m[91m.....[0m[91m..[0m[91m .......... .......... .......... 33% 1.60M 14s
+ 11900K ........[0m[91m.. ........[0m[91m.. .......... .......... .......[0m[91m... 34% 5.20M 14s[0m[91m
+ 11950K .......... .......[0m[91m... .......... .......... ........[0m[91m.. 34% 5.15M 14s
+ 12000K ......[0m[91m..[0m[91m.. .[0m[91m......... .......... ...[0m[91m...[0m[91m.... .......... 34% 1.36M 14s
+ 12050K .......... .......... ....[0m[91m...... ....[0m[91m..[0m[91m.... ....[0m[91m..[0m[91m.... 34% 1.65M 14s
+ 12100K .......[0m[91m... .......... ...[0m[91m..[0m[91m..... ....[0m[91m...... .......... 34% 3.66M 14s
+ 12150K .......... .......... .......... .......... .[0m[91m......... 34% 7.08M 14s
+ 12200K ..[0m[91m........ .......... ..........[0m[91m ..[0m[91m........ .......... 34% 2.32M 13s
+ 12250K .......... ...[0m[91m....... ......[0m[91m.... .......... .......... 35% 2.33M 13s
+ 12300K ...[0m[91m.....[0m[91m..[0m[91m ........[0m[91m.. .......... .......... .......... 35% 1.59M 13s
+ 12350K ..[0m[91m..[0m[91m...... .......... .......... ..........[0m[91m .......... 35% 2.89M 13s
+ 12400K .......... .......... .......... .....[0m[91m..... .......... 35% 14.8M 13s
+ 12450K .........[0m[91m. .......... .......... ........[0m[91m.. .[0m[91m.......[0m[91m.. 35% 1.35M 13s
+ 12500K .......... .......... .......[0m[91m... .......[0m[91m...[0m[91m .......[0m[91m... 35% 1.64M 13s
+ 12550K .......... .......... ..........[0m[91m .......... .......... 35% 2.09M 13s
+ 12600K .......... .......... .......... ..[0m[91m........ .......... 36% 20.9M 13s
+ 12650K .......... ..........[0m[91m .......... ........[0m[91m.. .......... 36% 2.57M 13s
+ 12700K .......... ........[0m[91m..[0m[91m .......[0m[91m... .......... ...[0m[91m....... 36% 3.37M 13s
+ 12750K .......[0m[91m... ......[0m[91m...[0m[91m. ......[0m[91m.... ........[0m[91m.. .......... 36% 1.66M 13s
+ 12800K ....[0m[91m.[0m[91m..... .......... ......[0m[91m.... .......... .......... 36% 2.34M 13s
+ 12850K .......... ....[0m[91m...... .......... .......... .......... 36% 3.52M 13s
+ 12900K .......... .......... ..[0m[91m.....[0m[91m... ......[0m[91m.... ....[0m[91m...[0m[91m..[0m[91m. 36% 2.78M 13s
+ 12950K ..........[0m[91m .......[0m[91m... .......... .......... .[0m[91m......... 37% 2.27M 13s[0m[91m
+ 13000K ..........[0m[91m .......... .......... .........[0m[91m. .......... 37% 1.54M 13s[0m[91m
+ 13050K .[0m[91m......... .......... .........[0m[91m. ...[0m[91m....... .......[0m[91m.[0m[91m.. 37% 3.38M 13s
+ 13100K .......... ..[0m[91m........ .......... .......... .......[0m[91m... 37% 3.49M 13s
+ 13150K .......... .......... .......... .......... ....[0m[91m.[0m[91m..... 37% 4.58M 13s
+ 13200K ...[0m[91m....... .....[0m[91m..[0m[91m... .....[0m[91m..... ........[0m[91m.. .......... 37% 1.85M 13s
+ 13250K .[0m[91m........[0m[91m. .......... ........[0m[91m.. .[0m[91m......... .......... 37% 1.76M 13s
+ 13300K .......... ...[0m[91m....... .......... ..[0m[91m........ ......[0m[91m.... 38% 3.62M 13s
+ 13350K .......... ......[0m[91m.... .......... .......... .......... 38% 3.89M 12s
+ 13400K .......... ........[0m[91m.[0m[91m. .......... ....[0m[91m.[0m[91m..... .......... 38% 4.30M 12s
+ 13450K ....[0m[91m...... ........[0m[91m.. ...[0m[91m...[0m[91m.... ..[0m[91m........ ........[0m[91m.. 38% 1.63M 12s[0m[91m
+ 13500K .......[0m[91m... ......[0m[91m.... .......... ....[0m[91m...... .......... 38% 2.31M 12s
+ 13550K .......... ......[0m[91m.... ..[0m[91m........ .....[0m[91m..... .......... 38% 3.63M 12s
+ 13600K ......[0m[91m.... ...[0m[91m....... .......... .......... .......... 38% 2.98M 12s
+ 13650K .......... .......... .....[0m[91m..... .......... .[0m[91m......[0m[91m... 39% 2.62M 12s[0m[91m
+ 13700K .......... .......[0m[91m... ..[0m[91m........ ........[0m[91m.. .[0m[91m......[0m[91m... 39% 2.76M 12s
+ 13750K ......[0m[91m.... .......... .......... .......... .......... 39% 1.93M 12s
+ 13800K .....[0m[91m..... .......... .........[0m[91m. .[0m[91m.......[0m[91m.. .......... 39% 2.73M 12s
+ 13850K .[0m[91m..[0m[91m....... .......... .......... .......... .......... 39% 3.35M 12s
+ 13900K .......... .......[0m[91m... .....[0m[91m..... .....[0m[91m..... .[0m[91m......... 39% 3.25M 12s
+ 13950K .....[0m[91m..... .......... .......... .......... .......... 39% 3.24M 12s
+ 14000K ..[0m[91m........ .......[0m[91m... .......... .......... ........[0m[91m.. 40% 1.61M 12s
+ 14050K .[0m[91m......... .......... ........[0m[91m..[0m[91m .......... .......[0m[91m... 40% 2.54M 12s
+ 14100K .......... .......... .......... .......... .[0m[91m......... 40% 9.04M 12s
+ 14150K ...[0m[91m...[0m[91m..[0m[91m.. .......... .......... ..........[0m[91m .......... 40% 2.27M 12s
+ 14200K .[0m[91m......... .......... .......... ....[0m[91m...... ........[0m[91m.. 40% 1.55M 12s
+ 14250K ........[0m[91m.. .......... .......... .......... ..[0m[91m...[0m[91m..... 40% 3.61M 12s
+ 14300K .......... .......... .[0m[91m...[0m[91m...... .......... .[0m[91m.[0m[91m...[0m[91m....[0m[91m. 40% 2.41M 12s
+ 14350K ..[0m[91m..[0m[91m...... ....[0m[91m...... .......... .......... .........[0m[91m. 41% 4.85M 12s
+ 14400K .......... ...[0m[91m....... .......... ........[0m[91m.. ........[0m[91m.. 41% 2.46M 12s
+ 14450K .......... .......... .......[0m[91m... .......... .......[0m[91m... 41% 1.89M 12s
+ 14500K .......... .......... .......... ..........[0m[91m [0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m..... 41% 3.37M 11s
+ 14550K ..[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m [0m[91m.......... .....[0m[91m..... .......... ....[0m[91m...... 41% 2.68M 11s
+ 14600K .......... .......... .[0m[91m......... .......... .......... 41% 2.68M 11s
+ 14650K .......... .......... .[0m[91m......... .......... ..[0m[91m......[0m[91m.. 41% 4.96M 11s
+ 14700K ....[0m[91m.....[0m[91m. .......[0m[91m... .....[0m[91m..... .......... .......... 42% 3.65M 11s[0m[91m
+ 14750K .......... .......... .......... ..[0m[91m........ ....[0m[91m...[0m[91m... 42% 1.93M 11s
+ 14800K ......[0m[91m.... .........[0m[91m. .[0m[91m.......[0m[91m.. .......... ........[0m[91m.. 42% 2.93M 11s
+ 14850K ..[0m[91m........[0m[91m .........[0m[91m. ......[0m[91m..[0m[91m.. .......... .......... 42% 1.36M 11s
+ 14900K .......... .......... .[0m[91m......... .......... .....[0m[91m..... 42% 6.01M 11s
+ 14950K .......... .......... .......... .......... ..[0m[91m........ 42% 10.4M 11s
+ 15000K .........[0m[91m. ......[0m[91m.... .......... .......... .......... 42% 3.23M 11s
+ 15050K ...[0m[91m....... .......... ......[0m[91m.... .......... .......... 43% 2.73M 11s
+ 15100K ......[0m[91m...[0m[91m. .......... .....[0m[91m..... ....[0m[91m...... .......... 43% 1.28M 11s
+ 15150K .........[0m[91m. .......... .....[0m[91m..[0m[91m... .......... .......... 43% 3.57M 11s
+ 15200K .......... .......[0m[91m... .......... .......... .......... 43% 8.48M 11s
+ 15250K .......... ..[0m[91m.....[0m[91m... .......... .[0m[91m......... .......... 43% 3.58M 11s
+ 15300K .......... .[0m[91m....[0m[91m..... .......... .[0m[91m..[0m[91m.....[0m[91m.. .......... 43% 2.76M 11s
+ 15350K .......... ..........[0m[91m .........[0m[91m. .........[0m[91m. ....[0m[91m...... 43% 1.68M 11s
+ 15400K .[0m[91m........[0m[91m. .[0m[91m.....[0m[91m.... .......... .......[0m[91m.[0m[91m.. .......... 44% 2.29M 11s
+ 15450K .......... .......[0m[91m... .......... .......... .......... 44% 5.02M 11s
+ 15500K .......... .......[0m[91m... ......[0m[91m...[0m[91m. ....[0m[91m..[0m[91m..[0m[91m.[0m[91m. .[0m[91m........[0m[91m. 44% 3.46M 11s
+ 15550K .......... .......... ....[0m[91m...... .......... ......[0m[91m.... 44% 3.72M 11s
+ 15600K .......... .........[0m[91m. .......... ....[0m[91m...... ....[0m[91m...... 44% 2.70M 11s
+ 15650K .......[0m[91m... .......... ..[0m[91m........ .......... .......... 44% 1.98M 11s
+ 15700K ......[0m[91m.... .......... .......... ......[0m[91m.... .......... 44% 3.38M 10s
+ 15750K .....[0m[91m..... .......[0m[91m... .......... .......... ....[0m[91m.[0m[91m..... 44% 3.52M 10s
+ 15800K .[0m[91m.[0m[91m........ .......... .......... .......... ..[0m[91m...[0m[91m..... 45% 3.77M 10s
+ 15850K ..[0m[91m........ ......[0m[91m.... .......... ......[0m[91m.... .......... 45% 3.35M 10s
+ 15900K .......... ..........[0m[91m ......[0m[91m...[0m[91m. ..........[0m[91m .......... 45% 1.52M 10s
+ 15950K .......... .........[0m[91m. ....[0m[91m...... .......... .......[0m[91m.[0m[91m.. 45% 3.66M 10s
+ 16000K .......... .......... ...[0m[91m....... ...[0m[91m....[0m[91m... .......[0m[91m... 45% 2.29M 10s
+ 16050K ........[0m[91m.. .......... .....[0m[91m..... .[0m[91m......... .......... 45% 5.43M 10s
+ 16100K .......... .....[0m[91m..... ........[0m[91m.. ......[0m[91m.... ....[0m[91m.[0m[91m.[0m[91m.... 45% 3.68M 10s[0m[91m
+ 16150K ........[0m[91m.. .......... .......... .......... .........[0m[91m. 46% 6.88M 10s
+ 16200K ...[0m[91m....... ...[0m[91m....... .[0m[91m......... .......... .......[0m[91m..[0m[91m. 46% 1.65M 10s
+ 16250K .......... .......... .......... .......... ........[0m[91m.. 46% 4.31M 10s
+ 16300K .[0m[91m.......[0m[91m.. .......... .......... .[0m[91m......... ...[0m[91m....... 46% 2.01M 10s
+ 16350K .......... .........[0m[91m. .......... .......... .......... 46% 5.80M 10s
+ 16400K ..[0m[91m........ ..[0m[91m......[0m[91m.. .......... .......[0m[91m... .......... 46% 3.98M 10s
+ 16450K .......... .......... ....[0m[91m...... .......... .......... 46% 2.89M 10s
+ 16500K .......... ..........[0m[91m .......... .......... .......... 47% 2.62M 10s
+ 16550K ..[0m[91m........ ..........[0m[91m ......[0m[91m...[0m[91m. .........[0m[91m. .......... 47% 2.44M 10s
+ 16600K .........[0m[91m. .[0m[91m......... .......... .....[0m[91m..... ........[0m[91m.. 47% 2.38M 10s[0m[91m
+ 16650K .......... ......[0m[91m.... .......... .......... .......[0m[91m... 47% 6.73M 10s
+ 16700K .......... .......... .......[0m[91m... .......... ........[0m[91m.. 47% 2.56M 10s[0m[91m
+ 16750K .......... .......... .......... .[0m[91m......... .........[0m[91m. 47% 2.52M 10s
+ 16800K .......... .......[0m[91m.[0m[91m.. .......... .......... .......... 47% 5.84M 10s
+ 16850K .......... ..[0m[91m.......[0m[91m. .......... .......... .........[0m[91m. 48% 2.17M 10s
+ 16900K .......... ..[0m[91m........ .......... ..[0m[91m........ .......... 48% 4.32M 10s
+ 16950K .......... .......... .......... ...[0m[91m....... .......... 48% 3.80M 10s
+ 17000K ......[0m[91m.... .......... .......... ..[0m[91m........ .......... 48% 2.88M 9s
+ 17050K .........[0m[91m. .......... .......[0m[91m... .........[0m[91m. .......... 48% 2.53M 9s
+ 17100K .......... .......... .....[0m[91m..... ..........[0m[91m .......... 48% 2.68M 9s
+ 17150K .......... .......... ...[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m. .......... .......... 48% 3.42M 9s
+ 17200K .......... ......[0m[91m.... .......... ...[0m[91m....... ..[0m[91m.[0m[91m....[0m[91m... 49% 5.24M 9s[0m[91m
+ 17250K[0m[91m .......... .......[0m[91m... .......... .......... .......... 49% 4.11M 9s
+ 17300K .......... ..[0m[91m........ ....[0m[91m...[0m[91m... .........[0m[91m. .......... 49% 2.58M 9s
+ 17350K .......... ...[0m[91m....... ......[0m[91m.... .......... .......... 49% 2.88M 9s
+ 17400K .......... .......... ....[0m[91m...[0m[91m... ........[0m[91m.. .......... 49% 2.82M 9s
+ 17450K ........[0m[91m.. ...[0m[91m...[0m[91m.... ......[0m[91m.... .......... .......... 49% 3.67M 9s
+ 17500K ..[0m[91m...[0m[91m..... .......... .......... .......... .......... 49% 3.90M 9s
+ 17550K ....[0m[91m.[0m[91m..... .[0m[91m......... .......... .......... .......... 50% 8.03M 9s
+ 17600K ..[0m[91m........ ....[0m[91m...... .....[0m[91m..... .........[0m[91m. .......... 50% 2.66M 9s
+ 17650K ...[0m[91m.......[0m[91m .......... .......... .......... .......... 50% 2.28M 9s
+ 17700K .......... .[0m[91m......... .........[0m[91m. .......... .......... 50% 2.81M 9s
+ 17750K .......... ..[0m[91m........ .......... .......... ..[0m[91m........ 50% 2.52M 9s
+ 17800K .......... .[0m[91m......... .......... .......... .......... 50% 9.39M 9s[0m[91m
+ 17850K .......... .......... .......... .......... ..[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.... 50% 3.66M 9s
+ 17900K .[0m[91m..[0m[91m....... .......... .....[0m[91m..... .....[0m[91m..... ......[0m[91m.... 51% 2.57M 9s
+ 17950K ..[0m[91m........ .......... ..[0m[91m........ .......... .......... 51% 2.84M 9s
+ 18000K .........[0m[91m. .......... ........[0m[91m..[0m[91m .......... .......... 51% 2.92M 9s
+ 18050K .......... .[0m[91m......... .......... .......... .[0m[91m..[0m[91m....... 51% 2.24M 9s
+ 18100K .......... .......... .......... .......... ........[0m[91m.. 51% 6.56M 9s
+ 18150K .......... .......... .......... .......... .......... 51% 6.82M 9s
+ 18200K .......... .......... ....[0m[91m...... .......... ........[0m[91m.. 51% 1.77M 9s
+ 18250K .[0m[91m...[0m[91m...... .......... .......... .......... .......... 52% 7.78M 9s
+ 18300K .....[0m[91m..... .......... ......[0m[91m...[0m[91m. .......... .......... 52% 2.74M 9s
+ 18350K .......... ...[0m[91m....... ......[0m[91m.... .......... ...[0m[91m....... 52% 2.45M 9s
+ 18400K .......... ...[0m[91m....... .......... ..[0m[91m....[0m[91m.... .[0m[91m.[0m[91m.[0m[91m.[0m[91m..[0m[91m..[0m[91m.. 52% 2.91M 8s
+ 18450K .[0m[91m....[0m[91m....[0m[91m.[0m[91m .......... .......... .......... .......... 52% 9.90M 8s
+ 18500K .......... ......[0m[91m.... ..[0m[91m........ .......... .......... 52% 5.17M 8s
+ 18550K ...[0m[91m..[0m[91m..... ...[0m[91m.......[0m[91m .......... .......... .......... 52% 2.34M 8s
+ 18600K .......... ......[0m[91m.... ..[0m[91m........ .[0m[91m......... .......... 53% 2.76M 8s
+ 18650K .......... .......... ....[0m[91m...... .......... .......... 53% 2.49M 8s
+ 18700K .....[0m[91m.[0m[91m.[0m[91m... .........[0m[91m. .[0m[91m......... .......... .......... 53% 5.12M 8s
+ 18750K .........[0m[91m. .....[0m[91m..... .......... .........[0m[91m. .......... 53% 1.50M 8s
+ 18800K .......... .......... .......... .......... .......... 53% 8.96M 8s
+ 18850K .......... .........[0m[91m. .......... .......... .....[0m[91m..... 53% 6.52M 8s
+ 18900K .......... ......[0m[91m.... .......... .......... ....[0m[91m.[0m[91m..[0m[91m.[0m[91m.[0m[91m. 53% 3.39M 8s[0m[91m
+ 18950K .....[0m[91m.[0m[91m...[0m[91m.[0m[91m .[0m[91m.[0m[91m........ .......... ..........[0m[91m .......... 54% 3.02M 8s
+ 19000K .......[0m[91m... .......... .......... ......[0m[91m.... .......... 54% 2.28M 8s
+ 19050K ....[0m[91m...... .......... .....[0m[91m..... .......... .......... 54% 2.66M 8s
+ 19100K .........[0m[91m. .......... .......... .........[0m[91m. .......... 54% 9.02M 8s
+ 19150K .....[0m[91m..... .......... .......... .......[0m[91m... .......... 54% 3.75M 8s
+ 19200K ......[0m[91m.[0m[91m... ...[0m[91m.......[0m[91m .......... ..........[0m[91m .......... 54% 1.57M 8s
+ 19250K .......... .......... .......... ..[0m[91m.......[0m[91m. .......... 54% 8.97M 8s
+ 19300K .......... .......... ........[0m[91m.. .......... ....[0m[91m...... 55% 7.46M 8s
+ 19350K .......[0m[91m.[0m[91m.. .......... ...[0m[91m....... .....[0m[91m..... .......[0m[91m... 55% 1.73M 8s
+ 19400K .......... .......... ......[0m[91m.... .......... .......... 55% 7.97M 8s
+ 19450K .......... .[0m[91m......... ..[0m[91m.......[0m[91m. ......[0m[91m....[0m[91m ...[0m[91m....... 55% 1.21M 8s
+ 19500K .......... .......... .......... .......... ......[0m[91m.... 55% 6.76M 8s
+ 19550K ........[0m[91m.. .......... ..........[0m[91m .......... ....[0m[91m...... 55% 8.39M 8s
+ 19600K .......... .......... .......... .....[0m[91m..... ....[0m[91m...... 55% 12.1M 8s
+ 19650K ..........[0m[91m .......... .......... .......... .......... 56% 5.97M 8s
+ 19700K .......... ..[0m[91m........ .......[0m[91m... ...[0m[91m....... ..[0m[91m........ 56% 2.77M 8s[0m[91m
+ 19750K .......... .......... .........[0m[91m. ....[0m[91m...... .......... 56% 5.07M 8s
+ 19800K .......[0m[91m... ........[0m[91m..[0m[91m ....[0m[91m...... .......... .......... 56% 1.14M 8s
+ 19850K ......[0m[91m.... .......... .......... .......... .......... 56% 6.45M 8s
+ 19900K .....[0m[91m..... .......... .........[0m[91m. ....[0m[91m.[0m[91m.....[0m[91m ..[0m[91m...[0m[91m..... 56% 5.22M 7s
+ 19950K ..[0m[91m..[0m[91m...... ........[0m[91m.. .......... .......... .......... 56% 10.4M 7s
+ 20000K ........[0m[91m.. .......... .[0m[91m......... .......... .......... 57% 6.36M 7s
+ 20050K .......... ..[0m[91m........ .........[0m[91m. .......... .......... 57% 4.74M 7s
+ 20100K ..........[0m[91m .......... ........[0m[91m.. .......... .......... 57% 4.44M 7s
+ 20150K ..[0m[91m........ .......... ....[0m[91m...... .......... .......... 57% 1.10M 7s
+ 20200K ..........[0m[91m ..........[0m[91m .........[0m[91m. .......... .......... 57% 8.59M 7s
+ 20250K .[0m[91m.[0m[91m.[0m[91m....... ..........[0m[91m ......[0m[91m.... .......... .......... 57% 3.01M 7s
+ 20300K .......... .....[0m[91m..... ....[0m[91m...... .......[0m[91m... .......... 57% 4.24M 7s
+ 20350K .......... .......... ..........[0m[91m .......... .......... 58% 6.22M 7s
+ 20400K .......... .......... .......... .[0m[91m......... .......... 58% 6.29M 7s[0m[91m
+ 20450K .........[0m[91m. ........[0m[91m.. ..[0m[91m........ .......... ...[0m[91m...[0m[91m.... 58% 1.57M 7s
+ 20500K .......... ...[0m[91m..[0m[91m..... .......... .....[0m[91m..... .......... 58% 3.64M 7s
+ 20550K .......... .........[0m[91m. .......... .......... ......[0m[91m..[0m[91m.. 58% 3.08M 7s
+ 20600K .......... .......... .......... .........[0m[91m. .......... 58% 6.79M 7s
+ 20650K .......... .......... .......[0m[91m... ...[0m[91m....... .......... 58% 5.57M 7s
+ 20700K .......... .....[0m[91m..... .......... ..[0m[91m........ .......... 59% 6.89M 7s
+ 20750K .......... .......[0m[91m... .......... ...[0m[91m....... .......... 59% 3.57M 7s
+ 20800K .......... .......... .......... .........[0m[91m. .......... 59% 2.18M 7s
+ 20850K .......... ....[0m[91m...... .......... ........[0m[91m.. .......... 59% 2.90M 7s
+ 20900K ........[0m[91m.. ..........[0m[91m .......... ....[0m[91m...... ........[0m[91m.. 59% 2.95M 7s[0m[91m
+ 20950K ...[0m[91m....... ....[0m[91m...... .[0m[91m......... .[0m[91m.......[0m[91m..[0m[91m ...[0m[91m.....[0m[91m.. 59% 6.40M 7s
+ 21000K ....[0m[91m...... ........[0m[91m.. .......... .......... .......... 59% 6.06M 7s
+ 21050K .......... .[0m[91m......... ....[0m[91m...... .......... .......... 60% 3.32M 7s
+ 21100K .......... .......... .......... .......... .......... 60% 7.12M 7s[0m[91m
+ 21150K .......... .......... .......... ..[0m[91m........ ......[0m[91m.... 60% 2.43M 7s
+ 21200K .......... .......[0m[91m.[0m[91m.. .[0m[91m......... .....[0m[91m..... ....[0m[91m...... 60% 2.51M 7s
+ 21250K .......... .......... ........[0m[91m.. .........[0m[91m. ...[0m[91m..[0m[91m..... 60% 3.45M 7s
+ 21300K .......... .......... .......... .......... .......... 60% 6.57M 7s
+ 21350K .......[0m[91m... .......... .......... .....[0m[91m..... .......... 60% 5.17M 7s
+ 21400K .......... .........[0m[91m. .....[0m[91m..... .......... ......[0m[91m.... 61% 4.43M 7s
+ 21450K .......... .......... .....[0m[91m..... ...[0m[91m....... .......... 61% 4.15M 6s
+ 21500K .......... .......... .......... .......... ..[0m[91m........ 61% 9.70M 6s
+ 21550K ..[0m[91m........[0m[91m .......... .......... .[0m[91m...[0m[91m...... .......... 61% 2.50M 6s
+ 21600K ...[0m[91m....... ......[0m[91m.... .......... .[0m[91m...[0m[91m...... .......... 61% 2.54M 6s
+ 21650K .......... .......[0m[91m... ..........[0m[91m .......... .......... 61% 4.04M 6s
+ 21700K .........[0m[91m. .......... .......... .......... .......... 61% 3.85M 6s
+ 21750K .......... .......... ..........[0m[91m .......[0m[91m... .......... 62% 5.99M 6s
+ 21800K .......... .......... .......... .........[0m[91m.[0m[91m .......... 62% 5.86M 6s
+ 21850K .......... .......... .......... ....[0m[91m...... ..[0m[91m...[0m[91m..... 62% 6.66M 6s
+ 21900K .......... .......[0m[91m... ..[0m[91m..[0m[91m....[0m[91m.. .......... ........[0m[91m.. 62% 2.84M 6s
+ 21950K .......... ..........[0m[91m ...[0m[91m....... .......... .......[0m[91m... 62% 2.28M 6s
+ 22000K .......... .......... .......... ....[0m[91m...... .......... 62% 4.87M 6s
+ 22050K .......... .......... .....[0m[91m..... .....[0m[91m..... ......[0m[91m.... 62% 3.15M 6s
+ 22100K .......... .......... .......... .......... .....[0m[91m..... 63% 28.1M 6s
+ 22150K ...[0m[91m....... .......... .......... .......[0m[91m... ........[0m[91m.. 63% 3.82M 6s
+ 22200K .......... ...[0m[91m....... .......... .......... .......... 63% 10.2M 6s
+ 22250K .....[0m[91m..... .....[0m[91m..... .......... .......... ....[0m[91m...... 63% 3.08M 6s
+ 22300K ....[0m[91m...... .......... .[0m[91m...[0m[91m...... .......... ...[0m[91m...[0m[91m.... 63% 2.65M 6s
+ 22350K ..[0m[91m........ ..........[0m[91m ..[0m[91m........ .......... .........[0m[91m. 63% 2.38M 6s
+ 22400K ..........[0m[91m .......... .......... .......... .......... 63% 9.87M 6s
+ 22450K .....[0m[91m...[0m[91m.. .......... .......... .......... .......... 64% 7.37M 6s
+ 22500K ....[0m[91m...... .......... .......... ...[0m[91m....... .......... 64% 3.88M 6s
+ 22550K ..........[0m[91m ...[0m[91m....... .......... .......... .......... 64% 5.60M 6s[0m[91m
+ 22600K .......... .......... .......... .......... .....[0m[91m...[0m[91m.. 64% 4.49M 6s
+ 22650K ...[0m[91m..[0m[91m..... .......... .......... .......... .......... 64% 5.73M 6s
+ 22700K ..[0m[91m........ ..[0m[91m........ ...[0m[91m...[0m[91m.... .......... .......... 64% 2.46M 6s[0m[91m
+ 22750K .......... ......[0m[91m.... ..........[0m[91m ......[0m[91m.... .......... 64% 2.69M 6s
+ 22800K .......... .......... ........[0m[91m.. .......... .......... 65% 4.80M 6s
+ 22850K .[0m[91m......... .......... .......... ....[0m[91m....[0m[91m.. .......... 65% 2.67M 6s
+ 22900K .......... .......... .......... ......[0m[91m.... .......... 65% 6.46M 6s
+ 22950K .......... .......... .......... .......... ....[0m[91m.[0m[91m..... 65% 5.11M 6s
+ 23000K .......... .[0m[91m......... .......... ....[0m[91m......[0m[91m .......... 65% 4.47M 6s
+ 23050K .......... .......... .......... .......... ......[0m[91m.... 65% 5.16M 6s
+ 23100K .......... .[0m[91m.[0m[91m........ .......[0m[91m... .......... .........[0m[91m. 65% 3.37M 5s
+ 23150K .......... .....[0m[91m..[0m[91m... .......... .......... .......... 66% 4.55M 5s
+ 23200K ..[0m[91m........ .....[0m[91m..[0m[91m..[0m[91m. .......... .......... .....[0m[91m..... 66% 2.28M 5s
+ 23250K .......... .......... .......... ....[0m[91m.....[0m[91m. .[0m[91m...[0m[91m...... 66% 2.89M 5s
+ 23300K .......... .......... .........[0m[91m. .......... .[0m[91m......... 66% 4.44M 5s
+ 23350K .......... .......... .......... ...[0m[91m....... .......... 66% 14.6M 5s
+ 23400K .......... .........[0m[91m. .......... .....[0m[91m...[0m[91m.. .......... 66% 3.59M 5s
+ 23450K .......... .......... .[0m[91m......... .......... .......... 66% 5.04M 5s
+ 23500K ...[0m[91m....... .......... .......... .......... .......... 67% 5.02M 5s
+ 23550K .......... .......... .......... .....[0m[91m..... .......... 67% 15.8M 5s[0m[91m
+ 23600K .......... ...[0m[91m.[0m[91m...... .........[0m[91m. ....[0m[91m.[0m[91m..... ........[0m[91m.. 67% 2.00M 5s
+ 23650K .......... ....[0m[91m...... .......... .......[0m[91m... .......... 67% 4.71M 5s
+ 23700K .......... .......... ...[0m[91m..[0m[91m..... ...[0m[91m....[0m[91m... .......... 67% 3.72M 5s
+ 23750K ......[0m[91m.... .......... .......... ....[0m[91m...... .......... 67% 6.71M 5s
+ 23800K .......[0m[91m... ...[0m[91m....[0m[91m... .......... ..........[0m[91m .......... 67% 3.72M 5s
+ 23850K ........[0m[91m.. .......... .......... .........[0m[91m. .......... 68% 3.88M 5s
+ 23900K ........[0m[91m.. .......... .......... .......[0m[91m... ..[0m[91m........ 68% 7.38M 5s
+ 23950K .[0m[91m......... .......... .......... .......... .....[0m[91m..... 68% 3.96M 5s
+ 24000K .........[0m[91m. .......... .[0m[91m......... ....[0m[91m...... ........[0m[91m.. 68% 2.30M 5s
+ 24050K .......... ........[0m[91m.. .........[0m[91m. .......... ...[0m[91m....... 68% 7.21M 5s
+ 24100K .......... .......... .......... .....[0m[91m..... .......... 68% 6.21M 5s
+ 24150K .......... ..[0m[91m..[0m[91m...... .......... .......... .......... 68% 2.69M 5s
+ 24200K .......... .......... .......... .....[0m[91m..... ......[0m[91m.... 69% 6.77M 5s
+ 24250K .[0m[91m......... .......... ......[0m[91m.... .......... .......[0m[91m... 69% 3.11M 5s
+ 24300K ....[0m[91m...... .......... .......... .......... ....[0m[91m...... 69% 4.92M 5s
+ 24350K .......... .......... .......... .......... .[0m[91m......... 69% 6.42M 5s
+ 24400K .......... .......... .......... .......... .......[0m[91m..[0m[91m. 69% 3.42M 5s
+ 24450K .........[0m[91m. .......... .[0m[91m....[0m[91m..... .......... .[0m[91m.......[0m[91m.. 69% 2.37M 5s
+ 24500K .......... ....[0m[91m...... .......... .......... .......... 69% 7.03M 5s
+ 24550K .......... .......... ......[0m[91m.[0m[91m... .......[0m[91m... .......... 70% 5.97M 5s
+ 24600K .......... .......... ..[0m[91m...[0m[91m..... .......... .....[0m[91m..... 70% 3.41M 5s
+ 24650K .....[0m[91m..... .......... .......... ..[0m[91m........ .......... 70% 4.19M 5s
+ 24700K .......... .......... .......... .........[0m[91m. .......[0m[91m... 70% 4.54M 5s
+ 24750K .......... .......... .......... .......... .......... 70% 17.8M 5s
+ 24800K .......... .....[0m[91m..... .......... .......[0m[91m... ...[0m[91m....... 70% 4.01M 5s[0m[91m
+ 24850K .........[0m[91m. .......... .......... .[0m[91m.[0m[91m........ .......... 70% 4.69M 5s
+ 24900K .....[0m[91m..... .......... .......... .......... ........[0m[91m.. 71% 4.17M 5s
+ 24950K .....[0m[91m.....[0m[91m .......... .......... .......... .......... 71% 3.44M 4s
+ 25000K ......[0m[91m.... ..[0m[91m........ .......... ....[0m[91m...... .......... 71% 3.56M 4s
+ 25050K .......[0m[91m... .......... .......... .......... .......... 71% 5.94M 4s
+ 25100K .......... .......... .[0m[91m......... .......... .....[0m[91m..... 71% 3.70M 4s
+ 25150K .......... .......... ...[0m[91m....... .......... .......... 71% 6.31M 4s
+ 25200K ......[0m[91m.... .......... .......... .......... .........[0m[91m. 71% 4.89M 4s
+ 25250K .......... .....[0m[91m.[0m[91m.... ...[0m[91m....... .......... .......... 72% 4.60M 4s
+ 25300K .......... .......... .......... ..[0m[91m...[0m[91m..... ....[0m[91m...... 72% 5.61M 4s
+ 25350K .......[0m[91m... ......[0m[91m.... .......... .........[0m[91m.[0m[91m .......[0m[91m..[0m[91m. 72% 3.02M 4s
+ 25400K .......[0m[91m.[0m[91m..[0m[91m ........[0m[91m.. .......... ........[0m[91m.. ......[0m[91m.... 72% 2.82M 4s
+ 25450K .....[0m[91m..... .......... ....[0m[91m.....[0m[91m. ....[0m[91m...... .......... 72% 7.85M 4s
+ 25500K .......... .......... .......[0m[91m... .......... .......[0m[91m... 72% 6.43M 4s
+ 25550K ......[0m[91m.... ....[0m[91m...... .......... .......... .[0m[91m......... 72% 2.99M 4s
+ 25600K .......... .[0m[91m.[0m[91m..[0m[91m.....[0m[91m. ....[0m[91m.....[0m[91m. .......[0m[91m... .......[0m[91m... 73% 2.47M 4s[0m[91m
+ 25650K ..[0m[91m...[0m[91m..[0m[91m... .......... ...[0m[91m....... .......... .......... 73% 9.32M 4s
+ 25700K .......... .......... .......... .....[0m[91m..[0m[91m... .......... 73% 8.01M 4s
+ 25750K .......... .......... ..........[0m[91m .......... .......... 73% 9.14M 4s
+ 25800K .......... .......... ........[0m[91m.. .......[0m[91m... .......... 73% 5.22M 4s
+ 25850K .......... ....[0m[91m...... .......... .....[0m[91m..[0m[91m... .[0m[91m......... 73% 3.88M 4s[0m[91m
+ 25900K .......... .........[0m[91m. .......... .......... .......... 73% 3.83M 4s
+ 25950K .......... .......[0m[91m... ...[0m[91m....... .......... .......... 74% 6.63M 4s
+ 26000K .......... .......[0m[91m..[0m[91m. .......... ........[0m[91m.. .......... 74% 3.66M 4s
+ 26050K ....[0m[91m...[0m[91m... .....[0m[91m.[0m[91m.... .........[0m[91m. .......[0m[91m... .......... 74% 3.21M 4s
+ 26100K .......... .......... .......... ........[0m[91m.. .......... 74% 3.91M 4s
+ 26150K ...[0m[91m....... ....[0m[91m...... ......[0m[91m.... .....[0m[91m..... .......... 74% 6.26M 4s
+ 26200K .......... .......... ....[0m[91m...... .......... .......... 74% 4.31M 4s
+ 26250K .......... .......... .........[0m[91m.[0m[91m [0m[91m.......... .[0m[91m.[0m[91m........ 74% 4.03M 4s
+ 26300K .......... .......... .......... .......... .......... 75% 11.5M 4s
+ 26350K .......... ...[0m[91m....... .......... .......... ........[0m[91m.. 75% 3.32M 4s
+ 26400K .......... .......... .......... .......... ......[0m[91m.... 75% 8.28M 4s
+ 26450K .......... .......... .......... .[0m[91m......... ...[0m[91m......[0m[91m. 75% 4.99M 4s
+ 26500K ..........[0m[91m ...[0m[91m....... .......... .[0m[91m........[0m[91m. .......... 75% 2.66M 4s
+ 26550K .......... .......... .......... ..[0m[91m........ .....[0m[91m..... 75% 5.04M 4s
+ 26600K .......... .......... .......... .......... .......... 75% 6.75M 4s
+ 26650K .....[0m[91m....[0m[91m. .....[0m[91m..... .......... .......... .......... 76% 4.10M 4s
+ 26700K ........[0m[91m.. .......... .......... ....[0m[91m...... .......... 76% 3.43M 4s[0m[91m
+ 26750K .......... .......... .......... .......... .......... 76% 13.6M 4s
+ 26800K .......... .......... ...[0m[91m..[0m[91m...[0m[91m.. .[0m[91m..[0m[91m.....[0m[91m.. ....[0m[91m..[0m[91m.... 76% 3.66M 4s
+ 26850K .......... .......... .......... ........[0m[91m.. .......... 76% 16.4M 4s
+ 26900K ......[0m[91m.... .......... .......... .......... ...[0m[91m....... 76% 6.24M 3s
+ 26950K .......... .......... .[0m[91m......... .......... ......[0m[91m.... 76% 2.80M 3s
+ 27000K .......... ..........[0m[91m ........[0m[91m.. .......... .[0m[91m......... 77% 3.51M 3s
+ 27050K .......... .......... .......... .....[0m[91m..... .......... 77% 8.72M 3s
+ 27100K .......... ........[0m[91m.. ...[0m[91m....... .......... .......... 77% 2.28M 3s[0m[91m
+ 27150K .......... .......... .......... ..[0m[91m........ .......... 77% 3.63M 3s
+ 27200K .......... .......... .......... .......... .......... 77% 24.5M 3s
+ 27250K ........[0m[91m.. ......[0m[91m.... .......... .......... .......... 77% 9.38M 3s
+ 27300K .......... .......... ..[0m[91m........ .......... .......[0m[91m... 77% 5.25M 3s
+ 27350K ..........[0m[91m .......... ..[0m[91m......[0m[91m.. .......... .......... 78% 6.95M 3s
+ 27400K .......... .......... ....[0m[91m...... .......... .[0m[91m......... 78% 3.95M 3s
+ 27450K .......... ........[0m[91m.. ....[0m[91m...... .......... ......[0m[91m.... 78% 1.59M 3s
+ 27500K .......[0m[91m... .......[0m[91m... .......... ...[0m[91m....... .......... 78%  985K 3s
+ 27550K .........[0m[91m. .......... ..[0m[91m......[0m[91m.. .......... .......... 78% 6.54M 3s
+ 27600K .......[0m[91m.[0m[91m.[0m[91m.[0m[91m .......... .......... .......... .......... 78% 4.32M 3s
+ 27650K .......... .......... .......... .[0m[91m..[0m[91m...[0m[91m....[0m[91m ......[0m[91m.... 78% 2.44M 3s[0m[91m
+ 27700K ..[0m[91m......[0m[91m.. .......... ....[0m[91m......[0m[91m .......... ......[0m[91m.... 79% 4.91M 3s[0m[91m
+ 27750K .......[0m[91m... .......... .......... .......... .......... 79% 12.1M 3s
+ 27800K .......... .......... .......... .......... ........[0m[91m.. 79% 37.1M 3s
+ 27850K ...[0m[91m....... ....[0m[91m...... .[0m[91m......... .......... [0m[91m.......... 79% 3.59M 3s
+ 27900K .......... .......... .......... .......... .......... 79% 58.4M 3s
+ 27950K .......... .......... .........[0m[91m.[0m[91m ....[0m[91m.[0m[91m..[0m[91m... .....[0m[91m..[0m[91m... 79% 3.80M 3s
+ 28000K .......... .......... ...[0m[91m....... .......... .........[0m[91m. 79% 1.67M 3s
+ 28050K .......... .......... .......... ....[0m[91m...... ...[0m[91m...[0m[91m.... 80% 2.20M 3s
+ 28100K .......... .......... ...[0m[91m....... .[0m[91m......... ...[0m[91m....... 80% 2.49M 3s
+ 28150K .......... .......... .......... .......... .[0m[91m......... 80% 1018K 3s
+ 28200K ....[0m[91m...... .......... .[0m[91m......... .......... .......... 80% 9.97M 3s
+ 28250K .......... .....[0m[91m...[0m[91m.. .......... .......... .......... 80% 1.58M 3s
+ 28300K .....[0m[91m..... .......... .......... .......... ......[0m[91m..[0m[91m.. 80% 7.16M 3s
+ 28350K ..........[0m[91m .........[0m[91m. .......... .......... .......... 80% 4.59M 3s
+ 28400K .........[0m[91m. .......... .......... .......... .......... 81% 9.06M 3s
+ 28450K .........[0m[91m. .......... .......... .......... ....[0m[91m.[0m[91m..... 81% 4.89M 3s
+ 28500K .......... .......... .......... .......... .......... 81% 9.31M 3s
+ 28550K .......... .......... .[0m[91m........[0m[91m. .......... .......... 81% 5.69M 3s
+ 28600K ..........[0m[91m .[0m[91m.....[0m[91m.... ..[0m[91m........ .[0m[91m......... .......... 81%  203K 3s
+ 28650K .......... .......[0m[91m... .......... .[0m[91m.........[0m[91m [0m[91m.[0m[91m.......[0m[91m.. 81% 1.83M 3s
+ 28700K .......... .....[0m[91m...[0m[91m.. .....[0m[91m...[0m[91m.. ...[0m[91m......[0m[91m. .......... 81% 4.26M 3s
+ 28750K ......[0m[91m.... ....[0m[91m...... .....[0m[91m..... .......... .......... 82% 4.38M 3s
+ 28800K .......... .......... .......... .......... .......... 82% 40.6M 3s
+ 28850K .......... .......... .......... .......... .......... 82% 23.2M 3s
+ 28900K .......... .[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m [0m[91m.[0m[91m......... .......... .......... 82% 6.52M 3s
+ 28950K .......... .......... .......... .......... .......... 82%  317M 3s
+ 29000K .......... .......... .......... .......... .......... 82%  343M 3s
+ 29050K .......... .......... .......... .......... .......... 82%  126M 3s
+ 29100K .......... .......... .......... .......... .......... 83%  374M 3s
+ 29150K .......... .......... .......... .......... .......... 83%  367M 2s
+ 29200K .......... ........[0m[91m.. .......... ........[0m[91m.. .......... 83% 1.74M 2s
+ 29250K .......[0m[91m... .......... .......... .......... .[0m[91m......... 83% 3.31M 2s
+ 29300K .......... .......... .......... .......... .[0m[91m.[0m[91m........ 83% 4.87M 2s
+ 29350K .......... ...[0m[91m....... .......... .......... .......... 83% 2.71M 2s
+ 29400K .......... .......... .......... .......... .......... 83%  328M 2s
+ 29450K .......... .......... .......... ..........[0m[91m .......... 84% 2.07M 2s
+ 29500K .......... ........[0m[91m.. .......... .......... .......... 84% 9.24M 2s
+ 29550K .......... .........[0m[91m.[0m[91m .......... .........[0m[91m. .....[0m[91m..... 84% 1.21M 2s
+ 29600K .......... .......... .......... .......... .[0m[91m......... 84% 5.58M 2s
+ 29650K .......... .........[0m[91m. .......... .......... .......... 84% 5.04M 2s
+ 29700K .......... .[0m[91m.[0m[91m........ .......... .......... .......[0m[91m... 84% 1.58M 2s
+ 29750K ..[0m[91m........ ...[0m[91m....... ......[0m[91m.[0m[91m.[0m[91m.. .......... .......... 84% 5.44M 2s
+ 29800K .......... .......... .[0m[91m......... .......... .......... 85% 1.29M 2s
+ 29850K .......... .......... ......[0m[91m.... .......... .......... 85% 12.0M 2s
+ 29900K ....[0m[91m...... .......... .......[0m[91m... .......[0m[91m... .......[0m[91m... 85% 13.4M 2s
+ 29950K ..[0m[91m........[0m[91m ..[0m[91m....[0m[91m.... .......... ..[0m[91m...[0m[91m..[0m[91m... .[0m[91m.[0m[91m...[0m[91m..... 85% 2.12M 2s
+ 30000K .......... .......... .......... .......... ....[0m[91m...... 85% 7.77M 2s
+ 30050K .......... .......... ......[0m[91m.... ........[0m[91m.. .......... 85% 4.88M 2s
+ 30100K .........[0m[91m. .......... .......... ...[0m[91m....... .[0m[91m......... 85% 3.85M 2s
+ 30150K ....[0m[91m...... ..........[0m[91m ..[0m[91m........ ..[0m[91m........[0m[91m ........[0m[91m.. 86% 2.11M 2s[0m[91m
+ 30200K .......... .......... .........[0m[91m. .......... .......... 86% 6.12M 2s
+ 30250K ...[0m[91m.......[0m[91m [0m[91m.......... .......... ........[0m[91m.. .......... 86% 2.37M 2s
+ 30300K ........[0m[91m.[0m[91m. .......... .......... .......... .[0m[91m..[0m[91m....... 86% 2.48M 2s
+ 30350K .......... .......[0m[91m... .......[0m[91m... .......... .......... 86% 2.57M 2s
+ 30400K .......... ......[0m[91m.... .......... .......... .......... 86% 5.35M 2s
+ 30450K .......... .......... ........[0m[91m.. .......... .[0m[91m......... 86% 12.4M 2s
+ 30500K ...[0m[91m.[0m[91m...... .......... ......[0m[91m.[0m[91m... .......... .......... 87% 3.03M 2s
+ 30550K .......... .......... .......... ......[0m[91m...[0m[91m. .......... 87% 3.99M 2s
+ 30600K .......... ....[0m[91m...... .......... ......[0m[91m.... .......... 87% 5.88M 2s
+ 30650K .......... .......... .[0m[91m........[0m[91m. ..[0m[91m........[0m[91m .......... 87% 2.39M 2s
+ 30700K ......[0m[91m...[0m[91m. .......... .[0m[91m........[0m[91m. ..[0m[91m........[0m[91m .......... 87% 1.35M 2s
+ 30750K .....[0m[91m..... .......... .[0m[91m......... .........[0m[91m. .......... 87% 8.70M 2s
+ 30800K .[0m[91m......... .[0m[91m......[0m[91m... ..[0m[91m....[0m[91m.... .[0m[91m.[0m[91m.......[0m[91m.[0m[91m ...[0m[91m....... 87% 3.78M 2s
+ 30850K ...[0m[91m....... .......... .......... .......... .......... 88% 13.6M 2s
+ 30900K .......... ...[0m[91m....[0m[91m... ....[0m[91m.....[0m[91m. ..[0m[91m..[0m[91m...... .[0m[91m...[0m[91m....[0m[91m.[0m[91m. 88% 2.02M 2s
+ 30950K .......[0m[91m..[0m[91m. .[0m[91m..[0m[91m....... .......... .......... .......... 88% 6.75M 2s
+ 31000K .......... .......... .......... .......... .......... 88% 69.8M 2s
+ 31050K .......... .......... .........[0m[91m. .......... .........[0m[91m. 88% 2.31M 2s
+ 31100K .......... ...[0m[91m....... ..[0m[91m........[0m[91m .......... .[0m[91m......... 88% 2.65M 2s
+ 31150K .......... ...[0m[91m..[0m[91m..... .[0m[91m......... .......... ....[0m[91m...... 88% 3.84M 2s
+ 31200K ....[0m[91m...[0m[91m.[0m[91m.. ..[0m[91m......[0m[91m.. .......... .........[0m[91m. .[0m[91m......... 89% 3.18M 2s
+ 31250K ..[0m[91m........ .......... ..[0m[91m........ .......... .......... 89% 4.73M 2s
+ 31300K .......... ........[0m[91m.. .......... .....[0m[91m..... .......... 89% 6.57M 2s
+ 31350K .......... ........[0m[91m..[0m[91m .......... .......... .[0m[91m........[0m[91m. 89% 2.47M 2s
+ 31400K .......... .......... .......... .......... .......... 89% 16.1M 2s[0m[91m
+ 31450K .......... .......... .......... ...[0m[91m....... .......... 89% 7.36M 1s
+ 31500K ......[0m[91m.... .......... ..[0m[91m........ .[0m[91m......... .......... 89% 4.57M 1s
+ 31550K .....[0m[91m..... ........[0m[91m..[0m[91m .....[0m[91m..... .....[0m[91m..[0m[91m... ....[0m[91m...... 89% 1.52M 1s
+ 31600K .......... .......... .......... .[0m[91m......... .......... 90% 5.80M 1s
+ 31650K .......... .......... ..[0m[91m........ .......... .....[0m[91m..... 90% 6.11M 1s
+ 31700K ....[0m[91m...... .......... .......... ....[0m[91m...... .......... 90% 4.53M 1s
+ 31750K ...[0m[91m....... .......... .......... .......... .....[0m[91m..... 90% 5.49M 1s
+ 31800K .......... .....[0m[91m..... .......... ......[0m[91m.... .......... 90% 8.12M 1s
+ 31850K ...[0m[91m....... .........[0m[91m.[0m[91m .[0m[91m......... ..[0m[91m........ .......... 90% 5.02M 1s
+ 31900K .......... .......... ..........[0m[91m ..........[0m[91m .......[0m[91m... 90% 7.05M 1s
+ 31950K .......... .......... .......... .......... ..[0m[91m........ 91% 4.02M 1s
+ 32000K ...[0m[91m....... .......... .......... .......... .......... 91% 1.59M 1s
+ 32050K .......... .......... .[0m[91m.[0m[91m.[0m[91m....... .......... .......... 91% 6.79M 1s
+ 32100K .....[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m [0m[91m.[0m[91m...[0m[91m...... .....[0m[91m.[0m[91m.... .......... .......... 91% 3.19M 1s
+ 32150K .......... .......... .......... .[0m[91m......... ..[0m[91m.....[0m[91m... 91% 5.99M 1s
+ 32200K ..[0m[91m........[0m[91m .......... .......... .......... .......... 91% 6.78M 1s
+ 32250K .......... ....[0m[91m...... .......... .......... .......[0m[91m.[0m[91m.. 91% 3.92M 1s
+ 32300K .......... .......... .[0m[91m......... .......... .......... 92% 5.96M 1s
+ 32350K .......... .......... .....[0m[91m..... .......... ........[0m[91m.. 92% 16.8M 1s
+ 32400K .......... .......... .[0m[91m..[0m[91m....... .......... ....[0m[91m...... 92% 2.64M 1s
+ 32450K .....[0m[91m..... ......[0m[91m.... .......... .......... .......... 92% 3.98M 1s
+ 32500K ....[0m[91m......[0m[91m .....[0m[91m....[0m[91m. ........[0m[91m.. ....[0m[91m...... .......... 92% 3.66M 1s
+ 32550K .......... .....[0m[91m..... .......... .......... .......... 92% 4.45M 1s
+ 32600K ....[0m[91m.[0m[91m..... .......... ......[0m[91m..[0m[91m.. .......... ..[0m[91m........ 92% 2.03M 1s
+ 32650K .......... ......[0m[91m.... ........[0m[91m.. .......... .......... 93% 6.68M 1s
+ 32700K .......... .......... .......... .......... .......... 93% 35.5M 1s[0m[91m
+ 32750K .......... .......... .......... .......... .......... 93% 6.66M 1s
+ 32800K .......... ...[0m[91m....... .......... .....[0m[91m..... ....[0m[91m..[0m[91m.... 93% 3.65M 1s
+ 32850K ..........[0m[91m .......... .......... .......... .......... 93% 4.94M 1s
+ 32900K .......... .....[0m[91m.[0m[91m.... ....[0m[91m...... .......... .......... 93% 3.76M 1s
+ 32950K .......... .......... ....[0m[91m...... ...[0m[91m.[0m[91m....[0m[91m.. ......[0m[91m.... 93% 3.02M 1s
+ 33000K .......... .......... .......... .......... .......... 94% 24.4M 1s
+ 33050K .......... .[0m[91m..[0m[91m....... ..........[0m[91m .......... .......... 94% 1.90M 1s
+ 33100K .......... ......[0m[91m.... .......... .......... .......... 94% 8.00M 1s
+ 33150K ..[0m[91m........ .......... ....[0m[91m....[0m[91m.. .......... .......... 94% 8.54M 1s
+ 33200K .......... .......... .......... .......... ....[0m[91m...... 94% 5.93M 1s
+ 33250K .......... .......... .......... ........[0m[91m.[0m[91m.[0m[91m [0m[91m.......... 94% 7.33M 1s
+ 33300K .......... .......... .......... .......... ..[0m[91m........ 94% 4.39M 1s
+ 33350K ......[0m[91m..[0m[91m.[0m[91m. ......[0m[91m.[0m[91m... .......... .......... .......... 95% 4.04M 1s
+ 33400K .......... ....[0m[91m...... ....[0m[91m...... ..........[0m[91m .......... 95% 3.38M 1s
+ 33450K ........[0m[91m.. .......... .......... .......... .......... 95% 4.25M 1s
+ 33500K .......... ..[0m[91m..[0m[91m...... ...[0m[91m.[0m[91m...... ....[0m[91m...... .......... 95% 2.23M 1s
+ 33550K .......... .......... .......... ......[0m[91m.... .......... 95% 12.3M 1s
+ 33600K .......... .......... .........[0m[91m. .......... .......... 95% 11.7M 1s
+ 33650K .......... ..[0m[91m........ .......... .......... .......... 95% 9.10M 1s
+ 33700K .......... ....[0m[91m...... .......... .......... .......... 96% 5.13M 1s
+ 33750K .......... .......... .....[0m[91m.[0m[91m.[0m[91m.[0m[91m.. .......... .......... 96% 3.80M 1s
+ 33800K .......... .......... .........[0m[91m.[0m[91m .......... .......... 96% 3.35M 1s
+ 33850K .......... ......[0m[91m...[0m[91m. .......... ....[0m[91m...... .......... 96% 6.73M 0s
+ 33900K .[0m[91m...[0m[91m...... ......[0m[91m...[0m[91m. .......... .......[0m[91m.[0m[91m.. .[0m[91m......... 96% 1.70M 0s
+ 33950K ........[0m[91m.. .......... .[0m[91m......... .......... .......... 96% 2.97M 0s
+ 34000K ....[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m [0m[91m.[0m[91m.[0m[91m........ .......... .......... ....[0m[91m.[0m[91m..... 96% 4.32M 0s
+ 34050K ..[0m[91m........ .......... .......... .......... .......... 97% 21.9M 0s
+ 34100K .......... .......... .......... .....[0m[91m..... .......... 97%  457K 0s
+ 34150K .......... .......... .......... .......... .......... 97% 56.3M 0s
+ 34200K .......... .......... .......... .......... .......... 97% 17.6M 0s
+ 34250K .......... .......... .......... ....[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m [0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.. 97% 8.77M 0s
+ 34300K .......... .......... .......... .......... .......... 97% 10.5M 0s
+ 34350K .......... .......... .......... .......... .......... 97%  106M 0s
+ 34400K .......... .......... .......... .......... .......... 98% 20.2M 0s
+ 34450K .......... .......... .......... .....[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m [0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m. 98% 5.26M 0s
+ 34500K .......... .......... .......... .......... .......... 98% 46.3M 0s
+ 34550K .......... .......... .......... .......... .......... 98%  388M 0s
+ 34600K .......... .......... .......... .......... .......... 98%  427M 0s
+ 34650K .......... .......... .......... .......... .......... 98%  408M 0s
+ 34700K .......... .......... .......... .......... .......... 98%  377M 0s
+ 34750K ....[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m [0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m..[0m[91m... .......[0m[91m..[0m[91m. .......... .......... 99% 1.68M 0s
+ 34800K .......... ......[0m[91m..[0m[91m.. ......[0m[91m.... .....[0m[91m.[0m[91m....[0m[91m .......... 99% 2.87M 0s
+ 34850K .......... ..[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m. ...[0m[91m....... ........[0m[91m.. .......... 99% 3.47M 0s
+ 34900K ..........[0m[91m [0m[91m.[0m[91m......... .......... .......... .......... 99% 6.14M 0s
+ 34950K .......... ..[0m[91m.[0m[91m....... ......[0m[91m.[0m[91m..[0m[91m. ...[0m[91m....... .......... 99% 4.63M 0s
+ 35000K .......... ..[0m[91m.[0m[91m....... .......... .......... .......... 99% 6.02M 0s
+ 35050K .......[0m[91m... .......... .........[0m[91m. ......[0m[91m.... .......... 99% 1.87M 0s
+ 35100K .......... ..                                         100% 28.8M=14s
+
+2021-06-23 22:29:16 (2.49 MB/s) - 'homer.package.zip' saved [35954701/35954701]
+
+[0m[91m		Unzipping...
+[0m[91m		Finished Installing homer
+
+[0m[91mIn file included from /usr/include/stdio.h:867,
+                 from Motif.h:17,
+                 from Motif.cpp:19:
+In function 'int fprintf(FILE*, const char*, ...)',
+    inlined from 'char** findBestSeeds(CommandLine*, XMerData*, int*, int, int&)' at Motif.cpp:2904:11:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:100:24: warning: '%s' directive argument is null [-Wformat-overflow=]
+  100 |   return __fprintf_chk (__stream, __USE_FORTIFY_LEVEL - 1, __fmt,
+      |          ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  101 |    __va_arg_pack ());
+      |    ~~~~~~~~~~~~~~~~~    
+[0m[91mIn function 'int fprintf(FILE*, const char*, ...)',
+    inlined from 'void findMotifs(CommandLine*, XMerData*)' at Motif.cpp:177:12:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:100:24: warning: '%s' directive argument is null [-Wformat-overflow=]
+  100 |   return __fprintf_chk (__stream, __USE_FORTIFY_LEVEL - 1, __fmt,
+      |          ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  101 |    __va_arg_pack ());
+      |    ~~~~~~~~~~~~~~~~~    
+[0m[91mIn function 'int fprintf(FILE*, const char*, ...)',
+    inlined from 'void findMotifs(CommandLine*, XMerData*)' at Motif.cpp:173:12:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:100:24: warning: '%s' directive argument is null [-Wformat-overflow=]
+  100 |   return __fprintf_chk (__stream, __USE_FORTIFY_LEVEL - 1, __fmt,
+      |          ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  101 |    __va_arg_pack ());
+      |    ~~~~~~~~~~~~~~~~~    
+[0m[91mhomer.cpp: In function 'int main(int, char**)':
+homer.cpp:71:15: warning: ignoring return value of 'int system(const char*)', declared with attribute warn_unused_result [-Wunused-result]
+   71 |   (void)system(c);
+      |         ~~~~~~^~~
+[0m[91mhomer.cpp:82:16: warning: ignoring return value of 'int system(const char*)', declared with attribute warn_unused_result [-Wunused-result]
+   82 |    (void)system(c);
+      |          ~~~~~~^~~
+[0m[91mSeqTag.cpp: In member function 'void TagLibrary::makeDirectory()':
+SeqTag.cpp:6544:14: warning: ignoring return value of 'int system(const char*)', declared with attribute warn_unused_result [-Wunused-result]
+ 6544 |  (void)system(filename);
+      |        ~~~~~~^~~~~~~~~~
+[0m[91mSeqTag.cpp:6548:14: warning: ignoring return value of 'int system(const char*)', declared with attribute warn_unused_result [-Wunused-result]
+ 6548 |  (void)system(filename);
+      |        ~~~~~~^~~~~~~~~~
+[0m[91mSeqTag.cpp: In function 'char* unzipFileIfNeeded(char*, int&, int&)':
+SeqTag.cpp:6580:16: warning: ignoring return value of 'int system(const char*)', declared with attribute warn_unused_result [-Wunused-result]
+ 6580 |    (void)system(command);
+      |          ~~~~~~^~~~~~~~~
+[0m[91mSeqTag.cpp:6587:16: warning: ignoring return value of 'int system(const char*)', declared with attribute warn_unused_result [-Wunused-result]
+ 6587 |    (void)system(command);
+      |          ~~~~~~^~~~~~~~~
+[0m[91mSeqTag.cpp:6594:16: warning: ignoring return value of 'int system(const char*)', declared with attribute warn_unused_result [-Wunused-result]
+ 6594 |    (void)system(command);
+      |          ~~~~~~^~~~~~~~~
+[0m[91mSeqTag.cpp:6602:16: warning: ignoring return value of 'int system(const char*)', declared with attribute warn_unused_result [-Wunused-result]
+ 6602 |    (void)system(command);
+      |          ~~~~~~^~~~~~~~~
+[0m[91mSeqTag.cpp: In function 'void rezipFileIfNeeded(char*, int)':
+SeqTag.cpp:6617:15: warning: ignoring return value of 'int system(const char*)', declared with attribute warn_unused_result [-Wunused-result]
+ 6617 |   (void)system(command);
+      |         ~~~~~~^~~~~~~~~
+[0m[91mSeqTag.cpp: In member function 'void TagLibrary::readPEAlignment(char*, int, int, int)':
+SeqTag.cpp:6903:15: warning: ignoring return value of 'int system(const char*)', declared with attribute warn_unused_result [-Wunused-result]
+ 6903 |   (void)system(fname);
+      |         ~~~~~~^~~~~~~
+[0m[91mSeqTag.cpp:6905:15: warning: ignoring return value of 'int system(const char*)', declared with attribute warn_unused_result [-Wunused-result]
+ 6905 |   (void)system(fname);
+      |         ~~~~~~^~~~~~~
+[0m[91mSeqTag.cpp: In member function 'void UniqMapChrs::loadData()':
+SeqTag.cpp:18511:13: warning: ignoring return value of 'size_t fread(void*, size_t, size_t, FILE*)', declared with attribute warn_unused_result [-Wunused-result]
+18511 |  (void)fread(&psize,sizeof(unsigned int),1,fpp);
+      |        ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[0m[91mSeqTag.cpp:18513:13: warning: ignoring return value of 'size_t fread(void*, size_t, size_t, FILE*)', declared with attribute warn_unused_result [-Wunused-result]
+18513 |  (void)fread(&nsize,sizeof(unsigned int),1,fpn);
+      |        ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[0m[91mSeqTag.cpp:18523:13: warning: ignoring return value of 'size_t fread(void*, size_t, size_t, FILE*)', declared with attribute warn_unused_result [-Wunused-result]
+18523 |  (void)fread(pstrand,sizeof(unsigned char),maxIndex,fpp);
+      |        ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[0m[91mSeqTag.cpp:18524:13: warning: ignoring return value of 'size_t fread(void*, size_t, size_t, FILE*)', declared with attribute warn_unused_result [-Wunused-result]
+18524 |  (void)fread(nstrand,sizeof(unsigned char),maxIndex,fpn);
+      |        ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[0m[91mmakeUCSCfile.cpp: In function 'int main(int, char**)':
+makeUCSCfile.cpp:312:16: warning: ignoring return value of 'int system(const char*)', declared with attribute warn_unused_result [-Wunused-result]
+  312 |    (void)system(str);
+      |          ~~~~~~^~~~~
+[0m[91mmakeUCSCfile.cpp:323:16: warning: ignoring return value of 'int system(const char*)', declared with attribute warn_unused_result [-Wunused-result]
+  323 |    (void)system(str);
+      |          ~~~~~~^~~~~
+[0m[91mmakeUCSCfile.cpp:326:16: warning: ignoring return value of 'int system(const char*)', declared with attribute warn_unused_result [-Wunused-result]
+  326 |    (void)system(str);
+      |          ~~~~~~^~~~~
+[0m[91mhomerTools.cpp: In function 'void decontaminateProgram(int, char**)':
+homerTools.cpp:1694:17: warning: ignoring return value of 'int system(const char*)', declared with attribute warn_unused_result [-Wunused-result]
+ 1694 |     (void)system("sleep 1");
+      |           ~~~~~~^~~~~~~~~~~
+[0m[91mhomerTools.cpp:1702:15: warning: ignoring return value of 'int system(const char*)', declared with attribute warn_unused_result [-Wunused-result]
+ 1702 |   (void)system(command);
+      |         ~~~~~~^~~~~~~~~
+[0m[91mhomerTools.cpp:1704:15: warning: ignoring return value of 'int system(const char*)', declared with attribute warn_unused_result [-Wunused-result]
+ 1704 |   (void)system(command);
+      |         ~~~~~~^~~~~~~~~
+[0m[91mhomerTools.cpp: In function 'void specialUniqMapProgram(int, char**)':
+homerTools.cpp:1779:14: warning: ignoring return value of 'int system(const char*)', declared with attribute warn_unused_result [-Wunused-result]
+ 1779 |  (void)system(command);
+      |        ~~~~~~^~~~~~~~~
+[0m[91manalyzeHiC.cpp: In function 'int main(int, char**)':
+analyzeHiC.cpp:1375:16: warning: ignoring return value of 'int system(const char*)', declared with attribute warn_unused_result [-Wunused-result]
+ 1375 |    (void)system(cmd);
+      |          ~~~~~~^~~~~
+[0m[91manalyzeHiC.cpp:1380:16: warning: ignoring return value of 'int system(const char*)', declared with attribute warn_unused_result [-Wunused-result]
+ 1380 |    (void)system(cmd);
+      |          ~~~~~~^~~~~
+[0m[91manalyzeHiC.cpp:1385:16: warning: ignoring return value of 'int system(const char*)', declared with attribute warn_unused_result [-Wunused-result]
+ 1385 |    (void)system(cmd);
+      |          ~~~~~~^~~~~
+[0m[91manalyzeHiC.cpp:1390:16: warning: ignoring return value of 'int system(const char*)', declared with attribute warn_unused_result [-Wunused-result]
+ 1390 |    (void)system(cmd);
+      |          ~~~~~~^~~~~
+[0m[91manalyzeHiC.cpp: In function 'void printCircosFiles(char*, int, TagLibrary*, PeakLibrary*, PeakLibrary*, int, int, int, int, char**, int, char**, int, char**, int, TagLibrary*)':
+analyzeHiC.cpp:1796:15: warning: ignoring return value of 'int system(const char*)', declared with attribute warn_unused_result [-Wunused-result]
+ 1796 |   (void)system(command);
+      |         ~~~~~~^~~~~~~~~
+[0m[91m
+	Software Installed.  If not done so already, add the homer programs to your executable path.
+[0m[91m
+	Add this line to your .bash_profile or .bashrc file (or other depending on your shell):
+[0m[91m		PATH=$PATH:/opt2/homer/.//bin/
+
+[0m[91m
+	Simply typing "findMotifs.pl" should work before running Homer.
+
+[0mRemoving intermediate container e6ffde5871d9
+ ---> 6bf8762d7504
+Step 10/14 : ENV PATH="/opt2/homer/bin":$PATH
+ ---> Running in 69024637856a
+Removing intermediate container 69024637856a
+ ---> 9eaf521b5020
+Step 11/14 : COPY Dockerfile.$TAG /opt2
+ ---> 178726c3cd38
+Step 12/14 : RUN chmod a+r /opt2/Dockerfile.$TAG
+ ---> Running in abc6a162277c
+Removing intermediate container abc6a162277c
+ ---> 22f46bec3eae
+Step 13/14 : WORKDIR /data2
+ ---> Running in d115ced020f9
+Removing intermediate container d115ced020f9
+ ---> d2d76cd9dd3a
+Step 14/14 : RUN apt-get clean
+ ---> Running in 5c05baf5253e
+Removing intermediate container 5c05baf5253e
+ ---> 201f7c28a697
+Successfully built 201f7c28a697
+Successfully tagged nciccbr/ccbr_atacseq:v1.6
