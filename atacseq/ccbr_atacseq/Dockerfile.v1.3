@@ -1,13 +1,13 @@
-FROM nciccbr/ccbr_atacseq:v1.1
-ENV TAG="v1.2"
+FROM nciccbr/ccbr_atacseq:v1.2
+ENV TAG="v1.3"
 
-# install fastqc
-ADD https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.9.zip /opt2/
+# install macs2
+RUN pip install MACS2
+
+# install ChIPseeker etc
 WORKDIR /opt2
-RUN unzip fastqc_v0.11.9.zip
-WORKDIR /opt2/FastQC
-RUN chmod 755 fastqc
-RUN ln -s /opt2/FastQC/fastqc /usr/local/bin/fastqc
+COPY install_packages_v1.3.R /opt2
+RUN Rscript install_packages_v1.3.R
 
 # SCRIPTS AND DB files
 
