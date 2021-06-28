@@ -1,0 +1,93 @@
+Sending build context to Docker daemon  206.4MB
+Step 1/7 : FROM nciccbr/ccbr_atacseq:v1.7
+ ---> fdef3e6e7253
+Step 2/7 : ENV TAG="v1.8"
+ ---> Running in bba820b2c07d
+Removing intermediate container bba820b2c07d
+ ---> 118e4feaaef3
+Step 3/7 : RUN pip install multiqc==1.10.1
+ ---> Running in bc85e70a6518
+Collecting multiqc==1.10.1
+  Downloading multiqc-1.10.1-py3-none-any.whl (1.1 MB)
+Collecting click
+  Downloading click-8.0.1-py3-none-any.whl (97 kB)
+Collecting rich>=9.4.0
+  Downloading rich-10.4.0-py3-none-any.whl (206 kB)
+Requirement already satisfied: requests in /usr/lib/python3/dist-packages (from multiqc==1.10.1) (2.22.0)
+Collecting future>0.14.0
+  Downloading future-0.18.2.tar.gz (829 kB)
+Collecting spectra>=0.0.10
+  Downloading spectra-0.0.11.tar.gz (18 kB)
+Collecting simplejson
+  Downloading simplejson-3.17.2-cp38-cp38-manylinux2010_x86_64.whl (137 kB)
+Collecting matplotlib>=2.1.1
+  Downloading matplotlib-3.4.2-cp38-cp38-manylinux1_x86_64.whl (10.3 MB)
+Requirement already satisfied: numpy in /usr/local/lib/python3.8/dist-packages (from multiqc==1.10.1) (1.20.2)
+Requirement already satisfied: coloredlogs in /usr/lib/python3/dist-packages (from multiqc==1.10.1) (7.3)
+Collecting lzstring
+  Downloading lzstring-1.0.4.tar.gz (4.3 kB)
+Collecting jinja2>=2.9
+  Downloading Jinja2-3.0.1-py3-none-any.whl (133 kB)
+Requirement already satisfied: pyyaml>=4 in /usr/lib/python3/dist-packages (from multiqc==1.10.1) (5.3.1)
+Requirement already satisfied: networkx in /usr/lib/python3/dist-packages (from multiqc==1.10.1) (2.4)
+Collecting markdown
+  Downloading Markdown-3.3.4-py3-none-any.whl (97 kB)
+Collecting MarkupSafe>=2.0
+  Downloading MarkupSafe-2.0.1-cp38-cp38-manylinux2010_x86_64.whl (30 kB)
+Collecting pillow>=6.2.0
+  Downloading Pillow-8.2.0-cp38-cp38-manylinux1_x86_64.whl (3.0 MB)
+Requirement already satisfied: pyparsing>=2.2.1 in /usr/lib/python3/dist-packages (from matplotlib>=2.1.1->multiqc==1.10.1) (2.4.6)
+Collecting cycler>=0.10
+  Downloading cycler-0.10.0-py2.py3-none-any.whl (6.5 kB)
+Collecting kiwisolver>=1.0.1
+  Downloading kiwisolver-1.3.1-cp38-cp38-manylinux1_x86_64.whl (1.2 MB)
+Requirement already satisfied: python-dateutil>=2.7 in /usr/lib/python3/dist-packages (from matplotlib>=2.1.1->multiqc==1.10.1) (2.7.3)
+Requirement already satisfied: six in /usr/lib/python3/dist-packages (from cycler>=0.10->matplotlib>=2.1.1->multiqc==1.10.1) (1.14.0)
+Collecting pygments<3.0.0,>=2.6.0
+  Downloading Pygments-2.9.0-py3-none-any.whl (1.0 MB)
+Collecting commonmark<0.10.0,>=0.9.0
+  Downloading commonmark-0.9.1-py2.py3-none-any.whl (51 kB)
+Collecting colorama<0.5.0,>=0.4.0
+  Downloading colorama-0.4.4-py2.py3-none-any.whl (16 kB)
+Collecting colormath>=3.0.0
+  Downloading colormath-3.0.0.tar.gz (39 kB)
+Building wheels for collected packages: future, spectra, colormath, lzstring
+  Building wheel for future (setup.py): started
+  Building wheel for future (setup.py): finished with status 'done'
+  Created wheel for future: filename=future-0.18.2-py3-none-any.whl size=491058 sha256=8cdb41bd0a91b80b7a1f6d966e8479e7742620228c89c1c9c2e13f5e91925bd4
+  Stored in directory: /root/.cache/pip/wheels/8e/70/28/3d6ccd6e315f65f245da085482a2e1c7d14b90b30f239e2cf4
+  Building wheel for spectra (setup.py): started
+  Building wheel for spectra (setup.py): finished with status 'done'
+  Created wheel for spectra: filename=spectra-0.0.11-py3-none-any.whl size=17471 sha256=a3e452b8383889fc03392e89681c3c00eef9afe1cc159399670e10f45339952e
+  Stored in directory: /root/.cache/pip/wheels/60/48/fd/b818cd482a8c66aab4e846999079cb79a91a199b667656c7db
+  Building wheel for colormath (setup.py): started
+  Building wheel for colormath (setup.py): finished with status 'done'
+  Created wheel for colormath: filename=colormath-3.0.0-py3-none-any.whl size=39390 sha256=c994f16564bee4d975cc3fea3ec734c59f6c828c3561466439a920ab86068aeb
+  Stored in directory: /root/.cache/pip/wheels/8b/74/a8/df86fd600a6c68547019383b14765e2213085feb1a2fbf0db1
+  Building wheel for lzstring (setup.py): started
+  Building wheel for lzstring (setup.py): finished with status 'done'
+  Created wheel for lzstring: filename=lzstring-1.0.4-py2.py3-none-any.whl size=4574 sha256=62d2d820b4398e1571da5c2e175619c6d0770a7970c38406f42c1f1d962fa972
+  Stored in directory: /root/.cache/pip/wheels/c7/13/56/ea14e410b3ba3d95b95b4672ebfa51a81f28783b4b57ae02fd
+Successfully built future spectra colormath lzstring
+Installing collected packages: pygments, pillow, MarkupSafe, kiwisolver, future, cycler, commonmark, colormath, colorama, spectra, simplejson, rich, matplotlib, markdown, lzstring, jinja2, click, multiqc
+Successfully installed MarkupSafe-2.0.1 click-8.0.1 colorama-0.4.4 colormath-3.0.0 commonmark-0.9.1 cycler-0.10.0 future-0.18.2 jinja2-3.0.1 kiwisolver-1.3.1 lzstring-1.0.4 markdown-3.3.4 matplotlib-3.4.2 multiqc-1.10.1 pillow-8.2.0 pygments-2.9.0 rich-10.4.0 simplejson-3.17.2 spectra-0.0.11
+[91mWARNING: You are using pip version 21.0.1; however, version 21.1.3 is available.
+You should consider upgrading via the '/usr/bin/python3 -m pip install --upgrade pip' command.
+[0mRemoving intermediate container bc85e70a6518
+ ---> 2cd439309ffd
+Step 4/7 : COPY Dockerfile.$TAG /opt2
+ ---> 9e6161f21e1d
+Step 5/7 : RUN chmod a+r /opt2/Dockerfile.$TAG
+ ---> Running in 3caea6512a34
+Removing intermediate container 3caea6512a34
+ ---> ae84a6bb3538
+Step 6/7 : WORKDIR /data2
+ ---> Running in f16e869f31b3
+Removing intermediate container f16e869f31b3
+ ---> 9669c26da5d7
+Step 7/7 : RUN apt-get clean
+ ---> Running in ec16787cb82e
+Removing intermediate container ec16787cb82e
+ ---> 8ac90da1ae99
+Successfully built 8ac90da1ae99
+Successfully tagged nciccbr/ccbr_atacseq:v1.8
