@@ -1,0 +1,15 @@
+FROM nciccbr/ccbr_atacseq:v1.4
+ENV TAG="v1.4.1"
+
+# install plotly
+WORKDIR /opt2
+COPY install_packages_v1.4.1.R /opt2
+RUN Rscript install_packages_v1.4.1.R
+
+# SCRIPTS AND DB files
+
+COPY Dockerfile.$TAG /opt2
+RUN chmod a+r /opt2/Dockerfile.$TAG
+
+WORKDIR /data2
+RUN apt-get clean
