@@ -1,0 +1,13 @@
+FROM nciccbr/ccbr_atacseq:v1.4.1
+ENV TAG="v1.4.2"
+
+# install plotly
+RUN apt-get install -y pandoc
+
+# SCRIPTS AND DB files
+
+COPY Dockerfile.$TAG /opt2
+RUN chmod a+r /opt2/Dockerfile.$TAG
+
+WORKDIR /data2
+RUN apt-get clean

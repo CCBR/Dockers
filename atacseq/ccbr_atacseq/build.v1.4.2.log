@@ -1,0 +1,54 @@
+Sending build context to Docker daemon  205.6MB
+Step 1/7 : FROM nciccbr/ccbr_atacseq:v1.4.1
+ ---> 7bbda357f4ff
+Step 2/7 : ENV TAG="v1.4.2"
+ ---> Running in 7cbfc6a4debd
+Removing intermediate container 7cbfc6a4debd
+ ---> 0071fc2af0f5
+Step 3/7 : RUN apt-get install -y pandoc
+ ---> Running in 0e35620ab196
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  pandoc-data
+Suggested packages:
+  texlive-latex-recommended texlive-xetex texlive-luatex pandoc-citeproc
+  texlive-latex-extra context wkhtmltopdf librsvg2-bin groff ghc php python
+  ruby libjs-mathjax node-katex
+The following NEW packages will be installed:
+  pandoc pandoc-data
+0 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
+Need to get 15.5 MB of archives.
+After this operation, 125 MB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu focal/universe amd64 pandoc-data all 2.5-3build2 [76.0 kB]
+Get:2 http://archive.ubuntu.com/ubuntu focal/universe amd64 pandoc amd64 2.5-3build2 [15.4 MB]
+[91mdebconf: delaying package configuration, since apt-utils is not installed
+[0mFetched 15.5 MB in 23s (686 kB/s)
+Selecting previously unselected package pandoc-data.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 71951 files and directories currently installed.)
+Preparing to unpack .../pandoc-data_2.5-3build2_all.deb ...
+Unpacking pandoc-data (2.5-3build2) ...
+Selecting previously unselected package pandoc.
+Preparing to unpack .../pandoc_2.5-3build2_amd64.deb ...
+Unpacking pandoc (2.5-3build2) ...
+Setting up pandoc-data (2.5-3build2) ...
+Setting up pandoc (2.5-3build2) ...
+Removing intermediate container 0e35620ab196
+ ---> 903ff966a6fb
+Step 4/7 : COPY Dockerfile.$TAG /opt2
+ ---> 108fb0ef955e
+Step 5/7 : RUN chmod a+r /opt2/Dockerfile.$TAG
+ ---> Running in f76f493b8643
+Removing intermediate container f76f493b8643
+ ---> 1448db1abdb0
+Step 6/7 : WORKDIR /data2
+ ---> Running in 19c6401421df
+Removing intermediate container 19c6401421df
+ ---> d59b06531b51
+Step 7/7 : RUN apt-get clean
+ ---> Running in 6d12cdffe01d
+Removing intermediate container 6d12cdffe01d
+ ---> 4f172560eaea
+Successfully built 4f172560eaea
+Successfully tagged nciccbr/ccbr_atacseq:v1.4.2
