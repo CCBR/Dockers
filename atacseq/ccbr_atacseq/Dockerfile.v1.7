@@ -1,0 +1,13 @@
+FROM nciccbr/ccbr_atacseq:v1.6
+ENV TAG="v1.7"
+
+# install bc
+RUN apt-get install -y bc
+
+# SCRIPTS AND DB files
+
+COPY Dockerfile.$TAG /opt2
+RUN chmod a+r /opt2/Dockerfile.$TAG
+
+WORKDIR /data2
+RUN apt-get clean
