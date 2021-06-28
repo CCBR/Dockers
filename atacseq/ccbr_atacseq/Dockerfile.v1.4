@@ -1,0 +1,18 @@
+FROM nciccbr/ccbr_atacseq:v1.3.1
+ENV TAG="v1.4"
+
+# install Genrich
+WORKDIR /opt2
+RUN wget https://github.com/jsh58/Genrich/archive/refs/tags/v0.6.1.tar.gz && \
+ tar xzvf v0.6.1.tar.gz
+WORKDIR /opt2/Genrich-0.6.1
+RUN make
+ENV PATH=${PATH}:/opt2/Genrich-0.6.1
+
+# SCRIPTS AND DB files
+
+COPY Dockerfile.$TAG /opt2
+RUN chmod a+r /opt2/Dockerfile.$TAG
+
+WORKDIR /data2
+RUN apt-get clean
