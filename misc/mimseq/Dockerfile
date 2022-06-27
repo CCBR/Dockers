@@ -20,11 +20,11 @@ RUN apt-get install -y ncbi-blast+
 
 # install gmap gsnap
 WORKDIR /opt2
-RUN wget http://research-pub.gene.com/gmap/src/gmap-gsnap-2021-12-17.tar.gz && \
- tar xvzf gmap-gsnap-2021-12-17.tar.gz && \
- rm -f gmap-gsnap-2021-12-17.tar.gz && \
+RUN wget http://research-pub.gene.com/gmap/src/gmap-gsnap-2019-02-26.tar.gz && \
+ tar xvzf gmap-gsnap-2019-02-26.tar.gz && \
+ rm -f gmap-gsnap-2019-02-26.tar.gz && \
  mkdir -p /opt2/gmap
-WORKDIR /opt2/gmap-2021-12-17
+WORKDIR /opt2/gmap-2019-02-26
 RUN ./configure --prefix=/opt2/gmap && \
   make && \
   make install
@@ -61,5 +61,5 @@ COPY Dockerfile /opt2/Dockerfile
 RUN chmod -R a+rX /opt2
 WORKDIR /data2
 RUN apt-get clean && \
-  rm -rf /opt2/gmap-2021-12-17
+  rm -rf /opt2/gmap-2019-02-26
 
