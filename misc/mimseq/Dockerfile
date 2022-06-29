@@ -1,5 +1,17 @@
 FROM nciccbr/ccbr_ubuntu_base_20.04:v1.4
 
+# According to https://github.com/nedialkova-lab/mim-tRNAseq/issues/33#issuecomment-1168411432
+# mimseq may work best with python/3.7
+# python3.8 gave error described in https://github.com/nedialkova-lab/mim-tRNAseq/issues/33
+# default version is 3.8 hence install 3.7 and setting that as default
+# distutils dev packages are required to run pip and install packages via pip for python3.7
+RUN add-apt-repository -y ppa:deadsnakes/ppa && \
+  apt-get update && \
+  apt-get install -y python3.7 python3.7-distutils python3.7-dev && \
+  update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1 && \
+  update-alternatives --install /usr/bin/python python /usr/bin/python3.7 2 && \
+  update-alternatives --set python /usr/bin/python3.7
+
 # install usearch
 WORKDIR /opt2
 RUN wget https://drive5.com/downloads/usearch10.0.240_i86linux32.gz && \
@@ -10,13 +22,13 @@ RUN wget https://drive5.com/downloads/usearch10.0.240_i86linux32.gz && \
 ENV PATH=$PATH:/opt2
 
 # install mimseq
-RUN pip3 install mimseq
+# RUN pip3 install mimseq
+# the above command will install mimseq with the default python version .. python3.8
+# use the following command to install mimseq with the new python3.7 version
+RUN python -m pip install mimseq
 
 # install cmalign
 RUN apt-get install -y infernal
-
-# install blastn
-RUN apt-get install -y ncbi-blast+
 
 # install gmap gsnap
 WORKDIR /opt2
@@ -56,9 +68,29 @@ RUN R -e "install.packages('BiocManager')"
 RUN R -e "BiocManager::install('DESeq2',update=TRUE,ask=FALSE)"
 RUN R -e "BiocManager::install('ComplexHeatmap', update=TRUE, ask=FALSE)"
 
-# cleanup etc
-COPY Dockerfile /opt2/Dockerfile
-RUN chmod -R a+rX /opt2
+# install bedtools
+WORKDIR /opt2
+RUN wget https://github.com/arq5x/bedtools2/releases/download/v2.30.0/bedtools-2.30.0.tar.gz && \
+  tar -zxvf bedtools-2.30.0.tar.gz && \
+  cd bedtools2 && \
+  make
+ENV PATH=/opt2/bedtools2/bin:$PATH
+
+# install samtools
+WORKDIR /opt2
+RUN wget https://github.com/samtools/samtools/releases/download/1.11/samtools-1.11.tar.bz2 && \
+   tar xjvf samtools-1.11.tar.bz2  && \
+   cd samtools-1.11/ && \
+   make
+ENV PATH=/opt2/samtools-1.11:$PATH
+
+# install blastn
+WORKDIR /opt2
+RUN wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.10.1/ncbi-blast-2.10.1+-x64-linux.tar.gz && \
+  tar xzvf ncbi-blast-2.10.1+-x64-linux.tar.gz
+ENV PATH=/opt2/ncbi-blast-2.10.1+/bin:$PATH
+
+# cleanup
 WORKDIR /data2
 RUN apt-get clean && \
   rm -rf /opt2/gmap-2019-02-26
