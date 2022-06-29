@@ -1,5 +1,23 @@
 FROM nciccbr/ccbr_ubuntu_base_20.04:v1.4
 
+# install bedtools
+WORKDIR /opt2
+RUN wget https://github.com/arq5x/bedtools2/releases/download/v2.30.0/bedtools-2.30.0.tar.gz && \
+  tar -zxvf bedtools-2.30.0.tar.gz && \
+  rm -f bedtools-2.30.0.tar.gz && \
+  cd bedtools2 && \
+  make
+ENV PATH=/opt2/bedtools2/bin:$PATH
+
+# install samtools
+WORKDIR /opt2
+RUN wget https://github.com/samtools/samtools/releases/download/1.11/samtools-1.11.tar.bz2 && \
+   tar xjvf samtools-1.11.tar.bz2  && \
+   rm -f samtools-1.11.tar.bz2  && \
+   cd samtools-1.11/ && \
+   make
+ENV PATH=/opt2/samtools-1.11:$PATH
+
 RUN apt-get update && apt-get install -y libffi-dev libdeflate-dev libsqlite3-dev
 
 # According to https://github.com/nedialkova-lab/mim-tRNAseq/issues/33#issuecomment-1168411432
@@ -72,5 +90,8 @@ RUN apt-get install -y infernal
 RUN apt-get clean && apt-get purge && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
   rm -rf /opt2/gmap-2019-02-26
+
+COPY Dockerfile /opt2/Dockerfile
+RUN chmod -R a+rX /opt2
 
 WORKDIR /data2
