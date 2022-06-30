@@ -2,24 +2,6 @@ FROM nciccbr/ccbr_ubuntu_base_20.04:v1.4
 
 RUN apt-get update && apt-get install -y libffi-dev libdeflate-dev libsqlite3-dev libcurl4-openssl-dev
 
-# install bedtools
-WORKDIR /opt2
-RUN wget https://github.com/arq5x/bedtools2/releases/download/v2.30.0/bedtools-2.30.0.tar.gz && \
-  tar -zxvf bedtools-2.30.0.tar.gz && \
-  rm -f bedtools-2.30.0.tar.gz && \
-  cd bedtools2 && \
-  make
-ENV PATH=/opt2/bedtools2/bin:$PATH
-
-# install samtools
-WORKDIR /opt2
-RUN wget https://github.com/samtools/samtools/releases/download/1.11/samtools-1.11.tar.bz2 && \
-   tar xjvf samtools-1.11.tar.bz2  && \
-   rm -f samtools-1.11.tar.bz2  && \
-   cd samtools-1.11/ && \
-   make
-ENV PATH=/opt2/samtools-1.11:$PATH
-
 # install miniconda
 ENV CONDA_DIR /opt2/conda
 WORKDIR /opt2
