@@ -1,4 +1,4 @@
-FROM nciccbr/ccbr_ubuntu_base_20.04:v1.4
+FROM nciccbr/ccbr_ubuntu_base_20.04:v1.5
 LABEL maintainer "Vishal Koparde *(kopardev on GitHub)*"
 
 # install cufflinks
