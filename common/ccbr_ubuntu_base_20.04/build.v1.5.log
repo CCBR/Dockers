@@ -1,0 +1,50 @@
+Sending build context to Docker daemon  8.283MB
+Step 1/15 : FROM nciccbr/ccbr_ubuntu_base_20.04:v1.4
+ ---> 9e5ea1156c2d
+Step 2/15 : ENV TAG="v1.5"
+ ---> Using cache
+ ---> 084a6b91f9f6
+Step 3/15 : RUN apt-get update && apt-get install -y libcurl4-openssl-dev
+ ---> Using cache
+ ---> 69fd5caf74e7
+Step 4/15 : WORKDIR /opt2
+ ---> Using cache
+ ---> 7529cec940c2
+Step 5/15 : COPY samtools-1.15.1.tar.bz2 .
+ ---> Using cache
+ ---> 46b5537c01ee
+Step 6/15 : RUN tar xjfv samtools-1.15.1.tar.bz2 && rm -f samtools-1.15.1.tar.bz2 && mkdir -p /opt2/samtools
+ ---> Using cache
+ ---> 02d9d640153b
+Step 7/15 : WORKDIR /opt2/samtools-1.15.1
+ ---> Using cache
+ ---> ad741a12edc4
+Step 8/15 : RUN ./configure --prefix=/opt2/samtools && make && make install
+ ---> Using cache
+ ---> 2e6a850deeb3
+Step 9/15 : WORKDIR /opt2
+ ---> Using cache
+ ---> 10b3d826b1b8
+Step 10/15 : RUN rm -rf /opt2/samtools-1.15.1
+ ---> Using cache
+ ---> c99870326800
+Step 11/15 : ENV PATH="/opt2/samtools/bin":$PATH
+ ---> Running in 10c6722bbf62
+Removing intermediate container 10c6722bbf62
+ ---> e092a2b582d0
+Step 12/15 : COPY Dockerfile.$TAG /opt2/Dockerfile.baseimage
+ ---> 50b954ea14d3
+Step 13/15 : RUN chmod -R a+rX /opt2
+ ---> Running in 8a6c60f5976a
+Removing intermediate container 8a6c60f5976a
+ ---> d09ae6b62cb8
+Step 14/15 : WORKDIR /data2
+ ---> Running in 257839056be2
+Removing intermediate container 257839056be2
+ ---> a09c7189ebde
+Step 15/15 : RUN apt-get clean
+ ---> Running in e6c3d88a23d4
+Removing intermediate container e6c3d88a23d4
+ ---> 4dac5000fd2f
+Successfully built 4dac5000fd2f
+Successfully tagged nciccbr/ccbr_ubuntu_base_20.04:v1.5

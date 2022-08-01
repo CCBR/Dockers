@@ -1,0 +1,20 @@
+FROM nciccbr/ccbr_ubuntu_base_20.04:v1.4
+ENV TAG="v1.5"
+
+RUN apt-get update && apt-get install -y libcurl4-openssl-dev
+
+# install samtools (newer version)
+WORKDIR /opt2
+COPY samtools-1.15.1.tar.bz2 .
+RUN tar xjfv samtools-1.15.1.tar.bz2 && rm -f samtools-1.15.1.tar.bz2 && mkdir -p /opt2/samtools
+WORKDIR /opt2/samtools-1.15.1
+RUN ./configure --prefix=/opt2/samtools && make && make install 
+WORKDIR /opt2
+RUN rm -rf /opt2/samtools-1.15.1
+ENV PATH="/opt2/samtools/bin":$PATH
+
+COPY Dockerfile.$TAG /opt2/Dockerfile.baseimage
+RUN chmod -R a+rX /opt2
+WORKDIR /data2
+
+RUN apt-get clean
