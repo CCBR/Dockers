@@ -35,6 +35,10 @@ RUN wget https://drive5.com/downloads/usearch10.0.240_i86linux32.gz && \
         rm -f usearch10.0.240_i86linux32.gz
 ENV PATH=/opt2/usearch:$PATH
 
+# fix splitClusters.py
+WORKDIR /opt2/conda/envs/mimseq/lib/python3.7/site-packages/mimseq
+COPY splitClusters.py .
+
 # cleanup
 RUN apt-get clean && apt-get purge && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
