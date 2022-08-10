@@ -13,7 +13,7 @@ docker build \
 	-f $1 \
 	-t $2 \
  	. | \
-	tee docker_build_${dt}.log
+	tee $1_build_${dt}.log
 
 exitcode=$_
 
