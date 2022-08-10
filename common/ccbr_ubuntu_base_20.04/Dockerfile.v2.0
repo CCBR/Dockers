@@ -61,7 +61,7 @@ ENV PATH="/opt2/samtools/bin:$PATH"
 COPY Dockerfile.$TAG /opt2/Dockerfile.baseimage
 COPY argparse.bash /opt2
 COPY printversions.bash /opt2/printversions
-RUN chmod a+rX /opt2/Dockerfile.baseimage && chmod -R a+rx /opt2/argparse.bash && chmod -R a+rx /opt2/printversions.bash
+RUN chmod a+rX /opt2/Dockerfile.baseimage && chmod -R a+rx /opt2/argparse.bash && chmod -R a+rx /opt2/printversions
 ENV PATH="/opt2/:$PATH"
 WORKDIR /data2
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
