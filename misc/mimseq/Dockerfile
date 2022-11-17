@@ -44,6 +44,6 @@ RUN apt-get clean && apt-get purge && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
 COPY Dockerfile /opt2/Dockerfile
-RUN chmod -R a+rX /opt2
+RUN chmod -R a+rX /opt2/Dockerfile
 
 WORKDIR /data2
