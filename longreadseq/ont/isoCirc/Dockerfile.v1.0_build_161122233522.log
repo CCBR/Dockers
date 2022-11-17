@@ -1,0 +1,53 @@
+Sending build context to Docker daemon  31.74kB
+Step 1/15 : FROM nciccbr/ccbr_ubuntu_base_20.04:v2.0
+ ---> 6e1428b3958a
+Step 2/15 : ENV TAG="v1.0"
+ ---> Using cache
+ ---> 44d9ac68892e
+Step 3/15 : WORKDIR /opt2
+ ---> Using cache
+ ---> b557d3db344f
+Step 4/15 : RUN git clone https://github.com/lh3/minimap2 && cd minimap2 && make
+ ---> Using cache
+ ---> 034c3f9b4788
+Step 5/15 : ENV PATH="/opt2/minimap2:$PATH"
+ ---> Using cache
+ ---> f3a1009e0621
+Step 6/15 : WORKDIR /opt2
+ ---> Using cache
+ ---> 4cf308210d3b
+Step 7/15 : RUN ln -s /usr/bin/pip3 /usr/bin/pip3.8 && pip3 install isocirc
+ ---> Using cache
+ ---> a87d85bb2ef7
+Step 8/15 : COPY Dockerfile.${TAG} /opt2/Dockerfile.${TAG}
+ ---> 91d4b87655a2
+Step 9/15 : RUN if [ -f /opt2/Dockerfile ];then rm -f /opt2/Dockerfile;fi &&     ln -s Dockerfile.${TAG} Dockerfile &&     chmod a+r /opt2/Dockerfile.${TAG}
+ ---> Running in 9aba6037cc83
+Removing intermediate container 9aba6037cc83
+ ---> 64465124563c
+Step 10/15 : WORKDIR /data2
+ ---> Running in 69bf16555149
+Removing intermediate container 69bf16555149
+ ---> 3e1c8a69c5a2
+Step 11/15 : RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+ ---> Running in f210a17af1ce
+Removing intermediate container f210a17af1ce
+ ---> de744dd385c1
+Step 12/15 : LABEL maintainer="vishal.koparde@nih.gov"
+ ---> Running in 0ae0391a1931
+Removing intermediate container 0ae0391a1931
+ ---> 1b56a33f5660
+Step 13/15 : LABEL github_handle="kopardev"
+ ---> Running in 70bcf7fb6b74
+Removing intermediate container 70bcf7fb6b74
+ ---> f6bf14246b2d
+Step 14/15 : ARG BUILD_DATE
+ ---> Running in 72204437a544
+Removing intermediate container 72204437a544
+ ---> 0df2cb18e2f9
+Step 15/15 : LABEL build_date=$BUILD_DATE
+ ---> Running in da1a29222383
+Removing intermediate container da1a29222383
+ ---> bf7159f3fcd5
+Successfully built bf7159f3fcd5
+Successfully tagged nciccbr/ccbr_isocirc:v1.0

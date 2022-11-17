@@ -1,0 +1,238 @@
+Sending build context to Docker daemon  3.584kB
+Step 1/14 : FROM nciccbr/ccbr_ubuntu_base_20.04:v2.0
+ ---> 6e1428b3958a
+Step 2/14 : ENV TAG="v1.0"
+ ---> Running in a3212318e147
+Removing intermediate container a3212318e147
+ ---> 44d9ac68892e
+Step 3/14 : WORKDIR /opt2
+ ---> Running in d5d3590660f2
+Removing intermediate container d5d3590660f2
+ ---> b557d3db344f
+Step 4/14 : RUN git clone https://github.com/lh3/minimap2 && cd minimap2 && make
+ ---> Running in 479f40fff8f6
+[91mCloning into 'minimap2'...
+[0mcc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  main.c -o main.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  kthread.c -o kthread.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  kalloc.c -o kalloc.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  misc.c -o misc.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  bseq.c -o bseq.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  sketch.c -o sketch.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  sdust.c -o sdust.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  options.c -o options.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  index.c -o index.o
+[91mindex.c: In function 'mm_idx_load':
+[0m[91mindex.c:519:3: warning: ignoring return value of 'fread', declared with attribute warn_unused_result [-Wunused-result]
+  519 |   fread(&l, 1, 1, fp);
+      |   ^~~~~~~~~~~~~~~~~~~
+index.c:522:4: warning: ignoring return value of 'fread', declared with attribute warn_unused_result [-Wunused-result]
+  522 |    fread(s->name, 1, l, fp);
+      |    ^~~~~~~~~~~~~~~~~~~~~~~~
+index.c:525:3: warning: ignoring return value of 'fread', declared with attribute warn_unused_result [-Wunused-result]
+  525 |   fread(&s->len, 4, 1, fp);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~
+[0m[91mindex.c:535:3: warning: ignoring return value of 'fread', declared with attribute warn_unused_result [-Wunused-result]
+  535 |   fread(&b->n, 4, 1, fp);
+      |   ^~~~~~~~~~~~~~~~~~~~~~
+[0m[91mindex.c:537:3: warning: ignoring return value of 'fread', declared with attribute warn_unused_result [-Wunused-result]
+  537 |   fread(b->p, 8, b->n, fp);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~
+[0m[91mindex.c:538:3: warning: ignoring return value of 'fread', declared with attribute warn_unused_result [-Wunused-result]
+  538 |   fread(&size, 4, 1, fp);
+      |   ^~~~~~~~~~~~~~~~~~~~~~
+index.c:545:4: warning: ignoring return value of 'fread', declared with attribute warn_unused_result [-Wunused-result]
+  545 |    fread(x, 8, 2, fp);
+      |    ^~~~~~~~~~~~~~~~~~
+[0m[91mindex.c:553:3: warning: ignoring return value of 'fread', declared with attribute warn_unused_result [-Wunused-result]
+  553 |   fread(mi->S, 4, (sum_len + 7) / 8, fp);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[0mcc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  lchain.c -o lchain.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  align.c -o align.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  hit.c -o hit.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  seed.c -o seed.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  map.c -o map.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  format.c -o format.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  pe.c -o pe.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  esterr.c -o esterr.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  splitidx.c -o splitidx.o
+cc -c -g -Wall -O2 -Wc++-compat  -msse2 -DHAVE_KALLOC  ksw2_ll_sse.c -o ksw2_ll_sse.o
+cc -c -g -Wall -O2 -Wc++-compat  -msse4.1 -DHAVE_KALLOC -DKSW_CPU_DISPATCH  ksw2_extz2_sse.c -o ksw2_extz2_sse41.o
+cc -c -g -Wall -O2 -Wc++-compat  -msse4.1 -DHAVE_KALLOC -DKSW_CPU_DISPATCH  ksw2_extd2_sse.c -o ksw2_extd2_sse41.o
+cc -c -g -Wall -O2 -Wc++-compat  -msse4.1 -DHAVE_KALLOC -DKSW_CPU_DISPATCH  ksw2_exts2_sse.c -o ksw2_exts2_sse41.o
+cc -c -g -Wall -O2 -Wc++-compat  -msse2 -mno-sse4.1 -DHAVE_KALLOC -DKSW_CPU_DISPATCH -DKSW_SSE2_ONLY  ksw2_extz2_sse.c -o ksw2_extz2_sse2.o
+cc -c -g -Wall -O2 -Wc++-compat  -msse2 -mno-sse4.1 -DHAVE_KALLOC -DKSW_CPU_DISPATCH -DKSW_SSE2_ONLY  ksw2_extd2_sse.c -o ksw2_extd2_sse2.o
+cc -c -g -Wall -O2 -Wc++-compat  -msse2 -mno-sse4.1 -DHAVE_KALLOC -DKSW_CPU_DISPATCH -DKSW_SSE2_ONLY  ksw2_exts2_sse.c -o ksw2_exts2_sse2.o
+cc -c -g -Wall -O2 -Wc++-compat  -msse4.1 -DHAVE_KALLOC -DKSW_CPU_DISPATCH  ksw2_dispatch.c -o ksw2_dispatch.o
+ar -csru libminimap2.a kthread.o kalloc.o misc.o bseq.o sketch.o sdust.o options.o index.o lchain.o align.o hit.o seed.o map.o format.o pe.o esterr.o splitidx.o ksw2_ll_sse.o ksw2_extz2_sse41.o ksw2_extd2_sse41.o ksw2_exts2_sse41.o ksw2_extz2_sse2.o ksw2_extd2_sse2.o ksw2_exts2_sse2.o ksw2_dispatch.o
+[91mar: `u' modifier ignored since `D' is the default (see `U')[0m[91m
+[0mcc -g -Wall -O2 -Wc++-compat  main.o -o minimap2 -L. -lminimap2 -lm -lz -lpthread
+Removing intermediate container 479f40fff8f6
+ ---> 034c3f9b4788
+Step 5/14 : ENV PATH="/opt2/minimap2:$PATH"
+ ---> Running in a57a73cf6078
+Removing intermediate container a57a73cf6078
+ ---> f3a1009e0621
+Step 6/14 : WORKDIR /opt2
+ ---> Running in 150c4e62f698
+Removing intermediate container 150c4e62f698
+ ---> 4cf308210d3b
+Step 7/14 : RUN pip install isocirc
+ ---> Running in f9030ea38069
+Collecting isocirc
+  Downloading isocirc-1.0.4-py3-none-any.whl (25.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 25.5/25.5 MB 41.0 MB/s eta 0:00:00
+Requirement already satisfied: numpy in /usr/local/lib/python3.8/dist-packages (from isocirc) (1.23.1)
+Collecting pandas
+  Downloading pandas-1.5.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.2/12.2 MB 59.0 MB/s eta 0:00:00
+Collecting gffutils
+  Downloading gffutils-0.11.1.tar.gz (1.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 71.6 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting biopython
+  Downloading biopython-1.79-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.7/2.7 MB 67.6 MB/s eta 0:00:00
+Requirement already satisfied: pysam in /usr/local/lib/python3.8/dist-packages (from isocirc) (0.19.1)
+Collecting mappy
+  Downloading mappy-2.24.tar.gz (140 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 140.9/140.9 kB 16.4 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting matplotlib
+  Downloading matplotlib-3.6.2-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (9.4 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.4/9.4 MB 87.0 MB/s eta 0:00:00
+Collecting pyfaidx
+  Downloading pyfaidx-0.7.1.tar.gz (103 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 103.2/103.2 kB 17.5 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting pyinterval
+  Downloading pyinterval-1.2.0.tar.gz (25 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting argcomplete>=1.9.4
+  Downloading argcomplete-2.0.0-py2.py3-none-any.whl (37 kB)
+Collecting argh>=0.26.2
+  Downloading argh-0.26.2-py2.py3-none-any.whl (30 kB)
+Collecting simplejson
+  Downloading simplejson-3.18.0-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (139 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 140.0/140.0 kB 21.1 MB/s eta 0:00:00
+Requirement already satisfied: six>=1.12.0 in /usr/lib/python3/dist-packages (from gffutils->isocirc) (1.14.0)
+Requirement already satisfied: setuptools>=0.7 in /usr/lib/python3/dist-packages (from pyfaidx->isocirc) (45.2.0)
+Collecting kiwisolver>=1.0.1
+  Downloading kiwisolver-1.4.4-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl (1.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 56.7 MB/s eta 0:00:00
+Collecting contourpy>=1.0.1
+  Downloading contourpy-1.0.6-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (295 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 296.0/296.0 kB 34.2 MB/s eta 0:00:00
+Requirement already satisfied: pyparsing>=2.2.1 in /usr/lib/python3/dist-packages (from matplotlib->isocirc) (2.4.6)
+Requirement already satisfied: python-dateutil>=2.7 in /usr/lib/python3/dist-packages (from matplotlib->isocirc) (2.7.3)
+Collecting fonttools>=4.22.0
+  Downloading fonttools-4.38.0-py3-none-any.whl (965 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 965.4/965.4 kB 65.8 MB/s eta 0:00:00
+Collecting packaging>=20.0
+  Using cached packaging-21.3-py3-none-any.whl (40 kB)
+Collecting pillow>=6.2.0
+  Downloading Pillow-9.3.0-cp38-cp38-manylinux_2_28_x86_64.whl (3.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.3/3.3 MB 83.6 MB/s eta 0:00:00
+Collecting cycler>=0.10
+  Downloading cycler-0.11.0-py3-none-any.whl (6.4 kB)
+Collecting pytz>=2020.1
+  Downloading pytz-2022.6-py2.py3-none-any.whl (498 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 498.1/498.1 kB 43.2 MB/s eta 0:00:00
+Collecting python-dateutil>=2.7
+  Downloading python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 247.7/247.7 kB 31.0 MB/s eta 0:00:00
+Collecting crlibm==1.*,>=1.0.3
+  Downloading crlibm-1.0.3.tar.gz (1.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 64.6 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Building wheels for collected packages: gffutils, pyfaidx, mappy, pyinterval, crlibm
+  Building wheel for gffutils (setup.py): started
+  Building wheel for gffutils (setup.py): finished with status 'done'
+  Created wheel for gffutils: filename=gffutils-0.11.1-py3-none-any.whl size=1619356 sha256=ac26246520478b855d30726e0c9478147e37f83747efc3bb6c352ebe79522355
+  Stored in directory: /root/.cache/pip/wheels/fd/d2/4f/a441971b5d0e5fdb43cc6c4c9305c172e418fae6da18309ee0
+  Building wheel for pyfaidx (setup.py): started
+  Building wheel for pyfaidx (setup.py): finished with status 'done'
+  Created wheel for pyfaidx: filename=pyfaidx-0.7.1-py3-none-any.whl size=27719 sha256=c221d446d72d158b04f2f1c8658c7c302a40468cf2d62383635c45b564eeedc0
+  Stored in directory: /root/.cache/pip/wheels/0e/6c/f4/2560f2678a35d8b1997bb693336743308ef32b78bc9ce9aaf4
+  Building wheel for mappy (setup.py): started
+  Building wheel for mappy (setup.py): finished with status 'done'
+  Created wheel for mappy: filename=mappy-2.24-cp38-cp38-linux_x86_64.whl size=660366 sha256=914f7b45057abbf7b04044856f387a7514ce5dd6e5233cdd45c41cacaa7874d8
+  Stored in directory: /root/.cache/pip/wheels/df/ca/6a/7be4760503025a76f7e52b3487f622e2698ae87598f8d8e0c5
+  Building wheel for pyinterval (setup.py): started
+  Building wheel for pyinterval (setup.py): finished with status 'done'
+  Created wheel for pyinterval: filename=pyinterval-1.2.0-py3-none-any.whl size=11239 sha256=358709f12d0c36a9a4a058c418b3c1721e73282dea4913322454530ff2e9f733
+  Stored in directory: /root/.cache/pip/wheels/f0/fc/af/8c69a2ed7df2bb1aeaa5fb056b77bc943fb0af605fdfed3937
+  Building wheel for crlibm (setup.py): started
+  Building wheel for crlibm (setup.py): finished with status 'done'
+  Created wheel for crlibm: filename=crlibm-1.0.3-cp38-cp38-linux_x86_64.whl size=168268 sha256=532e300b35ef6d75851995c40ee13fa426fff46f2e80db6536dff49cd38ba55d
+  Stored in directory: /root/.cache/pip/wheels/0c/94/29/3e0e876a557418f2b0dbcfe5b6e65d8922297ad991f314927b
+Successfully built gffutils pyfaidx mappy pyinterval crlibm
+Installing collected packages: pytz, mappy, crlibm, argh, simplejson, python-dateutil, pyinterval, pyfaidx, pillow, packaging, kiwisolver, fonttools, cycler, contourpy, biopython, argcomplete, pandas, matplotlib, gffutils, isocirc
+  Attempting uninstall: python-dateutil
+    Found existing installation: python-dateutil 2.7.3
+    Uninstalling python-dateutil-2.7.3:
+      Successfully uninstalled python-dateutil-2.7.3
+Successfully installed argcomplete-2.0.0 argh-0.26.2 biopython-1.79 contourpy-1.0.6 crlibm-1.0.3 cycler-0.11.0 fonttools-4.38.0 gffutils-0.11.1 isocirc-1.0.4 kiwisolver-1.4.4 mappy-2.24 matplotlib-3.6.2 packaging-21.3 pandas-1.5.1 pillow-9.3.0 pyfaidx-0.7.1 pyinterval-1.2.0 python-dateutil-2.8.2 pytz-2022.6 simplejson-3.18.0
+[91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[0m[91m--- Logging error ---
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/pip/_internal/utils/logging.py", line 177, in emit
+    self.console.print(renderable, overflow="ignore", crop=False, style=style)
+  File "/usr/local/lib/python3.8/dist-packages/pip/_vendor/rich/console.py", line 1673, in print
+    extend(render(renderable, render_options))
+  File "/usr/local/lib/python3.8/dist-packages/pip/_vendor/rich/console.py", line 1305, in render
+    for render_output in iter_render:
+  File "/usr/local/lib/python3.8/dist-packages/pip/_internal/utils/logging.py", line 134, in __rich_console__
+    for line in lines:
+  File "/usr/local/lib/python3.8/dist-packages/pip/_vendor/rich/segment.py", line 249, in split_lines
+    for segment in segments:
+  File "/usr/local/lib/python3.8/dist-packages/pip/_vendor/rich/console.py", line 1283, in render
+    renderable = rich_cast(renderable)
+  File "/usr/local/lib/python3.8/dist-packages/pip/_vendor/rich/protocol.py", line 36, in rich_cast
+    renderable = cast_method()
+  File "/usr/local/lib/python3.8/dist-packages/pip/_internal/self_outdated_check.py", line 130, in __rich__
+    pip_cmd = get_best_invocation_for_this_pip()
+  File "/usr/local/lib/python3.8/dist-packages/pip/_internal/utils/entrypoints.py", line 58, in get_best_invocation_for_this_pip
+    if found_executable and os.path.samefile(
+  File "/usr/lib/python3.8/genericpath.py", line 101, in samefile
+    s2 = os.stat(f2)
+FileNotFoundError: [Errno 2] No such file or directory: '/usr/bin/pip3.8'
+Call stack:
+  File "/usr/local/bin/pip", line 8, in <module>
+    sys.exit(main())
+  File "/usr/local/lib/python3.8/dist-packages/pip/_internal/cli/main.py", line 70, in main
+    return command.main(cmd_args)
+  File "/usr/local/lib/python3.8/dist-packages/pip/_internal/cli/base_command.py", line 101, in main
+    return self._main(args)
+  File "/usr/local/lib/python3.8/dist-packages/pip/_internal/cli/base_command.py", line 223, in _main
+    self.handle_pip_version_check(options)
+  File "/usr/local/lib/python3.8/dist-packages/pip/_internal/cli/req_command.py", line 190, in handle_pip_version_check
+    pip_self_version_check(session, options)
+  File "/usr/local/lib/python3.8/dist-packages/pip/_internal/self_outdated_check.py", line 236, in pip_self_version_check
+    logger.warning("[present-rich] %s", upgrade_prompt)
+  File "/usr/lib/python3.8/logging/__init__.py", line 1458, in warning
+    self._log(WARNING, msg, args, **kwargs)
+  File "/usr/lib/python3.8/logging/__init__.py", line 1589, in _log
+    self.handle(record)
+  File "/usr/lib/python3.8/logging/__init__.py", line 1599, in handle
+    self.callHandlers(record)
+  File "/usr/lib/python3.8/logging/__init__.py", line 1661, in callHandlers
+    hdlr.handle(record)
+  File "/usr/lib/python3.8/logging/__init__.py", line 954, in handle
+    self.emit(record)
+  File "/usr/local/lib/python3.8/dist-packages/pip/_internal/utils/logging.py", line 179, in emit
+    self.handleError(record)
+Message: '[present-rich] %s'
+Arguments: (UpgradePrompt(old='22.2.2', new='22.3.1'),)
+[0mRemoving intermediate container f9030ea38069
+ ---> bcc710353707
+Step 8/14 : COPY Dockerfile.${TAG} /opt2/Dockerfile.${TAG}
+ ---> e04f1b0ea0fb
+Step 9/14 : RUN if [ -f /opt2/Dockerfile ];then rm -f /opt2/Dockerfile;fi &&     ln -s Dockerfile.${TAG} Dockerfile &&     chmod a+r /opt2/Dockerfile.${TAG} && WORKDIR /data2
+ ---> Running in 90f743f99363
+[91m/bin/sh: 1: [0m[91mWORKDIR: not found[0m[91m
+[0m

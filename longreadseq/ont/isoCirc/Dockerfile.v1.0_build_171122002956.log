@@ -1,0 +1,346 @@
+Sending build context to Docker daemon   34.3kB
+Step 1/15 : FROM nciccbr/ccbr_ubuntu_base_20.04:v2.0
+v2.0: Pulling from nciccbr/ccbr_ubuntu_base_20.04
+3b65ec22a9e9: Pulling fs layer
+10ceb438865c: Pulling fs layer
+aab707835907: Pulling fs layer
+625b0c14d41b: Pulling fs layer
+375fd82da226: Pulling fs layer
+4faae6904470: Pulling fs layer
+3a0584074529: Pulling fs layer
+0d62c252c62e: Pulling fs layer
+8aec5b04915d: Pulling fs layer
+eb35dcebf5f0: Pulling fs layer
+9120fb1fc8cb: Pulling fs layer
+f4783e0118a3: Pulling fs layer
+db35d98d120e: Pulling fs layer
+870ae27479ac: Pulling fs layer
+9b3ac3b90fd5: Pulling fs layer
+1e855a499ff2: Pulling fs layer
+17d743a62b4c: Pulling fs layer
+331e2137023c: Pulling fs layer
+938169d3fa53: Pulling fs layer
+67aec46cc9bc: Pulling fs layer
+733443d9da67: Pulling fs layer
+86c9aea85eab: Pulling fs layer
+77d76b322aa3: Pulling fs layer
+eddd13839d27: Pulling fs layer
+92bf6f086eef: Pulling fs layer
+6c7b675a2d94: Pulling fs layer
+625b0c14d41b: Waiting
+375fd82da226: Waiting
+4faae6904470: Waiting
+3a0584074529: Waiting
+0d62c252c62e: Waiting
+8aec5b04915d: Waiting
+eb35dcebf5f0: Waiting
+9120fb1fc8cb: Waiting
+f4783e0118a3: Waiting
+db35d98d120e: Waiting
+9b3ac3b90fd5: Waiting
+870ae27479ac: Waiting
+733443d9da67: Waiting
+1e855a499ff2: Waiting
+86c9aea85eab: Waiting
+17d743a62b4c: Waiting
+331e2137023c: Waiting
+77d76b322aa3: Waiting
+938169d3fa53: Waiting
+67aec46cc9bc: Waiting
+92bf6f086eef: Waiting
+eddd13839d27: Waiting
+6c7b675a2d94: Waiting
+10ceb438865c: Verifying Checksum
+10ceb438865c: Download complete
+aab707835907: Download complete
+625b0c14d41b: Verifying Checksum
+625b0c14d41b: Download complete
+4faae6904470: Verifying Checksum
+4faae6904470: Download complete
+3b65ec22a9e9: Verifying Checksum
+3b65ec22a9e9: Download complete
+3a0584074529: Verifying Checksum
+3a0584074529: Download complete
+8aec5b04915d: Verifying Checksum
+8aec5b04915d: Download complete
+375fd82da226: Verifying Checksum
+375fd82da226: Download complete
+eb35dcebf5f0: Verifying Checksum
+eb35dcebf5f0: Download complete
+0d62c252c62e: Verifying Checksum
+0d62c252c62e: Download complete
+3b65ec22a9e9: Pull complete
+10ceb438865c: Pull complete
+f4783e0118a3: Verifying Checksum
+f4783e0118a3: Download complete
+aab707835907: Pull complete
+625b0c14d41b: Pull complete
+9120fb1fc8cb: Verifying Checksum
+9120fb1fc8cb: Download complete
+9b3ac3b90fd5: Verifying Checksum
+9b3ac3b90fd5: Download complete
+db35d98d120e: Verifying Checksum
+db35d98d120e: Download complete
+1e855a499ff2: Verifying Checksum
+1e855a499ff2: Download complete
+331e2137023c: Verifying Checksum
+331e2137023c: Download complete
+17d743a62b4c: Verifying Checksum
+17d743a62b4c: Download complete
+938169d3fa53: Verifying Checksum
+938169d3fa53: Download complete
+733443d9da67: Verifying Checksum
+733443d9da67: Download complete
+86c9aea85eab: Verifying Checksum
+86c9aea85eab: Download complete
+77d76b322aa3: Verifying Checksum
+77d76b322aa3: Download complete
+eddd13839d27: Verifying Checksum
+eddd13839d27: Download complete
+92bf6f086eef: Verifying Checksum
+92bf6f086eef: Download complete
+6c7b675a2d94: Verifying Checksum
+6c7b675a2d94: Download complete
+870ae27479ac: Verifying Checksum
+870ae27479ac: Download complete
+67aec46cc9bc: Verifying Checksum
+67aec46cc9bc: Download complete
+375fd82da226: Pull complete
+4faae6904470: Pull complete
+3a0584074529: Pull complete
+0d62c252c62e: Pull complete
+8aec5b04915d: Pull complete
+eb35dcebf5f0: Pull complete
+9120fb1fc8cb: Pull complete
+f4783e0118a3: Pull complete
+db35d98d120e: Pull complete
+870ae27479ac: Pull complete
+9b3ac3b90fd5: Pull complete
+1e855a499ff2: Pull complete
+17d743a62b4c: Pull complete
+331e2137023c: Pull complete
+938169d3fa53: Pull complete
+67aec46cc9bc: Pull complete
+733443d9da67: Pull complete
+86c9aea85eab: Pull complete
+77d76b322aa3: Pull complete
+eddd13839d27: Pull complete
+92bf6f086eef: Pull complete
+6c7b675a2d94: Pull complete
+Digest: sha256:d74f5e4d505aaa3a03b8ee10ca10884f25940da69cdd51fed1a786d7b50dc1ee
+Status: Downloaded newer image for nciccbr/ccbr_ubuntu_base_20.04:v2.0
+ ---> 6e1428b3958a
+Step 2/15 : ENV TAG="v1.0"
+ ---> Running in a7b033a24803
+Removing intermediate container a7b033a24803
+ ---> 52f0c700a195
+Step 3/15 : WORKDIR /opt2
+ ---> Running in 4028a1e4b36b
+Removing intermediate container 4028a1e4b36b
+ ---> 54bcf082b157
+Step 4/15 : RUN git clone https://github.com/lh3/minimap2 && cd minimap2 && make
+ ---> Running in 9eba21b5d40a
+[91mCloning into 'minimap2'...
+[0mcc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  main.c -o main.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  kthread.c -o kthread.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  kalloc.c -o kalloc.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  misc.c -o misc.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  bseq.c -o bseq.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  sketch.c -o sketch.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  sdust.c -o sdust.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  options.c -o options.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  index.c -o index.o
+[91mindex.c: In function 'mm_idx_load':
+index.c:519:3: warning: ignoring return value of 'fread', declared with attribute warn_unused_result [-Wunused-result]
+  519 |   fread(&l, 1, 1, fp);
+      |   ^~~~~~~~~~~~~~~~~~~
+[0m[91mindex.c:522:4: warning: ignoring return value of 'fread', declared with attribute warn_unused_result [-Wunused-result]
+  522 |    fread(s->name, 1, l, fp);
+      |    ^~~~~~~~~~~~~~~~~~~~~~~~
+index.c:525:3: warning: ignoring return value of 'fread', declared with attribute warn_unused_result [-Wunused-result]
+  525 |   fread(&s->len, 4, 1, fp);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~
+index.c:535:3: warning: ignoring return value of 'fread', declared with attribute warn_unused_result [-Wunused-result]
+  535 |   fread(&b->n, 4, 1, fp);
+      |   ^~~~~~~~~~~~~~~~~~~~~~
+index.c:537:3: warning: ignoring return value of 'fread', declared with attribute warn_unused_result [-Wunused-result]
+  537 |   fread(b->p, 8, b->n, fp);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~
+index.c:538:3: warning: ignoring return value of 'fread', declared with attribute warn_unused_result [-Wunused-result]
+  538 |   fread(&size, 4, 1, fp);
+      |   ^~~~~~~~~~~~~~~~~~~~~~
+index.c:545:4: warning: ignoring return value of 'fread', declared with attribute warn_unused_result [-Wunused-result]
+  545 |    fread(x, 8, 2, fp);
+      |    ^~~~~~~~~~~~~~~~~~
+index.c:553:3: warning: ignoring return value of 'fread', declared with attribute warn_unused_result [-Wunused-result]
+  553 |   fread(mi->S, 4, (sum_len + 7) / 8, fp);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[0mcc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  lchain.c -o lchain.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  align.c -o align.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  hit.c -o hit.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  seed.c -o seed.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  map.c -o map.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  format.c -o format.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  pe.c -o pe.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  esterr.c -o esterr.o
+cc -c -g -Wall -O2 -Wc++-compat  -DHAVE_KALLOC  splitidx.c -o splitidx.o
+cc -c -g -Wall -O2 -Wc++-compat  -msse2 -DHAVE_KALLOC  ksw2_ll_sse.c -o ksw2_ll_sse.o
+cc -c -g -Wall -O2 -Wc++-compat  -msse4.1 -DHAVE_KALLOC -DKSW_CPU_DISPATCH  ksw2_extz2_sse.c -o ksw2_extz2_sse41.o
+cc -c -g -Wall -O2 -Wc++-compat  -msse4.1 -DHAVE_KALLOC -DKSW_CPU_DISPATCH  ksw2_extd2_sse.c -o ksw2_extd2_sse41.o
+cc -c -g -Wall -O2 -Wc++-compat  -msse4.1 -DHAVE_KALLOC -DKSW_CPU_DISPATCH  ksw2_exts2_sse.c -o ksw2_exts2_sse41.o
+cc -c -g -Wall -O2 -Wc++-compat  -msse2 -mno-sse4.1 -DHAVE_KALLOC -DKSW_CPU_DISPATCH -DKSW_SSE2_ONLY  ksw2_extz2_sse.c -o ksw2_extz2_sse2.o
+cc -c -g -Wall -O2 -Wc++-compat  -msse2 -mno-sse4.1 -DHAVE_KALLOC -DKSW_CPU_DISPATCH -DKSW_SSE2_ONLY  ksw2_extd2_sse.c -o ksw2_extd2_sse2.o
+cc -c -g -Wall -O2 -Wc++-compat  -msse2 -mno-sse4.1 -DHAVE_KALLOC -DKSW_CPU_DISPATCH -DKSW_SSE2_ONLY  ksw2_exts2_sse.c -o ksw2_exts2_sse2.o
+cc -c -g -Wall -O2 -Wc++-compat  -msse4.1 -DHAVE_KALLOC -DKSW_CPU_DISPATCH  ksw2_dispatch.c -o ksw2_dispatch.o
+ar -csru libminimap2.a kthread.o kalloc.o misc.o bseq.o sketch.o sdust.o options.o index.o lchain.o align.o hit.o seed.o map.o format.o pe.o esterr.o splitidx.o ksw2_ll_sse.o ksw2_extz2_sse41.o ksw2_extd2_sse41.o ksw2_exts2_sse41.o ksw2_extz2_sse2.o ksw2_extd2_sse2.o ksw2_exts2_sse2.o ksw2_dispatch.o
+[91mar: `u' modifier ignored since `D' is the default (see `U')
+[0mcc -g -Wall -O2 -Wc++-compat  main.o -o minimap2 -L. -lminimap2 -lm -lz -lpthread
+Removing intermediate container 9eba21b5d40a
+ ---> 3bc70439542a
+Step 5/15 : ENV PATH="/opt2/minimap2:$PATH"
+ ---> Running in c9de21291104
+Removing intermediate container c9de21291104
+ ---> 2358d9be7371
+Step 6/15 : WORKDIR /opt2
+ ---> Running in 6e5b2f18f4ec
+Removing intermediate container 6e5b2f18f4ec
+ ---> 9587596be683
+Step 7/15 : RUN ln -s /usr/bin/pip3 /usr/bin/pip3.8 && pip3 install isocirc
+ ---> Running in 6954b259ff31
+Collecting isocirc
+  Downloading isocirc-1.0.4-py3-none-any.whl (25.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 25.5/25.5 MB 36.2 MB/s eta 0:00:00
+Collecting pyinterval
+  Downloading pyinterval-1.2.0.tar.gz (25 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting pandas
+  Downloading pandas-1.5.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.2/12.2 MB 66.9 MB/s eta 0:00:00
+Requirement already satisfied: numpy in /usr/local/lib/python3.8/dist-packages (from isocirc) (1.23.1)
+Collecting pyfaidx
+  Downloading pyfaidx-0.7.1.tar.gz (103 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 103.2/103.2 kB 14.8 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting matplotlib
+  Downloading matplotlib-3.6.2-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (9.4 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.4/9.4 MB 81.4 MB/s eta 0:00:00
+Requirement already satisfied: pysam in /usr/local/lib/python3.8/dist-packages (from isocirc) (0.19.1)
+Collecting biopython
+  Downloading biopython-1.79-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.7/2.7 MB 50.9 MB/s eta 0:00:00
+Collecting mappy
+  Downloading mappy-2.24.tar.gz (140 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 140.9/140.9 kB 18.5 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting gffutils
+  Downloading gffutils-0.11.1.tar.gz (1.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 56.9 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting argcomplete>=1.9.4
+  Downloading argcomplete-2.0.0-py2.py3-none-any.whl (37 kB)
+Collecting argh>=0.26.2
+  Downloading argh-0.26.2-py2.py3-none-any.whl (30 kB)
+Collecting simplejson
+  Downloading simplejson-3.18.0-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (139 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 140.0/140.0 kB 16.4 MB/s eta 0:00:00
+Requirement already satisfied: six>=1.12.0 in /usr/lib/python3/dist-packages (from gffutils->isocirc) (1.14.0)
+Requirement already satisfied: setuptools>=0.7 in /usr/lib/python3/dist-packages (from pyfaidx->isocirc) (45.2.0)
+Requirement already satisfied: pyparsing>=2.2.1 in /usr/lib/python3/dist-packages (from matplotlib->isocirc) (2.4.6)
+Collecting kiwisolver>=1.0.1
+  Downloading kiwisolver-1.4.4-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl (1.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 54.0 MB/s eta 0:00:00
+Collecting contourpy>=1.0.1
+  Downloading contourpy-1.0.6-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (295 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 296.0/296.0 kB 34.3 MB/s eta 0:00:00
+Collecting pillow>=6.2.0
+  Downloading Pillow-9.3.0-cp38-cp38-manylinux_2_28_x86_64.whl (3.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.3/3.3 MB 74.7 MB/s eta 0:00:00
+Requirement already satisfied: python-dateutil>=2.7 in /usr/lib/python3/dist-packages (from matplotlib->isocirc) (2.7.3)
+Collecting packaging>=20.0
+  Using cached packaging-21.3-py3-none-any.whl (40 kB)
+Collecting fonttools>=4.22.0
+  Downloading fonttools-4.38.0-py3-none-any.whl (965 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 965.4/965.4 kB 58.7 MB/s eta 0:00:00
+Collecting cycler>=0.10
+  Downloading cycler-0.11.0-py3-none-any.whl (6.4 kB)
+Collecting pytz>=2020.1
+  Downloading pytz-2022.6-py2.py3-none-any.whl (498 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 498.1/498.1 kB 8.2 MB/s eta 0:00:00
+Collecting python-dateutil>=2.7
+  Downloading python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 247.7/247.7 kB 8.9 MB/s eta 0:00:00
+Collecting crlibm==1.*,>=1.0.3
+  Downloading crlibm-1.0.3.tar.gz (1.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 70.9 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Building wheels for collected packages: gffutils, pyfaidx, mappy, pyinterval, crlibm
+  Building wheel for gffutils (setup.py): started
+  Building wheel for gffutils (setup.py): finished with status 'done'
+  Created wheel for gffutils: filename=gffutils-0.11.1-py3-none-any.whl size=1619356 sha256=daabba6e730ffad939a5cf37d47a2788073923e2ba472b098775024990f4d803
+  Stored in directory: /root/.cache/pip/wheels/fd/d2/4f/a441971b5d0e5fdb43cc6c4c9305c172e418fae6da18309ee0
+  Building wheel for pyfaidx (setup.py): started
+  Building wheel for pyfaidx (setup.py): finished with status 'done'
+  Created wheel for pyfaidx: filename=pyfaidx-0.7.1-py3-none-any.whl size=27719 sha256=9106ac2704f3fec5ad5023ad115347fda08b3b8c5bce3f2b865050c6dc91f206
+  Stored in directory: /root/.cache/pip/wheels/0e/6c/f4/2560f2678a35d8b1997bb693336743308ef32b78bc9ce9aaf4
+  Building wheel for mappy (setup.py): started
+  Building wheel for mappy (setup.py): finished with status 'done'
+  Created wheel for mappy: filename=mappy-2.24-cp38-cp38-linux_x86_64.whl size=660369 sha256=c6061a008cb4b8322afaf315d4b70e3a71d06d55d43653f134d68634e93cdd10
+  Stored in directory: /root/.cache/pip/wheels/df/ca/6a/7be4760503025a76f7e52b3487f622e2698ae87598f8d8e0c5
+  Building wheel for pyinterval (setup.py): started
+  Building wheel for pyinterval (setup.py): finished with status 'done'
+  Created wheel for pyinterval: filename=pyinterval-1.2.0-py3-none-any.whl size=11239 sha256=c1db6b8ebf042c27de2e8addf67bd17c6f41863e9c0ed44623a08fe1ee4c95a7
+  Stored in directory: /root/.cache/pip/wheels/f0/fc/af/8c69a2ed7df2bb1aeaa5fb056b77bc943fb0af605fdfed3937
+  Building wheel for crlibm (setup.py): started
+  Building wheel for crlibm (setup.py): finished with status 'done'
+  Created wheel for crlibm: filename=crlibm-1.0.3-cp38-cp38-linux_x86_64.whl size=168267 sha256=2b603e0e6620e0b8ea939766c328c5acc3ef0dcf4ad488fc0cb419d1d9c8f554
+  Stored in directory: /root/.cache/pip/wheels/0c/94/29/3e0e876a557418f2b0dbcfe5b6e65d8922297ad991f314927b
+Successfully built gffutils pyfaidx mappy pyinterval crlibm
+Installing collected packages: pytz, mappy, crlibm, argh, simplejson, python-dateutil, pyinterval, pyfaidx, pillow, packaging, kiwisolver, fonttools, cycler, contourpy, biopython, argcomplete, pandas, matplotlib, gffutils, isocirc
+  Attempting uninstall: python-dateutil
+    Found existing installation: python-dateutil 2.7.3
+    Uninstalling python-dateutil-2.7.3:
+      Successfully uninstalled python-dateutil-2.7.3
+Successfully installed argcomplete-2.0.0 argh-0.26.2 biopython-1.79 contourpy-1.0.6 crlibm-1.0.3 cycler-0.11.0 fonttools-4.38.0 gffutils-0.11.1 isocirc-1.0.4 kiwisolver-1.4.4 mappy-2.24 matplotlib-3.6.2 packaging-21.3 pandas-1.5.1 pillow-9.3.0 pyfaidx-0.7.1 pyinterval-1.2.0 python-dateutil-2.8.2 pytz-2022.6 simplejson-3.18.0
+[91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[0m[91m
+[notice] A new release of pip available: 22.2.2 -> 22.3.1
+[notice] To update, run: python3 -m pip install --upgrade pip
+[0mRemoving intermediate container 6954b259ff31
+ ---> 42ee135faeef
+Step 8/15 : COPY Dockerfile.${TAG} /opt2/Dockerfile.${TAG}
+ ---> 700f9d2ce3ea
+Step 9/15 : RUN if [ -f /opt2/Dockerfile ];then rm -f /opt2/Dockerfile;fi &&     ln -s Dockerfile.${TAG} Dockerfile &&     chmod a+r /opt2/Dockerfile.${TAG}
+ ---> Running in c55566822b16
+Removing intermediate container c55566822b16
+ ---> a91aac6997f2
+Step 10/15 : WORKDIR /data2
+ ---> Running in adec8dd0a52d
+Removing intermediate container adec8dd0a52d
+ ---> 6afdee3aba74
+Step 11/15 : RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+ ---> Running in 4c15c7529ac7
+Removing intermediate container 4c15c7529ac7
+ ---> bb8eb4a0f618
+Step 12/15 : LABEL maintainer="vishal.koparde@nih.gov"
+ ---> Running in 0af2267b762e
+Removing intermediate container 0af2267b762e
+ ---> 097bd9335426
+Step 13/15 : LABEL github_handle="kopardev"
+ ---> Running in bc343f564b3b
+Removing intermediate container bc343f564b3b
+ ---> c3880e7f27dd
+Step 14/15 : ARG BUILD_DATE
+ ---> Running in 1d710a5f49ba
+Removing intermediate container 1d710a5f49ba
+ ---> 69397abd79ef
+Step 15/15 : LABEL build_date=$BUILD_DATE
+ ---> Running in 3456f5113a0c
+Removing intermediate container 3456f5113a0c
+ ---> 00209878c3f3
+Successfully built 00209878c3f3
+Successfully tagged nciccbr/ccbr_isocirc:v1.0

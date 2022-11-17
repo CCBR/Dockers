@@ -1,0 +1,131 @@
+Sending build context to Docker daemon   21.5kB
+Step 1/14 : FROM nciccbr/ccbr_ubuntu_base_20.04:v2.0
+ ---> 6e1428b3958a
+Step 2/14 : ENV TAG="v1.0"
+ ---> Using cache
+ ---> 44d9ac68892e
+Step 3/14 : WORKDIR /opt2
+ ---> Using cache
+ ---> b557d3db344f
+Step 4/14 : RUN git clone https://github.com/lh3/minimap2 && cd minimap2 && make
+ ---> Using cache
+ ---> 034c3f9b4788
+Step 5/14 : ENV PATH="/opt2/minimap2:$PATH"
+ ---> Using cache
+ ---> f3a1009e0621
+Step 6/14 : WORKDIR /opt2
+ ---> Using cache
+ ---> 4cf308210d3b
+Step 7/14 : RUN ln -s /usr/bin/pip3 /usr/bin/pip3.8 && pip3 install isocirc
+ ---> Running in b9c5451828a0
+Collecting isocirc
+  Downloading isocirc-1.0.4-py3-none-any.whl (25.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 25.5/25.5 MB 32.6 MB/s eta 0:00:00
+Collecting gffutils
+  Downloading gffutils-0.11.1.tar.gz (1.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 71.4 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting biopython
+  Downloading biopython-1.79-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.7/2.7 MB 77.1 MB/s eta 0:00:00
+Collecting pyfaidx
+  Downloading pyfaidx-0.7.1.tar.gz (103 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 103.2/103.2 kB 13.8 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting matplotlib
+  Downloading matplotlib-3.6.2-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (9.4 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.4/9.4 MB 23.5 MB/s eta 0:00:00
+Requirement already satisfied: pysam in /usr/local/lib/python3.8/dist-packages (from isocirc) (0.19.1)
+Requirement already satisfied: numpy in /usr/local/lib/python3.8/dist-packages (from isocirc) (1.23.1)
+Collecting pandas
+  Downloading pandas-1.5.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.2/12.2 MB 79.4 MB/s eta 0:00:00
+Collecting pyinterval
+  Downloading pyinterval-1.2.0.tar.gz (25 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting mappy
+  Downloading mappy-2.24.tar.gz (140 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 140.9/140.9 kB 19.8 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting argcomplete>=1.9.4
+  Downloading argcomplete-2.0.0-py2.py3-none-any.whl (37 kB)
+Collecting argh>=0.26.2
+  Downloading argh-0.26.2-py2.py3-none-any.whl (30 kB)
+Collecting simplejson
+  Downloading simplejson-3.18.0-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (139 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 140.0/140.0 kB 19.2 MB/s eta 0:00:00
+Requirement already satisfied: six>=1.12.0 in /usr/lib/python3/dist-packages (from gffutils->isocirc) (1.14.0)
+Requirement already satisfied: setuptools>=0.7 in /usr/lib/python3/dist-packages (from pyfaidx->isocirc) (45.2.0)
+Requirement already satisfied: pyparsing>=2.2.1 in /usr/lib/python3/dist-packages (from matplotlib->isocirc) (2.4.6)
+Collecting pillow>=6.2.0
+  Downloading Pillow-9.3.0-cp38-cp38-manylinux_2_28_x86_64.whl (3.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.3/3.3 MB 84.2 MB/s eta 0:00:00
+Collecting kiwisolver>=1.0.1
+  Downloading kiwisolver-1.4.4-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl (1.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 54.1 MB/s eta 0:00:00
+Collecting packaging>=20.0
+  Using cached packaging-21.3-py3-none-any.whl (40 kB)
+Collecting contourpy>=1.0.1
+  Downloading contourpy-1.0.6-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (295 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 296.0/296.0 kB 35.9 MB/s eta 0:00:00
+Collecting fonttools>=4.22.0
+  Downloading fonttools-4.38.0-py3-none-any.whl (965 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 965.4/965.4 kB 45.3 MB/s eta 0:00:00
+Requirement already satisfied: python-dateutil>=2.7 in /usr/lib/python3/dist-packages (from matplotlib->isocirc) (2.7.3)
+Collecting cycler>=0.10
+  Downloading cycler-0.11.0-py3-none-any.whl (6.4 kB)
+Collecting pytz>=2020.1
+  Downloading pytz-2022.6-py2.py3-none-any.whl (498 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 498.1/498.1 kB 43.0 MB/s eta 0:00:00
+Collecting python-dateutil>=2.7
+  Downloading python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 247.7/247.7 kB 32.1 MB/s eta 0:00:00
+Collecting crlibm==1.*,>=1.0.3
+  Downloading crlibm-1.0.3.tar.gz (1.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 61.6 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Building wheels for collected packages: gffutils, pyfaidx, mappy, pyinterval, crlibm
+  Building wheel for gffutils (setup.py): started
+  Building wheel for gffutils (setup.py): finished with status 'done'
+  Created wheel for gffutils: filename=gffutils-0.11.1-py3-none-any.whl size=1619356 sha256=97815a7d12893245e03c474ba8282579d347dfc6802c1d87a26dc145968950bc
+  Stored in directory: /root/.cache/pip/wheels/fd/d2/4f/a441971b5d0e5fdb43cc6c4c9305c172e418fae6da18309ee0
+  Building wheel for pyfaidx (setup.py): started
+  Building wheel for pyfaidx (setup.py): finished with status 'done'
+  Created wheel for pyfaidx: filename=pyfaidx-0.7.1-py3-none-any.whl size=27719 sha256=e3bb6a9fd12d22f300257dd4f1dd6c026d66c58544c1dec8362802ff018cddef
+  Stored in directory: /root/.cache/pip/wheels/0e/6c/f4/2560f2678a35d8b1997bb693336743308ef32b78bc9ce9aaf4
+  Building wheel for mappy (setup.py): started
+  Building wheel for mappy (setup.py): finished with status 'done'
+  Created wheel for mappy: filename=mappy-2.24-cp38-cp38-linux_x86_64.whl size=660372 sha256=7bea5fda8427382b711a15f5ccbd1e4f9474ef2ae8b0e2531ec457a47da9c03d
+  Stored in directory: /root/.cache/pip/wheels/df/ca/6a/7be4760503025a76f7e52b3487f622e2698ae87598f8d8e0c5
+  Building wheel for pyinterval (setup.py): started
+  Building wheel for pyinterval (setup.py): finished with status 'done'
+  Created wheel for pyinterval: filename=pyinterval-1.2.0-py3-none-any.whl size=11239 sha256=afda28c586ca4bb23a8e42a90896079543e3a4d0552365871b91a43195c6e103
+  Stored in directory: /root/.cache/pip/wheels/f0/fc/af/8c69a2ed7df2bb1aeaa5fb056b77bc943fb0af605fdfed3937
+  Building wheel for crlibm (setup.py): started
+  Building wheel for crlibm (setup.py): finished with status 'done'
+  Created wheel for crlibm: filename=crlibm-1.0.3-cp38-cp38-linux_x86_64.whl size=168258 sha256=2eb5368788c07d41be4202f3fdb763adf3b173c5c7111614ba10c9bc588a6ead
+  Stored in directory: /root/.cache/pip/wheels/0c/94/29/3e0e876a557418f2b0dbcfe5b6e65d8922297ad991f314927b
+Successfully built gffutils pyfaidx mappy pyinterval crlibm
+Installing collected packages: pytz, mappy, crlibm, argh, simplejson, python-dateutil, pyinterval, pyfaidx, pillow, packaging, kiwisolver, fonttools, cycler, contourpy, biopython, argcomplete, pandas, matplotlib, gffutils, isocirc
+  Attempting uninstall: python-dateutil
+    Found existing installation: python-dateutil 2.7.3
+    Uninstalling python-dateutil-2.7.3:
+      Successfully uninstalled python-dateutil-2.7.3
+Successfully installed argcomplete-2.0.0 argh-0.26.2 biopython-1.79 contourpy-1.0.6 crlibm-1.0.3 cycler-0.11.0 fonttools-4.38.0 gffutils-0.11.1 isocirc-1.0.4 kiwisolver-1.4.4 mappy-2.24 matplotlib-3.6.2 packaging-21.3 pandas-1.5.1 pillow-9.3.0 pyfaidx-0.7.1 pyinterval-1.2.0 python-dateutil-2.8.2 pytz-2022.6 simplejson-3.18.0
+[91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[0m[91m
+[notice] A new release of pip available: 22.2.2 -> 22.3.1
+[notice] To update, run: python3 -m pip install --upgrade pip
+[0mRemoving intermediate container b9c5451828a0
+ ---> a87d85bb2ef7
+Step 8/14 : COPY Dockerfile.${TAG} /opt2/Dockerfile.${TAG}
+ ---> f84800ebea4a
+Step 9/14 : RUN if [ -f /opt2/Dockerfile ];then rm -f /opt2/Dockerfile;fi &&     ln -s Dockerfile.${TAG} Dockerfile &&     chmod a+r /opt2/Dockerfile.${TAG} && WORKDIR /data2
+ ---> Running in 8d27b25c0488
+[91m/bin/sh: 1: [0m[91mWORKDIR: not found
+[0m
