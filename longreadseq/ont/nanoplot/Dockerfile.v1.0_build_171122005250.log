@@ -1,0 +1,117 @@
+Sending build context to Docker daemon   2.56kB
+Step 1/12 : FROM nciccbr/ccbr_ubuntu_base_20.04:v2.1
+ ---> bf65e40a3e88
+Step 2/12 : ENV TAG="v1.0"
+ ---> Running in aaf5dea6861a
+Removing intermediate container aaf5dea6861a
+ ---> 6bcfcc4361e0
+Step 3/12 : WORKDIR /opt2
+ ---> Running in e9b7bd9c71f3
+Removing intermediate container e9b7bd9c71f3
+ ---> bb8b8ba779f1
+Step 4/12 : RUN pip install Nanoplot
+ ---> Running in 30b30cf20f98
+Collecting Nanoplot
+  Downloading NanoPlot-1.40.2.tar.gz (42 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 42.8/42.8 kB 2.3 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting biopython
+  Downloading biopython-1.79-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.7/2.7 MB 36.8 MB/s eta 0:00:00
+Collecting kaleido
+  Downloading kaleido-0.2.1-py2.py3-none-manylinux1_x86_64.whl (79.9 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 79.9/79.9 MB 12.6 MB/s eta 0:00:00
+Collecting nanoget>=1.18.1
+  Downloading nanoget-1.18.1.tar.gz (24 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting nanomath>=1.0.0
+  Downloading nanomath-1.2.1.tar.gz (17 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Requirement already satisfied: numpy>=1.16.5 in /usr/local/lib/python3.8/dist-packages (from Nanoplot) (1.23.1)
+Collecting pandas>=1.1.0
+  Downloading pandas-1.5.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.2/12.2 MB 42.8 MB/s eta 0:00:00
+Collecting plotly>=5.4.0
+  Downloading plotly-5.11.0-py2.py3-none-any.whl (15.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 15.3/15.3 MB 63.4 MB/s eta 0:00:00
+Collecting pyarrow
+  Downloading pyarrow-10.0.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (35.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 31.9 MB/s eta 0:00:00
+Requirement already satisfied: pysam>0.10.0.0 in /usr/local/lib/python3.8/dist-packages (from Nanoplot) (0.19.1)
+Requirement already satisfied: python-dateutil in /usr/lib/python3/dist-packages (from Nanoplot) (2.7.3)
+Requirement already satisfied: scipy in /usr/local/lib/python3.8/dist-packages (from Nanoplot) (1.9.0)
+Collecting Python-Deprecated
+  Downloading Python-Deprecated-1.1.0.tar.gz (2.9 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting python-dateutil
+  Downloading python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 247.7/247.7 kB 28.2 MB/s eta 0:00:00
+Collecting pytz>=2020.1
+  Downloading pytz-2022.6-py2.py3-none-any.whl (498 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 498.1/498.1 kB 42.2 MB/s eta 0:00:00
+Collecting tenacity>=6.2.0
+  Downloading tenacity-8.1.0-py3-none-any.whl (23 kB)
+Requirement already satisfied: six>=1.5 in /usr/lib/python3/dist-packages (from python-dateutil->Nanoplot) (1.14.0)
+Building wheels for collected packages: Nanoplot, nanoget, nanomath, Python-Deprecated
+  Building wheel for Nanoplot (setup.py): started
+  Building wheel for Nanoplot (setup.py): finished with status 'done'
+  Created wheel for Nanoplot: filename=NanoPlot-1.40.2-py3-none-any.whl size=57428 sha256=e2e67f132e4c4b3c29dff4a8617de46852785a2b3c4c4eb7e8d3710da5a5287a
+  Stored in directory: /root/.cache/pip/wheels/bd/3a/11/c2f7045afaeff818c5940036a317b941d674d0c97e5c839628
+  Building wheel for nanoget (setup.py): started
+  Building wheel for nanoget (setup.py): finished with status 'done'
+  Created wheel for nanoget: filename=nanoget-1.18.1-py3-none-any.whl size=37437 sha256=277d0672cd4bd21082ab090dd721f41ead9d261a19d4be48484a758028e21aa0
+  Stored in directory: /root/.cache/pip/wheels/78/04/b9/575796a75d825b495776b80c4fbe186a9bd6bd02891a218a6d
+  Building wheel for nanomath (setup.py): started
+  Building wheel for nanomath (setup.py): finished with status 'done'
+  Created wheel for nanomath: filename=nanomath-1.2.1-py3-none-any.whl size=30690 sha256=b439d03fe6fcf4e589fbf79b22112b9a823864a5ae01fa84b704a7b7d674dea5
+  Stored in directory: /root/.cache/pip/wheels/85/9a/c6/e3e4c7e6efa606f41a0626553ed92835fe5a8c46ace8b82ca1
+  Building wheel for Python-Deprecated (setup.py): started
+  Building wheel for Python-Deprecated (setup.py): finished with status 'done'
+  Created wheel for Python-Deprecated: filename=Python_Deprecated-1.1.0-py2.py3-none-any.whl size=3068 sha256=aba39355524e141c2e6e5dfbb20f2af7d3073c33eb51b3a7f5c6da396e4a89aa
+  Stored in directory: /root/.cache/pip/wheels/54/67/30/2d3332f0e7a4ca0465b34f56034d7a9f5d5833b0926954a7a2
+Successfully built Nanoplot nanoget nanomath Python-Deprecated
+Installing collected packages: pytz, Python-Deprecated, kaleido, tenacity, python-dateutil, pyarrow, biopython, plotly, pandas, nanomath, nanoget, Nanoplot
+  Attempting uninstall: python-dateutil
+    Found existing installation: python-dateutil 2.7.3
+    Uninstalling python-dateutil-2.7.3:
+      Successfully uninstalled python-dateutil-2.7.3
+Successfully installed Nanoplot-1.40.2 Python-Deprecated-1.1.0 biopython-1.79 kaleido-0.2.1 nanoget-1.18.1 nanomath-1.2.1 pandas-1.5.1 plotly-5.11.0 pyarrow-10.0.0 python-dateutil-2.8.2 pytz-2022.6 tenacity-8.1.0
+[91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[0mRemoving intermediate container 30b30cf20f98
+ ---> a22a557c1f9f
+Step 5/12 : COPY Dockerfile.${TAG} /opt2/Dockerfile.${TAG}
+ ---> fc38f0e0a655
+Step 6/12 : RUN if [ -f /opt2/Dockerfile ];then rm -f /opt2/Dockerfile;fi &&     ln -s Dockerfile.${TAG} Dockerfile &&     chmod a+r /opt2/Dockerfile.${TAG}
+ ---> Running in 4c267fd09c05
+Removing intermediate container 4c267fd09c05
+ ---> 049c809ad327
+Step 7/12 : WORKDIR /data2
+ ---> Running in 9d281fb899b1
+Removing intermediate container 9d281fb899b1
+ ---> a74aa4b00a43
+Step 8/12 : RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+ ---> Running in c39d7637af3f
+Removing intermediate container c39d7637af3f
+ ---> 4ac65bfe77cc
+Step 9/12 : LABEL maintainer="vishal.koparde@nih.gov"
+ ---> Running in 1a8e68a985c7
+Removing intermediate container 1a8e68a985c7
+ ---> b814f24621a6
+Step 10/12 : LABEL github_handle="kopardev"
+ ---> Running in 050d78fe496f
+Removing intermediate container 050d78fe496f
+ ---> 554ed66d1837
+Step 11/12 : ARG BUILD_DATE
+ ---> Running in 9b3b286afe9c
+Removing intermediate container 9b3b286afe9c
+ ---> b88c5110cea1
+Step 12/12 : LABEL build_date=$BUILD_DATE
+ ---> Running in d5671f1d7a95
+Removing intermediate container d5671f1d7a95
+ ---> b46c6b09a710
+Successfully built b46c6b09a710
+Successfully tagged nciccbr/ccbr_nanoplot:v1.0

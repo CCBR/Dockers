@@ -1,0 +1,20 @@
+FROM nciccbr/ccbr_ubuntu_base_20.04:v2.1
+ENV TAG="v1.0"
+
+# Nanoplot
+WORKDIR /opt2
+RUN pip install Nanoplot
+
+# cleanup etc
+COPY Dockerfile.${TAG} /opt2/Dockerfile.${TAG}
+RUN if [ -f /opt2/Dockerfile ];then rm -f /opt2/Dockerfile;fi && \
+    ln -s Dockerfile.${TAG} Dockerfile && \
+    chmod a+r /opt2/Dockerfile.${TAG}
+WORKDIR /data2
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# details
+LABEL maintainer="vishal.koparde@nih.gov"
+LABEL github_handle="kopardev"
+ARG BUILD_DATE
+LABEL build_date=$BUILD_DATE
