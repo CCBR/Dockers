@@ -1,0 +1,108 @@
+Sending build context to Docker daemon   8.67MB
+Step 1/35 : FROM ubuntu:20.04
+ ---> 3bc6e9f30f51
+Step 2/35 : LABEL maintainer "Vishal Koparde *(kopardev on GitHub)*"
+ ---> Using cache
+ ---> 1add54972d1e
+Step 3/35 : ENV TAG="v2.0"
+ ---> Using cache
+ ---> 1cb99437ff04
+Step 4/35 : RUN mkdir -p /opt2 && mkdir -p /data2
+ ---> Using cache
+ ---> 99438b05b4b3
+Step 5/35 : ENV TZ=America/New_York
+ ---> Using cache
+ ---> 45c52a8ceac7
+Step 6/35 : RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+ ---> Using cache
+ ---> b7d217f6fdc8
+Step 7/35 : RUN apt update
+ ---> Using cache
+ ---> 25e9d3d1ca2a
+Step 8/35 : RUN apt-get install -y cpanminus build-essential gfortran make gcc g++ cmake
+ ---> Using cache
+ ---> ea3d439679c7
+Step 9/35 : RUN cpanm FindBin Term::ReadLine
+ ---> Using cache
+ ---> 83f0b7574b52
+Step 10/35 : RUN apt-get install -y locales && localedef -i en_US -f UTF-8 en_US.UTF-8
+ ---> Using cache
+ ---> 2b4c9683cf5d
+Step 11/35 : RUN apt-get install -y librtmp-dev libssl-dev libatlas-base-dev libblas-dev libboost-dev libbz2-dev  libexpat1-dev libfreetype6-dev libgd-dev libgd-perl libgs-dev libgsl-dev libgsl0-dev  libhtml-template-compiled-perl libicu-dev libjudy-dev liblapack-dev liblzma-dev libmysqlclient-dev libncurses-dev  libopenmpi-dev libpng-dev libssl-dev libtool libxml-libxml-debugging-perl libxml-opml-simplegen-perl  libxml2-dev libxslt-dev manpages-dev zlib1g-dev libcurl4-openssl-dev
+ ---> Using cache
+ ---> e88ec2ef7561
+Step 12/35 : RUN apt-get install -y unzip zlibc zlib1g bzip2 wget git curl pigz parallel
+ ---> Using cache
+ ---> 5341bfc91b0f
+Step 13/35 : RUN apt-get install -y python3-pip
+ ---> Using cache
+ ---> 745d4b775b0d
+Step 14/35 : RUN pip3 install --upgrade pip && 	pip3 install numpy && 	pip3 install scipy && 	pip3 install argparse && 	pip3 install pysam
+ ---> Using cache
+ ---> fd3df90cb8be
+Step 15/35 : RUN apt-get install -y bowtie bowtie2 bwa bedtools bedops samtools bcftools vcftools
+ ---> Using cache
+ ---> 81f764f36444
+Step 16/35 : RUN apt-get install -y r-base r-base-dev r-base-core
+ ---> Using cache
+ ---> d9350fc94d5b
+Step 17/35 : RUN apt-get install -y openjdk-8-jdk
+ ---> Using cache
+ ---> 97942c0df106
+Step 18/35 : RUN apt-get install -y figlet
+ ---> Using cache
+ ---> e9c19f72d0c7
+Step 19/35 : RUN ln -s /usr/bin/python3.8 /usr/bin/python
+ ---> Using cache
+ ---> 091dc01b7c41
+Step 20/35 : RUN apt-get install -y python2.7 rsync && ln -s /usr/bin/python2.7 /usr/bin/python2
+ ---> Using cache
+ ---> 976314b1be77
+Step 21/35 : WORKDIR /opt2
+ ---> Using cache
+ ---> 52c00ac760f0
+Step 22/35 : COPY samtools-1.15.1.tar.bz2 .
+ ---> Using cache
+ ---> dee742ee87b9
+Step 23/35 : RUN tar xjfv samtools-1.15.1.tar.bz2 && rm -f samtools-1.15.1.tar.bz2 && mkdir -p /opt2/samtools
+ ---> Using cache
+ ---> 2eef9eb2de88
+Step 24/35 : WORKDIR /opt2/samtools-1.15.1
+ ---> Using cache
+ ---> 1c7f9302719b
+Step 25/35 : RUN ./configure --prefix=/opt2/samtools && make && make install
+ ---> Using cache
+ ---> 82a06666399f
+Step 26/35 : WORKDIR /opt2
+ ---> Using cache
+ ---> 3482ffbc8bd8
+Step 27/35 : RUN rm -rf /opt2/samtools-1.15.1
+ ---> Using cache
+ ---> 3dda4af4ee6a
+Step 28/35 : ENV PATH="/opt2/samtools/bin:$PATH"
+ ---> Using cache
+ ---> 9a8611f0fcf5
+Step 29/35 : COPY Dockerfile.$TAG /opt2/Dockerfile.baseimage
+ ---> 6cad514ef660
+Step 30/35 : COPY argparse.bash /opt2
+ ---> 37fc9e18ac52
+Step 31/35 : COPY printversions.bash /opt2/printversions
+ ---> f4755756bcdb
+Step 32/35 : RUN chmod a+rX /opt2/Dockerfile.baseimage && chmod -R a+rx /opt2/argparse.bash && chmod -R a+rx /opt2/printversions
+ ---> Running in 0654f4989183
+Removing intermediate container 0654f4989183
+ ---> 34ea05de895a
+Step 33/35 : ENV PATH="/opt2/:$PATH"
+ ---> Running in a82116874bda
+Removing intermediate container a82116874bda
+ ---> 97d67559d1aa
+Step 34/35 : WORKDIR /data2
+ ---> Running in ec7e66ee0be2
+Removing intermediate container ec7e66ee0be2
+ ---> 13462ccfe0e4
+Step 35/35 : RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+ ---> Running in 846bdf0ea6be
+Removing intermediate container 846bdf0ea6be
+ ---> 6e1428b3958a
+Successfully built 6e1428b3958a
+Successfully tagged nciccbr/ccbr_ubuntu_base_20.04:v2.0

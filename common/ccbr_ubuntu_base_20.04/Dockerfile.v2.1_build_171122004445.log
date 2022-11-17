@@ -1,0 +1,44 @@
+Sending build context to Docker daemon  8.681MB
+Step 1/12 : FROM nciccbr/ccbr_ubuntu_base_20.04:v2.0
+ ---> 6e1428b3958a
+Step 2/12 : LABEL maintainer "Vishal Koparde *(kopardev on GitHub)*"
+ ---> Using cache
+ ---> 5283edeeeac1
+Step 3/12 : ENV TAG="v2.1"
+ ---> Using cache
+ ---> 54be57a1e160
+Step 4/12 : RUN python3 -m pip install --upgrade pip
+ ---> Using cache
+ ---> 7d276237a406
+Step 5/12 : COPY Dockerfile.${TAG} /opt2/Dockerfile.${TAG}
+ ---> accc6fc4e7b3
+Step 6/12 : RUN chmod a+rX /opt2/Dockerfile.${TAG}
+ ---> Running in e4a63fb736f2
+Removing intermediate container e4a63fb736f2
+ ---> 6633dadf7706
+Step 7/12 : WORKDIR /data2
+ ---> Running in 47bf6c5f1b9f
+Removing intermediate container 47bf6c5f1b9f
+ ---> 6f893aa2953e
+Step 8/12 : RUN apt-get clean
+ ---> Running in 68776da62056
+Removing intermediate container 68776da62056
+ ---> 0d531f523f87
+Step 9/12 : LABEL maintainer="vishal.koparde@nih.gov"
+ ---> Running in 6464c726c64d
+Removing intermediate container 6464c726c64d
+ ---> d86e052434b3
+Step 10/12 : LABEL github_handle="kopardev"
+ ---> Running in 792e0ba1d302
+Removing intermediate container 792e0ba1d302
+ ---> 11838e480982
+Step 11/12 : ARG BUILD_DATE
+ ---> Running in 9ae383336f47
+Removing intermediate container 9ae383336f47
+ ---> 6cfe8633f031
+Step 12/12 : LABEL build_date=$BUILD_DATE
+ ---> Running in 29a9b5f47988
+Removing intermediate container 29a9b5f47988
+ ---> bf65e40a3e88
+Successfully built bf65e40a3e88
+Successfully tagged nciccbr/ccbr_ubuntu_base_20.04:v2.1

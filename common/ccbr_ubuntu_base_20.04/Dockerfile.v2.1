@@ -1,0 +1,18 @@
+FROM nciccbr/ccbr_ubuntu_base_20.04:v2.0
+LABEL maintainer "Vishal Koparde *(kopardev on GitHub)*"
+ENV TAG="v2.1"
+
+# upgrade pip3
+RUN python3 -m pip install --upgrade pip
+
+# cleanup etc
+COPY Dockerfile.${TAG} /opt2/Dockerfile.${TAG}
+RUN chmod a+rX /opt2/Dockerfile.${TAG}
+WORKDIR /data2
+RUN apt-get clean
+
+# details
+LABEL maintainer="vishal.koparde@nih.gov"
+LABEL github_handle="kopardev"
+ARG BUILD_DATE
+LABEL build_date=$BUILD_DATE

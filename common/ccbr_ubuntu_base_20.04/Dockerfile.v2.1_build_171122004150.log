@@ -1,0 +1,30 @@
+Sending build context to Docker daemon  8.679MB
+Step 1/5 : FROM nciccbr/ccbr_ubuntu_base_20.04:v2.0
+ ---> 6e1428b3958a
+Step 2/5 : LABEL maintainer "Vishal Koparde *(kopardev on GitHub)*"
+ ---> Running in 681f7a152356
+Removing intermediate container 681f7a152356
+ ---> 5283edeeeac1
+Step 3/5 : ENV TAG="v2.1"
+ ---> Running in 5a628eb33024
+Removing intermediate container 5a628eb33024
+ ---> 54be57a1e160
+Step 4/5 : RUN python3 -m pip install --upgrade pip
+ ---> Running in 40e3bbc40b29
+Requirement already satisfied: pip in /usr/local/lib/python3.8/dist-packages (22.2.2)
+Collecting pip
+  Downloading pip-22.3.1-py3-none-any.whl (2.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 22.9 MB/s eta 0:00:00
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 22.2.2
+    Uninstalling pip-22.2.2:
+      Successfully uninstalled pip-22.2.2
+Successfully installed pip-22.3.1
+[91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[0mRemoving intermediate container 40e3bbc40b29
+ ---> 7d276237a406
+Step 5/5 : RUN python2 -m pip install --upgrade pip
+ ---> Running in 0aaf93800646
+[91m/usr/bin/python2: No module named pip
+[0m
