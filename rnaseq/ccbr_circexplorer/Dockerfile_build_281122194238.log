@@ -1,0 +1,227 @@
+Sending build context to Docker daemon  3.072kB
+Step 1/12 : FROM nciccbr/ccbr_ubuntu_base_20.04:v2.1
+v2.1: Pulling from nciccbr/ccbr_ubuntu_base_20.04
+3b65ec22a9e9: Pulling fs layer
+10ceb438865c: Pulling fs layer
+aab707835907: Pulling fs layer
+625b0c14d41b: Pulling fs layer
+375fd82da226: Pulling fs layer
+4faae6904470: Pulling fs layer
+3a0584074529: Pulling fs layer
+0d62c252c62e: Pulling fs layer
+8aec5b04915d: Pulling fs layer
+eb35dcebf5f0: Pulling fs layer
+9120fb1fc8cb: Pulling fs layer
+f4783e0118a3: Pulling fs layer
+db35d98d120e: Pulling fs layer
+870ae27479ac: Pulling fs layer
+9b3ac3b90fd5: Pulling fs layer
+1e855a499ff2: Pulling fs layer
+17d743a62b4c: Pulling fs layer
+331e2137023c: Pulling fs layer
+938169d3fa53: Pulling fs layer
+67aec46cc9bc: Pulling fs layer
+733443d9da67: Pulling fs layer
+86c9aea85eab: Pulling fs layer
+77d76b322aa3: Pulling fs layer
+eddd13839d27: Pulling fs layer
+92bf6f086eef: Pulling fs layer
+6c7b675a2d94: Pulling fs layer
+5a583f00ebb8: Pulling fs layer
+0a2aafdee47b: Pulling fs layer
+71de21edbf84: Pulling fs layer
+375fd82da226: Waiting
+4faae6904470: Waiting
+3a0584074529: Waiting
+0d62c252c62e: Waiting
+8aec5b04915d: Waiting
+eb35dcebf5f0: Waiting
+9120fb1fc8cb: Waiting
+f4783e0118a3: Waiting
+db35d98d120e: Waiting
+870ae27479ac: Waiting
+9b3ac3b90fd5: Waiting
+1e855a499ff2: Waiting
+17d743a62b4c: Waiting
+331e2137023c: Waiting
+938169d3fa53: Waiting
+67aec46cc9bc: Waiting
+733443d9da67: Waiting
+86c9aea85eab: Waiting
+77d76b322aa3: Waiting
+eddd13839d27: Waiting
+92bf6f086eef: Waiting
+6c7b675a2d94: Waiting
+5a583f00ebb8: Waiting
+0a2aafdee47b: Waiting
+71de21edbf84: Waiting
+625b0c14d41b: Waiting
+10ceb438865c: Download complete
+aab707835907: Verifying Checksum
+aab707835907: Download complete
+3b65ec22a9e9: Verifying Checksum
+3b65ec22a9e9: Download complete
+625b0c14d41b: Verifying Checksum
+625b0c14d41b: Download complete
+4faae6904470: Verifying Checksum
+4faae6904470: Download complete
+3a0584074529: Verifying Checksum
+3a0584074529: Download complete
+375fd82da226: Verifying Checksum
+375fd82da226: Download complete
+3b65ec22a9e9: Pull complete
+eb35dcebf5f0: Verifying Checksum
+eb35dcebf5f0: Download complete
+10ceb438865c: Pull complete
+aab707835907: Pull complete
+8aec5b04915d: Verifying Checksum
+8aec5b04915d: Download complete
+f4783e0118a3: Verifying Checksum
+f4783e0118a3: Download complete
+625b0c14d41b: Pull complete
+0d62c252c62e: Verifying Checksum
+0d62c252c62e: Download complete
+9120fb1fc8cb: Verifying Checksum
+9120fb1fc8cb: Download complete
+9b3ac3b90fd5: Verifying Checksum
+9b3ac3b90fd5: Download complete
+1e855a499ff2: Verifying Checksum
+1e855a499ff2: Download complete
+870ae27479ac: Verifying Checksum
+870ae27479ac: Download complete
+17d743a62b4c: Verifying Checksum
+17d743a62b4c: Download complete
+938169d3fa53: Verifying Checksum
+938169d3fa53: Download complete
+331e2137023c: Verifying Checksum
+331e2137023c: Download complete
+733443d9da67: Verifying Checksum
+733443d9da67: Download complete
+86c9aea85eab: Verifying Checksum
+86c9aea85eab: Download complete
+db35d98d120e: Verifying Checksum
+db35d98d120e: Download complete
+77d76b322aa3: Verifying Checksum
+77d76b322aa3: Download complete
+67aec46cc9bc: Verifying Checksum
+67aec46cc9bc: Download complete
+92bf6f086eef: Verifying Checksum
+92bf6f086eef: Download complete
+eddd13839d27: Verifying Checksum
+eddd13839d27: Download complete
+0a2aafdee47b: Verifying Checksum
+0a2aafdee47b: Download complete
+6c7b675a2d94: Verifying Checksum
+6c7b675a2d94: Download complete
+5a583f00ebb8: Verifying Checksum
+5a583f00ebb8: Download complete
+71de21edbf84: Verifying Checksum
+71de21edbf84: Download complete
+375fd82da226: Pull complete
+4faae6904470: Pull complete
+3a0584074529: Pull complete
+0d62c252c62e: Pull complete
+8aec5b04915d: Pull complete
+eb35dcebf5f0: Pull complete
+9120fb1fc8cb: Pull complete
+f4783e0118a3: Pull complete
+db35d98d120e: Pull complete
+870ae27479ac: Pull complete
+9b3ac3b90fd5: Pull complete
+1e855a499ff2: Pull complete
+17d743a62b4c: Pull complete
+331e2137023c: Pull complete
+938169d3fa53: Pull complete
+67aec46cc9bc: Pull complete
+733443d9da67: Pull complete
+86c9aea85eab: Pull complete
+77d76b322aa3: Pull complete
+eddd13839d27: Pull complete
+92bf6f086eef: Pull complete
+6c7b675a2d94: Pull complete
+5a583f00ebb8: Pull complete
+0a2aafdee47b: Pull complete
+71de21edbf84: Pull complete
+Digest: sha256:973e25e6a2114eaf1290c90fc4cc7e89fd641e6e77d05a713c1854cc2013ef81
+Status: Downloaded newer image for nciccbr/ccbr_ubuntu_base_20.04:v2.1
+ ---> bf65e40a3e88
+Step 2/12 : ENV TAG="v1.0"
+ ---> Running in 04be550b4dbc
+Removing intermediate container 04be550b4dbc
+ ---> 0002dec5476e
+Step 3/12 : WORKDIR /opt2
+ ---> Running in 96cfc81453b9
+Removing intermediate container 96cfc81453b9
+ ---> 09efab0dca7d
+Step 4/12 : RUN pip install circexplorer2
+ ---> Running in 7c37f0a88462
+Collecting circexplorer2
+  Downloading CIRCexplorer2-2.3.8-py3-none-any.whl (33 kB)
+Collecting docopt
+  Downloading docopt-0.6.2.tar.gz (25 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Requirement already satisfied: pysam>=0.8.4 in /usr/local/lib/python3.8/dist-packages (from circexplorer2) (0.19.1)
+Collecting pybedtools
+  Downloading pybedtools-0.9.0.tar.gz (12.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.5/12.5 MB 75.7 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Requirement already satisfied: requests in /usr/lib/python3/dist-packages (from circexplorer2) (2.22.0)
+Requirement already satisfied: scipy in /usr/local/lib/python3.8/dist-packages (from circexplorer2) (1.9.0)
+Requirement already satisfied: six in /usr/lib/python3/dist-packages (from pybedtools->circexplorer2) (1.14.0)
+Requirement already satisfied: numpy<1.25.0,>=1.18.5 in /usr/local/lib/python3.8/dist-packages (from scipy->circexplorer2) (1.23.1)
+Building wheels for collected packages: docopt, pybedtools
+  Building wheel for docopt (setup.py): started
+  Building wheel for docopt (setup.py): finished with status 'done'
+  Created wheel for docopt: filename=docopt-0.6.2-py2.py3-none-any.whl size=13704 sha256=6a789263ea75874ee130730ce749c2ce5bac227790ca44332a329a3ba89bab2e
+  Stored in directory: /root/.cache/pip/wheels/ca/cc/e3/f1e272f628fdb013d969acc99cfe2e031ea15b3efb74ffe842
+  Building wheel for pybedtools (setup.py): started
+  Building wheel for pybedtools (setup.py): finished with status 'done'
+  Created wheel for pybedtools: filename=pybedtools-0.9.0-cp38-cp38-linux_x86_64.whl size=14295492 sha256=c164cd10ca66d321ec66447da3616e4265b8629722c84f0de6db60dd03f51f42
+  Stored in directory: /root/.cache/pip/wheels/56/da/e4/fa89b7c39ffe27585c9fdc6a4d3599a5c6d47c4e07661a2a5c
+Successfully built docopt pybedtools
+Installing collected packages: docopt, pybedtools, circexplorer2
+Successfully installed circexplorer2-2.3.8 docopt-0.6.2 pybedtools-0.9.0
+[91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[0mRemoving intermediate container 7c37f0a88462
+ ---> 734b3707f578
+Step 5/12 : COPY Dockerfile /opt2/Dockerfile.${TAG}
+ ---> ee34ed54de42
+Step 6/12 : RUN if [ -f /opt2/Dockerfile ];then rm -f /opt2/Dockerfile;fi &&     chmod a+r /opt2/Dockerfile.${TAG} &&     ln -s Dockerfile.${TAG} /opt2/Dockerfile
+ ---> Running in f7656d82b9fb
+Removing intermediate container f7656d82b9fb
+ ---> 440f1e270d1f
+Step 7/12 : WORKDIR /data2
+ ---> Running in 4e59131b3675
+Removing intermediate container 4e59131b3675
+ ---> 34e8c39ec3ae
+Step 8/12 : RUN apt-get clean &&     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* &&     apt-get autoclean &&     apt-get autoremove -y &&     rm -rf /var/lib/{apt,dpkg,cache,log}/
+ ---> Running in ec777e6943ca
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Removing intermediate container ec777e6943ca
+ ---> 72b06807e9a8
+Step 9/12 : LABEL maintainer="vishal.koparde@nih.gov"
+ ---> Running in 05db64487203
+Removing intermediate container 05db64487203
+ ---> 6b23511205ed
+Step 10/12 : LABEL github_handle="kopardev"
+ ---> Running in 44eeaca783ba
+Removing intermediate container 44eeaca783ba
+ ---> dab3ccc069c4
+Step 11/12 : ARG BUILD_DATE
+ ---> Running in 4f1db5736055
+Removing intermediate container 4f1db5736055
+ ---> 1e33cd0a4ae7
+Step 12/12 : LABEL build_date=$BUILD_DATE
+ ---> Running in a7c5ce0e1547
+Removing intermediate container a7c5ce0e1547
+ ---> dc5e8539fcff
+Successfully built dc5e8539fcff
+Successfully tagged nciccbr/ccbr_circexplorer:v1.0
