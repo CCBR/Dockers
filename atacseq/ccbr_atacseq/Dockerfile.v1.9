@@ -1,0 +1,15 @@
+FROM nciccbr/ccbr_atacseq:v1.8
+ENV TAG="v1.9"
+
+# add TxDBs for mmul and btaurus
+COPY install_packages_v1.9.R /opt2
+WORKDIR /opt2
+RUN Rscript install_packages_v1.9.R
+
+# SCRIPTS AND DB files
+
+COPY Dockerfile.$TAG /opt2
+RUN chmod a+r /opt2/Dockerfile.$TAG
+
+WORKDIR /data2
+RUN apt-get clean
