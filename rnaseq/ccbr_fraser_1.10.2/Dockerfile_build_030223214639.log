@@ -1,0 +1,41 @@
+Sending build context to Docker daemon  442.4kB
+Step 1/11 : FROM nciccbr/ccbr_baser:latest
+ ---> 7b81d4950cfc
+Step 2/11 : ENV TAG="v0.1"
+ ---> Using cache
+ ---> 79fb57f5ee41
+Step 3/11 : RUN Rscript -e 'BiocManager::install("FRASER")'
+ ---> Using cache
+ ---> c5f623150b7d
+Step 4/11 : COPY Dockerfile /opt2/Dockerfile.${TAG}
+ ---> 14c4c651ac43
+Step 5/11 : RUN chmod a+rX /opt2/Dockerfile.${TAG}
+ ---> Running in 85e0c00560c5
+Removing intermediate container 85e0c00560c5
+ ---> 1f5d30b13b24
+Step 6/11 : WORKDIR /data2
+ ---> Running in cef7787da34d
+Removing intermediate container cef7787da34d
+ ---> c0b94e966ae9
+Step 7/11 : RUN apt-get clean
+ ---> Running in e65566f31b0e
+Removing intermediate container e65566f31b0e
+ ---> f9f0a3abc5c0
+Step 8/11 : LABEL maintainer="kopardevn@nih.gov"
+ ---> Running in 03acc1b85ada
+Removing intermediate container 03acc1b85ada
+ ---> 45f1cf51b447
+Step 9/11 : LABEL github_handle="kopardev"
+ ---> Running in 12a7a5706603
+Removing intermediate container 12a7a5706603
+ ---> 2f2fc1585243
+Step 10/11 : ARG BUILD_DATE
+ ---> Running in c96a88f68811
+Removing intermediate container c96a88f68811
+ ---> 2192c2c9f4bb
+Step 11/11 : LABEL build_date=$BUILD_DATE
+ ---> Running in d0d59802ec26
+Removing intermediate container d0d59802ec26
+ ---> 142c57f631ae
+Successfully built 142c57f631ae
+Successfully tagged nciccbr/ccbr_fraser_1.10.2:latest

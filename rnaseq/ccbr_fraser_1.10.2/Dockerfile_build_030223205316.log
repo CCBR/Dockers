@@ -1,0 +1,34 @@
+Sending build context to Docker daemon  137.7kB
+Step 1/11 : FROM nciccbr/ccbr_ubuntu_base_20.04:v2.1
+ ---> bf65e40a3e88
+Step 2/11 : ENV TAG="v0.1"
+ ---> Using cache
+ ---> 980a10d63d74
+Step 3/11 : RUN Rscript -e 'install.packages("BiocManager")' && Rscript -e 'BiocManager::install("FRASER")'
+ ---> Running in 5ab69a10a41e
+[91mInstalling package into '/usr/local/lib/R/site-library'
+(as 'lib' is unspecified)
+[0m[91mtrying URL 'https://cloud.r-project.org/src/contrib/BiocManager_1.30.19.tar.gz'
+[0m[91mContent type 'application/x-gzip' length 264151 bytes (257 KB)
+===[0m[91m=[0m[91m=[0m[91m=[0m[91m===[0m[91m===[0m[91m===[0m[91m===[0m[91m===[0m[91m===[0m[91m===[0m[91m====[0m[91m===[0m[91m===[0m[91m===[0m[91m===[0m[91m===[0m[91m====
+downloaded 257 KB
+
+[0m[91m* installing *source* package 'BiocManager' ...
+[0m[91m** package 'BiocManager' successfully unpacked and MD5 sums checked
+[0m[91m** using staged installation
+[0m[91m** R
+[0m[91m** inst
+[0m[91m** byte-compile and prepare package for lazy loading
+[0m[91m** help
+[0m[91m*** installing help indices
+[0m[91m** building package indices
+[0m[91m** installing vignettes
+[0m[91m** testing if installed package can be loaded from temporary location
+[0m[91m** testing if installed package can be loaded from final location
+[0m[91m** testing if installed package keeps a record of temporary installation path
+[0m[91m* DONE (BiocManager)
+[0m[91m
+The downloaded source packages are in
+	'/tmp/Rtmp04PzfL/downloaded_packages'
+[0m[91m/bin/sh: 1:  Rscript: not found
+[0m

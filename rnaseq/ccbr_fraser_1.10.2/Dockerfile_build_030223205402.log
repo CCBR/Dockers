@@ -1,0 +1,96 @@
+Sending build context to Docker daemon  140.3kB
+Step 1/11 : FROM nciccbr/ccbr_ubuntu_base_20.04:v2.1
+ ---> bf65e40a3e88
+Step 2/11 : ENV TAG="v0.1"
+ ---> Using cache
+ ---> 980a10d63d74
+Step 3/11 : RUN Rscript -e 'install.packages("BiocManager");BiocManager::install("FRASER")'
+ ---> Running in 4d439858b421
+[91mInstalling package into '/usr/local/lib/R/site-library'
+(as 'lib' is unspecified)
+[0m[91mtrying URL 'https://cloud.r-project.org/src/contrib/BiocManager_1.30.19.tar.gz'
+[0m[91mContent type 'application/x-gzip'[0m[91m length 264151 bytes (257 KB)
+=[0m[91m=[0m[91m=[0m[91m=[0m[91m======[0m[91m====[0m[91m=[0m[91m=[0m[91m=[0m[91m===[0m[91m===[0m[91m==[0m[91m==[0m[91m===[0m[91m===[0m[91m===[0m[91m=[0m[91m===[0m[91m==[0m[91m=[0m[91m===[0m[91m===[0m[91m=
+downloaded 257 KB
+
+[0m[91m* installing *source* package 'BiocManager' ...
+[0m[91m** package 'BiocManager' successfully unpacked and MD5 sums checked
+[0m[91m** using staged installation
+[0m[91m** R
+[0m[91m** inst
+[0m[91m** byte-compile and prepare package for lazy loading
+[0m[91m** help
+[0m[91m*** installing help indices
+[0m[91m** building package indices
+[0m[91m** installing vignettes
+[0m[91m** testing if installed package can be loaded from temporary location
+[0m[91m** testing if installed package can be loaded from final location
+[0m[91m** testing if installed package keeps a record of temporary installation path
+[0m[91m* DONE (BiocManager)
+[0m[91m
+The downloaded source packages are in
+	'/tmp/RtmpleC99O/downloaded_packages'
+[0m[91m'getOption("repos")' replaces Bioconductor standard repositories, see
+'?repositories' for details
+
+replacement repositories:
+    CRAN: https://cloud.r-project.org
+
+[0m[91mBioconductor version 3.10 (BiocManager 1.30.19), R 3.6.3 (2020-02-29)
+[0m[91mInstalling package(s) 'BiocVersion', 'FRASER'
+[0m[91mtrying URL 'https://bioconductor.org/packages/3.10/bioc/src/contrib/BiocVersion_3.10.1.tar.gz'
+[0m[91mContent type 'application/octet-stream' length 984 bytes
+[0m[91m==================================================
+downloaded 984 bytes
+
+[0m[91m* installing *source* package 'BiocVersion' ...
+[0m[91m** using staged installation
+[0m[91m** help
+[0m[91m*** installing help indices
+[0m[91m** building package indices
+[0m[91m** testing if installed package can be loaded from temporary location
+[0m[91m** testing if installed package can be loaded from final location
+[0m[91m** testing if installed package keeps a record of temporary installation path
+[0m[91m* DONE (BiocVersion)
+[0m[91m
+The downloaded source packages are in
+	'/tmp/RtmpleC99O/downloaded_packages'
+[0m[91mOld packages: 'KernSmooth', 'MASS', 'Matrix', 'boot', 'class', 'cluster',
+  'codetools', 'lattice', 'mgcv', 'nlme', 'nnet', 'rpart', 'spatial',
+  'survival'
+[0m[91mWarning message:
+package 'FRASER' is not available (for R version 3.6.3) 
+[0mRemoving intermediate container 4d439858b421
+ ---> af2ab68f3076
+Step 4/11 : COPY Dockerfile /opt2/Dockerfile.${TAG}
+ ---> 6e89852badc4
+Step 5/11 : RUN chmod a+rX /opt2/Dockerfile.${TAG}
+ ---> Running in 676c06c8e39d
+Removing intermediate container 676c06c8e39d
+ ---> 47414a9e50ff
+Step 6/11 : WORKDIR /data2
+ ---> Running in b3e366717cc7
+Removing intermediate container b3e366717cc7
+ ---> 3c2b4ac20de2
+Step 7/11 : RUN apt-get clean
+ ---> Running in 2217eba1a5d4
+Removing intermediate container 2217eba1a5d4
+ ---> 096d384f6527
+Step 8/11 : LABEL maintainer="guibletwm@nih.gov"
+ ---> Running in cedc59c073af
+Removing intermediate container cedc59c073af
+ ---> 7032ba5b9e57
+Step 9/11 : LABEL github_handle="wilfriedguiblet"
+ ---> Running in 58488680396e
+Removing intermediate container 58488680396e
+ ---> 57dfa3ae27a0
+Step 10/11 : ARG BUILD_DATE
+ ---> Running in f543ed7a3301
+Removing intermediate container f543ed7a3301
+ ---> 6d1b0a72c3f9
+Step 11/11 : LABEL build_date=$BUILD_DATE
+ ---> Running in c5a725b2f62b
+Removing intermediate container c5a725b2f62b
+ ---> 52a317903411
+Successfully built 52a317903411
+Successfully tagged test:latest

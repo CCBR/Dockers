@@ -1,0 +1,53 @@
+Sending build context to Docker daemon  147.5kB
+Step 1/12 : FROM nciccbr/ccbr_ubuntu_base_20.04:v2.1
+ ---> bf65e40a3e88
+Step 2/12 : ENV TAG="v0.1"
+ ---> Using cache
+ ---> 980a10d63d74
+Step 3/12 : ADD https://bioconductor.org/packages/release/bioc/src/contrib/FRASER_1.10.2.tar.gz /opt2
+
+ ---> Using cache
+ ---> 45e9da45746c
+Step 4/12 : RUN Rscript -e 'install.packages("/opt2/FRASER_1.10.2.tar.gz", repos=NULL, type="source")'
+ ---> Running in 8021df2b7810
+[91mInstalling package into '/usr/local/lib/R/site-library'
+(as 'lib' is unspecified)
+[0m[91mERROR: dependencies 'BiocParallel', 'data.table', 'Rsamtools', 'SummarizedExperiment', 'AnnotationDbi', 'BBmisc', 'Biobase', 'BiocGenerics', 'biomaRt', 'BSgenome', 'cowplot', 'DelayedArray', 'DelayedMatrixStats', 'extraDistr', 'generics', 'GenomeInfoDb', 'GenomicAlignments', 'GenomicFeatures', 'GenomicRanges', 'IRanges', 'ggplot2', 'ggrepel', 'HDF5Array', 'matrixStats', 'OUTRIDER', 'pcaMethods', 'pheatmap', 'plotly', 'PRROC', 'RColorBrewer', 'rhdf5', 'Rsubread', 'R.utils', 'S4Vectors', 'tibble', 'VGAM', 'Rcpp', 'RcppArmadillo' are not available for package 'FRASER'
+[0m[91m* removing '/usr/local/lib/R/site-library/FRASER'
+[0m[91mWarning message:
+[0m[91mIn install.packages("/opt2/FRASER_1.10.2.tar.gz", repos = NULL,  :[0m[91m
+ [0m[91m installation of package '/opt2/FRASER_1.10.2.tar.gz' had non-zero exit status
+[0mRemoving intermediate container 8021df2b7810
+ ---> c9e6ee38db1c
+Step 5/12 : COPY Dockerfile /opt2/Dockerfile.${TAG}
+ ---> 79398edb1ed2
+Step 6/12 : RUN chmod a+rX /opt2/Dockerfile.${TAG}
+ ---> Running in 15b1940cf1f9
+Removing intermediate container 15b1940cf1f9
+ ---> f1c7fef6bb85
+Step 7/12 : WORKDIR /data2
+ ---> Running in 25c32a7a8051
+Removing intermediate container 25c32a7a8051
+ ---> 5365ffad8c4f
+Step 8/12 : RUN apt-get clean
+ ---> Running in 388b1c946f02
+Removing intermediate container 388b1c946f02
+ ---> 0dd163f5eff3
+Step 9/12 : LABEL maintainer="guibletwm@nih.gov"
+ ---> Running in 378c2bb00222
+Removing intermediate container 378c2bb00222
+ ---> 10f0b23f4c8f
+Step 10/12 : LABEL github_handle="wilfriedguiblet"
+ ---> Running in 35e0cf87297f
+Removing intermediate container 35e0cf87297f
+ ---> bc6eb00334c0
+Step 11/12 : ARG BUILD_DATE
+ ---> Running in e3c7e3352dd4
+Removing intermediate container e3c7e3352dd4
+ ---> f8c54dd3d38d
+Step 12/12 : LABEL build_date=$BUILD_DATE
+ ---> Running in 7dd5f7a59c76
+Removing intermediate container 7dd5f7a59c76
+ ---> 803e3fbfe560
+Successfully built 803e3fbfe560
+Successfully tagged test:latest
