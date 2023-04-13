@@ -12,7 +12,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt update
 # Set the locale
-RUN apt-get install -y --no-install-recommends locales cpanminus && \
+RUN apt-get install -y --no-install-recommends locales cmake cpanminus && \
 	localedef -i en_US -f UTF-8 en_US.UTF-8 && \
 	cpanm FindBin Term::ReadLine
 
@@ -25,7 +25,6 @@ RUN apt-get install -y --no-install-recommends \
 	build-essential \
 	bwa \
 	bzip2 \
-	cmake \
 	curl \
 	figlet \
 	g++ \
