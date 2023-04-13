@@ -18,7 +18,6 @@ RUN apt-get install -y --no-install-recommends \
 	cpanm FindBin Term::ReadLine
 
 RUN apt-get install -y --no-install-recommends \
-	bcftools \
 	bedops \
 	bedtools \
 	bowtie \
