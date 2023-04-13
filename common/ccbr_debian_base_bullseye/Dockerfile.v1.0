@@ -1,6 +1,10 @@
-FROM ubuntu:20.04
+FROM debian:bullseye
 LABEL maintainer "Vishal Koparde *(kopardev on GitHub)*"
-ENV TAG="v1.0"
+LABEL github_handle="kopardev"
+ARG TAG
+ENV TAG="$TAG"
+ARG BUILD_DATE
+LABEL build_date="$BUILD_DATE"
 
 RUN mkdir -p /opt2 && mkdir -p /data2
 ENV TZ=America/New_York
@@ -86,9 +90,3 @@ RUN chmod a+rX /opt2/Dockerfile.baseimage && chmod -R a+rx /opt2/argparse.bash
 ENV PATH="/opt2/:$PATH"
 WORKDIR /data2
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# details
-LABEL maintainer="vishal.koparde@nih.gov"
-LABEL github_handle="kopardev"
-ARG BUILD_DATE
-LABEL build_date=$BUILD_DATE
