@@ -2,6 +2,7 @@
 # using this for v3.0 and newer
 dt=$(date +"%d%m%y%H%M%S")
 tag="v3.0"
+stdbuf --output=L \
 docker build \
     --debugger \
     --build-arg BUILD_DATE=${dt} \
