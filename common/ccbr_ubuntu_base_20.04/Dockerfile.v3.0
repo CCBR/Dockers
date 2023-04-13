@@ -80,13 +80,6 @@ RUN apt-get install -y --no-install-recommends \
 RUN ln -s /usr/bin/python3.8 /usr/bin/python \
 	&& ln -s /usr/bin/python2.7 /usr/bin/python2
 
-RUN python3 -m pip install --upgrade pip && \
-	pip3 install --upgrade pip && \
-	pip3 install numpy && \
-	pip3 install scipy && \
-	pip3 install argparse && \
-	pip3 install pysam
-
 # install samtools (newer version)
 WORKDIR /opt2
 ADD https://github.com/samtools/samtools/releases/download/1.17/samtools-1.17.tar.bz2 samtools-1.17.tar.bz2
@@ -112,6 +105,13 @@ RUN ./configure --prefix=/opt2/htslib && make && make install
 WORKDIR /opt2
 RUN rm -rf /opt2/htslib-1.17
 ENV PATH="/opt2/htslib/bin:$PATH"
+
+RUN python3 -m pip install --upgrade pip && \
+	pip3 install --upgrade pip && \
+	pip3 install numpy && \
+	pip3 install scipy && \
+	pip3 install argparse && \
+	pip3 install pysam
 
 # cleanup etc
 COPY Dockerfile.$TAG /opt2/Dockerfile.baseimage
