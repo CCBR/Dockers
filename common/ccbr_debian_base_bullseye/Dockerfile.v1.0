@@ -1,0 +1,94 @@
+FROM ubuntu:20.04
+LABEL maintainer "Vishal Koparde *(kopardev on GitHub)*"
+ENV TAG="v1.0"
+
+RUN mkdir -p /opt2 && mkdir -p /data2
+ENV TZ=America/New_York
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+RUN apt update
+# Set the locale
+RUN apt-get install -y locales && localedef -i en_US -f UTF-8 en_US.UTF-8
+
+RUN apt-get install -y \
+	bcftools \
+	bedops \
+	bedtools \
+	bowtie \
+	bowtie2 \
+	build-essential \
+	bwa \
+	bzip2 \
+	cmake \
+	cpanminus \
+	curl \
+	figlet \
+	g++ \
+	gcc \
+	gfortran \
+	git \
+	libatlas-base-dev \
+	libblas-dev \
+	libboost-dev \
+	libbz2-dev \
+	libcurl4-openssl-dev \
+	libexpat1-dev \
+	libfreetype6-dev \
+	libgd-dev \
+	libgd-perl \
+	libgs-dev \
+	libgsl-dev \
+	libgsl0-dev \
+	libhtml-template-compiled-perl \
+	libicu-dev \
+	libjudy-dev \
+	liblapack-dev \
+	liblzma-dev \
+	libmysqlclient-dev \
+	libncurses-dev \
+	libopenmpi-dev \
+	libpng-dev \
+	librtmp-dev \
+	libssl-dev \
+	libtool \
+	libxml-libxml-debugging-perl \
+	libxml-opml-simplegen-perl \
+	libxml2-dev \
+	libxslt-dev \
+	make \
+	manpages-dev \
+	openjdk-8-jdk \
+	parallel \
+	pigz \
+	python2.7 \
+	python3-pip \
+	rsync \
+	samtools \
+	unzip \
+	vcftools \
+	wget \
+	zlib1g \
+	zlib1g-dev \
+	zlibc
+
+RUN python3 -m pip install --upgrade pip
+#fix python
+RUN ln -s /usr/bin/python3.8 /usr/bin/python
+#add python2/rsync
+RUN apt-get install -y python2.7 rsync && ln -s /usr/bin/python2.7 /usr/bin/python2
+
+RUN cpanm FindBin Term::ReadLine
+
+# cleanup etc
+COPY Dockerfile.$TAG /opt2/Dockerfile.baseimage
+COPY argparse.bash /opt2
+RUN chmod a+rX /opt2/Dockerfile.baseimage && chmod -R a+rx /opt2/argparse.bash
+ENV PATH="/opt2/:$PATH"
+WORKDIR /data2
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# details
+LABEL maintainer="vishal.koparde@nih.gov"
+LABEL github_handle="kopardev"
+ARG BUILD_DATE
+LABEL build_date=$BUILD_DATE
