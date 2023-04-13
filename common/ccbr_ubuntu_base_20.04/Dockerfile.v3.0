@@ -82,6 +82,14 @@ RUN ln -s /usr/bin/python3.8 /usr/bin/python \
 
 # install samtools (newer version)
 WORKDIR /opt2
+ADD https://github.com/samtools/htslib/releases/download/1.17/htslib-1.17.tar.bz2 /opt2/htslib-1.17.tar.bz2
+RUN tar xjfv htslib-1.17.tar.bz2 && rm -f htslib-1.17.tar.bz2 && mkdir -p /opt2/htslib
+WORKDIR /opt2/htslib-1.17
+RUN ./configure --prefix=/opt2/htslib && make && make install 
+WORKDIR /opt2
+RUN rm -rf /opt2/htslib-1.17
+ENV PATH="/opt2/htslib/bin:$PATH"
+
 ADD https://github.com/samtools/samtools/releases/download/1.17/samtools-1.17.tar.bz2 samtools-1.17.tar.bz2
 RUN tar xjfv samtools-1.17.tar.bz2 && rm -f samtools-1.17.tar.bz2 && mkdir -p /opt2/samtools
 WORKDIR /opt2/samtools-1.17
@@ -98,13 +106,6 @@ WORKDIR /opt2
 RUN rm -rf /opt2/bcftools-1.17
 ENV PATH="/opt2/bcftools/bin:$PATH"
 
-ADD https://github.com/htslib/htslib/releases/download/1.17/htslib-1.17.tar.bz2 /opt2/htslib-1.17.tar.bz2
-RUN tar xjfv htslib-1.17.tar.bz2 && rm -f htslib-1.17.tar.bz2 && mkdir -p /opt2/htslib
-WORKDIR /opt2/htslib-1.17
-RUN ./configure --prefix=/opt2/htslib && make && make install 
-WORKDIR /opt2
-RUN rm -rf /opt2/htslib-1.17
-ENV PATH="/opt2/htslib/bin:$PATH"
 
 RUN python3 -m pip install --upgrade pip && \
 	pip3 install --upgrade pip && \
