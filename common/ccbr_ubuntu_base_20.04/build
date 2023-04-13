@@ -3,6 +3,7 @@
 dt=$(date +"%d%m%y%H%M%S")
 tag="v3.0"
 docker build \
+    --debugger \
     --build-arg BUILD_DATE=${dt} \
     --build-arg TAG=${tag} \
     -f Dockerfile.${tag} \
