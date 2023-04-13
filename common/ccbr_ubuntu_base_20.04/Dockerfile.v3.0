@@ -1,6 +1,10 @@
 FROM ubuntu:20.04
 LABEL maintainer "Vishal Koparde *(kopardev on GitHub)*"
-ENV TAG="v3.0"
+LABEL github_handle="kopardev"
+ARG TAG
+ENV TAG="$TAG"
+ARG BUILD_DATE
+LABEL build_date="$BUILD_DATE"
 
 RUN mkdir -p /opt2 && mkdir -p /data2
 ENV TZ=America/New_York
@@ -8,9 +12,11 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt update
 # Set the locale
-RUN apt-get install -y locales && localedef -i en_US -f UTF-8 en_US.UTF-8
+RUN apt-get install -y --no-install-recommends locales cpanminus && \
+	localedef -i en_US -f UTF-8 en_US.UTF-8 && \
+	cpanm FindBin Term::ReadLine
 
-RUN apt-get install -y \
+RUN apt-get install -y --no-install-recommends \
 	bcftools \
 	bedops \
 	bedtools \
@@ -20,7 +26,6 @@ RUN apt-get install -y \
 	bwa \
 	bzip2 \
 	cmake \
-	cpanminus \
 	curl \
 	figlet \
 	g++ \
@@ -71,13 +76,16 @@ RUN apt-get install -y \
 	zlib1g-dev \
 	zlibc
 
-RUN python3 -m pip install --upgrade pip
 #fix python
-RUN ln -s /usr/bin/python3.8 /usr/bin/python
-#add python2/rsync
-RUN apt-get install -y python2.7 rsync && ln -s /usr/bin/python2.7 /usr/bin/python2
+RUN ln -s /usr/bin/python3.8 /usr/bin/python \
+	&& ln -s /usr/bin/python2.7 /usr/bin/python2
 
-RUN cpanm FindBin Term::ReadLine
+RUN python3 -m pip install --upgrade pip && \
+	pip3 install --upgrade pip && \
+	pip3 install numpy && \
+	pip3 install scipy && \
+	pip3 install argparse && \
+	pip3 install pysam
 
 # cleanup etc
 COPY Dockerfile.$TAG /opt2/Dockerfile.baseimage
@@ -87,9 +95,3 @@ RUN chmod a+rX /opt2/Dockerfile.baseimage && chmod -R a+rx /opt2/argparse.bash &
 ENV PATH="/opt2/:$PATH"
 WORKDIR /data2
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# details
-LABEL maintainer="vishal.koparde@nih.gov"
-LABEL github_handle="kopardev"
-ARG BUILD_DATE
-LABEL build_date=$BUILD_DATE

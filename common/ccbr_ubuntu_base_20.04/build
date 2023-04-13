@@ -1,0 +1,11 @@
+#!/bin/bash
+# using this for v3.0 and newer
+dt=$(date +"%d%m%y%H%M%S")
+tag="v3.0"
+docker build \
+    --build-arg BUILD_DATE=${dt} \
+    --build-arg TAG=${tag} \
+    -f Dockerfile.${tag} \
+    -t nciccbr/ccbr_ubuntu_base_20.04:${tag} \
+    . | \
+    tee Dockerfile.${tag}.build.${dt}.log
