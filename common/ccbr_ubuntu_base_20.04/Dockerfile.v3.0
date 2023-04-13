@@ -12,8 +12,10 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt update
 # Set the locale
-RUN apt-get install -y --no-install-recommends locales && \
-	localedef -i en_US -f UTF-8 en_US.UTF-8
+RUN apt-get install -y --no-install-recommends \
+		locales build-essential cmake cpanminus && \
+	localedef -i en_US -f UTF-8 en_US.UTF-8 && \
+	cpanm FindBin Term::ReadLine
 
 RUN apt-get install -y --no-install-recommends \
 	bcftools \
@@ -21,12 +23,9 @@ RUN apt-get install -y --no-install-recommends \
 	bedtools \
 	bowtie \
 	bowtie2 \
-	build-essential \
 	bwa \
 	bzip2 \
 	curl \
-	cmake \
-	cpanminus \
 	figlet \
 	g++ \
 	gcc \
@@ -73,8 +72,7 @@ RUN apt-get install -y --no-install-recommends \
 	wget \
 	zlib1g \
 	zlib1g-dev \
-	zlibc && \
-	cpanm FindBin Term::ReadLine
+	zlibc 
 
 #fix python
 RUN ln -s /usr/bin/python3.8 /usr/bin/python \
