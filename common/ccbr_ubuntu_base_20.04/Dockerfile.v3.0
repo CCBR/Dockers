@@ -105,10 +105,10 @@ ENV PATH="/opt2/bcftools/bin:$PATH"
 
 
 RUN python3 -m pip install --upgrade pip && \
-	pip3 install --upgrade pip && \
 	pip3 install numpy && \
 	pip3 install scipy && \
 	pip3 install argparse && \
+	pip3 install pandas && \
 	pip3 install pysam
 
 # cleanup etc

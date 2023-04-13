@@ -4,10 +4,10 @@ dt=$(date +"%d%m%y%H%M%S")
 tag="v3.0"
 stdbuf --output=L \
 docker build \
-    --debugger \
+    --progress=plain \
     --build-arg BUILD_DATE=${dt} \
     --build-arg TAG=${tag} \
     -f Dockerfile.${tag} \
     -t nciccbr/ccbr_ubuntu_base_20.04:${tag} \
-    . | \
+    . 2>&1 | \
     tee Dockerfile.${tag}.build.${dt}.log
