@@ -98,7 +98,7 @@ WORKDIR /opt2
 RUN rm -rf /opt2/samtools-1.17
 ENV PATH="/opt2/samtools/bin:$PATH"
 
-ADD https://github.com/bcftools/bcftools/releases/download/1.17/bcftools-1.17.tar.bz2 /opt2/bcftools-1.17.tar.bz2
+ADD https://github.com/samtools/bcftools/releases/download/1.17/bcftools-1.17.tar.bz2 /opt2/bcftools-1.17.tar.bz2
 RUN tar xjfv bcftools-1.17.tar.bz2 && rm -f bcftools-1.17.tar.bz2 && mkdir -p /opt2/bcftools
 WORKDIR /opt2/bcftools-1.17
 RUN ./configure --prefix=/opt2/bcftools && make && make install 
