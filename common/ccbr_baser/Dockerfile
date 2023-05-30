@@ -11,17 +11,17 @@ RUN apt-get update && apt-get install -y \
 	libfribidi-dev \
 	libmagick++-dev \
 	libgit2-dev 
-RUN wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
-RUN add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
-#RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 \
-#&& add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 \
+&& add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
 RUN apt-get update && apt-get -y install r-base r-base-dev r-recommended r-base-dev
 WORKDIR /opt2
 COPY Dockerfile /opt2
 RUN mkdir -p /repo
 WORKDIR /repo
 COPY . .
-RUN Rscript cran_tools.R && Rscript bc_tools.R
+RUN Rscript cran_tools.1.R 
+RUN apt-get install -y libudunits2-dev
+RUN Rscript bc_tools.1.R
 RUN apt-get clean
 MAINTAINER vishal.koparde@nih.gov
 #WORKDIR /opt2
