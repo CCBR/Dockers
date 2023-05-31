@@ -1,0 +1,2 @@
+FROM nciccbr/ccbr_baser:230530.2
+RUN apt-get update && apt-get install pandoc
