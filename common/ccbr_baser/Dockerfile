@@ -22,6 +22,10 @@ COPY . .
 RUN Rscript cran_tools.1.R 
 RUN apt-get install -y libudunits2-dev
 RUN Rscript bc_tools.1.R
+COPY cran_tools.2.R .
+RUN Rscript cran_tools.2.R
+COPY bc_tools.2.R .
+RUN Rscript bc_tools.2.R
 RUN apt-get clean
 MAINTAINER vishal.koparde@nih.gov
 #WORKDIR /opt2

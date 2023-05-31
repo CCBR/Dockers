@@ -1,0 +1,6 @@
+FROM nciccbr/ccbr_baser:230530
+WORKDIR /repo
+COPY . .
+RUN Rscript cran_tools.2.R
+RUN Rscript bc_tools.2.R
+
