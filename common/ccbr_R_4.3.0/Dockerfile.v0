@@ -35,7 +35,7 @@ RUN apt-get update \
 
 # Save Dockerfile in the docker
 COPY Dockerfile /opt2/Dockerfile_${REPONAME}.${BUILD_TAG}
-RUN	chmod a+r /opt2/Dockerfile_${REPONAME}.${BUILD_TAG}
+RUN chmod a+r /opt2/Dockerfile_${REPONAME}.${BUILD_TAG}
 
 WORKDIR /data2
 RUN apt-get clean
