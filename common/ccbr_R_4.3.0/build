@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# dt=$(date +"%d%m%y%H%M%S")
+dockerhub_account="${dockerhub_account}"
+reponame="ccbr_R_4.3.0"
+
+dt=$(date +"%y%m%d")
+tag="v0"
+
+stdbuf --output=L \
+
+docker build \
+    --progress=plain \
+    --build-arg BUILD_DATE=${dt} \
+    --build-arg TAG=${tag} \
+    --build-arg REPONAME=${reponame} \
+    -f Dockerfile \
+    -t ${dockerhub_account}/${reponame}:${tag} \
+    . 2>&1 | \
+    tee Dockerfile.${tag}.build.${dt}.log
+if [ "$?" == "0" ];then
+docker push ${dockerhub_account}/${reponame}:${tag}
+docker tag ${dockerhub_account}/${reponame}:${tag} ${dockerhub_account}/${reponame}:latest
+docker push ${dockerhub_account}/${reponame}:latest
+fi

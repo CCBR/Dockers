@@ -1,6 +1,14 @@
 FROM nciccbr/ccbr_ubuntu_base_20.04:v3.1
 # starting with new v3.1 as base image of ubuntu LTS
 
+# build time variables
+ARG BUILD_DATE="000000"
+ENV BUILD_DATE=${BUILD_DATE}}
+ARG BUILD_TAG="000000"
+ENV BUILD_DATE=${BUILD_DATE}
+ARG REPONAME="000000"
+ENV REPONAME=${REPONAME}
+
 # adding extra libraries needed by R packages
 RUN apt-get update \
 	&& apt-get -y upgrade \
@@ -25,7 +33,7 @@ RUN apt-get update \
 	&& DEBIAN_FRONTEND=noninteractive apt-get -y install r-base r-base-dev r-recommended r-base-dev
 
 # Save Dockerfile in the docker
-ADD Dockerfile_baser.230602 /opt2/ccbr_baser.dockerfile
+ADD Dockerfile /opt2/Dockerfile_${REPONAME}}.${BUILD_TAG}
 
 WORKDIR /data2
 RUN apt-get clean
