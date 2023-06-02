@@ -5,11 +5,7 @@ if [ "$#" != "1" ];then
     exit
 fi
 
-if [ -f Dockerfile ];then rm -f Dockerfile;fi
-
-# dt=$(date +"%d%m%y%H%M%S")
 dockerhub_account="nciccbr"
-#reponame="ccbr_r_4.3.0"
 # foldername is the reponame
 CWD=`pwd`
 JUSTFOLDERNAME=$(basename $CWD)
@@ -18,19 +14,6 @@ reponame="$JUSTFOLDERNAME"
 dt=$(date +"%y%m%d")
 tag="$1"
 
-ln -s Dockerfile.${tag} Dockerfile
-
-docker build \
-    --progress=plain \
-    --build-arg BUILD_DATE=${dt} \
-    --build-arg TAG=${tag} \
-    --build-arg REPONAME=${reponame} \
-    -f Dockerfile \
-    -t ${dockerhub_account}/${reponame}:${tag} \
-    . 2>&1 | \
-    tee Dockerfile.${tag}.build.${dt}.log
-if [ "$?" == "0" ];then
 docker push ${dockerhub_account}/${reponame}:${tag}
 docker tag ${dockerhub_account}/${reponame}:${tag} ${dockerhub_account}/${reponame}:latest
 docker push ${dockerhub_account}/${reponame}:latest
-fi
