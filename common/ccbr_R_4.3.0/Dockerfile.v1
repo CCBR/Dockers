@@ -8,12 +8,12 @@ ENV BUILD_TAG=${BUILD_TAG}
 ARG REPONAME="000000"
 ENV REPONAME=${REPONAME}
 
-# Save Dockerfile in the docker
-RUN cat Dockerfile > /opt2/Dockerfile_${REPONAME}.${BUILD_TAG} \
-	chmod a+r /opt2/Dockerfile_${REPONAME}.${BUILD_TAG}
-
 RUN Rscript -e 'install.packages(c("devtools", "caTools", "DT", "RColorBrewer", "argparse", "circlize", "crosstalk", "dplyr", "eulerr", "flexdashboard", "ggfortify", "ggplot2", "ggrepel", "gplots", "grid", "gridExtra", "htmlwidgets", "knitr", "magick", "pander", "plotly", "plyr", "reshape2", "rgl", "rjson", "rmarkdown", "sequenza", "shiny", "statmod", "stringr", "tidyverse", "viridis"), repos="http://cran.r-project.org",update=TRUE,ask=FALSE,dependencies=TRUE)'
 RUN Rscript -e 'install.packages("BiocManager"); BiocManager::install(c("AnnotationDbi", "ChIPseeker", "ComplexHeatmap", "DESeq2", "EnhancedVolcano", "TxDb.Hsapiens.UCSC.hg38.knownGene", "TxDb.Mmusculus.UCSC.mm10.knownGene", "clusterProfiler", "edgeR", "karyoploteR", "limma", "msigdb", "org.Hs.eg.db", "org.Mm.eg.db", "rtracklayer", "sleuth"),update=TRUE,ask=FALSE,dependencies=TRUE)'
+
+# Save Dockerfile in the docker
+COPY Dockerfile /opt2/Dockerfile_${REPONAME}.${BUILD_TAG}
+RUN chmod a+r /opt2/Dockerfile_${REPONAME}.${BUILD_TAG}
 
 WORKDIR /data2
 RUN apt-get clean
