@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # dt=$(date +"%d%m%y%H%M%S")
-dockerhub_account="${dockerhub_account}"
+dockerhub_account="nciccbr"
 reponame="ccbr_R_4.3.0"
 
 dt=$(date +"%y%m%d")
 tag="v0"
 
-stdbuf --output=L \
+stdbuf --output=L 
 
 docker build \
     --progress=plain \
