@@ -24,7 +24,8 @@ RUN apt-get update \
 		libfribidi-dev \
 		libmagick++-dev \
 		libgit2-dev \
-		libudunits2-dev
+		libudunits2-dev \
+		pandoc texlive-latex-extra texlive-fonts-recommended texlive-latex-recommended texlive-latex-base
 
 # adding R v 4.3.0
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 \
