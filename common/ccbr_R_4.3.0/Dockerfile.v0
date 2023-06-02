@@ -33,7 +33,8 @@ RUN apt-get update \
 	&& DEBIAN_FRONTEND=noninteractive apt-get -y install r-base r-base-dev r-recommended r-base-dev
 
 # Save Dockerfile in the docker
-ADD Dockerfile /opt2/Dockerfile_${REPONAME}}.${BUILD_TAG}
+RUN cat Dockerfile > /opt2/Dockerfile_${REPONAME}.${BUILD_TAG} \
+	chmod a+r /opt2/Dockerfile_${REPONAME}.${BUILD_TAG}
 
 WORKDIR /data2
 RUN apt-get clean
