@@ -27,7 +27,7 @@ ln -s Dockerfile.${tag} Dockerfile
 docker build \
     --progress=plain \
     --build-arg BUILD_DATE=${dt} \
-    --build-arg TAG=${tag} \
+    --build-arg BUILD_TAG=${tag} \
     --build-arg REPONAME=${reponame} \
     -f Dockerfile \
     -t ${dockerhub_account}/${reponame}:${tag} \
