@@ -1,0 +1,2 @@
+FROM nciccbr/ccbr_baser:230531
+RUN apt-get update && apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-latex-recommended texlive-latex-base
