@@ -18,7 +18,7 @@ The docker images were pushed to dockerhub and are available [here](https://hub.
 
  * Original recipe `Dockerfile` is copied into the docker image itself in the `/opt2` folder.
  
- * Most docker images are built using our own base image `nciccbr/ccbr_ubuntu_20.04:latest`
+ * Most docker images are built using our own base image `nciccbr/ccbr_ubuntu_base_20.04:latest`
 
 > NOTE: Some of the older docker images may use one of the following base image:
 >   * ```ubuntu:16.04```
@@ -30,7 +30,7 @@ The docker images were pushed to dockerhub and are available [here](https://hub.
    * `BUILD_TAG`
    * `REPONAME`
 
-## How the base image `nciccbr/ccbr_ubuntu_20.04` is built:
+## How the base image `nciccbr/ccbr_ubuntu_base_20.04` is built:
 
 - uses `ubuntu:20.04` LTS as its base image
 - includes `/data2` and `/opt2` folder
@@ -44,12 +44,12 @@ The docker images were pushed to dockerhub and are available [here](https://hub.
 
 ## How to build your own docker image:
 
-- use `nciccbr/ccbr_ubuntu_20.04:SOMETAG` as base image
+- use `nciccbr/ccbr_ubuntu_base_20.04:SOMETAG` as base image
 - add "layers" on top of the base image in order to add tools of interest
 
 Use these lines to kick start your recipe:
 ```bash
-FROM nciccbr/ccbr_ubuntu_20.04:SOMETAG
+FROM nciccbr/ccbr_ubuntu_base_20.04:SOMETAG
 
 # build time variables
 ARG BUILD_DATE="000000"
