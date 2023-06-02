@@ -1,160 +1,0 @@
-Sending build context to Docker daemon  197.3MB
-Step 1/45 : FROM nciccbr/ccbr_ubuntu_base_20.04:v1.3
- ---> 97fa0784ffda
-Step 2/45 : ENV TAG="v0.2"
- ---> Using cache
- ---> 35b60a139fa6
-Step 3/45 : RUN apt-get upgrade -y
- ---> Using cache
- ---> cb90033a732c
-Step 4/45 : RUN	pip3 install cutadapt==1.18
- ---> Using cache
- ---> 8eaea5989cd9
-Step 5/45 : RUN apt-get install -y libcurl4 libcurl4-openssl-dev
- ---> Using cache
- ---> ef0014c2c1bc
-Step 6/45 : WORKDIR /opt2
- ---> Using cache
- ---> 08eddb47f57c
-Step 7/45 : ADD https://github.com/samtools/htslib/releases/download/1.12/htslib-1.12.tar.bz2 /opt2
-
-
- ---> Using cache
- ---> 98f2e3e9cbb0
-Step 8/45 : RUN tar -xjvf htslib-1.12.tar.bz2
- ---> Using cache
- ---> 48b313992aaa
-Step 9/45 : WORKDIR /opt2/htslib-1.12
- ---> Using cache
- ---> 8b76ff1ec0a1
-Step 10/45 : RUN ./configure && make && make install
- ---> Using cache
- ---> 438489321eb2
-Step 11/45 : WORKDIR /opt2
- ---> Using cache
- ---> fd72f046cb11
-Step 12/45 : ADD https://github.com/smithlabcode/preseq/releases/download/v3.1.2/preseq-3.1.2.tar.gz /opt2
-
-
- ---> Using cache
- ---> 608edf1cbb08
-Step 13/45 : RUN tar -xzvf preseq-3.1.2.tar.gz
- ---> Using cache
- ---> 9ddea34c0d89
-Step 14/45 : WORKDIR /opt2/preseq-3.1.2
- ---> Using cache
- ---> 3544949d14e7
-Step 15/45 : RUN ./configure --enable-hts && make && make install
- ---> Using cache
- ---> 8898e0bd0302
-Step 16/45 : RUN apt-get install -y python2.7 && ln -s /usr/bin/python2.7 /usr/bin/python2
- ---> Running in 2ac281d44ec5
-Reading package lists...
-Building dependency tree...
-Reading state information...
-The following additional packages will be installed:
-  libpython2.7-minimal libpython2.7-stdlib python2.7-minimal
-Suggested packages:
-  python2.7-doc binfmt-support
-The following NEW packages will be installed:
-  libpython2.7-minimal libpython2.7-stdlib python2.7 python2.7-minimal
-0 upgraded, 4 newly installed, 0 to remove and 0 not upgraded.
-Need to get 3755 kB of archives.
-After this operation, 16.2 MB of additional disk space will be used.
-Get:1 http://archive.ubuntu.com/ubuntu focal-updates/universe amd64 libpython2.7-minimal amd64 2.7.18-1~20.04.1 [335 kB]
-Get:2 http://archive.ubuntu.com/ubuntu focal-updates/universe amd64 python2.7-minimal amd64 2.7.18-1~20.04.1 [1285 kB]
-Get:3 http://archive.ubuntu.com/ubuntu focal-updates/universe amd64 libpython2.7-stdlib amd64 2.7.18-1~20.04.1 [1887 kB]
-Get:4 http://archive.ubuntu.com/ubuntu focal-updates/universe amd64 python2.7 amd64 2.7.18-1~20.04.1 [248 kB]
-[91mdebconf: delaying package configuration, since apt-utils is not installed
-[0mFetched 3755 kB in 2s (1820 kB/s)
-Selecting previously unselected package libpython2.7-minimal:amd64.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 71195 files and directories currently installed.)
-Preparing to unpack .../libpython2.7-minimal_2.7.18-1~20.04.1_amd64.deb ...
-Unpacking libpython2.7-minimal:amd64 (2.7.18-1~20.04.1) ...
-Selecting previously unselected package python2.7-minimal.
-Preparing to unpack .../python2.7-minimal_2.7.18-1~20.04.1_amd64.deb ...
-Unpacking python2.7-minimal (2.7.18-1~20.04.1) ...
-Selecting previously unselected package libpython2.7-stdlib:amd64.
-Preparing to unpack .../libpython2.7-stdlib_2.7.18-1~20.04.1_amd64.deb ...
-Unpacking libpython2.7-stdlib:amd64 (2.7.18-1~20.04.1) ...
-Selecting previously unselected package python2.7.
-Preparing to unpack .../python2.7_2.7.18-1~20.04.1_amd64.deb ...
-Unpacking python2.7 (2.7.18-1~20.04.1) ...
-Setting up libpython2.7-minimal:amd64 (2.7.18-1~20.04.1) ...
-Setting up python2.7-minimal (2.7.18-1~20.04.1) ...
-Linking and byte-compiling packages for runtime python2.7...
-Setting up libpython2.7-stdlib:amd64 (2.7.18-1~20.04.1) ...
-Setting up python2.7 (2.7.18-1~20.04.1) ...
-Processing triggers for mime-support (3.64ubuntu1) ...
-Removing intermediate container 2ac281d44ec5
- ---> f604fa660fe1
-Step 17/45 : COPY resources/hg19.blacklist.chrM.chr_rDNA.fa.gz /opt2
- ---> 2b052e6f8f0f
-Step 18/45 : COPY resources/hg19_blacklist.amb /opt2
- ---> 47d109eaff43
-Step 19/45 : COPY resources/hg19_blacklist.ann /opt2
- ---> a03c3e75da31
-Step 20/45 : COPY resources/hg19_blacklist.bwt /opt2
- ---> 94fdd2859203
-Step 21/45 : COPY resources/hg19_blacklist.pac /opt2
- ---> 8788bfc4f35e
-Step 22/45 : COPY resources/hg19_blacklist.sa /opt2
- ---> 5f3bbfdc2535
-Step 23/45 : COPY resources/hg38.blacklist.chrM.chr_rDNA.fa.gz /opt2
- ---> 3379ab693d1b
-Step 24/45 : COPY resources/hg38_blacklist.amb /opt2
- ---> 4155ec5e526b
-Step 25/45 : COPY resources/hg38_blacklist.ann /opt2
- ---> 197e8ea06965
-Step 26/45 : COPY resources/hg38_blacklist.bwt /opt2
- ---> 593479718a55
-Step 27/45 : COPY resources/hg38_blacklist.pac /opt2
- ---> 09960d84fb13
-Step 28/45 : COPY resources/hg38_blacklist.sa /opt2
- ---> e2ddc0c7dd38
-Step 29/45 : COPY resources/mm10.blacklist.chrM.chr_rDNA.fa.gz /opt2
- ---> 2198af0f9933
-Step 30/45 : COPY resources/mm10_blacklist.amb /opt2
- ---> 6712fc218b1f
-Step 31/45 : COPY resources/mm10_blacklist.ann /opt2
- ---> 478bcee31420
-Step 32/45 : COPY resources/mm10_blacklist.bwt /opt2
- ---> 2ab9b53020d0
-Step 33/45 : COPY resources/mm10_blacklist.pac /opt2
- ---> ad03a181e983
-Step 34/45 : COPY resources/mm10_blacklist.sa /opt2
- ---> 90f0ae44a14f
-Step 35/45 : COPY resources/TruSeq_and_nextera_adapters.consolidated.fa /opt2
- ---> b433b13ab755
-Step 36/45 : COPY Dockerfile.$TAG /opt2
- ---> deede7520e03
-Step 37/45 : COPY resources/picardcloud.jar /opt2
- ---> da757dd2e96e
-Step 38/45 : COPY resources/bedSort /opt2
- ---> 31a93732d006
-Step 39/45 : COPY resources/bedGraphToBigWig /opt2
- ---> 829c78f8d01f
-Step 40/45 : COPY resources/transpose.sh /opt2
- ---> b40bebfb6a1c
-Step 41/45 : RUN chmod a+x /opt2/*.bash &&  chmod a+r /opt2/*.* &&  chmod a+r /opt2/Dockerfile.$TAG &&  chmod a+x /opt2/bed*
- ---> Running in db0467ee70c8
-Removing intermediate container db0467ee70c8
- ---> feff684868fa
-Step 42/45 : ENV PATH="/opt2:${PATH}"
- ---> Running in 31a7b956878d
-Removing intermediate container 31a7b956878d
- ---> 5f2d982e1e64
-Step 43/45 : WORKDIR /data2
- ---> Running in 301fdf3b821b
-Removing intermediate container 301fdf3b821b
- ---> b4a2ecac4e2d
-Step 44/45 : RUN apt-get clean
- ---> Running in 14b178f26bcd
-Removing intermediate container 14b178f26bcd
- ---> bb2fff63637b
-Step 45/45 : MAINTAINER vishal.koparde@nih.gov
- ---> Running in 6da571b18b09
-Removing intermediate container 6da571b18b09
- ---> 7d009c6e20db
-Successfully built 7d009c6e20db
-Successfully tagged nciccbr/ccbr_atacseq:v0.2

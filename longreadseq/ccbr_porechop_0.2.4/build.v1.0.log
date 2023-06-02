@@ -1,108 +1,0 @@
-Sending build context to Docker daemon   2.56kB
-Step 1/5 : FROM nciccbr/ccbr_ubuntu_base_20.04:v1.1
-v1.1: Pulling from nciccbr/ccbr_ubuntu_base_20.04
-04a5f4cda3ee: Already exists
-ff496a88c8ed: Already exists
-0ce83f459fe7: Already exists
-1156fc7c91b4: Pulling fs layer
-2a3f5fe8849a: Pulling fs layer
-be82e4785c0a: Pulling fs layer
-9637a8408c54: Pulling fs layer
-b0859f306c8a: Pulling fs layer
-a55df1970d5e: Pulling fs layer
-1c7b34fbe25e: Pulling fs layer
-ba4b3e3c0e42: Pulling fs layer
-a969861aa640: Pulling fs layer
-54a1c7119ac9: Pulling fs layer
-1661f5094388: Pulling fs layer
-b6f737d52e8b: Pulling fs layer
-9637a8408c54: Waiting
-b0859f306c8a: Waiting
-a55df1970d5e: Waiting
-1c7b34fbe25e: Waiting
-ba4b3e3c0e42: Waiting
-a969861aa640: Waiting
-54a1c7119ac9: Waiting
-1661f5094388: Waiting
-b6f737d52e8b: Waiting
-1156fc7c91b4: Verifying Checksum
-1156fc7c91b4: Download complete
-2a3f5fe8849a: Verifying Checksum
-2a3f5fe8849a: Download complete
-1156fc7c91b4: Pull complete
-2a3f5fe8849a: Pull complete
-b0859f306c8a: Verifying Checksum
-b0859f306c8a: Download complete
-a55df1970d5e: Verifying Checksum
-a55df1970d5e: Download complete
-be82e4785c0a: Verifying Checksum
-be82e4785c0a: Download complete
-be82e4785c0a: Pull complete
-9637a8408c54: Verifying Checksum
-9637a8408c54: Download complete
-a969861aa640: Verifying Checksum
-a969861aa640: Download complete
-54a1c7119ac9: Verifying Checksum
-54a1c7119ac9: Download complete
-1661f5094388: Verifying Checksum
-1661f5094388: Download complete
-b6f737d52e8b: Verifying Checksum
-b6f737d52e8b: Download complete
-1c7b34fbe25e: Verifying Checksum
-1c7b34fbe25e: Download complete
-9637a8408c54: Pull complete
-b0859f306c8a: Pull complete
-a55df1970d5e: Pull complete
-1c7b34fbe25e: Pull complete
-ba4b3e3c0e42: Verifying Checksum
-ba4b3e3c0e42: Download complete
-ba4b3e3c0e42: Pull complete
-a969861aa640: Pull complete
-54a1c7119ac9: Pull complete
-1661f5094388: Pull complete
-b6f737d52e8b: Pull complete
-Digest: sha256:20401221864025e8c6c6228387b3b7cf0f63d8f60097a4545cc4c8c47a157a13
-Status: Downloaded newer image for nciccbr/ccbr_ubuntu_base_20.04:v1.1
- ---> 849701fb1570
-Step 2/5 : RUN apt-get update && apt-get install -y porechop
- ---> Running in 1d5abc2c9458
-Get:1 http://security.ubuntu.com/ubuntu focal-security InRelease [109 kB]
-Hit:2 http://archive.ubuntu.com/ubuntu focal InRelease
-Get:3 http://archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
-Get:4 http://security.ubuntu.com/ubuntu focal-security/universe amd64 Packages [682 kB]
-Get:5 http://archive.ubuntu.com/ubuntu focal-backports InRelease [101 kB]
-Get:6 http://archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [948 kB]
-Get:7 http://security.ubuntu.com/ubuntu focal-security/main amd64 Packages [717 kB]
-Get:8 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [1128 kB]
-Fetched 3798 kB in 5s (750 kB/s)
-Reading package lists...
-Reading package lists...
-Building dependency tree...
-Reading state information...
-The following NEW packages will be installed:
-  porechop
-0 upgraded, 1 newly installed, 0 to remove and 5 not upgraded.
-Need to get 56.7 kB of archives.
-After this operation, 251 kB of additional disk space will be used.
-Get:1 http://archive.ubuntu.com/ubuntu focal/universe amd64 porechop amd64 0.2.4+dfsg-1build2 [56.7 kB]
-[91mdebconf: delaying package configuration, since apt-utils is not installed
-[0mFetched 56.7 kB in 1s (103 kB/s)
-Selecting previously unselected package porechop.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 26960 files and directories currently installed.)
-Preparing to unpack .../porechop_0.2.4+dfsg-1build2_amd64.deb ...
-Unpacking porechop (0.2.4+dfsg-1build2) ...
-Setting up porechop (0.2.4+dfsg-1build2) ...
-Removing intermediate container 1d5abc2c9458
- ---> 3556638c3393
-Step 3/5 : COPY Dockerfile.v1.0 /opt2/Dockerfile
- ---> c1a4222fc203
-Step 4/5 : RUN apt-get clean && chmod -R a+rX /opt2
- ---> Running in a5261e17db7f
-Removing intermediate container a5261e17db7f
- ---> e7f99f9909b3
-Step 5/5 : MAINTAINER vishal.koparde@nih.gov
- ---> Running in afe7791f7e40
-Removing intermediate container afe7791f7e40
- ---> 26f1dd26b46c
-Successfully built 26f1dd26b46c
-Successfully tagged nciccbr/ccbr_porechop_0.2.4:v1.0
