@@ -85,6 +85,7 @@ Following this up with:
 ```
 
 will 
-- push `nciccbr/ccbr_xyz:v2` dockerhub
+- push `nciccbr/ccbr_xyz:v2` to [Dockerhub](https://hub.docker.com/?namespace=nciccbr)
 - replace `nciccbr/ccbr_xyz:latest` with `nciccbr/ccbr_xyz:v2` on dockerhub
 
+> NOTE: If you are not a member of the `nciccbr` org on Dockerhub, then you cannot use `push` script as-in. You may have to modify the `dockerhub_account` variable appropriately for a successful push.
