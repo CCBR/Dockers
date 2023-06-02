@@ -5,12 +5,20 @@ if [ "$#" != "1" ];then
     exit
 fi
 
+if [ -f Dockerfile ];then rm -f Dockerfile;fi
+
 # dt=$(date +"%d%m%y%H%M%S")
 dockerhub_account="nciccbr"
-reponame="ccbr_r_4.3.0"
+#reponame="ccbr_r_4.3.0"
+# foldername is the reponame
+SCRIPTDIRNAME=$(readlink -f $(dirname $0))
+JUSTFOLDERNAME=$(basename $SCRIPTDIRNAME)
+reponame="$JUSTFOLDERNAME"
 
 dt=$(date +"%y%m%d")
 tag="$1"
+
+ln -s Dockerfile.${tag} Dockerfile
 
 docker build \
     --progress=plain \
