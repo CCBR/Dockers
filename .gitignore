@@ -13,3 +13,5 @@ test.sh
 **/bring_in_changes_to_remote_master.sh
 **/push.bash
 **/v2.0.2.tar.gz
+**/log
+**/log.*
