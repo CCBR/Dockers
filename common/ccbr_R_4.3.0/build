@@ -1,11 +1,16 @@
 #!/bin/bash
 
+if [ "$#" != "1" ];then
+    echo "Provide a TAG as argument!"
+    exit
+fi
+
 # dt=$(date +"%d%m%y%H%M%S")
 dockerhub_account="nciccbr"
 reponame="ccbr_r_4.3.0"
 
 dt=$(date +"%y%m%d")
-tag="v0"
+tag="$1"
 
 docker build \
     --progress=plain \
