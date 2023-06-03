@@ -1,6 +1,14 @@
 # Base image
 FROM nciccbr/ccbr_ubuntu_base_20.04:v4
 
+# build time variables
+ARG BUILD_DATE="000000"
+ENV BUILD_DATE=${BUILD_DATE}
+ARG BUILD_TAG="000000"
+ENV BUILD_TAG=${BUILD_TAG}
+ARG REPONAME="000000"
+ENV REPONAME=${REPONAME}
+
 # Other misc dependencies
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
       figlet \
@@ -157,14 +165,6 @@ RUN wget https://github.com/AstraZeneca-NGS/VarDictJava/releases/download/v1.8.2
     && rm /opt2/VarDict-1.8.2.tar
 ENV PATH="/opt2/VarDict-1.8.2/bin:$PATH"
 
-# Add Dockerfile and argparse.bash script
-# and export environment variables
-# and creating a backwards compatible
-# wrapper for Biowulf's trimmomatic/0.39
-# and set java8 as default with links
-# to alternative versions
-ADD Dockerfile /opt2/base_gatk4_wes.dockerfile
-COPY argparse.bash /opt2
 # Trimmomatic requires java11
 ENV TRIMMOMATIC_JAR="/usr/share/java/trimmomatic-0.39.jar"
 RUN echo '#!/bin/bash' > /opt2/trimmomatic \
@@ -190,3 +190,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
     pandoc \
     && apt-get clean && apt-get purge \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+COPY Dockerfile /opt2/Dockerfile_${REPONAME}.${BUILD_TAG}
+RUN chmod a+r /opt2/Dockerfile_${REPONAME}.${BUILD_TAG}
