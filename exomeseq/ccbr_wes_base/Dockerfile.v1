@@ -45,7 +45,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
       zlib1g-dev \
       zlibc
 
-
+WORKDIR /opt2
 # Install Sambamba/0.8.1 for CNTRL-Freec
 # not available to apt-get on Ubuntu 20.04
 RUN wget https://github.com/biod/sambamba/releases/download/v0.8.1/sambamba-0.8.1-linux-amd64-static.gz \
