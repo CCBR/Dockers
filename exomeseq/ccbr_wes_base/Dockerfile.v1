@@ -72,7 +72,8 @@ RUN wget https://storage.googleapis.com/gatk-software/package-archive/gatk/Genom
 ENV GATK_JAR="/opt2/GenomeAnalysisTK-3.8-1-0-gf15c1c3ef/GenomeAnalysisTK.jar"
 
 # Install dependencies needed to add a new repository over HTTPS
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
+RUN apt-get update && apt-get upgrade && \
+    DEBIAN_FRONTEND=noninteractive apt-get install --fix-broken -y \
       gnupg \
       dirmngr \
       ca-certificates \
