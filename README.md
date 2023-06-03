@@ -58,7 +58,14 @@ ARG BUILD_TAG="000000"
 ENV BUILD_TAG=${BUILD_TAG}
 ARG REPONAME="000000"
 ENV REPONAME=${REPONAME}
+
+# your layers go here!!!
+
+COPY Dockerfile /opt2/Dockerfile_${REPONAME}.${BUILD_TAG}
+RUN chmod a+r /opt2/Dockerfile_${REPONAME}.${BUILD_TAG}
 ```
+
+> NOTE: Dockerfile template is available under the `resources` folder.
 
 - Once your recipe is ready, `build` and `push` scripts are from the `scripts` folder can be used to:
   - automatically build and push built docker images to the `nciccbr` dockerhub account
