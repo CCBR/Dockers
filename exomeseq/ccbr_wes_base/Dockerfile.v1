@@ -101,7 +101,8 @@ RUN wget https://github.com/BoevaLab/FREEC/archive/refs/tags/v11.6.zip \
     && make
 ENV PATH="/opt2/FREEC-11.6/src:$PATH"
 WORKDIR /opt2 
-
+RUN apt-get update && \
+    apt-get install -y python3-dev
 # Install Sequenza-Utils/3.0.0 and Sequenza
 # Requires R, Python, SAMtools, tabix (already satisfied)
 # https://cran.r-project.org/web/packages/sequenza/vignettes/sequenza.html#getting-started
