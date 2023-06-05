@@ -10,7 +10,7 @@ ARG REPONAME="000000"
 ENV REPONAME=${REPONAME}
 
 # Other misc dependencies
-RUN apt-get update && apt-get upgrade && \
+RUN apt-get update && apt-get --assume-yes upgrade && \
     apt-get install --assume-yes \
       figlet \
       libatlas-base-dev \
