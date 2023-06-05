@@ -11,7 +11,7 @@ ENV REPONAME=${REPONAME}
 
 # Other misc dependencies
 RUN apt-get update && apt-get upgrade && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    apt-get install -y \
       figlet \
       libatlas-base-dev \
       libblas-dev \
