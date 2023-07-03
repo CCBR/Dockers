@@ -33,8 +33,8 @@ docker build \
     -t ${dockerhub_account}/${reponame}:${tag} \
     . 2>&1 | \
     tee Dockerfile.${tag}.build.${dt}.log
-if [ "$?" == "0" ];then
-docker push ${dockerhub_account}/${reponame}:${tag}
-docker tag ${dockerhub_account}/${reponame}:${tag} ${dockerhub_account}/${reponame}:latest
-docker push ${dockerhub_account}/${reponame}:latest
-fi
+#if [ "$?" == "0" ];then
+#docker push ${dockerhub_account}/${reponame}:${tag}
+#docker tag ${dockerhub_account}/${reponame}:${tag} ${dockerhub_account}/${reponame}:latest
+#docker push ${dockerhub_account}/${reponame}:latest
+#fi
