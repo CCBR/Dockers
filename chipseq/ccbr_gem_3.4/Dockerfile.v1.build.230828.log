@@ -1,0 +1,60 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load .dockerignore
+#1 transferring context: 2B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 759B done
+#2 DONE 0.0s
+
+#3 [auth] nciccbr/ccbr_ubuntu_base_20.04:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#4 [internal] load metadata for docker.io/nciccbr/ccbr_ubuntu_base_20.04:v5
+#4 DONE 0.3s
+
+#5 [internal] load build context
+#5 DONE 0.0s
+
+#6 [1/8] FROM docker.io/nciccbr/ccbr_ubuntu_base_20.04:v5@sha256:e4450dda335155de9a3398425bf7f66c6acf97a184e591c117ed96d1312329b5
+#6 DONE 0.0s
+
+#7 https://groups.csail.mit.edu/cgs/gem/download/gem.v3.4.tar.gz
+#7 DONE 0.3s
+
+#5 [internal] load build context
+#5 transferring context: 759B done
+#5 DONE 0.0s
+
+#8 [2/8] WORKDIR /opt2
+#8 CACHED
+
+#9 [3/8] ADD https://groups.csail.mit.edu/cgs/gem/download/gem.v3.4.tar.gz /opt2
+#9 CACHED
+
+#10 [4/8] RUN tar xzvf gem.v3.4.tar.gz && rm -f gem.v3.4.tar.gz
+#10 CACHED
+
+#11 [5/8] COPY Dockerfile /opt2/Dockerfile_ccbr_gem_3.4.v1
+#11 DONE 0.0s
+
+#12 [6/8] RUN chmod a+r /opt2/Dockerfile_ccbr_gem_3.4.v1
+#12 DONE 0.2s
+
+#13 [7/8] WORKDIR /data2
+#13 DONE 0.1s
+
+#14 [8/8] RUN apt-get clean && apt-get purge     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+#14 0.263 Reading package lists...
+#14 0.286 Building dependency tree...
+#14 0.288 Reading state information...
+#14 0.300 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+#14 DONE 0.3s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 0.1s done
+#15 writing image sha256:2c5e4ca98dce6742f5a61c8ef1d1b4e9b06a26935b9aa2a5348f2318d4a65aa4 done
+#15 naming to docker.io/nciccbr/ccbr_gem_3.4:v1 done
+#15 DONE 0.1s
