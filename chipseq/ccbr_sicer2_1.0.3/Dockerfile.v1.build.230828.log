@@ -1,0 +1,68 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 622B done
+#1 DONE 0.0s
+
+#2 [internal] load .dockerignore
+#2 transferring context: 2B done
+#2 DONE 0.0s
+
+#3 [auth] nciccbr/ccbr_ubuntu_base_20.04:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#4 [internal] load metadata for docker.io/nciccbr/ccbr_ubuntu_base_20.04:v5
+#4 DONE 0.3s
+
+#5 [1/6] FROM docker.io/nciccbr/ccbr_ubuntu_base_20.04:v5@sha256:e4450dda335155de9a3398425bf7f66c6acf97a184e591c117ed96d1312329b5
+#5 CACHED
+
+#6 [internal] load build context
+#6 transferring context: 622B done
+#6 DONE 0.1s
+
+#7 [2/6] RUN pip install SICER2
+#7 1.168 Collecting SICER2
+#7 1.243   Downloading SICER2-1.0.3.tar.gz (107 kB)
+#7 1.273      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 107.9/107.9 kB 3.8 MB/s eta 0:00:00
+#7 1.305   Preparing metadata (setup.py): started
+#7 1.816   Preparing metadata (setup.py): finished with status 'done'
+#7 1.824 Requirement already satisfied: numpy in /usr/local/lib/python3.8/dist-packages (from SICER2) (1.24.4)
+#7 1.826 Requirement already satisfied: scipy>=1.0.0 in /usr/local/lib/python3.8/dist-packages (from SICER2) (1.10.1)
+#7 1.874 Building wheels for collected packages: SICER2
+#7 1.876   Building wheel for SICER2 (setup.py): started
+#7 12.53   Building wheel for SICER2 (setup.py): finished with status 'done'
+#7 12.53   Created wheel for SICER2: filename=SICER2-1.0.3-cp38-cp38-linux_x86_64.whl size=511848 sha256=2a5c66622acceb96b7ebabae5455f40112bcea7b4fbac92617eac089b19d195b
+#7 12.53   Stored in directory: /root/.cache/pip/wheels/b7/45/26/f16f78535caf8b224457e480a03e2489c4052ee78a13cadaee
+#7 12.54 Successfully built SICER2
+#7 12.71 Installing collected packages: SICER2
+#7 12.81 Successfully installed SICER2-1.0.3
+#7 12.81 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#7 13.02 
+#7 13.02 [notice] A new release of pip is available: 23.1.2 -> 23.2.1
+#7 13.02 [notice] To update, run: python3 -m pip install --upgrade pip
+#7 DONE 13.2s
+
+#8 [3/6] COPY Dockerfile /opt2/Dockerfile_ccbr_sicer2.v1
+#8 DONE 0.1s
+
+#9 [4/6] RUN chmod a+r /opt2/Dockerfile_ccbr_sicer2.v1
+#9 DONE 0.3s
+
+#10 [5/6] WORKDIR /data2
+#10 DONE 0.1s
+
+#11 [6/6] RUN apt-get clean && apt-get purge     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+#11 0.345 Reading package lists...
+#11 0.380 Building dependency tree...
+#11 0.384 Reading state information...
+#11 0.395 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+#11 DONE 0.4s
+
+#12 exporting to image
+#12 exporting layers
+#12 exporting layers 0.2s done
+#12 writing image sha256:d35b2e37a6b8f96652999caa2562dfcd78cf4dd3c3344715588ecfc56846f0c6 done
+#12 naming to docker.io/nciccbr/ccbr_sicer2:v1
+#12 naming to docker.io/nciccbr/ccbr_sicer2:v1 done
+#12 DONE 0.2s
