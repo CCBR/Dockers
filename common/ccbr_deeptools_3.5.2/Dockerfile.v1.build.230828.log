@@ -1,0 +1,185 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load .dockerignore
+#1 transferring context: 2B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 626B done
+#2 DONE 0.0s
+
+#3 [auth] nciccbr/ccbr_ubuntu_base_20.04:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#4 [internal] load metadata for docker.io/nciccbr/ccbr_ubuntu_base_20.04:v5
+#4 DONE 0.3s
+
+#5 [1/6] FROM docker.io/nciccbr/ccbr_ubuntu_base_20.04:v5@sha256:e4450dda335155de9a3398425bf7f66c6acf97a184e591c117ed96d1312329b5
+#5 CACHED
+
+#6 [internal] load build context
+#6 transferring context: 626B done
+#6 DONE 0.0s
+
+#7 [2/6] RUN pip install deeptools
+#7 0.989 Collecting deeptools
+#7 1.063   Downloading deepTools-3.5.2.tar.gz (203 kB)
+#7 1.104      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 203.2/203.2 kB 5.5 MB/s eta 0:00:00
+#7 1.144   Preparing metadata (setup.py): started
+#7 1.496   Preparing metadata (setup.py): finished with status 'done'
+#7 1.550 Collecting deeptoolsintervals>=0.1.8 (from deeptools)
+#7 1.571   Downloading deeptoolsintervals-0.1.9.tar.gz (41 kB)
+#7 1.581      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 41.1/41.1 kB 5.9 MB/s eta 0:00:00
+#7 1.598   Preparing metadata (setup.py): started
+#7 1.994   Preparing metadata (setup.py): finished with status 'done'
+#7 2.426 Collecting matplotlib>=3.3.0 (from deeptools)
+#7 2.447   Downloading matplotlib-3.7.2-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (9.2 MB)
+#7 2.622      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.2/9.2 MB 54.2 MB/s eta 0:00:00
+#7 2.670 Requirement already satisfied: numpy>=1.9.0 in /usr/local/lib/python3.8/dist-packages (from deeptools) (1.24.4)
+#7 2.726 Collecting numpydoc>=0.5 (from deeptools)
+#7 2.746   Downloading numpydoc-1.5.0-py3-none-any.whl (52 kB)
+#7 2.756      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 52.4/52.4 kB 7.0 MB/s eta 0:00:00
+#7 2.887 Collecting plotly>=4.9 (from deeptools)
+#7 2.907   Downloading plotly-5.16.1-py2.py3-none-any.whl (15.6 MB)
+#7 3.185      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 15.6/15.6 MB 47.7 MB/s eta 0:00:00
+#7 3.465 Collecting py2bit>=0.2.0 (from deeptools)
+#7 3.483   Downloading py2bit-0.3.0.tar.gz (16 kB)
+#7 3.496   Preparing metadata (setup.py): started
+#7 3.905   Preparing metadata (setup.py): finished with status 'done'
+#7 3.968 Collecting pyBigWig>=0.2.1 (from deeptools)
+#7 3.988   Downloading pyBigWig-0.3.22-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (196 kB)
+#7 4.000      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 196.4/196.4 kB 24.6 MB/s eta 0:00:00
+#7 4.007 Requirement already satisfied: pysam>=0.14.0 in /usr/local/lib/python3.8/dist-packages (from deeptools) (0.21.0)
+#7 4.011 Requirement already satisfied: scipy>=0.17.0 in /usr/local/lib/python3.8/dist-packages (from deeptools) (1.10.1)
+#7 4.218 Collecting contourpy>=1.0.1 (from matplotlib>=3.3.0->deeptools)
+#7 4.238   Downloading contourpy-1.1.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (300 kB)
+#7 4.251      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 300.4/300.4 kB 34.2 MB/s eta 0:00:00
+#7 4.290 Collecting cycler>=0.10 (from matplotlib>=3.3.0->deeptools)
+#7 4.309   Downloading cycler-0.11.0-py3-none-any.whl (6.4 kB)
+#7 4.504 Collecting fonttools>=4.22.0 (from matplotlib>=3.3.0->deeptools)
+#7 4.525   Downloading fonttools-4.42.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.6 MB)
+#7 4.599      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.6/4.6 MB 66.7 MB/s eta 0:00:00
+#7 4.784 Collecting kiwisolver>=1.0.1 (from matplotlib>=3.3.0->deeptools)
+#7 4.809   Downloading kiwisolver-1.4.5-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl (1.2 MB)
+#7 4.831      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 65.8 MB/s eta 0:00:00
+#7 4.906 Collecting packaging>=20.0 (from matplotlib>=3.3.0->deeptools)
+#7 4.923   Downloading packaging-23.1-py3-none-any.whl (48 kB)
+#7 4.933      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 48.9/48.9 kB 7.3 MB/s eta 0:00:00
+#7 5.542 Collecting pillow>=6.2.0 (from matplotlib>=3.3.0->deeptools)
+#7 5.563   Downloading Pillow-10.0.0-cp38-cp38-manylinux_2_28_x86_64.whl (3.4 MB)
+#7 5.613      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.4/3.4 MB 76.2 MB/s eta 0:00:00
+#7 5.727 Collecting pyparsing<3.1,>=2.3.1 (from matplotlib>=3.3.0->deeptools)
+#7 5.745   Downloading pyparsing-3.0.9-py3-none-any.whl (98 kB)
+#7 5.756      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 98.3/98.3 kB 14.5 MB/s eta 0:00:00
+#7 5.760 Requirement already satisfied: python-dateutil>=2.7 in /usr/local/lib/python3.8/dist-packages (from matplotlib>=3.3.0->deeptools) (2.8.2)
+#7 5.854 Collecting importlib-resources>=3.2.0 (from matplotlib>=3.3.0->deeptools)
+#7 5.873   Downloading importlib_resources-6.0.1-py3-none-any.whl (34 kB)
+#7 6.049 Collecting sphinx>=4.2 (from numpydoc>=0.5->deeptools)
+#7 6.071   Downloading sphinx-7.1.2-py3-none-any.whl (3.2 MB)
+#7 6.123      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.2/3.2 MB 66.6 MB/s eta 0:00:00
+#7 6.204 Collecting Jinja2>=2.10 (from numpydoc>=0.5->deeptools)
+#7 6.221   Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
+#7 6.235      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.1/133.1 kB 15.1 MB/s eta 0:00:00
+#7 6.299 Collecting tenacity>=6.2.0 (from plotly>=4.9->deeptools)
+#7 6.316   Downloading tenacity-8.2.3-py3-none-any.whl (24 kB)
+#7 6.333 Requirement already satisfied: cython in /usr/local/lib/python3.8/dist-packages (from pysam>=0.14.0->deeptools) (0.29.35)
+#7 6.567 Collecting zipp>=3.1.0 (from importlib-resources>=3.2.0->matplotlib>=3.3.0->deeptools)
+#7 6.585   Downloading zipp-3.16.2-py3-none-any.whl (7.2 kB)
+#7 6.754 Collecting MarkupSafe>=2.0 (from Jinja2>=2.10->numpydoc>=0.5->deeptools)
+#7 6.771   Downloading MarkupSafe-2.1.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+#7 6.836 Requirement already satisfied: six>=1.5 in /usr/local/lib/python3.8/dist-packages (from python-dateutil>=2.7->matplotlib>=3.3.0->deeptools) (1.16.0)
+#7 6.917 Collecting sphinxcontrib-applehelp (from sphinx>=4.2->numpydoc>=0.5->deeptools)
+#7 6.934   Downloading sphinxcontrib_applehelp-1.0.4-py3-none-any.whl (120 kB)
+#7 6.946      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 120.6/120.6 kB 16.7 MB/s eta 0:00:00
+#7 6.989 Collecting sphinxcontrib-devhelp (from sphinx>=4.2->numpydoc>=0.5->deeptools)
+#7 7.007   Downloading sphinxcontrib_devhelp-1.0.2-py2.py3-none-any.whl (84 kB)
+#7 7.017      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 84.7/84.7 kB 12.5 MB/s eta 0:00:00
+#7 7.055 Collecting sphinxcontrib-jsmath (from sphinx>=4.2->numpydoc>=0.5->deeptools)
+#7 7.073   Downloading sphinxcontrib_jsmath-1.0.1-py2.py3-none-any.whl (5.1 kB)
+#7 7.120 Collecting sphinxcontrib-htmlhelp>=2.0.0 (from sphinx>=4.2->numpydoc>=0.5->deeptools)
+#7 7.136   Downloading sphinxcontrib_htmlhelp-2.0.1-py3-none-any.whl (99 kB)
+#7 7.147      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 99.8/99.8 kB 14.3 MB/s eta 0:00:00
+#7 7.193 Collecting sphinxcontrib-serializinghtml>=1.1.5 (from sphinx>=4.2->numpydoc>=0.5->deeptools)
+#7 7.212   Downloading sphinxcontrib_serializinghtml-1.1.5-py2.py3-none-any.whl (94 kB)
+#7 7.225      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 94.0/94.0 kB 12.3 MB/s eta 0:00:00
+#7 7.267 Collecting sphinxcontrib-qthelp (from sphinx>=4.2->numpydoc>=0.5->deeptools)
+#7 7.285   Downloading sphinxcontrib_qthelp-1.0.3-py2.py3-none-any.whl (90 kB)
+#7 7.297      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.6/90.6 kB 10.7 MB/s eta 0:00:00
+#7 7.382 Collecting Pygments>=2.13 (from sphinx>=4.2->numpydoc>=0.5->deeptools)
+#7 7.400   Downloading Pygments-2.16.1-py3-none-any.whl (1.2 MB)
+#7 7.426      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 60.6 MB/s eta 0:00:00
+#7 7.496 Collecting docutils<0.21,>=0.18.1 (from sphinx>=4.2->numpydoc>=0.5->deeptools)
+#7 7.515   Downloading docutils-0.20.1-py3-none-any.whl (572 kB)
+#7 7.533      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 572.7/572.7 kB 46.3 MB/s eta 0:00:00
+#7 7.576 Collecting snowballstemmer>=2.0 (from sphinx>=4.2->numpydoc>=0.5->deeptools)
+#7 7.594   Downloading snowballstemmer-2.2.0-py2.py3-none-any.whl (93 kB)
+#7 7.606      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 93.0/93.0 kB 11.5 MB/s eta 0:00:00
+#7 7.665 Collecting babel>=2.9 (from sphinx>=4.2->numpydoc>=0.5->deeptools)
+#7 7.684   Downloading Babel-2.12.1-py3-none-any.whl (10.1 MB)
+#7 7.853      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.1/10.1 MB 61.0 MB/s eta 0:00:00
+#7 7.947 Collecting alabaster<0.8,>=0.7 (from sphinx>=4.2->numpydoc>=0.5->deeptools)
+#7 7.965   Downloading alabaster-0.7.13-py3-none-any.whl (13 kB)
+#7 8.017 Collecting imagesize>=1.3 (from sphinx>=4.2->numpydoc>=0.5->deeptools)
+#7 8.034   Downloading imagesize-1.4.1-py2.py3-none-any.whl (8.8 kB)
+#7 8.142 Collecting requests>=2.25.0 (from sphinx>=4.2->numpydoc>=0.5->deeptools)
+#7 8.159   Downloading requests-2.31.0-py3-none-any.whl (62 kB)
+#7 8.170      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.6/62.6 kB 8.2 MB/s eta 0:00:00
+#7 8.320 Collecting importlib-metadata>=4.8 (from sphinx>=4.2->numpydoc>=0.5->deeptools)
+#7 8.337   Downloading importlib_metadata-6.8.0-py3-none-any.whl (22 kB)
+#7 8.432 Requirement already satisfied: pytz>=2015.7 in /usr/local/lib/python3.8/dist-packages (from babel>=2.9->sphinx>=4.2->numpydoc>=0.5->deeptools) (2023.3)
+#7 8.737 Collecting charset-normalizer<4,>=2 (from requests>=2.25.0->sphinx>=4.2->numpydoc>=0.5->deeptools)
+#7 8.755   Downloading charset_normalizer-3.2.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (199 kB)
+#7 8.769      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 199.1/199.1 kB 18.9 MB/s eta 0:00:00
+#7 8.819 Collecting idna<4,>=2.5 (from requests>=2.25.0->sphinx>=4.2->numpydoc>=0.5->deeptools)
+#7 8.838   Downloading idna-3.4-py3-none-any.whl (61 kB)
+#7 8.847      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.5/61.5 kB 9.4 MB/s eta 0:00:00
+#7 8.957 Collecting urllib3<3,>=1.21.1 (from requests>=2.25.0->sphinx>=4.2->numpydoc>=0.5->deeptools)
+#7 8.977   Downloading urllib3-2.0.4-py3-none-any.whl (123 kB)
+#7 8.988      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 123.9/123.9 kB 17.7 MB/s eta 0:00:00
+#7 9.057 Collecting certifi>=2017.4.17 (from requests>=2.25.0->sphinx>=4.2->numpydoc>=0.5->deeptools)
+#7 9.076   Downloading certifi-2023.7.22-py3-none-any.whl (158 kB)
+#7 9.088      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 158.3/158.3 kB 21.9 MB/s eta 0:00:00
+#7 9.326 Building wheels for collected packages: deeptools, deeptoolsintervals, py2bit
+#7 9.328   Building wheel for deeptools (setup.py): started
+#7 9.919   Building wheel for deeptools (setup.py): finished with status 'done'
+#7 9.923   Created wheel for deeptools: filename=deepTools-3.5.2-py3-none-any.whl size=220964 sha256=e7e28326257388aa6d61442787450bccd1951d7f4b9e851fe69dbcc199246af9
+#7 9.923   Stored in directory: /root/.cache/pip/wheels/d1/f1/ec/fd4390b732ce21fd8d231262aa66b1fff0b60080eb42b0cc07
+#7 9.930   Building wheel for deeptoolsintervals (setup.py): started
+#7 12.02   Building wheel for deeptoolsintervals (setup.py): finished with status 'done'
+#7 12.02   Created wheel for deeptoolsintervals: filename=deeptoolsintervals-0.1.9-cp38-cp38-linux_x86_64.whl size=119578 sha256=d18e39ecca16fbb891e2930ae49aae0847b97e38dad96a6f95762d940ec56fff
+#7 12.02   Stored in directory: /root/.cache/pip/wheels/31/65/bb/6763be1ae39f7a4005aa170cd66831a879b5e0f0f76d2b57e9
+#7 12.02   Building wheel for py2bit (setup.py): started
+#7 13.28   Building wheel for py2bit (setup.py): finished with status 'done'
+#7 13.28   Created wheel for py2bit: filename=py2bit-0.3.0-cp38-cp38-linux_x86_64.whl size=50136 sha256=fbc1f0f96f31bfca17ab9a791bc5995b8212945fa1be74dc3c0d4d20f84c9d73
+#7 13.28   Stored in directory: /root/.cache/pip/wheels/26/95/57/d87689d3e5b62d4e2bf715ad5fc6a67ef46d0a4655a577330f
+#7 13.29 Successfully built deeptools deeptoolsintervals py2bit
+#7 14.02 Installing collected packages: snowballstemmer, py2bit, deeptoolsintervals, zipp, urllib3, tenacity, sphinxcontrib-serializinghtml, sphinxcontrib-qthelp, sphinxcontrib-jsmath, sphinxcontrib-htmlhelp, sphinxcontrib-devhelp, sphinxcontrib-applehelp, pyparsing, Pygments, pyBigWig, pillow, packaging, MarkupSafe, kiwisolver, imagesize, idna, fonttools, docutils, cycler, contourpy, charset-normalizer, certifi, babel, alabaster, requests, plotly, Jinja2, importlib-resources, importlib-metadata, sphinx, matplotlib, numpydoc, deeptools
+#7 35.26 Successfully installed Jinja2-3.1.2 MarkupSafe-2.1.3 Pygments-2.16.1 alabaster-0.7.13 babel-2.12.1 certifi-2023.7.22 charset-normalizer-3.2.0 contourpy-1.1.0 cycler-0.11.0 deeptools-3.5.2 deeptoolsintervals-0.1.9 docutils-0.20.1 fonttools-4.42.1 idna-3.4 imagesize-1.4.1 importlib-metadata-6.8.0 importlib-resources-6.0.1 kiwisolver-1.4.5 matplotlib-3.7.2 numpydoc-1.5.0 packaging-23.1 pillow-10.0.0 plotly-5.16.1 py2bit-0.3.0 pyBigWig-0.3.22 pyparsing-3.0.9 requests-2.31.0 snowballstemmer-2.2.0 sphinx-7.1.2 sphinxcontrib-applehelp-1.0.4 sphinxcontrib-devhelp-1.0.2 sphinxcontrib-htmlhelp-2.0.1 sphinxcontrib-jsmath-1.0.1 sphinxcontrib-qthelp-1.0.3 sphinxcontrib-serializinghtml-1.1.5 tenacity-8.2.3 urllib3-2.0.4 zipp-3.16.2
+#7 35.26 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#7 35.46 
+#7 35.46 [notice] A new release of pip is available: 23.1.2 -> 23.2.1
+#7 35.46 [notice] To update, run: python3 -m pip install --upgrade pip
+#7 DONE 35.9s
+
+#8 [3/6] COPY Dockerfile /opt2/Dockerfile_ccbr_deeptools.v1
+#8 DONE 0.1s
+
+#9 [4/6] RUN chmod a+r /opt2/Dockerfile_ccbr_deeptools.v1
+#9 DONE 0.2s
+
+#10 [5/6] WORKDIR /data2
+#10 DONE 0.1s
+
+#11 [6/6] RUN apt-get clean && apt-get purge     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+#11 0.319 Reading package lists...
+#11 0.352 Building dependency tree...
+#11 0.354 Reading state information...
+#11 0.363 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+#11 DONE 0.4s
+
+#12 exporting to image
+#12 exporting layers
+#12 exporting layers 5.0s done
+#12 writing image sha256:db36f57fc2e7d261172d5a9d0944376110bbc00252dc4a98cebc4d90712427e7 done
+#12 naming to docker.io/nciccbr/ccbr_deeptools:v1 done
+#12 DONE 5.0s
