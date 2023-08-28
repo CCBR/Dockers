@@ -1,0 +1,177 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load .dockerignore
+#1 transferring context: 2B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 623B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/nciccbr/ccbr_ubuntu_base_20.04:v5
+#3 DONE 0.2s
+
+#4 [1/6] FROM docker.io/nciccbr/ccbr_ubuntu_base_20.04:v5@sha256:e4450dda335155de9a3398425bf7f66c6acf97a184e591c117ed96d1312329b5
+#4 CACHED
+
+#5 [internal] load build context
+#5 transferring context: 623B done
+#5 DONE 0.1s
+
+#6 [2/6] RUN pip install multiqc
+#6 0.901 Collecting multiqc
+#6 0.980   Downloading multiqc-1.15-py3-none-any.whl (1.3 MB)
+#6 1.061      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 17.3 MB/s eta 0:00:00
+#6 1.601 Collecting matplotlib>=2.1.1 (from multiqc)
+#6 1.622   Downloading matplotlib-3.7.2-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (9.2 MB)
+#6 1.750      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.2/9.2 MB 75.2 MB/s eta 0:00:00
+#6 1.874 Collecting networkx>=2.5.1 (from multiqc)
+#6 1.895   Downloading networkx-3.1-py3-none-any.whl (2.1 MB)
+#6 1.932      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 65.3 MB/s eta 0:00:00
+#6 1.953 Requirement already satisfied: numpy in /usr/local/lib/python3.8/dist-packages (from multiqc) (1.24.4)
+#6 2.021 Collecting click (from multiqc)
+#6 2.039   Downloading click-8.1.7-py3-none-any.whl (97 kB)
+#6 2.051      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 97.9/97.9 kB 13.1 MB/s eta 0:00:00
+#6 2.119 Collecting coloredlogs (from multiqc)
+#6 2.151   Downloading coloredlogs-15.0.1-py2.py3-none-any.whl (46 kB)
+#6 2.162      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 46.0/46.0 kB 5.4 MB/s eta 0:00:00
+#6 2.211 Collecting future>0.14.0 (from multiqc)
+#6 2.228   Downloading future-0.18.3.tar.gz (840 kB)
+#6 2.248      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 840.9/840.9 kB 57.2 MB/s eta 0:00:00
+#6 2.407   Preparing metadata (setup.py): started
+#6 2.802   Preparing metadata (setup.py): finished with status 'done'
+#6 2.867 Collecting jinja2>=3.0.0 (from multiqc)
+#6 2.885   Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
+#6 2.897      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.1/133.1 kB 17.3 MB/s eta 0:00:00
+#6 2.937 Collecting lzstring (from multiqc)
+#6 2.976   Downloading lzstring-1.0.4.tar.gz (4.3 kB)
+#6 2.989   Preparing metadata (setup.py): started
+#6 3.301   Preparing metadata (setup.py): finished with status 'done'
+#6 3.367 Collecting markdown (from multiqc)
+#6 3.385   Downloading Markdown-3.4.4-py3-none-any.whl (94 kB)
+#6 3.399      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 94.2/94.2 kB 13.1 MB/s eta 0:00:00
+#6 3.529 Collecting pyyaml>=4 (from multiqc)
+#6 3.548   Downloading PyYAML-6.0.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (736 kB)
+#6 3.567      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 736.6/736.6 kB 51.4 MB/s eta 0:00:00
+#6 3.670 Collecting requests (from multiqc)
+#6 3.688   Downloading requests-2.31.0-py3-none-any.whl (62 kB)
+#6 3.699      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.6/62.6 kB 8.3 MB/s eta 0:00:00
+#6 3.891 Collecting rich>=10 (from multiqc)
+#6 3.908   Downloading rich-13.5.2-py3-none-any.whl (239 kB)
+#6 3.921      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 239.7/239.7 kB 27.0 MB/s eta 0:00:00
+#6 3.979 Collecting rich-click (from multiqc)
+#6 3.999   Downloading rich_click-1.6.1-py3-none-any.whl (19 kB)
+#6 4.269 Collecting simplejson (from multiqc)
+#6 4.288   Downloading simplejson-3.19.1-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (136 kB)
+#6 4.299      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 136.6/136.6 kB 19.1 MB/s eta 0:00:00
+#6 4.341 Collecting spectra>=0.0.10 (from multiqc)
+#6 4.363   Downloading spectra-0.0.11.tar.gz (18 kB)
+#6 4.378   Preparing metadata (setup.py): started
+#6 4.698   Preparing metadata (setup.py): finished with status 'done'
+#6 4.862 Collecting MarkupSafe>=2.0 (from jinja2>=3.0.0->multiqc)
+#6 4.880   Downloading MarkupSafe-2.1.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+#6 5.093 Collecting contourpy>=1.0.1 (from matplotlib>=2.1.1->multiqc)
+#6 5.115   Downloading contourpy-1.1.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (300 kB)
+#6 5.129      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 300.4/300.4 kB 33.7 MB/s eta 0:00:00
+#6 5.172 Collecting cycler>=0.10 (from matplotlib>=2.1.1->multiqc)
+#6 5.189   Downloading cycler-0.11.0-py3-none-any.whl (6.4 kB)
+#6 5.388 Collecting fonttools>=4.22.0 (from matplotlib>=2.1.1->multiqc)
+#6 5.423   Downloading fonttools-4.42.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.6 MB)
+#6 5.492      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.6/4.6 MB 71.4 MB/s eta 0:00:00
+#6 5.683 Collecting kiwisolver>=1.0.1 (from matplotlib>=2.1.1->multiqc)
+#6 5.705   Downloading kiwisolver-1.4.5-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl (1.2 MB)
+#6 5.731      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 53.8 MB/s eta 0:00:00
+#6 5.809 Collecting packaging>=20.0 (from matplotlib>=2.1.1->multiqc)
+#6 5.826   Downloading packaging-23.1-py3-none-any.whl (48 kB)
+#6 5.835      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 48.9/48.9 kB 7.8 MB/s eta 0:00:00
+#6 6.488 Collecting pillow>=6.2.0 (from matplotlib>=2.1.1->multiqc)
+#6 6.514   Downloading Pillow-10.0.0-cp38-cp38-manylinux_2_28_x86_64.whl (3.4 MB)
+#6 6.573      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.4/3.4 MB 63.0 MB/s eta 0:00:00
+#6 6.701 Collecting pyparsing<3.1,>=2.3.1 (from matplotlib>=2.1.1->multiqc)
+#6 6.719   Downloading pyparsing-3.0.9-py3-none-any.whl (98 kB)
+#6 6.730      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 98.3/98.3 kB 14.6 MB/s eta 0:00:00
+#6 6.735 Requirement already satisfied: python-dateutil>=2.7 in /usr/local/lib/python3.8/dist-packages (from matplotlib>=2.1.1->multiqc) (2.8.2)
+#6 6.838 Collecting importlib-resources>=3.2.0 (from matplotlib>=2.1.1->multiqc)
+#6 6.856   Downloading importlib_resources-6.0.1-py3-none-any.whl (34 kB)
+#6 6.985 Collecting markdown-it-py>=2.2.0 (from rich>=10->multiqc)
+#6 7.002   Downloading markdown_it_py-3.0.0-py3-none-any.whl (87 kB)
+#6 7.015      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 87.5/87.5 kB 11.7 MB/s eta 0:00:00
+#6 7.101 Collecting pygments<3.0.0,>=2.13.0 (from rich>=10->multiqc)
+#6 7.121   Downloading Pygments-2.16.1-py3-none-any.whl (1.2 MB)
+#6 7.147      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 52.9 MB/s eta 0:00:00
+#6 7.227 Collecting typing-extensions<5.0,>=4.0.0 (from rich>=10->multiqc)
+#6 7.248   Downloading typing_extensions-4.7.1-py3-none-any.whl (33 kB)
+#6 7.302 Collecting colormath>=3.0.0 (from spectra>=0.0.10->multiqc)
+#6 7.322   Downloading colormath-3.0.0.tar.gz (39 kB)
+#6 7.342   Preparing metadata (setup.py): started
+#6 7.704   Preparing metadata (setup.py): finished with status 'done'
+#6 7.827 Collecting humanfriendly>=9.1 (from coloredlogs->multiqc)
+#6 7.845   Downloading humanfriendly-10.0-py2.py3-none-any.whl (86 kB)
+#6 7.857      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 86.8/86.8 kB 11.6 MB/s eta 0:00:00
+#6 8.039 Collecting importlib-metadata>=4.4 (from markdown->multiqc)
+#6 8.057   Downloading importlib_metadata-6.8.0-py3-none-any.whl (22 kB)
+#6 8.282 Collecting charset-normalizer<4,>=2 (from requests->multiqc)
+#6 8.300   Downloading charset_normalizer-3.2.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (199 kB)
+#6 8.314      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 199.1/199.1 kB 20.2 MB/s eta 0:00:00
+#6 8.366 Collecting idna<4,>=2.5 (from requests->multiqc)
+#6 8.384   Downloading idna-3.4-py3-none-any.whl (61 kB)
+#6 8.395      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.5/61.5 kB 8.4 MB/s eta 0:00:00
+#6 8.511 Collecting urllib3<3,>=1.21.1 (from requests->multiqc)
+#6 8.528   Downloading urllib3-2.0.4-py3-none-any.whl (123 kB)
+#6 8.542      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 123.9/123.9 kB 13.8 MB/s eta 0:00:00
+#6 8.614 Collecting certifi>=2017.4.17 (from requests->multiqc)
+#6 8.633   Downloading certifi-2023.7.22-py3-none-any.whl (158 kB)
+#6 8.647      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 158.3/158.3 kB 17.3 MB/s eta 0:00:00
+#6 9.011 Collecting zipp>=0.5 (from importlib-metadata>=4.4->markdown->multiqc)
+#6 9.029   Downloading zipp-3.16.2-py3-none-any.whl (7.2 kB)
+#6 9.250 Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=10->multiqc)
+#6 9.268   Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+#6 9.375 Requirement already satisfied: six>=1.5 in /usr/local/lib/python3.8/dist-packages (from python-dateutil>=2.7->matplotlib>=2.1.1->multiqc) (1.16.0)
+#6 9.492 Building wheels for collected packages: future, spectra, lzstring, colormath
+#6 9.498   Building wheel for future (setup.py): started
+#6 10.36   Building wheel for future (setup.py): finished with status 'done'
+#6 10.36   Created wheel for future: filename=future-0.18.3-py3-none-any.whl size=492025 sha256=ad8efab40d5a1a40dc34d722526f0236bb555ac8e8ea17c629f496273d598d41
+#6 10.36   Stored in directory: /root/.cache/pip/wheels/a0/0b/ee/e6994fadb42c1354dcccb139b0bf2795271bddfe6253ccdf11
+#6 10.37   Building wheel for spectra (setup.py): started
+#6 10.85   Building wheel for spectra (setup.py): finished with status 'done'
+#6 10.86   Created wheel for spectra: filename=spectra-0.0.11-py3-none-any.whl size=17471 sha256=1b2fe1e61fe88de7bbda2896af59c38155d2c8adebbaf5de586b6178896ecea2
+#6 10.86   Stored in directory: /root/.cache/pip/wheels/60/48/fd/b818cd482a8c66aab4e846999079cb79a91a199b667656c7db
+#6 10.86   Building wheel for lzstring (setup.py): started
+#6 11.31   Building wheel for lzstring (setup.py): finished with status 'done'
+#6 11.31   Created wheel for lzstring: filename=lzstring-1.0.4-py2.py3-none-any.whl size=4574 sha256=67c2d1c357514f602c6d4c75a3d9a694fe1cabf45a91223704701e2515c68513
+#6 11.31   Stored in directory: /root/.cache/pip/wheels/c7/13/56/ea14e410b3ba3d95b95b4672ebfa51a81f28783b4b57ae02fd
+#6 11.32   Building wheel for colormath (setup.py): started
+#6 11.79   Building wheel for colormath (setup.py): finished with status 'done'
+#6 11.79   Created wheel for colormath: filename=colormath-3.0.0-py3-none-any.whl size=39390 sha256=688df24d30f166542799e8b0bbf693497ef8ad14d1793b8eaf8c426c80f494b9
+#6 11.79   Stored in directory: /root/.cache/pip/wheels/8b/74/a8/df86fd600a6c68547019383b14765e2213085feb1a2fbf0db1
+#6 11.80 Successfully built future spectra lzstring colormath
+#6 12.41 Installing collected packages: zipp, urllib3, typing-extensions, simplejson, pyyaml, pyparsing, pygments, pillow, packaging, networkx, mdurl, MarkupSafe, kiwisolver, idna, humanfriendly, future, fonttools, cycler, contourpy, click, charset-normalizer, certifi, requests, markdown-it-py, lzstring, jinja2, importlib-resources, importlib-metadata, colormath, coloredlogs, spectra, rich, matplotlib, markdown, rich-click, multiqc
+#6 21.50 Successfully installed MarkupSafe-2.1.3 certifi-2023.7.22 charset-normalizer-3.2.0 click-8.1.7 coloredlogs-15.0.1 colormath-3.0.0 contourpy-1.1.0 cycler-0.11.0 fonttools-4.42.1 future-0.18.3 humanfriendly-10.0 idna-3.4 importlib-metadata-6.8.0 importlib-resources-6.0.1 jinja2-3.1.2 kiwisolver-1.4.5 lzstring-1.0.4 markdown-3.4.4 markdown-it-py-3.0.0 matplotlib-3.7.2 mdurl-0.1.2 multiqc-1.15 networkx-3.1 packaging-23.1 pillow-10.0.0 pygments-2.16.1 pyparsing-3.0.9 pyyaml-6.0.1 requests-2.31.0 rich-13.5.2 rich-click-1.6.1 simplejson-3.19.1 spectra-0.0.11 typing-extensions-4.7.1 urllib3-2.0.4 zipp-3.16.2
+#6 21.50 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#6 21.71 
+#6 21.71 [notice] A new release of pip is available: 23.1.2 -> 23.2.1
+#6 21.71 [notice] To update, run: python3 -m pip install --upgrade pip
+#6 DONE 22.6s
+
+#7 [3/6] COPY Dockerfile /opt2/Dockerfile_ccbr_multiqc_1.15.v1
+#7 DONE 0.0s
+
+#8 [4/6] RUN chmod a+r /opt2/Dockerfile_ccbr_multiqc_1.15.v1
+#8 DONE 0.2s
+
+#9 [5/6] WORKDIR /data2
+#9 DONE 0.1s
+
+#10 [6/6] RUN apt-get clean && apt-get purge     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+#10 0.241 Reading package lists...
+#10 0.266 Building dependency tree...
+#10 0.268 Reading state information...
+#10 0.277 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+#10 DONE 0.3s
+
+#11 exporting to image
+#11 exporting layers
+#11 exporting layers 1.7s done
+#11 writing image sha256:da53f97a49bff8d4470c69adaa40532e7018906cca68581f4753cec151ca46cd done
+#11 naming to docker.io/nciccbr/ccbr_multiqc_1.15:v1 0.0s done
+#11 DONE 1.8s
