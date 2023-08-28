@@ -1,0 +1,67 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load .dockerignore
+#1 transferring context: 2B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 900B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/nciccbr/ccbr_ubuntu_base_20.04:v5
+#3 DONE 0.2s
+
+#4 [1/9] FROM docker.io/nciccbr/ccbr_ubuntu_base_20.04:v5@sha256:e4450dda335155de9a3398425bf7f66c6acf97a184e591c117ed96d1312329b5
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 DONE 0.0s
+
+#6 http://smithlabresearch.org/downloads/preseq_linux_v2.0.tar.bz2
+#6 DONE 0.6s
+
+#7 [2/9] RUN ln -s /usr/lib/x86_64-linux-gnu/libgsl.so /usr/lib/x86_64-linux-gnu/libgsl.so.0
+#7 CACHED
+
+#8 [3/9] ADD http://smithlabresearch.org/downloads/preseq_linux_v2.0.tar.bz2 /opt2
+#8 CACHED
+
+#9 [4/9] WORKDIR /opt2
+#9 CACHED
+
+#5 [internal] load build context
+#5 transferring context: 900B done
+#5 DONE 0.0s
+
+#10 [5/9] RUN tar xjvf preseq_linux_v2.0.tar.bz2 && rm -f preseq_linux_v2.0.tar.bz2
+#10 0.253 preseq_v2.0/
+#10 0.254 preseq_v2.0/preseq
+#10 0.280 preseq_v2.0/bam2mr
+#10 0.345 preseq_v2.0/README.md
+#10 0.346 preseq_v2.0/gpl-3.0.txt
+#10 0.349 preseq_v2.0/manual.pdf
+#10 0.394 preseq_v2.0/RELEASE_NOTES.txt
+#10 DONE 0.4s
+
+#11 [6/9] COPY Dockerfile /opt2/Dockerfile_ccbr_preseq_v2.0.v1
+#11 DONE 0.0s
+
+#12 [7/9] RUN chmod a+r /opt2/Dockerfile_ccbr_preseq_v2.0.v1
+#12 DONE 0.2s
+
+#13 [8/9] WORKDIR /data2
+#13 DONE 0.1s
+
+#14 [9/9] RUN apt-get clean && apt-get purge     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+#14 0.235 Reading package lists...
+#14 0.259 Building dependency tree...
+#14 0.261 Reading state information...
+#14 0.267 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+#14 DONE 0.3s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 0.1s done
+#15 writing image sha256:fe1b791c31c5cc4269be0e751a7a606641bc7d1d2e00b7e15166356a96219e36 done
+#15 naming to docker.io/nciccbr/ccbr_preseq_v2.0:v1 done
+#15 DONE 0.1s

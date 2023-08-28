@@ -1,0 +1,25 @@
+FROM nciccbr/ccbr_ubuntu_base_20.04:v5
+
+# build time variables
+ARG BUILD_DATE="000000"
+ENV BUILD_DATE=${BUILD_DATE}
+ARG BUILD_TAG="000000"
+ENV BUILD_TAG=${BUILD_TAG}
+ARG REPONAME="000000"
+ENV REPONAME=${REPONAME}
+
+# add ngsqc executable
+RUN mkdir -p /opt2/ngsqc
+COPY NGSQC_linux_x86_64 /opt2/ngsqc/
+RUN ln -s /opt2/ngsqc/NGSQC_linux_x86_64 /opt2/ngsqc/ngsqc && \
+    chmod a+x /opt2/ngsqc/NGSQC_linux_x86_64
+ENV PATH="${PATH}:/opt2/ngsqc"
+
+# Save Dockerfile in the docker
+COPY Dockerfile /opt2/Dockerfile_${REPONAME}.${BUILD_TAG}
+RUN chmod a+r /opt2/Dockerfile_${REPONAME}.${BUILD_TAG}
+
+# cleanup
+WORKDIR /data2
+RUN apt-get clean && apt-get purge \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

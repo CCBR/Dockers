@@ -1,0 +1,26 @@
+FROM nciccbr/ccbr_ubuntu_base_20.04:v5
+
+# build time variables
+ARG BUILD_DATE="000000"
+ENV BUILD_DATE=${BUILD_DATE}
+ARG BUILD_TAG="000000"
+ENV BUILD_TAG=${BUILD_TAG}
+ARG REPONAME="000000"
+ENV REPONAME=${REPONAME}
+
+# add preseq executable
+# fix path to libgsl.so
+RUN ln -s /usr/lib/x86_64-linux-gnu/libgsl.so /usr/lib/x86_64-linux-gnu/libgsl.so.0
+ADD http://smithlabresearch.org/downloads/preseq_linux_v2.0.tar.bz2 /opt2
+WORKDIR /opt2
+RUN tar xjvf preseq_linux_v2.0.tar.bz2 && rm -f preseq_linux_v2.0.tar.bz2
+ENV PATH="${PATH}:/opt2/preseq_v2.0"
+
+# Save Dockerfile in the docker
+COPY Dockerfile /opt2/Dockerfile_${REPONAME}.${BUILD_TAG}
+RUN chmod a+r /opt2/Dockerfile_${REPONAME}.${BUILD_TAG}
+
+# cleanup
+WORKDIR /data2
+RUN apt-get clean && apt-get purge \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

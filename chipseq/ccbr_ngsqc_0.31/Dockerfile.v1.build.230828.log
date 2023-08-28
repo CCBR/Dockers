@@ -1,0 +1,51 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load .dockerignore
+#1 transferring context: 2B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 794B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/nciccbr/ccbr_ubuntu_base_20.04:v5
+#3 DONE 0.1s
+
+#4 [1/8] FROM docker.io/nciccbr/ccbr_ubuntu_base_20.04:v5@sha256:e4450dda335155de9a3398425bf7f66c6acf97a184e591c117ed96d1312329b5
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 833B done
+#5 DONE 0.0s
+
+#6 [2/8] RUN mkdir -p /opt2/ngsqc
+#6 CACHED
+
+#7 [3/8] COPY NGSQC_linux_x86_64 /opt2/ngsqc/
+#7 CACHED
+
+#8 [4/8] RUN ln -s /opt2/ngsqc/NGSQC_linux_x86_64 /opt2/ngsqc/ngsqc &&     chmod a+x /opt2/ngsqc/NGSQC_linux_x86_64
+#8 CACHED
+
+#9 [5/8] COPY Dockerfile /opt2/Dockerfile_ccbr_ngsqc_0.31.v1
+#9 DONE 0.0s
+
+#10 [6/8] RUN chmod a+r /opt2/Dockerfile_ccbr_ngsqc_0.31.v1
+#10 DONE 0.3s
+
+#11 [7/8] WORKDIR /data2
+#11 DONE 0.1s
+
+#12 [8/8] RUN apt-get clean && apt-get purge     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+#12 0.246 Reading package lists...
+#12 0.268 Building dependency tree...
+#12 0.270 Reading state information...
+#12 0.277 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+#12 DONE 0.3s
+
+#13 exporting to image
+#13 exporting layers
+#13 exporting layers 0.1s done
+#13 writing image sha256:2911287111300aa9285bf5a6635c23595c6b8928e2d1f00b846e9c6b19aebafc done
+#13 naming to docker.io/nciccbr/ccbr_ngsqc_0.31:v1 done
+#13 DONE 0.1s
