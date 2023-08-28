@@ -1,0 +1,71 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 784B done
+#1 DONE 0.0s
+
+#2 [internal] load .dockerignore
+#2 transferring context: 2B done
+#2 DONE 0.0s
+
+#3 [auth] nciccbr/ccbr_ubuntu_base_20.04:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#4 [internal] load metadata for docker.io/nciccbr/ccbr_ubuntu_base_20.04:v5
+#4 DONE 0.4s
+
+#5 [1/7] FROM docker.io/nciccbr/ccbr_ubuntu_base_20.04:v5@sha256:e4450dda335155de9a3398425bf7f66c6acf97a184e591c117ed96d1312329b5
+#5 CACHED
+
+#6 [internal] load build context
+#6 transferring context: 3.78kB 0.0s done
+#6 DONE 0.1s
+
+#7 [2/7] RUN pip install cutadapt==4.4
+#7 0.887 Collecting cutadapt==4.4
+#7 0.950   Downloading cutadapt-4.4-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (475 kB)
+#7 1.008      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 475.9/475.9 kB 9.2 MB/s eta 0:00:00
+#7 1.104 Collecting dnaio>=0.10.0 (from cutadapt==4.4)
+#7 1.125   Downloading dnaio-0.10.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (86 kB)
+#7 1.135      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 86.2/86.2 kB 13.9 MB/s eta 0:00:00
+#7 1.196 Collecting xopen>=1.6.0 (from cutadapt==4.4)
+#7 1.215   Downloading xopen-1.7.0-py3-none-any.whl (15 kB)
+#7 1.362 Collecting isal>=1.0.0 (from xopen>=1.6.0->cutadapt==4.4)
+#7 1.381   Downloading isal-1.2.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (250 kB)
+#7 1.396      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 250.7/250.7 kB 27.9 MB/s eta 0:00:00
+#7 1.593 Installing collected packages: isal, xopen, dnaio, cutadapt
+#7 1.777 Successfully installed cutadapt-4.4 dnaio-0.10.0 isal-1.2.0 xopen-1.7.0
+#7 1.778 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#7 1.934 
+#7 1.934 [notice] A new release of pip is available: 23.1.2 -> 23.2.1
+#7 1.934 [notice] To update, run: python3 -m pip install --upgrade pip
+#7 DONE 2.1s
+
+#8 [3/7] COPY TruSeq_and_nextera_adapters.consolidated.fa /opt2/TruSeq_and_nextera_adapters.consolidated.fa
+#8 DONE 0.0s
+
+#9 [4/7] COPY Dockerfile /opt2/Dockerfile_ccbr_cutadapt_4.4.v1
+#9 DONE 0.0s
+
+#10 [5/7] RUN chmod a+r /opt2/Dockerfile_ccbr_cutadapt_4.4.v1
+#10 DONE 0.3s
+
+#11 [6/7] RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* &&     apt-get autoclean &&     apt-get autoremove -y &&     rm -rf /var/lib/{apt,dpkg,cache,log}/
+#11 0.331 Reading package lists...
+#11 0.353 Building dependency tree...
+#11 0.355 Reading state information...
+#11 0.369 Reading package lists...
+#11 0.387 Building dependency tree...
+#11 0.389 Reading state information...
+#11 0.396 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+#11 DONE 0.4s
+
+#12 [7/7] WORKDIR /data2
+#12 DONE 0.1s
+
+#13 exporting to image
+#13 exporting layers
+#13 exporting layers 0.2s done
+#13 writing image sha256:dab98bb9df57d427fe5d2d6f4ceb4855c915893116935cd7fdf9b7ecc51cb8e0 done
+#13 naming to docker.io/nciccbr/ccbr_cutadapt_4.4:v1 done
+#13 DONE 0.2s
