@@ -1,0 +1,135 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load .dockerignore
+#1 transferring context: 2B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.60kB done
+#2 DONE 0.0s
+
+#3 [auth] nciccbr/ccbr_ubuntu_base_20.04:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#4 [internal] load metadata for docker.io/nciccbr/ccbr_ubuntu_base_20.04:v5
+#4 DONE 0.4s
+
+#5 [ 1/22] FROM docker.io/nciccbr/ccbr_ubuntu_base_20.04:v5@sha256:e4450dda335155de9a3398425bf7f66c6acf97a184e591c117ed96d1312329b5
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 DONE 0.0s
+
+#7 http://cole-trapnell-lab.github.io/cufflinks/assets/downloads/cufflinks-2.2.1.Linux_x86_64.tar.gz
+#7 DONE 0.0s
+
+#8 https://github.com/alexdobin/STAR/archive/refs/tags/2.7.0f.tar.gz
+#8 ...
+
+#9 https://github.com/deweylab/RSEM/archive/refs/tags/v1.3.1.tar.gz
+#9 DONE 1.5s
+
+#8 https://github.com/alexdobin/STAR/archive/refs/tags/2.7.0f.tar.gz
+#8 DONE 1.7s
+
+#10 https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/gtfToGenePred
+#10 ...
+
+#11 [ 4/22] WORKDIR /opt2
+#11 CACHED
+
+#12 [12/22] WORKDIR /opt2/RSEM-1.3.1
+#12 CACHED
+
+#13 [13/22] RUN make && make ebseq
+#13 CACHED
+
+#14 [ 5/22] ADD https://github.com/alexdobin/STAR/archive/refs/tags/2.7.0f.tar.gz /opt2
+#14 CACHED
+
+#15 [10/22] ADD https://github.com/deweylab/RSEM/archive/refs/tags/v1.3.1.tar.gz /opt2
+#15 CACHED
+
+#16 [ 6/22] RUN tar -xzvf 2.7.0f.tar.gz
+#16 CACHED
+
+#17 [11/22] RUN tar -xzvf v1.3.1.tar.gz
+#17 CACHED
+
+#18 [14/22] WORKDIR /opt2
+#18 CACHED
+
+#19 [ 3/22] RUN pip3 install numpy RSeQC
+#19 CACHED
+
+#20 [ 7/22] WORKDIR /opt2/STAR-2.7.0f/source
+#20 CACHED
+
+#21 [ 8/22] RUN make STAR
+#21 CACHED
+
+#22 [ 9/22] WORKDIR /opt2
+#22 CACHED
+
+#23 [ 2/22] RUN pip3 install --upgrade pip
+#23 CACHED
+
+#24 [15/22] ADD http://cole-trapnell-lab.github.io/cufflinks/assets/downloads/cufflinks-2.2.1.Linux_x86_64.tar.gz /opt2
+#24 CACHED
+
+#25 [16/22] RUN tar -xzvf cufflinks-2.2.1.Linux_x86_64.tar.gz && rm -f *.tar.gz
+#25 0.294 cufflinks-2.2.1.Linux_x86_64/
+#25 0.294 cufflinks-2.2.1.Linux_x86_64/gtf_to_sam
+#25 ...
+
+#10 https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/gtfToGenePred
+#10 DONE 2.0s
+
+#6 [internal] load build context
+#6 transferring context: 1.60kB done
+#6 DONE 0.0s
+
+#25 [16/22] RUN tar -xzvf cufflinks-2.2.1.Linux_x86_64.tar.gz && rm -f *.tar.gz
+#25 0.705 cufflinks-2.2.1.Linux_x86_64/cuffcompare
+#25 0.738 cufflinks-2.2.1.Linux_x86_64/cuffdiff
+#25 1.145 cufflinks-2.2.1.Linux_x86_64/LICENSE
+#25 1.145 cufflinks-2.2.1.Linux_x86_64/cufflinks
+#25 1.572 cufflinks-2.2.1.Linux_x86_64/cuffmerge
+#25 1.573 cufflinks-2.2.1.Linux_x86_64/README
+#25 1.574 cufflinks-2.2.1.Linux_x86_64/cuffnorm
+#25 1.968 cufflinks-2.2.1.Linux_x86_64/gffread
+#25 1.989 cufflinks-2.2.1.Linux_x86_64/cuffquant
+#25 2.343 cufflinks-2.2.1.Linux_x86_64/AUTHORS
+#25 DONE 3.2s
+
+#26 [17/22] ADD https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/gtfToGenePred /opt2/cufflinks-2.2.1.Linux_x86_64
+#26 DONE 0.2s
+
+#27 [18/22] RUN chmod a+x /opt2/cufflinks-2.2.1.Linux_x86_64/gtfToGenePred
+#27 DONE 0.4s
+
+#28 [19/22] COPY Dockerfile /opt2/Dockerfile_ccbr_star_plus.v2
+#28 DONE 0.0s
+
+#29 [20/22] RUN chmod a+r /opt2/Dockerfile_ccbr_star_plus.v2
+#29 DONE 0.3s
+
+#30 [21/22] RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* &&     apt-get autoclean &&     apt-get autoremove -y &&     rm -rf /var/lib/{apt,dpkg,cache,log}/
+#30 0.314 Reading package lists...
+#30 0.341 Building dependency tree...
+#30 0.343 Reading state information...
+#30 0.355 Reading package lists...
+#30 0.374 Building dependency tree...
+#30 0.376 Reading state information...
+#30 0.383 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+#30 DONE 0.4s
+
+#31 [22/22] WORKDIR /data2
+#31 DONE 0.1s
+
+#32 exporting to image
+#32 exporting layers
+#32 exporting layers 1.5s done
+#32 writing image sha256:b42106992ba62e3875f59bdc03ae712020729f9919cbb0ddd167c7eaf7f0cfb1 done
+#32 naming to docker.io/nciccbr/ccbr_star_plus:v2 done
+#32 DONE 1.5s
