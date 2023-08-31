@@ -1,0 +1,296 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load .dockerignore
+#1 transferring context: 2B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 633B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/nciccbr/ccbr_ubuntu_base_20.04:v5
+#3 ...
+
+#4 [auth] nciccbr/ccbr_ubuntu_base_20.04:pull token for registry-1.docker.io
+#4 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/nciccbr/ccbr_ubuntu_base_20.04:v5
+#3 DONE 1.5s
+
+#5 [internal] load build context
+#5 transferring context: 633B done
+#5 DONE 0.0s
+
+#6 [1/6] FROM docker.io/nciccbr/ccbr_ubuntu_base_20.04:v5@sha256:e4450dda335155de9a3398425bf7f66c6acf97a184e591c117ed96d1312329b5
+#6 resolve docker.io/nciccbr/ccbr_ubuntu_base_20.04:v5@sha256:e4450dda335155de9a3398425bf7f66c6acf97a184e591c117ed96d1312329b5 0.0s done
+#6 sha256:5f3ff2784635ccf884c461fe5a7ff4fab25389a418726d8bcf63b3f97277f9e6 0B / 196B 0.1s
+#6 sha256:a51180f2933c21cd973c72aa7fa8188d28c349f7c64670306792b7ca7e742d39 0B / 108B 0.1s
+#6 sha256:e4450dda335155de9a3398425bf7f66c6acf97a184e591c117ed96d1312329b5 3.46kB / 3.46kB done
+#6 sha256:8f0fbe2493e8cc79d964ee31987c6d10876c2e71f200bcbc076b8d76add6ee1d 8.29kB / 8.29kB done
+#6 sha256:56e0351b98767487b3c411034be95479ed1710bb6be860db6df0be3a98653027 8.39MB / 27.51MB 0.2s
+#6 sha256:56e0351b98767487b3c411034be95479ed1710bb6be860db6df0be3a98653027 27.51MB / 27.51MB 0.4s done
+#6 sha256:733cf2d680d6f8ed2337737c3697405d0996278069d8b60a1672d5f21278bdcc 0B / 34.08MB 0.4s
+#6 extracting sha256:56e0351b98767487b3c411034be95479ed1710bb6be860db6df0be3a98653027 0.1s
+#6 sha256:a51180f2933c21cd973c72aa7fa8188d28c349f7c64670306792b7ca7e742d39 108B / 108B 0.8s done
+#6 sha256:25b3077843af896cd92eeadc7d1926f97d3578b224afae4636862519cc3c025b 0B / 110.87MB 0.8s
+#6 sha256:5f3ff2784635ccf884c461fe5a7ff4fab25389a418726d8bcf63b3f97277f9e6 196B / 196B 0.9s done
+#6 sha256:e88f0d2e3e7849afafd4041fd86764a5f53b536aadb461dd3205b95459580653 0B / 328.29MB 1.0s
+#6 sha256:25b3077843af896cd92eeadc7d1926f97d3578b224afae4636862519cc3c025b 7.34MB / 110.87MB 1.8s
+#6 sha256:733cf2d680d6f8ed2337737c3697405d0996278069d8b60a1672d5f21278bdcc 4.19MB / 34.08MB 2.0s
+#6 sha256:25b3077843af896cd92eeadc7d1926f97d3578b224afae4636862519cc3c025b 15.73MB / 110.87MB 2.0s
+#6 sha256:733cf2d680d6f8ed2337737c3697405d0996278069d8b60a1672d5f21278bdcc 17.83MB / 34.08MB 2.2s
+#6 sha256:25b3077843af896cd92eeadc7d1926f97d3578b224afae4636862519cc3c025b 24.12MB / 110.87MB 2.2s
+#6 sha256:733cf2d680d6f8ed2337737c3697405d0996278069d8b60a1672d5f21278bdcc 26.21MB / 34.08MB 2.3s
+#6 sha256:733cf2d680d6f8ed2337737c3697405d0996278069d8b60a1672d5f21278bdcc 33.55MB / 34.08MB 2.4s
+#6 sha256:25b3077843af896cd92eeadc7d1926f97d3578b224afae4636862519cc3c025b 31.46MB / 110.87MB 2.4s
+#6 sha256:733cf2d680d6f8ed2337737c3697405d0996278069d8b60a1672d5f21278bdcc 34.08MB / 34.08MB 2.5s done
+#6 extracting sha256:56e0351b98767487b3c411034be95479ed1710bb6be860db6df0be3a98653027 2.1s done
+#6 sha256:25b3077843af896cd92eeadc7d1926f97d3578b224afae4636862519cc3c025b 42.99MB / 110.87MB 2.6s
+#6 sha256:5421ffbaa795a5726aa4cbbc087320c7a6588bee26a8ca9e1f1636244827f1e8 0B / 172B 2.6s
+#6 sha256:25b3077843af896cd92eeadc7d1926f97d3578b224afae4636862519cc3c025b 54.53MB / 110.87MB 2.8s
+#6 extracting sha256:a51180f2933c21cd973c72aa7fa8188d28c349f7c64670306792b7ca7e742d39 done
+#6 extracting sha256:5f3ff2784635ccf884c461fe5a7ff4fab25389a418726d8bcf63b3f97277f9e6 done
+#6 extracting sha256:733cf2d680d6f8ed2337737c3697405d0996278069d8b60a1672d5f21278bdcc
+#6 sha256:25b3077843af896cd92eeadc7d1926f97d3578b224afae4636862519cc3c025b 63.96MB / 110.87MB 3.0s
+#6 sha256:e88f0d2e3e7849afafd4041fd86764a5f53b536aadb461dd3205b95459580653 20.97MB / 328.29MB 3.0s
+#6 sha256:25b3077843af896cd92eeadc7d1926f97d3578b224afae4636862519cc3c025b 76.55MB / 110.87MB 3.2s
+#6 sha256:25b3077843af896cd92eeadc7d1926f97d3578b224afae4636862519cc3c025b 83.89MB / 110.87MB 3.3s
+#6 sha256:e88f0d2e3e7849afafd4041fd86764a5f53b536aadb461dd3205b95459580653 38.80MB / 328.29MB 3.3s
+#6 sha256:5421ffbaa795a5726aa4cbbc087320c7a6588bee26a8ca9e1f1636244827f1e8 172B / 172B 3.3s done
+#6 sha256:5de5bc716a2dd322f2e23e25d234d14676e7813dc4e82fc6620f6eb190818600 0B / 193.67MB 3.4s
+#6 sha256:25b3077843af896cd92eeadc7d1926f97d3578b224afae4636862519cc3c025b 94.37MB / 110.87MB 3.5s
+#6 sha256:25b3077843af896cd92eeadc7d1926f97d3578b224afae4636862519cc3c025b 103.81MB / 110.87MB 3.7s
+#6 sha256:e88f0d2e3e7849afafd4041fd86764a5f53b536aadb461dd3205b95459580653 62.91MB / 328.29MB 3.7s
+#6 sha256:25b3077843af896cd92eeadc7d1926f97d3578b224afae4636862519cc3c025b 110.87MB / 110.87MB 3.8s
+#6 sha256:e88f0d2e3e7849afafd4041fd86764a5f53b536aadb461dd3205b95459580653 80.74MB / 328.29MB 4.0s
+#6 sha256:25b3077843af896cd92eeadc7d1926f97d3578b224afae4636862519cc3c025b 110.87MB / 110.87MB 4.1s done
+#6 sha256:5c454f3b0b73f2cb9e33421f95afeb397b057b3eb4679bbf94a9968e75b7815b 0B / 55.67MB 4.2s
+#6 sha256:e88f0d2e3e7849afafd4041fd86764a5f53b536aadb461dd3205b95459580653 101.71MB / 328.29MB 4.4s
+#6 extracting sha256:733cf2d680d6f8ed2337737c3697405d0996278069d8b60a1672d5f21278bdcc 1.6s done
+#6 extracting sha256:25b3077843af896cd92eeadc7d1926f97d3578b224afae4636862519cc3c025b
+#6 sha256:e88f0d2e3e7849afafd4041fd86764a5f53b536aadb461dd3205b95459580653 121.63MB / 328.29MB 4.7s
+#6 sha256:5de5bc716a2dd322f2e23e25d234d14676e7813dc4e82fc6620f6eb190818600 16.78MB / 193.67MB 4.7s
+#6 sha256:5de5bc716a2dd322f2e23e25d234d14676e7813dc4e82fc6620f6eb190818600 32.51MB / 193.67MB 5.0s
+#6 sha256:e88f0d2e3e7849afafd4041fd86764a5f53b536aadb461dd3205b95459580653 141.56MB / 328.29MB 5.1s
+#6 sha256:5de5bc716a2dd322f2e23e25d234d14676e7813dc4e82fc6620f6eb190818600 45.09MB / 193.67MB 5.2s
+#6 sha256:e88f0d2e3e7849afafd4041fd86764a5f53b536aadb461dd3205b95459580653 158.33MB / 328.29MB 5.4s
+#6 sha256:5de5bc716a2dd322f2e23e25d234d14676e7813dc4e82fc6620f6eb190818600 55.57MB / 193.67MB 5.4s
+#6 sha256:5c454f3b0b73f2cb9e33421f95afeb397b057b3eb4679bbf94a9968e75b7815b 3.15MB / 55.67MB 5.4s
+#6 sha256:5c454f3b0b73f2cb9e33421f95afeb397b057b3eb4679bbf94a9968e75b7815b 7.34MB / 55.67MB 5.5s
+#6 sha256:5de5bc716a2dd322f2e23e25d234d14676e7813dc4e82fc6620f6eb190818600 68.16MB / 193.67MB 5.6s
+#6 sha256:5c454f3b0b73f2cb9e33421f95afeb397b057b3eb4679bbf94a9968e75b7815b 12.58MB / 55.67MB 5.6s
+#6 sha256:5c454f3b0b73f2cb9e33421f95afeb397b057b3eb4679bbf94a9968e75b7815b 18.19MB / 55.67MB 5.7s
+#6 sha256:e88f0d2e3e7849afafd4041fd86764a5f53b536aadb461dd3205b95459580653 180.36MB / 328.29MB 5.9s
+#6 sha256:5de5bc716a2dd322f2e23e25d234d14676e7813dc4e82fc6620f6eb190818600 85.98MB / 193.67MB 5.9s
+#6 sha256:5c454f3b0b73f2cb9e33421f95afeb397b057b3eb4679bbf94a9968e75b7815b 29.36MB / 55.67MB 5.9s
+#6 sha256:5c454f3b0b73f2cb9e33421f95afeb397b057b3eb4679bbf94a9968e75b7815b 34.60MB / 55.67MB 6.0s
+#6 sha256:5c454f3b0b73f2cb9e33421f95afeb397b057b3eb4679bbf94a9968e75b7815b 39.85MB / 55.67MB 6.1s
+#6 sha256:e88f0d2e3e7849afafd4041fd86764a5f53b536aadb461dd3205b95459580653 198.18MB / 328.29MB 6.2s
+#6 sha256:5de5bc716a2dd322f2e23e25d234d14676e7813dc4e82fc6620f6eb190818600 97.52MB / 193.67MB 6.2s
+#6 sha256:5c454f3b0b73f2cb9e33421f95afeb397b057b3eb4679bbf94a9968e75b7815b 50.33MB / 55.67MB 6.4s
+#6 sha256:5de5bc716a2dd322f2e23e25d234d14676e7813dc4e82fc6620f6eb190818600 113.25MB / 193.67MB 6.5s
+#6 sha256:5c454f3b0b73f2cb9e33421f95afeb397b057b3eb4679bbf94a9968e75b7815b 55.67MB / 55.67MB 6.5s
+#6 sha256:e88f0d2e3e7849afafd4041fd86764a5f53b536aadb461dd3205b95459580653 218.10MB / 328.29MB 6.7s
+#6 sha256:5de5bc716a2dd322f2e23e25d234d14676e7813dc4e82fc6620f6eb190818600 127.93MB / 193.67MB 6.7s
+#6 sha256:5c454f3b0b73f2cb9e33421f95afeb397b057b3eb4679bbf94a9968e75b7815b 55.67MB / 55.67MB 6.6s done
+#6 sha256:6e258499a1cb942df31da05b81e1daaef80441d6d4956938b7cc5a16da2b7894 0B / 1.17kB 6.7s
+#6 sha256:5de5bc716a2dd322f2e23e25d234d14676e7813dc4e82fc6620f6eb190818600 138.41MB / 193.67MB 6.9s
+#6 sha256:e88f0d2e3e7849afafd4041fd86764a5f53b536aadb461dd3205b95459580653 235.93MB / 328.29MB 7.0s
+#6 sha256:5de5bc716a2dd322f2e23e25d234d14676e7813dc4e82fc6620f6eb190818600 158.33MB / 193.67MB 7.2s
+#6 sha256:5de5bc716a2dd322f2e23e25d234d14676e7813dc4e82fc6620f6eb190818600 172.64MB / 193.67MB 7.4s
+#6 sha256:e88f0d2e3e7849afafd4041fd86764a5f53b536aadb461dd3205b95459580653 259.00MB / 328.29MB 7.6s
+#6 sha256:5de5bc716a2dd322f2e23e25d234d14676e7813dc4e82fc6620f6eb190818600 187.70MB / 193.67MB 7.6s
+#6 sha256:6e258499a1cb942df31da05b81e1daaef80441d6d4956938b7cc5a16da2b7894 1.17kB / 1.17kB 7.5s done
+#6 sha256:835c15da49d683bb52e781fea7230c6d5e8fc9eb47cd8b3e9a96ead937b6fc7f 0B / 1.15kB 7.6s
+#6 sha256:e88f0d2e3e7849afafd4041fd86764a5f53b536aadb461dd3205b95459580653 283.12MB / 328.29MB 8.0s
+#6 sha256:835c15da49d683bb52e781fea7230c6d5e8fc9eb47cd8b3e9a96ead937b6fc7f 1.15kB / 1.15kB 8.1s
+#6 sha256:e88f0d2e3e7849afafd4041fd86764a5f53b536aadb461dd3205b95459580653 299.89MB / 328.29MB 8.3s
+#6 sha256:5de5bc716a2dd322f2e23e25d234d14676e7813dc4e82fc6620f6eb190818600 193.67MB / 193.67MB 8.4s done
+#6 sha256:835c15da49d683bb52e781fea7230c6d5e8fc9eb47cd8b3e9a96ead937b6fc7f 1.15kB / 1.15kB 8.4s done
+#6 sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 0B / 32B 8.5s
+#6 sha256:8f3452a0019dc5658d852299ffa6b96f8403ad6d8c058a5e9add57bd004b5781 0B / 832B 8.5s
+#6 sha256:e88f0d2e3e7849afafd4041fd86764a5f53b536aadb461dd3205b95459580653 322.96MB / 328.29MB 8.7s
+#6 sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 32B / 32B 8.5s done
+#6 sha256:8f3452a0019dc5658d852299ffa6b96f8403ad6d8c058a5e9add57bd004b5781 832B / 832B 9.3s
+#6 extracting sha256:25b3077843af896cd92eeadc7d1926f97d3578b224afae4636862519cc3c025b 5.0s
+#6 sha256:e88f0d2e3e7849afafd4041fd86764a5f53b536aadb461dd3205b95459580653 328.29MB / 328.29MB 10.0s done
+#6 sha256:8f3452a0019dc5658d852299ffa6b96f8403ad6d8c058a5e9add57bd004b5781 832B / 832B 10.0s done
+#6 extracting sha256:25b3077843af896cd92eeadc7d1926f97d3578b224afae4636862519cc3c025b 9.8s done
+#6 extracting sha256:e88f0d2e3e7849afafd4041fd86764a5f53b536aadb461dd3205b95459580653
+#6 extracting sha256:e88f0d2e3e7849afafd4041fd86764a5f53b536aadb461dd3205b95459580653 5.2s
+#6 extracting sha256:e88f0d2e3e7849afafd4041fd86764a5f53b536aadb461dd3205b95459580653 10.3s
+#6 extracting sha256:e88f0d2e3e7849afafd4041fd86764a5f53b536aadb461dd3205b95459580653 15.3s
+#6 extracting sha256:e88f0d2e3e7849afafd4041fd86764a5f53b536aadb461dd3205b95459580653 20.3s
+#6 extracting sha256:e88f0d2e3e7849afafd4041fd86764a5f53b536aadb461dd3205b95459580653 25.5s
+#6 extracting sha256:e88f0d2e3e7849afafd4041fd86764a5f53b536aadb461dd3205b95459580653 30.1s done
+#6 extracting sha256:5421ffbaa795a5726aa4cbbc087320c7a6588bee26a8ca9e1f1636244827f1e8
+#6 extracting sha256:5421ffbaa795a5726aa4cbbc087320c7a6588bee26a8ca9e1f1636244827f1e8 done
+#6 extracting sha256:5de5bc716a2dd322f2e23e25d234d14676e7813dc4e82fc6620f6eb190818600 0.1s
+#6 extracting sha256:5de5bc716a2dd322f2e23e25d234d14676e7813dc4e82fc6620f6eb190818600 5.1s
+#6 extracting sha256:5de5bc716a2dd322f2e23e25d234d14676e7813dc4e82fc6620f6eb190818600 9.6s done
+#6 extracting sha256:5c454f3b0b73f2cb9e33421f95afeb397b057b3eb4679bbf94a9968e75b7815b 0.1s
+#6 extracting sha256:5c454f3b0b73f2cb9e33421f95afeb397b057b3eb4679bbf94a9968e75b7815b 2.5s done
+#6 extracting sha256:6e258499a1cb942df31da05b81e1daaef80441d6d4956938b7cc5a16da2b7894 done
+#6 extracting sha256:835c15da49d683bb52e781fea7230c6d5e8fc9eb47cd8b3e9a96ead937b6fc7f
+#6 extracting sha256:835c15da49d683bb52e781fea7230c6d5e8fc9eb47cd8b3e9a96ead937b6fc7f done
+#6 extracting sha256:8f3452a0019dc5658d852299ffa6b96f8403ad6d8c058a5e9add57bd004b5781
+#6 extracting sha256:8f3452a0019dc5658d852299ffa6b96f8403ad6d8c058a5e9add57bd004b5781 done
+#6 extracting sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 done
+#6 DONE 61.1s
+
+#7 [2/6] RUN pip install deeptools==3.5.3
+#7 1.139 Collecting deeptools==3.5.3
+#7 1.228   Downloading deepTools-3.5.3-py3-none-any.whl (215 kB)
+#7 1.272      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 215.4/215.4 kB 5.5 MB/s eta 0:00:00
+#7 1.292 Requirement already satisfied: numpy>=1.9.0 in /usr/local/lib/python3.8/dist-packages (from deeptools==3.5.3) (1.24.4)
+#7 1.294 Requirement already satisfied: scipy>=0.17.0 in /usr/local/lib/python3.8/dist-packages (from deeptools==3.5.3) (1.10.1)
+#7 1.753 Collecting matplotlib>=3.3.0 (from deeptools==3.5.3)
+#7 1.773   Downloading matplotlib-3.7.2-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (9.2 MB)
+#7 1.924      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.2/9.2 MB 62.9 MB/s eta 0:00:00
+#7 1.978 Requirement already satisfied: pysam>=0.14.0 in /usr/local/lib/python3.8/dist-packages (from deeptools==3.5.3) (0.21.0)
+#7 2.025 Collecting numpydoc>=0.5 (from deeptools==3.5.3)
+#7 2.049   Downloading numpydoc-1.5.0-py3-none-any.whl (52 kB)
+#7 2.061      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 52.4/52.4 kB 6.3 MB/s eta 0:00:00
+#7 2.109 Collecting pyBigWig>=0.2.1 (from deeptools==3.5.3)
+#7 2.129   Downloading pyBigWig-0.3.22-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (196 kB)
+#7 2.144      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 196.4/196.4 kB 22.8 MB/s eta 0:00:00
+#7 2.188 Collecting py2bit>=0.2.0 (from deeptools==3.5.3)
+#7 2.207   Downloading py2bit-0.3.0.tar.gz (16 kB)
+#7 2.221   Preparing metadata (setup.py): started
+#7 2.642   Preparing metadata (setup.py): finished with status 'done'
+#7 2.793 Collecting plotly>=4.9 (from deeptools==3.5.3)
+#7 2.811   Downloading plotly-5.16.1-py2.py3-none-any.whl (15.6 MB)
+#7 3.009      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 15.6/15.6 MB 68.9 MB/s eta 0:00:00
+#7 3.289 Collecting deeptoolsintervals>=0.1.8 (from deeptools==3.5.3)
+#7 3.310   Downloading deeptoolsintervals-0.1.9.tar.gz (41 kB)
+#7 3.320      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 41.1/41.1 kB 5.5 MB/s eta 0:00:00
+#7 3.334   Preparing metadata (setup.py): started
+#7 3.747   Preparing metadata (setup.py): finished with status 'done'
+#7 3.899 Collecting importlib-metadata (from deeptools==3.5.3)
+#7 3.919   Downloading importlib_metadata-6.8.0-py3-none-any.whl (22 kB)
+#7 4.144 Collecting contourpy>=1.0.1 (from matplotlib>=3.3.0->deeptools==3.5.3)
+#7 4.163   Downloading contourpy-1.1.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (300 kB)
+#7 4.179      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 300.4/300.4 kB 28.6 MB/s eta 0:00:00
+#7 4.222 Collecting cycler>=0.10 (from matplotlib>=3.3.0->deeptools==3.5.3)
+#7 4.249   Downloading cycler-0.11.0-py3-none-any.whl (6.4 kB)
+#7 4.461 Collecting fonttools>=4.22.0 (from matplotlib>=3.3.0->deeptools==3.5.3)
+#7 4.480   Downloading fonttools-4.42.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.6 MB)
+#7 4.543      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.6/4.6 MB 80.7 MB/s eta 0:00:00
+#7 4.747 Collecting kiwisolver>=1.0.1 (from matplotlib>=3.3.0->deeptools==3.5.3)
+#7 4.769   Downloading kiwisolver-1.4.5-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl (1.2 MB)
+#7 4.795      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 55.6 MB/s eta 0:00:00
+#7 4.881 Collecting packaging>=20.0 (from matplotlib>=3.3.0->deeptools==3.5.3)
+#7 4.899   Downloading packaging-23.1-py3-none-any.whl (48 kB)
+#7 4.910      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 48.9/48.9 kB 5.6 MB/s eta 0:00:00
+#7 5.561 Collecting pillow>=6.2.0 (from matplotlib>=3.3.0->deeptools==3.5.3)
+#7 5.582   Downloading Pillow-10.0.0-cp38-cp38-manylinux_2_28_x86_64.whl (3.4 MB)
+#7 5.625      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.4/3.4 MB 92.0 MB/s eta 0:00:00
+#7 5.752 Collecting pyparsing<3.1,>=2.3.1 (from matplotlib>=3.3.0->deeptools==3.5.3)
+#7 5.771   Downloading pyparsing-3.0.9-py3-none-any.whl (98 kB)
+#7 5.782      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 98.3/98.3 kB 13.5 MB/s eta 0:00:00
+#7 5.787 Requirement already satisfied: python-dateutil>=2.7 in /usr/local/lib/python3.8/dist-packages (from matplotlib>=3.3.0->deeptools==3.5.3) (2.8.2)
+#7 5.890 Collecting importlib-resources>=3.2.0 (from matplotlib>=3.3.0->deeptools==3.5.3)
+#7 5.909   Downloading importlib_resources-6.0.1-py3-none-any.whl (34 kB)
+#7 6.101 Collecting sphinx>=4.2 (from numpydoc>=0.5->deeptools==3.5.3)
+#7 6.122   Downloading sphinx-7.1.2-py3-none-any.whl (3.2 MB)
+#7 6.171      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.2/3.2 MB 73.0 MB/s eta 0:00:00
+#7 6.255 Collecting Jinja2>=2.10 (from numpydoc>=0.5->deeptools==3.5.3)
+#7 6.274   Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
+#7 6.286      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.1/133.1 kB 17.9 MB/s eta 0:00:00
+#7 6.368 Collecting tenacity>=6.2.0 (from plotly>=4.9->deeptools==3.5.3)
+#7 6.386   Downloading tenacity-8.2.3-py3-none-any.whl (24 kB)
+#7 6.406 Requirement already satisfied: cython in /usr/local/lib/python3.8/dist-packages (from pysam>=0.14.0->deeptools==3.5.3) (0.29.35)
+#7 6.567 Collecting zipp>=0.5 (from importlib-metadata->deeptools==3.5.3)
+#7 6.585   Downloading zipp-3.16.2-py3-none-any.whl (7.2 kB)
+#7 6.918 Collecting MarkupSafe>=2.0 (from Jinja2>=2.10->numpydoc>=0.5->deeptools==3.5.3)
+#7 6.935   Downloading MarkupSafe-2.1.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+#7 7.010 Requirement already satisfied: six>=1.5 in /usr/local/lib/python3.8/dist-packages (from python-dateutil>=2.7->matplotlib>=3.3.0->deeptools==3.5.3) (1.16.0)
+#7 7.097 Collecting sphinxcontrib-applehelp (from sphinx>=4.2->numpydoc>=0.5->deeptools==3.5.3)
+#7 7.116   Downloading sphinxcontrib_applehelp-1.0.4-py3-none-any.whl (120 kB)
+#7 7.127      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 120.6/120.6 kB 16.0 MB/s eta 0:00:00
+#7 7.172 Collecting sphinxcontrib-devhelp (from sphinx>=4.2->numpydoc>=0.5->deeptools==3.5.3)
+#7 7.191   Downloading sphinxcontrib_devhelp-1.0.2-py2.py3-none-any.whl (84 kB)
+#7 7.203      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 84.7/84.7 kB 11.2 MB/s eta 0:00:00
+#7 7.243 Collecting sphinxcontrib-jsmath (from sphinx>=4.2->numpydoc>=0.5->deeptools==3.5.3)
+#7 7.261   Downloading sphinxcontrib_jsmath-1.0.1-py2.py3-none-any.whl (5.1 kB)
+#7 7.310 Collecting sphinxcontrib-htmlhelp>=2.0.0 (from sphinx>=4.2->numpydoc>=0.5->deeptools==3.5.3)
+#7 7.329   Downloading sphinxcontrib_htmlhelp-2.0.1-py3-none-any.whl (99 kB)
+#7 7.340      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 99.8/99.8 kB 13.2 MB/s eta 0:00:00
+#7 7.389 Collecting sphinxcontrib-serializinghtml>=1.1.5 (from sphinx>=4.2->numpydoc>=0.5->deeptools==3.5.3)
+#7 7.407   Downloading sphinxcontrib_serializinghtml-1.1.5-py2.py3-none-any.whl (94 kB)
+#7 7.417      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 94.0/94.0 kB 14.0 MB/s eta 0:00:00
+#7 7.471 Collecting sphinxcontrib-qthelp (from sphinx>=4.2->numpydoc>=0.5->deeptools==3.5.3)
+#7 7.488   Downloading sphinxcontrib_qthelp-1.0.3-py2.py3-none-any.whl (90 kB)
+#7 7.499      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.6/90.6 kB 12.6 MB/s eta 0:00:00
+#7 7.609 Collecting Pygments>=2.13 (from sphinx>=4.2->numpydoc>=0.5->deeptools==3.5.3)
+#7 7.632   Downloading Pygments-2.16.1-py3-none-any.whl (1.2 MB)
+#7 7.661      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 48.4 MB/s eta 0:00:00
+#7 7.736 Collecting docutils<0.21,>=0.18.1 (from sphinx>=4.2->numpydoc>=0.5->deeptools==3.5.3)
+#7 7.757   Downloading docutils-0.20.1-py3-none-any.whl (572 kB)
+#7 7.778      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 572.7/572.7 kB 42.2 MB/s eta 0:00:00
+#7 7.873 Collecting snowballstemmer>=2.0 (from sphinx>=4.2->numpydoc>=0.5->deeptools==3.5.3)
+#7 7.891   Downloading snowballstemmer-2.2.0-py2.py3-none-any.whl (93 kB)
+#7 7.901      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 93.0/93.0 kB 13.1 MB/s eta 0:00:00
+#7 7.966 Collecting babel>=2.9 (from sphinx>=4.2->numpydoc>=0.5->deeptools==3.5.3)
+#7 7.985   Downloading Babel-2.12.1-py3-none-any.whl (10.1 MB)
+#7 8.108      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.1/10.1 MB 85.3 MB/s eta 0:00:00
+#7 8.206 Collecting alabaster<0.8,>=0.7 (from sphinx>=4.2->numpydoc>=0.5->deeptools==3.5.3)
+#7 8.224   Downloading alabaster-0.7.13-py3-none-any.whl (13 kB)
+#7 8.279 Collecting imagesize>=1.3 (from sphinx>=4.2->numpydoc>=0.5->deeptools==3.5.3)
+#7 8.297   Downloading imagesize-1.4.1-py2.py3-none-any.whl (8.8 kB)
+#7 8.414 Collecting requests>=2.25.0 (from sphinx>=4.2->numpydoc>=0.5->deeptools==3.5.3)
+#7 8.432   Downloading requests-2.31.0-py3-none-any.whl (62 kB)
+#7 8.443      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.6/62.6 kB 9.3 MB/s eta 0:00:00
+#7 8.554 Requirement already satisfied: pytz>=2015.7 in /usr/local/lib/python3.8/dist-packages (from babel>=2.9->sphinx>=4.2->numpydoc>=0.5->deeptools==3.5.3) (2023.3)
+#7 8.828 Collecting charset-normalizer<4,>=2 (from requests>=2.25.0->sphinx>=4.2->numpydoc>=0.5->deeptools==3.5.3)
+#7 8.848   Downloading charset_normalizer-3.2.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (199 kB)
+#7 8.864      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 199.1/199.1 kB 20.2 MB/s eta 0:00:00
+#7 8.915 Collecting idna<4,>=2.5 (from requests>=2.25.0->sphinx>=4.2->numpydoc>=0.5->deeptools==3.5.3)
+#7 8.933   Downloading idna-3.4-py3-none-any.whl (61 kB)
+#7 8.946      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.5/61.5 kB 7.9 MB/s eta 0:00:00
+#7 9.067 Collecting urllib3<3,>=1.21.1 (from requests>=2.25.0->sphinx>=4.2->numpydoc>=0.5->deeptools==3.5.3)
+#7 9.085   Downloading urllib3-2.0.4-py3-none-any.whl (123 kB)
+#7 9.099      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 123.9/123.9 kB 15.6 MB/s eta 0:00:00
+#7 9.172 Collecting certifi>=2017.4.17 (from requests>=2.25.0->sphinx>=4.2->numpydoc>=0.5->deeptools==3.5.3)
+#7 9.190   Downloading certifi-2023.7.22-py3-none-any.whl (158 kB)
+#7 9.202      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 158.3/158.3 kB 21.6 MB/s eta 0:00:00
+#7 9.421 Building wheels for collected packages: deeptoolsintervals, py2bit
+#7 9.422   Building wheel for deeptoolsintervals (setup.py): started
+#7 11.47   Building wheel for deeptoolsintervals (setup.py): finished with status 'done'
+#7 11.47   Created wheel for deeptoolsintervals: filename=deeptoolsintervals-0.1.9-cp38-cp38-linux_x86_64.whl size=119579 sha256=66a9ea0ebe0565e9697ea22b207944a8bb934454f7f4aa3f87e5022ee85fdceb
+#7 11.47   Stored in directory: /root/.cache/pip/wheels/31/65/bb/6763be1ae39f7a4005aa170cd66831a879b5e0f0f76d2b57e9
+#7 11.48   Building wheel for py2bit (setup.py): started
+#7 12.85   Building wheel for py2bit (setup.py): finished with status 'done'
+#7 12.85   Created wheel for py2bit: filename=py2bit-0.3.0-cp38-cp38-linux_x86_64.whl size=50137 sha256=b0ab7361caba2c821391f26be0f76be85e4283f51cb574eea5e5b24fac9fb720
+#7 12.85   Stored in directory: /root/.cache/pip/wheels/26/95/57/d87689d3e5b62d4e2bf715ad5fc6a67ef46d0a4655a577330f
+#7 12.85 Successfully built deeptoolsintervals py2bit
+#7 13.71 Installing collected packages: snowballstemmer, py2bit, deeptoolsintervals, zipp, urllib3, tenacity, sphinxcontrib-serializinghtml, sphinxcontrib-qthelp, sphinxcontrib-jsmath, sphinxcontrib-htmlhelp, sphinxcontrib-devhelp, sphinxcontrib-applehelp, pyparsing, Pygments, pyBigWig, pillow, packaging, MarkupSafe, kiwisolver, imagesize, idna, fonttools, docutils, cycler, contourpy, charset-normalizer, certifi, babel, alabaster, requests, plotly, Jinja2, importlib-resources, importlib-metadata, sphinx, matplotlib, numpydoc, deeptools
+#7 35.27 Successfully installed Jinja2-3.1.2 MarkupSafe-2.1.3 Pygments-2.16.1 alabaster-0.7.13 babel-2.12.1 certifi-2023.7.22 charset-normalizer-3.2.0 contourpy-1.1.0 cycler-0.11.0 deeptools-3.5.3 deeptoolsintervals-0.1.9 docutils-0.20.1 fonttools-4.42.1 idna-3.4 imagesize-1.4.1 importlib-metadata-6.8.0 importlib-resources-6.0.1 kiwisolver-1.4.5 matplotlib-3.7.2 numpydoc-1.5.0 packaging-23.1 pillow-10.0.0 plotly-5.16.1 py2bit-0.3.0 pyBigWig-0.3.22 pyparsing-3.0.9 requests-2.31.0 snowballstemmer-2.2.0 sphinx-7.1.2 sphinxcontrib-applehelp-1.0.4 sphinxcontrib-devhelp-1.0.2 sphinxcontrib-htmlhelp-2.0.1 sphinxcontrib-jsmath-1.0.1 sphinxcontrib-qthelp-1.0.3 sphinxcontrib-serializinghtml-1.1.5 tenacity-8.2.3 urllib3-2.0.4 zipp-3.16.2
+#7 35.27 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#7 35.47 
+#7 35.47 [notice] A new release of pip is available: 23.1.2 -> 23.2.1
+#7 35.47 [notice] To update, run: python3 -m pip install --upgrade pip
+#7 DONE 36.5s
+
+#8 [3/6] COPY Dockerfile /opt2/Dockerfile_ccbr_deeptools_3.5.3.v1
+#8 DONE 0.1s
+
+#9 [4/6] RUN chmod a+r /opt2/Dockerfile_ccbr_deeptools_3.5.3.v1
+#9 DONE 0.2s
+
+#10 [5/6] WORKDIR /data2
+#10 DONE 0.1s
+
+#11 [6/6] RUN apt-get clean && apt-get purge     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+#11 0.333 Reading package lists...
+#11 0.366 Building dependency tree...
+#11 0.368 Reading state information...
+#11 0.382 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+#11 DONE 0.4s
+
+#12 exporting to image
+#12 exporting layers
+#12 exporting layers 5.2s done
+#12 writing image sha256:4cb31952b3db04bfb27d4072fcad573b9c4ab8d793b064998ad8926b618ce883 done
+#12 naming to docker.io/nciccbr/ccbr_deeptools_3.5.3:v1 done
+#12 DONE 5.2s
