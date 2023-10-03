@@ -1,0 +1,57 @@
+name: build-docker
+
+on:
+  workflow_dispatch:
+    inputs:
+      dockerfile:
+        type: string
+        description: path to the Dockerfile in the repo (e.g. common/ccbr_bwa/Dockerfile)
+        required: true
+      namespace:
+        type: string
+        description: namespace on dockerhub
+        required: true
+        default: nciccbr
+      image_name:
+        type: string
+        description: container image name (e.g. ccbr_toolname)
+        required: true
+      version:
+        type: string
+        description: container version tag (e.g. 1.0.0)
+        required: true
+      push:
+        type: boolean
+        description: Push to DockerHub (leave unchecked to just build the container without pushing)
+        required: true
+
+jobs:
+  build-docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Login to DockerHub
+        if: ${{ github.event.inputs.push }}
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Prepare build-time variables
+        id: vars
+        run: |
+            echo "CONTEXT=$(dirname ${{ github.event.inputs.dockerfile }})" >> "$GITHUB_OUTPUT"
+            echo "DATE=$(date +"%Y-%m-%d")" >> "$GITHUB_OUTPUT"
+      - name: debug
+        run: |
+            echo ${{ steps.vars.outputs.CONTEXT }}
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          context: ${{ steps.vars.outputs.CONTEXT }}
+          file: ${{ github.event.inputs.dockerfile }}
+          push: ${{ github.event.inputs.push }}
+          tags: ${{ github.event.inputs.namespace }}/${{ github.event.inputs.image_name }}:${{ github.event.inputs.version }}
+          build-args: |
+            BUILD_DATE=${{ steps.vars.outputs.DATE }}
+            BUILD_TAG=${{ github.event.inputs.version }}
+            REPONAME=${{ github.event.inputs.image_name }}
