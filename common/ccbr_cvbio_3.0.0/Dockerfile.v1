@@ -9,7 +9,7 @@ ARG REPONAME="000000"
 ENV REPONAME=${REPONAME}
 
 # insert your layers go here!
-RUN mamba install -c bioconda cvbio=3.0.0
+RUN mamba install -c bioconda cvbio=3.0.0 openjdk=11.0.15
 
 # Save Dockerfile in the docker
 COPY Dockerfile /opt2/Dockerfile_${REPONAME}.${BUILD_TAG}
