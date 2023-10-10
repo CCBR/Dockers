@@ -9,7 +9,7 @@ ARG REPONAME="000000"
 ENV REPONAME=${REPONAME}
 
 # insert your layers here!
-RUN mamba install -c bioconda khmer=3.0.0a3-3
+RUN mamba install -c bioconda khmer=3.0.0a3
 
 # Save Dockerfile in the docker
 COPY Dockerfile /opt2/Dockerfile_${REPONAME}.${BUILD_TAG}
