@@ -13,7 +13,7 @@ RUN wget https://drive5.com/downloads/usearch10.0.240_i86linux32.gz && \
 ENV PATH=/opt2/usearch:$PATH
 
 # install mimseq
-RUN mamba install -c conda-forge mimseq=1.3.7
+RUN mamba install -c conda-forge python=3.7 mimseq=1.3.7
 
 # cleanup
 RUN apt-get clean && apt-get purge && \
