@@ -8,7 +8,7 @@ ENV BUILD_TAG=${BUILD_TAG}
 ARG REPONAME="000000"
 ENV REPONAME=${REPONAME}
 
-RUN mkdir -p /opt2 && mkdir -p /data2
+RUN sudo mkdir -p /opt2 && sudo mkdir -p /data2
 
 # meme error workaround
 # https://stackoverflow.com/a/66319448
