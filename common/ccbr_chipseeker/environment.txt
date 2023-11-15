@@ -1,0 +1,17 @@
+r-base=4.3.1
+r-argparse
+r-BiocManager
+r-dplyr
+r-ggplot2
+r-glue
+bioconductor-ChIPseeker
+bioconductor-org.Bt.eg.db
+bioconductor-org.Hs.eg.db
+bioconductor-org.Mm.eg.db 
+bioconductor-org.Mmu.eg.db 
+bioconductor-TxDb.Btaurus.UCSC.bosTau9.refGene 
+bioconductor-TxDb.Hsapiens.UCSC.hg19.knownGene
+bioconductor-TxDb.Hsapiens.UCSC.hg38.knownGene
+bioconductor-TxDb.Mmulatta.UCSC.rheMac10.refGene
+bioconductor-bioconductor-TxDb.Mmusculus.UCSC.mm9.knownGene
+bioconductor-TxDb.Mmusculus.UCSC.mm10.knownGene
