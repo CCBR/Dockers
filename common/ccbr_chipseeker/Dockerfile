@@ -8,6 +8,11 @@ ENV BUILD_TAG=${BUILD_TAG}
 ARG REPONAME="000000"
 ENV REPONAME=${REPONAME}
 
+# uninstall R from base image
+RUN apt-get --purge remove r-base r-base-dev r-recommended r-cran-* && \
+    apt-get autoremove && \
+    apt-get update
+
 # install R packages with conda
 COPY environment.txt /data2/
 RUN mamba install -c bioconda -c conda-forge --file /data2/environment.txt
