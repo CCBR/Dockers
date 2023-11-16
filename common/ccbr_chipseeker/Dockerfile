@@ -9,7 +9,8 @@ ARG REPONAME="000000"
 ENV REPONAME=${REPONAME}
 
 # uninstall R from base image
-RUN apt-get --purge remove r-base r-base-dev r-recommended r-cran-* && \
+RUN DEBIAN_FRONTEND=noninteractive apt-get --purge remove \
+    r-base r-base-dev r-recommended r-cran-* && \
     apt-get autoremove && \
     apt-get update
 
