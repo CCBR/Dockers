@@ -9,9 +9,12 @@ bioconductor-org.Bt.eg.db
 bioconductor-org.Hs.eg.db
 bioconductor-org.Mm.eg.db 
 bioconductor-org.Mmu.eg.db 
+bioconductor-org.Sc.sgd.db 
 bioconductor-TxDb.Btaurus.UCSC.bosTau9.refGene 
 bioconductor-TxDb.Hsapiens.UCSC.hg19.knownGene
 bioconductor-TxDb.Hsapiens.UCSC.hg38.knownGene
 bioconductor-TxDb.Mmulatta.UCSC.rheMac10.refGene
-bioconductor-bioconductor-TxDb.Mmusculus.UCSC.mm9.knownGene
 bioconductor-TxDb.Mmusculus.UCSC.mm10.knownGene
+bioconductor-TxDb.Mmusculus.UCSC.mm9.knownGene
+bioconductor-TxDb.Mmusculus.UCSC.mm10.knownGene
+bioconductor-TxDb.Scerevisiae.UCSC.sacCer3.sgdGene

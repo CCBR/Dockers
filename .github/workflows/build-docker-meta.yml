@@ -1,0 +1,46 @@
+name: build-docker-meta
+
+on:
+  workflow_dispatch:
+    inputs:
+      context_dir:
+        type: string
+        description: path to the directory containing the Dockerfile and meta.yml file (e.g. common/ccbr_chipseeker/)
+        required: true
+      push:
+        type: boolean
+        description: Push to DockerHub (uncheck to only build the container without pushing)
+        required: true
+        default: true
+
+jobs:
+  build-docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pietrobolcato/action-read-yaml@1.0.0
+        id: metadata
+        with:
+          config: ${{ github.workspace }}/${{ github.event.inputs.context_dir }}/meta.yml
+      - name: Login to DockerHub
+        if: ${{ github.event.inputs.push == 'true' }}
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Prepare build-time variables
+        id: vars
+        run: |
+            echo "DATE=$(date +"%Y-%m-%d")" >> "$GITHUB_OUTPUT"
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        # only try building & pushing the container if parsing the metadata worked
+        if: ${{ steps.metadata.outputs['container'] != '' }}
+        with:
+          context: ${{ github.event.inputs.context_dir }}
+          push: ${{ github.event.inputs.push }}
+          tags: ${{ steps.metadata.outputs['container'] }}
+          build-args: |
+            BUILD_DATE=${{ steps.vars.outputs.DATE }}
+            BUILD_TAG=${{ steps.metadata.outputs['version'] }}
+            REPONAME=${{ steps.metadata.outputs['image_name'] }}
