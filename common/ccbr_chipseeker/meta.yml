@@ -1,4 +1,4 @@
 dockerhub_namespace: nciccbr
 image_name: ccbr_chipseeker
-version: 1.1.1
+version: 1.1.2
 container: "$(dockerhub_namespace)/$(image_name):$(version)"
