@@ -14,6 +14,7 @@ bioconductor-TxDb.Btaurus.UCSC.bosTau9.refGene
 bioconductor-TxDb.Hsapiens.UCSC.hg19.knownGene
 bioconductor-TxDb.Hsapiens.UCSC.hg38.knownGene
 bioconductor-TxDb.Mmulatta.UCSC.rheMac10.refGene
+bioconductor-TxDb.Mmusculus.UCSC.mm10.knownGene
 bioconductor-TxDb.Mmusculus.UCSC.mm9.knownGene
 bioconductor-TxDb.Mmusculus.UCSC.mm10.knownGene
 bioconductor-TxDb.Scerevisiae.UCSC.sacCer3.sgdGene
