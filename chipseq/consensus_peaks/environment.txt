@@ -1,6 +1,7 @@
 r-base=4.3.2
 r-DT
 r-dplyr
+r-doFuture
 r-future
 r-future.apply
 r-ggplot2
