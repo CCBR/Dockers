@@ -1,6 +1,4 @@
 FROM ubuntu:20.04
-LABEL maintainer "Vishal Koparde *(kopardev on GitHub)*"
-LABEL github_handle="kopardev"
 
 # build time variables
 ARG BUILD_DATE="000000"
@@ -21,21 +19,14 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
 	localedef -i en_US -f UTF-8 en_US.UTF-8 && \
 	cpanm FindBin Term::ReadLine
 
+# install basic dependencies with apt-get
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-        bcftools \
-	bedops \
-	bedtools \
-	bowtie \
-	bowtie2 \
-	bwa \
-	bzip2 \
-	curl \
+    build-essential \
 	figlet \
 	g++ \
 	gcc \
 	gfortran \
 	git \
-	imagemagick \
 	libatlas-base-dev \
 	libblas-dev \
 	libboost-dev \
@@ -45,6 +36,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
 	libfreetype6-dev \
 	libgd-dev \
 	libgd-perl \
+	libglib2.0-dev \
+    libgpgme11-dev \
 	libgs-dev \
 	libgsl-dev \
 	libgsl0-dev \
@@ -58,6 +51,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
 	libopenmpi-dev \
 	libpng-dev \
 	librtmp-dev \
+    libseccomp-dev \
 	libssl-dev \
 	libtool \
 	libxml-libxml-debugging-perl \
@@ -66,59 +60,38 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
 	libxslt-dev \
 	make \
 	manpages-dev \
-	openjdk-8-jdk \
+	openjdk-17-jre-headless \
 	parallel \
 	pigz \
-	python2.7 \
+    pkg-config \
 	python3-pip \
-        python3-dev \
+    python3-dev \
 	rsync \
-        samtools \
+    squashfs-tools \
 	unzip \
-        vim \
-	vcftools \
+    uuid-dev \
 	wget \
 	zlib1g \
 	zlib1g-dev \
-	zlibc 
+	zlibc
 
 # Install conda and give write permissions to conda folder
 RUN echo 'export PATH=/opt2/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
     wget --quiet "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh" -O ~/miniforge3.sh && \
     /bin/bash ~/miniforge3.sh -b -p /opt2/conda && \
     rm ~/miniforge3.sh && chmod 777 -R /opt2/conda/
+ENV PATH="/opt2/conda/bin:$PATH"
 
+# install R packages from conda
+COPY environment.txt /data2/
+RUN mamba install -c bioconda -c conda-forge --file /data2/environment.txt
+ENV R_LIBS_USER=/opt2/conda/lib/R/library/
 
-#fix python
-RUN ln -s /usr/bin/python3.8 /usr/bin/python \
-	&& ln -s /usr/bin/python2.7 /usr/bin/python2
-
-RUN python3 -m pip install --upgrade pip && \
-	pip3 install biopython && \
-	pip3 install numpy && \
-	pip3 install scipy && \
-	pip3 install argparse && \
-	pip3 install pandas && \
-	pip3 install pysam
-
-#install R
-RUN apt-get install -y r-base r-base-dev r-base-core
-
-# cleanup etc
 # Save Dockerfile in the docker
 COPY Dockerfile /opt2/Dockerfile_${REPONAME}.${BUILD_TAG}
 RUN chmod a+r /opt2/Dockerfile_${REPONAME}.${BUILD_TAG}
-COPY argparse.bash /opt2
-RUN chmod -R a+rx /opt2/argparse.bash
-ENV PATH="/opt2/:$PATH"
-# conda
-ENV PATH=$PATH:/opt2/conda/bin
-RUN conda config --add channels r
-RUN conda config --add channels bioconda
-RUN conda upgrade conda
 
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-    apt-get autoclean && \
-    apt-get autoremove -y && \
-    rm -rf /var/lib/{apt,dpkg,cache,log}/
+# cleanup
 WORKDIR /data2
+RUN apt-get clean && apt-get purge \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

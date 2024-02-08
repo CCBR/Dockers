@@ -1,0 +1,4 @@
+dockerhub_namespace: nciccbr
+image_name: consensus_peaks
+version: v1.1
+container: "$(dockerhub_namespace)/$(image_name):$(version)"
