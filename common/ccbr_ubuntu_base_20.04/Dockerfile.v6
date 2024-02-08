@@ -87,21 +87,19 @@ RUN echo 'export PATH=/opt2/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
     wget --quiet "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh" -O ~/miniforge3.sh && \
     /bin/bash ~/miniforge3.sh -b -p /opt2/conda && \
     rm ~/miniforge3.sh && chmod 777 -R /opt2/conda/
-
+# R packages should then be installed with cmamba
 
 #fix python
 RUN ln -s /usr/bin/python3.8 /usr/bin/python \
 	&& ln -s /usr/bin/python2.7 /usr/bin/python2
 
 RUN python3 -m pip install --upgrade pip && \
+	pip3 install biopython && \
 	pip3 install numpy && \
 	pip3 install scipy && \
 	pip3 install argparse && \
 	pip3 install pandas && \
 	pip3 install pysam
-
-#install R
-RUN apt-get install -y r-base r-base-dev r-base-core
 
 # cleanup etc
 # Save Dockerfile in the docker
