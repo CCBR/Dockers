@@ -1,7 +1,4 @@
-FROM continuumio/miniconda2
-
-RUN mkdir -p /data2
-RUN mkdir -p /opt2
+FROM nciccbr/ccbr_ubuntu_base_20.04:v6
 
 RUN apt-get update && apt-get install -y zlib1g zlib1g-dev git build-essential
 
@@ -54,5 +51,3 @@ RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
 
 RUN chmod -R a+rX /opt2
 WORKDIR /data2
-
-MAINTAINER vishal.koparde@nih.gov
