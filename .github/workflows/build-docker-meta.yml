@@ -1,5 +1,7 @@
 name: build-docker-meta
 
+run-name: ${{ inputs.context_dir }}
+
 on:
   workflow_dispatch:
     inputs:
@@ -31,7 +33,7 @@ jobs:
       - name: Prepare build-time variables
         id: vars
         run: |
-            echo "DATE=$(date +"%Y-%m-%d")" >> "$GITHUB_OUTPUT"
+          echo "DATE=$(date +"%Y-%m-%d")" >> "$GITHUB_OUTPUT"
       - name: Build and push
         uses: docker/build-push-action@v4
         # only try building & pushing the container if parsing the metadata worked

@@ -1,5 +1,7 @@
 name: build-docker-manual
 
+run-name: ${{ inputs.namespace }}/${{ inputs.image_name }}:${{ inputs.version }}
+
 on:
   workflow_dispatch:
     inputs:
@@ -39,8 +41,8 @@ jobs:
       - name: Prepare build-time variables
         id: vars
         run: |
-            echo "CONTEXT=$(dirname ${{ github.event.inputs.dockerfile }})" >> "$GITHUB_OUTPUT"
-            echo "DATE=$(date +"%Y-%m-%d")" >> "$GITHUB_OUTPUT"
+          echo "CONTEXT=$(dirname ${{ github.event.inputs.dockerfile }})" >> "$GITHUB_OUTPUT"
+          echo "DATE=$(date +"%Y-%m-%d")" >> "$GITHUB_OUTPUT"
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
