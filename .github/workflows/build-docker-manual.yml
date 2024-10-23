@@ -48,7 +48,7 @@ jobs:
           echo "CONTEXT=$(dirname ${{ github.event.inputs.dockerfile }})" >> "$GITHUB_OUTPUT"
           echo "DATE=$(date +"%Y-%m-%d")" >> "$GITHUB_OUTPUT"
 
-          $ for Docker Hub Description
+          # for Docker Hub Description
           echo " # ${{ github.repository }} ${{ github.event.inputs.image_name }}\n" > tmp_README.md
           echo "Dockerfile source: https://github.com/${{ github.repository }}/blob/${{ github.sha }}/${{ github.event.inputs.dockerfile }}\n" >> tmp_README.md
       - name: Build and push
