@@ -41,13 +41,13 @@ jobs:
       - name: Prepare build-time variables
         id: vars
         run: |
+          echo "CONTEXT=$(dirname ${{ github.event.inputs.dockerfile }})" >> "$GITHUB_OUTPUT"
+          echo "DATE=$(date +"%Y-%m-%d")" >> "$GITHUB_OUTPUT"
+
           if [ ! -f ${{ github.event.inputs.dockerfile }} ] ; then
             echo "ERROR: Dockerfile not found: ${{ github.event.inputs.dockerfile }}"
             exit 1
           fi
-          echo "CONTEXT=$(dirname ${{ github.event.inputs.dockerfile }})" >> "$GITHUB_OUTPUT"
-          echo "DATE=$(date +"%Y-%m-%d")" >> "$GITHUB_OUTPUT"
-
           # for Docker Hub Description
           echo " # ${{ github.repository }} ${{ github.event.inputs.image_name }}\n" > tmp_README.md
           echo "Dockerfile source: https://github.com/${{ github.repository }}/blob/${{ github.sha }}/${{ github.event.inputs.dockerfile }}\n" >> tmp_README.md

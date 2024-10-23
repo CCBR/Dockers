@@ -34,6 +34,14 @@ jobs:
         id: vars
         run: |
           echo "DATE=$(date +"%Y-%m-%d")" >> "$GITHUB_OUTPUT"
+
+          if [ ! -f ${{ github.event.inputs.context_dir }}/Dockerfile ] ; then
+            echo "ERROR: Dockerfile not found: ${{ github.event.inputs.context_dir }}/Dockerfile"
+            exit 1
+          fi
+          # for Docker Hub Description
+          echo " # ${{ github.repository }} ${{ steps.metadata.outputs['image_name'] }}\n" > tmp_README.md
+          echo "Dockerfile source: https://github.com/${{ github.repository }}/blob/${{ github.sha }}/${{ github.event.inputs.context_dir }}/Dockerfile\n" >> tmp_README.md
       - name: Build and push
         uses: docker/build-push-action@v4
         # only try building & pushing the container if parsing the metadata worked
@@ -46,3 +54,11 @@ jobs:
             BUILD_DATE=${{ steps.vars.outputs.DATE }}
             BUILD_TAG=${{ steps.metadata.outputs['version'] }}
             REPONAME=${{ steps.metadata.outputs['image_name'] }}
+      - name: Update Docker Hub Description
+        if: ${{ github.event.inputs.push == 'true' }}
+        uses: peter-evans/dockerhub-description@v4
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: peterevans/dockerhub-description
+          readme-filepath: tmp_README.md
