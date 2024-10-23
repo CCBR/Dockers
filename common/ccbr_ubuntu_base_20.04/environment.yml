@@ -5,9 +5,9 @@ channels:
   - defaults
 dependencies:
   - argparse
-  - biopython=1.84
+  - biopython
   - numpy
   - pandas
   - pysam
-  - salmon=1.10.3
+  - salmon
   - scipy
