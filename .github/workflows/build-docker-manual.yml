@@ -1,6 +1,6 @@
 name: build-docker-manual
 
-run-name: ${{ inputs.namespace }}/${{ inputs.image_name }}:${{ inputs.version }}
+run-name: ${{ inputs.dockerfile }}:${{ inputs.version }}
 
 on:
   workflow_dispatch:
