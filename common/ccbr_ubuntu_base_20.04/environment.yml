@@ -1,0 +1,12 @@
+name: ccbr
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - argparse
+  - biopython
+  - numpy
+  - pandas
+  - pysam
+  - scipy
