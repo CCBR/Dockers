@@ -60,5 +60,5 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-          repository: peterevans/dockerhub-description
+          repository: ${{ steps.metadata.outputs['dockerhub_namespace'] }}/${{ steps.metadata.outputs['image_name'] }}
           readme-filepath: tmp_README.md
