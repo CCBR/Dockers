@@ -99,12 +99,12 @@ RUN conda upgrade conda
 # RUN mamba env create -n ${CONDA_ENV} -f /data2/environment.yml && \
 #     echo "conda activate ${CONDA_ENV}" > ~/.bashrc
 # ENV PATH="/opt2/conda/envs/${CONDA_ENV}/bin:$PATH"
-# ENV PYTHONPATH=""
 
+ENV PYTHONPATH=""
 # Fix python
 RUN ln -s /opt2/conda/bin/python3 /usr/bin/python \
 	&& ln -s /usr/bin/python2.7 /usr/bin/python2
-RUN pip install --upgrade pip \
+RUN python3 -m pip install --upgrade pip \
 	argparse \
 	biopython \
 	numpy \
