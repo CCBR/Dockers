@@ -62,11 +62,11 @@ jobs:
             BUILD_DATE=${{ steps.vars.outputs.DATE }}
             BUILD_TAG=${{ github.event.inputs.version }}
             REPONAME=${{ github.event.inputs.image_name }}
-      - name: Update Docker Hub Description
-        if: ${{ github.event.inputs.push == 'true' }}
-        uses: peter-evans/dockerhub-description@v4
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-          repository: ${{ steps.metadata.outputs['dockerhub_namespace'] }}/${{ steps.metadata.outputs['image_name'] }}
-          readme-filepath: tmp_README.md
+      # - name: Update Docker Hub Description
+      #   if: ${{ github.event.inputs.push == 'true' }}
+      #   uses: peter-evans/dockerhub-description@v4
+      #   with:
+      #     username: ${{ secrets.DOCKERHUB_USERNAME }}
+      #     password: ${{ secrets.DOCKERHUB_TOKEN }}
+      #     repository: ${{ steps.metadata.outputs['dockerhub_namespace'] }}/${{ steps.metadata.outputs['image_name'] }}
+      #     readme-filepath: tmp_README.md
