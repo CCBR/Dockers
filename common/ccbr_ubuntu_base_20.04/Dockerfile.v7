@@ -88,8 +88,9 @@ RUN echo 'export PATH=/opt2/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
     /bin/bash ~/miniforge3.sh -b -p /opt2/conda && \
     rm ~/miniforge3.sh && chmod 777 -R /opt2/conda/
 ENV PATH="/opt2/conda/bin:$PATH"
-RUN conda config --add channels r
 RUN conda config --add channels bioconda
+RUN conda config --add channels conda-forge
+RUN conda config --add channels r
 RUN conda upgrade conda
 
 # R, python, and other packages available in conda should be installed with mamba here.
@@ -99,6 +100,8 @@ RUN conda upgrade conda
 # RUN mamba env create -n ${CONDA_ENV} -f /data2/environment.yml && \
 #     echo "conda activate ${CONDA_ENV}" > ~/.bashrc
 # ENV PATH="/opt2/conda/envs/${CONDA_ENV}/bin:$PATH"
+RUN mamba install -c bioconda \
+	salmon=1.10
 
 ENV PYTHONPATH=""
 # Fix python
@@ -110,7 +113,6 @@ RUN python3 -m pip install --upgrade pip \
 	numpy \
 	pandas \
 	pysam \
-	salmon \
 	scipy
 
 # cleanup etc
