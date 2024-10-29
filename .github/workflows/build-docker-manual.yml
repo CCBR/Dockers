@@ -50,7 +50,7 @@ jobs:
           fi
           # for Docker Hub Description
           echo " # ${{ github.repository }} ${{ github.event.inputs.image_name }}\n" > tmp_README.md
-          echo "Dockerfile source: https://github.com/${{ github.repository }}/blob/${{ github.sha }}/${{ github.event.inputs.dockerfile }}\n" >> tmp_README.md
+          echo "Dockerfile source: https://github.com/${{ github.repository }}/blob/${{ github.sha }}/${{ github.event.inputs.dockerfile }}" >> tmp_README.md
       - name: Build and push
         uses: docker/build-push-action@v4
         id: build-and-push

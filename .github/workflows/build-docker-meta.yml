@@ -41,7 +41,7 @@ jobs:
           fi
           # for Docker Hub Description
           echo " # ${{ github.repository }} ${{ steps.metadata.outputs['image_name'] }}\n" > tmp_README.md
-          echo "Dockerfile source: https://github.com/${{ github.repository }}/blob/${{ github.sha }}/${{ github.event.inputs.context_dir }}/Dockerfile\n" >> tmp_README.md
+          echo "Dockerfile source: https://github.com/${{ github.repository }}/blob/${{ github.sha }}/${{ github.event.inputs.context_dir }}/Dockerfile" >> tmp_README.md
       - name: Build and push
         uses: docker/build-push-action@v4
         id: build-and-push
