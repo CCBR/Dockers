@@ -44,6 +44,7 @@ jobs:
           echo "Dockerfile source: https://github.com/${{ github.repository }}/blob/${{ github.sha }}/${{ github.event.inputs.context_dir }}/Dockerfile\n" >> tmp_README.md
       - name: Build and push
         uses: docker/build-push-action@v4
+        id: build-and-push
         # only try building & pushing the container if parsing the metadata worked
         if: ${{ steps.metadata.outputs['container'] != '' }}
         with:
