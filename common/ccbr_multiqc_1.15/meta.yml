@@ -1,0 +1,4 @@
+dockerhub_namespace: nciccbr
+image_name: ccbr_multiqc_1.15
+version: v2
+container: "$(dockerhub_namespace)/$(image_name):$(version)"
