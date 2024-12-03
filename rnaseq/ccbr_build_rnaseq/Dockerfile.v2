@@ -1,5 +1,5 @@
 # ccbr_build_rnaseq Dockerfile (v2)
-FROM nciccbr/ccbr_ubuntu_base_22.04:v4
+FROM nciccbr/ccbr_ubuntu_22.04:v4
 
 # build time variables
 ARG BUILD_DATE="000000"
