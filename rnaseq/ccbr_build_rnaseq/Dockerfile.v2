@@ -1,0 +1,38 @@
+# ccbr_build_rnaseq Dockerfile (v2)
+FROM nciccbr/ccbr_ubuntu_base_22.04:v4
+
+# build time variables
+ARG BUILD_DATE="000000"
+ENV BUILD_DATE=${BUILD_DATE}
+ARG BUILD_TAG="000000"
+ENV BUILD_TAG=${BUILD_TAG}
+ARG REPONAME="000000"
+ENV REPONAME=${REPONAME}
+
+# Install conda and give write permissions to conda folder
+RUN echo 'export PATH=/opt2/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
+    wget --quiet "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh" -O ~/miniforge3.sh && \
+    /bin/bash ~/miniforge3.sh -b -p /opt2/conda && \
+    rm ~/miniforge3.sh && chmod 777 -R /opt2/conda/
+ENV PATH="/opt2/conda/bin:$PATH"
+RUN conda config --add channels bioconda
+RUN conda config --add channels conda-forge
+RUN conda config --add channels r
+RUN conda upgrade conda
+
+RUN mamba install -c bioconda \
+    ucsc-bedsort \
+	'bio>=0.4.1' \
+	'biopython>=1.78' \
+	'certifi>=2020.12.5' \
+	'chardet>=4.0.0' \
+	'HTSeq>=0.13.5' \
+	'idna>=2.10' \
+	'numpy>=1.19.5' \
+	'pysam>=0.16.0.1' \
+	'requests>=2.25.1' \
+	'scipy>=1.5.4' \
+	'urllib3==1.26.4'
+
+COPY Dockerfile /opt2/
+WORKDIR /data2
