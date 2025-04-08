@@ -2,6 +2,9 @@ name: build-docker-manual
 
 run-name: ${{ inputs.dockerfile }}:${{ inputs.version }}
 
+permissions:
+  contents: read
+
 on:
   workflow_dispatch:
     inputs:
